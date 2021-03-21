@@ -87,7 +87,6 @@
 		1F2A1ED0260400F400933CDB = {
 			isa = PBXGroup;
 			children = (
-				1F9BE7842606C88300C822AC /* HomeCell.swift */,
 				1F2A1EDB260400F400933CDB /* PracticaIOS_Books */,
 				1F2A1EF2260400F500933CDB /* PracticaIOS_BooksTests */,
 				1F2A1EFD260400F500933CDB /* PracticaIOS_BooksUITests */,
@@ -108,6 +107,7 @@
 		1F2A1EDB260400F400933CDB /* PracticaIOS_Books */ = {
 			isa = PBXGroup;
 			children = (
+				1F9BE7842606C88300C822AC /* HomeCell.swift */,
 				1F2A1EDC260400F400933CDB /* AppDelegate.swift */,
 				1F2A1EDE260400F400933CDB /* SceneDelegate.swift */,
 				1F2A1EE0260400F400933CDB /* ViewController.swift */,
