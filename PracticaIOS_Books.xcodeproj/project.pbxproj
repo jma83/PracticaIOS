@@ -19,6 +19,10 @@
 		1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE7702606B00D00C822AC /* RegisterViewController.swift */; };
 		1F9BE77D2606BEB500C822AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE77C2606BEB500C822AC /* HomeViewController.swift */; };
 		1F9BE7852606C88300C822AC /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE7842606C88300C822AC /* HomeCell.swift */; };
+		1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */; };
+		1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8ADE26080C67007ACEDB /* UserManager.swift */; };
+		1F9F8AE6260949BB007ACEDB /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8AE4260949BB007ACEDB /* User+CoreDataClass.swift */; };
+		1F9F8AE7260949BB007ACEDB /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8AE5260949BB007ACEDB /* User+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		1F9BE7702606B00D00C822AC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1F9BE77C2606BEB500C822AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F9BE7842606C88300C822AC /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
+		1F9F8ADE26080C67007ACEDB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		1F9F8AE4260949BB007ACEDB /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1F9F8AE5260949BB007ACEDB /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +115,9 @@
 		1F2A1EDB260400F400933CDB /* PracticaIOS_Books */ = {
 			isa = PBXGroup;
 			children = (
+				1F9F8AE4260949BB007ACEDB /* User+CoreDataClass.swift */,
+				1F9F8AE5260949BB007ACEDB /* User+CoreDataProperties.swift */,
+				1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */,
 				1F9BE7842606C88300C822AC /* HomeCell.swift */,
 				1F2A1EDC260400F400933CDB /* AppDelegate.swift */,
 				1F2A1EDE260400F400933CDB /* SceneDelegate.swift */,
@@ -118,6 +129,7 @@
 				1F9BE76B2606AFE600C822AC /* LoginViewController.swift */,
 				1F9BE7702606B00D00C822AC /* RegisterViewController.swift */,
 				1F9BE77C2606BEB500C822AC /* HomeViewController.swift */,
+				1F9F8ADE26080C67007ACEDB /* UserManager.swift */,
 			);
 			path = PracticaIOS_Books;
 			sourceTree = "<group>";
@@ -270,10 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
+				1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */,
 				1F9BE7852606C88300C822AC /* HomeCell.swift in Sources */,
+				1F9F8AE6260949BB007ACEDB /* User+CoreDataClass.swift in Sources */,
 				1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */,
 				1F2A1EE1260400F400933CDB /* ViewController.swift in Sources */,
+				1F9F8AE7260949BB007ACEDB /* User+CoreDataProperties.swift in Sources */,
 				1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */,
 				1F9BE77D2606BEB500C822AC /* HomeViewController.swift in Sources */,
 				1F2A1EDF260400F400933CDB /* SceneDelegate.swift in Sources */,
@@ -603,6 +619,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */,
+			);
+			currentVersion = 1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */;
+			path = MyLibrary.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1F2A1ED1260400F400933CDB /* Project object */;
 }
