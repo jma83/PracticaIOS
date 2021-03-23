@@ -12,10 +12,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var birthdateText: UITextField!
     @IBOutlet weak var countryText: UITextField!
+    @IBOutlet weak var birthdateText: UIDatePicker!
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordText.isSecureTextEntry = true
 
         // Do any additional setup after loading the view.
     }
@@ -29,9 +30,19 @@ class RegisterViewController: UIViewController {
         //check pass ok
         //check birtdate > 18
         //create and transition
+        //let u = User()
+        let email = emailText?.text
+        let username = usernameText?.text
+        let pass = passwordText?.text
+        let birthdate = birthdateText?.date
+        let country = countryText?.text
+
+        
+        if email != "" && username != "" && pass != "" && birthdate != nil && country != ""{
+            UserManager().saveUser(username: username!, password: pass!, email: email!, birthdate: birthdate ?? Date(), country: country!)
+        }
     }
-    
-    
+
     /*
     // MARK: - Navigation
 

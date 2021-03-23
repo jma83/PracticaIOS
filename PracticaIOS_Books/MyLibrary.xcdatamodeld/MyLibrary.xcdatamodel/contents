@@ -27,9 +27,9 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Like" positionX="-18" positionY="72" width="128" height="58"/>
         <element name="List" positionX="-54" positionY="-9" width="128" height="103"/>
         <element name="Opinion" positionX="-36" positionY="9" width="128" height="118"/>
-        <element name="Like" positionX="-18" positionY="72" width="128" height="58"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>

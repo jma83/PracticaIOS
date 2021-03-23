@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        passwordText.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
     
@@ -24,6 +24,17 @@ class LoginViewController: UIViewController {
         //checkpass
         //check bd
         //ok -> transition
+        let username = usernameText?.text
+        let password = passwordText?.text
+                
+        let users = UserManager().checkLogin(username: username!, password: password!)
+        
+        print(users.count)
+        for u in users{
+            print(u.username ?? "")
+            
+        }
+        
     }
     
     /*
