@@ -29,10 +29,8 @@ class LoginViewController: UIViewController {
                 
         let users = UserManager().checkLogin(username: username!, password: password!)
         
-        print(users.count)
-        for u in users{
-            print(u.username ?? "")
-            
+        if users.count > 0 {
+            performSegue(withIdentifier: "loginToHome", sender: self)
         }
         
     }

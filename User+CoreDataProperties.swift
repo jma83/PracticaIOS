@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 23/03/2021.
+//  Created by Javier Martinez on 24/03/2021.
 //
 //
 
@@ -24,9 +24,5 @@ extension User {
     @NSManaged public var password: String?
     @NSManaged public var updateDate: Date?
     @NSManaged public var username: String?
-
-}
-
-extension User : Identifiable {
 
 }

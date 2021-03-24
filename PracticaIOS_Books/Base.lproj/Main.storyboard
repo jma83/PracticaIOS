@@ -148,7 +148,7 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                         <outlet property="loginButton" destination="5Pa-1Y-FNp" id="7C6-bi-ETl"/>
                         <outlet property="passwordText" destination="G5d-dj-uEk" id="ASJ-eH-Jme"/>
                         <outlet property="usernameText" destination="GmT-bP-kuN" id="GnS-vf-69u"/>
-                        <segue destination="vFM-El-jOY" kind="show" id="S59-Au-wZW"/>
+                        <segue destination="vFM-El-jOY" kind="show" identifier="loginToHome" id="S59-Au-wZW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDP-Ob-RLC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -271,7 +271,7 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                         <outlet property="emailText" destination="hkX-Mx-IpT" id="0ph-n5-Fdg"/>
                         <outlet property="passwordText" destination="qco-dO-g97" id="7vV-FS-fNs"/>
                         <outlet property="usernameText" destination="TQG-lX-SVl" id="aiC-it-yLa"/>
-                        <segue destination="vFM-El-jOY" kind="show" id="fyQ-og-3Vn"/>
+                        <segue destination="vFM-El-jOY" kind="show" identifier="registerToHome" id="fyQ-og-3Vn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54C-K4-2aX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

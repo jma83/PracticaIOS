@@ -17,6 +17,7 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordText.isSecureTextEntry = true
+        birthdateText.maximumDate = Date()
 
         // Do any additional setup after loading the view.
     }
@@ -31,15 +32,18 @@ class RegisterViewController: UIViewController {
         //check birtdate > 18
         //create and transition
         //let u = User()
+        let uManager = UserManager()
         let email = emailText?.text
         let username = usernameText?.text
         let pass = passwordText?.text
-        let birthdate = birthdateText?.date
+        let birthdate = birthdateText.date as NSDate
         let country = countryText?.text
-
         
-        if email != "" && username != "" && pass != "" && birthdate != nil && country != ""{
-            UserManager().saveUser(username: username!, password: pass!, email: email!, birthdate: birthdate ?? Date(), country: country!)
+        if uManager.validateUsername(username: username) && uManager.validateEmail(email: email) && uManager.validateCountry(country: country) && uManager.validateDate(date: birthdate) && uManager.validatePassword(password: pass){
+            
+            uManager.saveUser(username: username!, password: pass!, email: email!, birthdate: birthdate, country: country!)
+            
+            performSegue(withIdentifier: "registerToHome", sender: self)
         }
     }
 
