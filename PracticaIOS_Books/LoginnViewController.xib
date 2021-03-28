@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginnViewController" customModule="PracticaIOS_Books" customModuleProvider="target">
+            <connections>
+                <outlet property="loginButton" destination="Q9q-P3-fYU" id="RXE-FK-NwH"/>
+                <outlet property="passwordText" destination="n5y-F6-pWc" id="gG1-lV-PiE"/>
+                <outlet property="usernameText" destination="YS4-qV-HpU" id="GLt-H2-QJW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="zPp-M2-lnZ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Iniciar sesión" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsn-NT-DJP">
+                    <rect key="frame" x="40" y="114" width="334" height="51"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YS4-qV-HpU">
+                    <rect key="frame" x="40" y="225" width="334" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q9q-P3-fYU">
+                    <rect key="frame" x="40" y="377" width="334" height="39"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Acceder">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickLoginButton" destination="-1" eventType="touchUpInside" id="hyi-b6-EjW"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="n5y-F6-pWc">
+                    <rect key="frame" x="40" y="296" width="334" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="44k-OB-oNf"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="44k-OB-oNf" firstAttribute="trailing" secondItem="Jsn-NT-DJP" secondAttribute="trailing" constant="40" id="0gi-IC-Wdj"/>
+                <constraint firstItem="n5y-F6-pWc" firstAttribute="top" secondItem="YS4-qV-HpU" secondAttribute="bottom" constant="30" id="3ll-Qm-VXK"/>
+                <constraint firstItem="n5y-F6-pWc" firstAttribute="leading" secondItem="YS4-qV-HpU" secondAttribute="leading" id="EI0-im-sXw"/>
+                <constraint firstItem="Jsn-NT-DJP" firstAttribute="leading" secondItem="44k-OB-oNf" secondAttribute="leading" constant="40" id="Mpt-FO-APT"/>
+                <constraint firstItem="44k-OB-oNf" firstAttribute="trailing" secondItem="YS4-qV-HpU" secondAttribute="trailing" constant="40" id="aa6-5a-qdu"/>
+                <constraint firstItem="YS4-qV-HpU" firstAttribute="leading" secondItem="44k-OB-oNf" secondAttribute="leading" constant="40" id="ceH-tR-SIh"/>
+                <constraint firstItem="Q9q-P3-fYU" firstAttribute="leading" secondItem="44k-OB-oNf" secondAttribute="leading" constant="40" id="fLf-Lu-Lbm"/>
+                <constraint firstItem="YS4-qV-HpU" firstAttribute="top" secondItem="Jsn-NT-DJP" secondAttribute="bottom" constant="60" id="gAN-ZU-fW5"/>
+                <constraint firstItem="Q9q-P3-fYU" firstAttribute="top" secondItem="n5y-F6-pWc" secondAttribute="bottom" constant="40" id="oxS-h5-Q56"/>
+                <constraint firstItem="Jsn-NT-DJP" firstAttribute="top" secondItem="44k-OB-oNf" secondAttribute="top" constant="70" id="tir-ky-GJA"/>
+                <constraint firstItem="44k-OB-oNf" firstAttribute="trailing" secondItem="Q9q-P3-fYU" secondAttribute="trailing" constant="40" id="xYe-GD-CxT"/>
+                <constraint firstItem="n5y-F6-pWc" firstAttribute="trailing" secondItem="YS4-qV-HpU" secondAttribute="trailing" id="zmr-Ce-6li"/>
+            </constraints>
+            <point key="canvasLocation" x="2401" y="-903"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

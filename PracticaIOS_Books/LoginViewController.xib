@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="PracticaIOS_Books" customModuleProvider="target">
+            <connections>
+                <outlet property="loginButton" destination="4Bw-Ks-QUW" id="Q8b-BF-tok"/>
+                <outlet property="passwordText" destination="boU-yp-GGo" id="7YG-qW-Lgd"/>
+                <outlet property="usernameText" destination="G1W-Cb-cBZ" id="Ld7-5J-FzR"/>
+                <outlet property="view" destination="KMw-hX-Or1" id="GEQ-HC-ek0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="KMw-hX-Or1">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Iniciar sesión" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BWf-cE-nGG">
+                    <rect key="frame" x="40" y="114" width="334" height="51"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="G1W-Cb-cBZ">
+                    <rect key="frame" x="40" y="225" width="334" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bw-Ks-QUW">
+                    <rect key="frame" x="40" y="377" width="334" height="39"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Acceder">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickLoginButton" destination="-1" eventType="touchUpInside" id="he8-mH-gbf"/>
+                    </connections>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" adjustsFontForContentSizeCategory="YES" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="boU-yp-GGo">
+                    <rect key="frame" x="40" y="296" width="334" height="41"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="wPH-y6-MiK"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="G1W-Cb-cBZ" firstAttribute="leading" secondItem="wPH-y6-MiK" secondAttribute="leading" constant="40" id="0OU-Ie-PxW"/>
+                <constraint firstItem="wPH-y6-MiK" firstAttribute="trailing" secondItem="BWf-cE-nGG" secondAttribute="trailing" constant="40" id="G1C-hE-eHd"/>
+                <constraint firstItem="BWf-cE-nGG" firstAttribute="top" secondItem="wPH-y6-MiK" secondAttribute="top" constant="70" id="Inr-rc-GeD"/>
+                <constraint firstItem="boU-yp-GGo" firstAttribute="top" secondItem="G1W-Cb-cBZ" secondAttribute="bottom" constant="30" id="Ka0-aB-Gvs"/>
+                <constraint firstItem="G1W-Cb-cBZ" firstAttribute="top" secondItem="BWf-cE-nGG" secondAttribute="bottom" constant="60" id="LA2-Fg-atW"/>
+                <constraint firstItem="BWf-cE-nGG" firstAttribute="leading" secondItem="wPH-y6-MiK" secondAttribute="leading" constant="40" id="LAg-lJ-2mq"/>
+                <constraint firstItem="wPH-y6-MiK" firstAttribute="trailing" secondItem="4Bw-Ks-QUW" secondAttribute="trailing" constant="40" id="OXC-Gw-B6b"/>
+                <constraint firstItem="wPH-y6-MiK" firstAttribute="trailing" secondItem="G1W-Cb-cBZ" secondAttribute="trailing" constant="40" id="bbO-75-VyG"/>
+                <constraint firstItem="boU-yp-GGo" firstAttribute="leading" secondItem="G1W-Cb-cBZ" secondAttribute="leading" id="og9-sJ-o0H"/>
+                <constraint firstItem="boU-yp-GGo" firstAttribute="trailing" secondItem="G1W-Cb-cBZ" secondAttribute="trailing" id="uXG-ve-uDM"/>
+                <constraint firstItem="4Bw-Ks-QUW" firstAttribute="top" secondItem="boU-yp-GGo" secondAttribute="bottom" constant="40" id="vtG-Oj-R2J"/>
+                <constraint firstItem="4Bw-Ks-QUW" firstAttribute="leading" secondItem="wPH-y6-MiK" secondAttribute="leading" constant="40" id="zJR-jU-pdB"/>
+            </constraints>
+            <point key="canvasLocation" x="2401" y="-903"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -9,33 +9,29 @@ import UIKit
 import CoreData
 
 class UserManager{
-    var datos:[User] = []
-    var userSession:User
-    var context:NSManagedObjectContext
-    let USERNAME_PATTERN = "[A-Z0-9a-z._]{2,20}"
-    let PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{5,30}$"
-    let EMAIL_PATTERN = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,30}"
-    let COUNTRY_PATTERN = "/^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]{2,50}*$/"
-
+    private var datos:[User] = []
+    private let context:NSManagedObjectContext
+    private let USER_ENTITY = "User"
+    weak var delegate: UserManagerDelegate?
+    
     
     init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.managedObjectContext
-        userSession = User()
     }
     
-    func fetchAllUsers() -> [User]{
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+    func fetchAsyncUsers(fetchAsyncRequest:NSFetchRequest<User>) -> [User] {
+        var output:[User] = []
         
-        let asynchronousRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest){ (result) in
-            guard let allUsers = result.finalResult else {
+        let asynchronousRequest = NSAsynchronousFetchRequest(fetchRequest: fetchAsyncRequest){ (result) in
+            guard let users = result.finalResult else {
                 if let error = result.operationError {
                     print("Couldn't load users \(error)")
                 }
-                
+                output = []
                 return
             }
-            self.datos = allUsers
+            output = users
         }
         
         do{
@@ -44,146 +40,68 @@ class UserManager{
             print("Error: \(error)")
         }
         
+        return output
+    }
+    
+    func fetchAllUsers() -> [User]{
+        let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
+        
+        datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
+        
         return datos
     }
     
     func fetchByUsername(username:String) -> [User]{
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+        let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "username == %@", username)
-        do{
-            datos = try context.fetch(fetchRequest)
-        }catch let error {
-            print("Error: \(error)")
-        }
+        
+        datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
         
         return datos
     }
     
-    func checkLogin(username:String, password: String) -> [User]{
-        let fetchRequest = NSFetchRequest<User>(entityName: "User")
+    func checkLogin(username:String, password: String) -> Bool{
+        let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username,password)
         
-        do{
-            datos = try context.fetch(fetchRequest)
-        }catch let error {
-            print("Error: \(error)")
-        }
+        datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
         
         if datos.count > 0 {
-            userSession = datos.first!
+            addUserSession(user: datos.first!)
+            return true
         }
-        
-        return datos
+        return false
+
     }
      
     func getDatos() -> [NSManagedObject]{
         return datos
     }
     
-    func saveUser(username:String,password:String,email:String,birthdate:NSDate,country:String){
+    func saveUser(username:String,password:String,email:String,birthdate:Date,country:String){
         
-        
-        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
+        let entity = NSEntityDescription.entity(forEntityName: USER_ENTITY, in: context)
         let object = User(entity: entity!, insertInto: context)
         object.username = username
         object.password = password
         object.email = email
-        object.birthdate = birthdate as Date
+        object.birthdate = birthdate
         object.country = country
         object.createDate = Date()
 
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        let count = try! context.count(for: fetchRequest)
-        print("count \(count)")
-        
-        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.saveContext()
+        addUserSession(user: object)
         datos.append(object)
         
-    
     }
     
-    func validateUsername(username: String?) -> Bool{
-        if let username = username {
-            return validateStringFormat(regex: USERNAME_PATTERN, value: username )
-        }
-        
-        return false
+    func addUserSession(user: User){
+        delegate?.userSession(self, didUserChange: user)
     }
     
-    func validatePassword(password: String?) -> Bool{
-        if let password = password {
-            return validateStringFormat(regex: PASSWORD_PATTERN, value: password )
-        }
-        
-        return false
-    }
-    
-    func validateEmail(email: String?) -> Bool{
-        if let email = email {
-            return validateStringFormat(regex: EMAIL_PATTERN, value: email )
-        }
-        
-        return false
-    }
-    
-    func validateCountry(country: String?) -> Bool{
-        if let country = country {
-            return validateStringFormat(regex: COUNTRY_PATTERN, value: country )
-        }
-        
-        return false
-    }
-    
-    func validateDate(date: NSDate?) -> Bool{
-        if let date = date {
-            let yearComp = DateComponents(year: -18)
-            let minimumDate = Calendar.current.date(byAdding: yearComp, to: Date())
-            if minimumDate! <= date as Date{
-                return true
-            }
-            
-        }
-        
-        return false
-    }
-    
-    
-    func validateStringFormat(regex: String, value: String) -> Bool {
-        let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
-        let check = predicate.evaluate(with: value)
-        
-        return check
-    }
-    
-    func insertSampleData(){
-        //plist
-        let fetchRequest = NSFetchRequest<User>()
-        
-        fetchRequest.predicate = NSPredicate(format: "username != nil")
-        
-        let count = try! context.count(for: fetchRequest)
-        
-        if count > 0 { return }
-        
-        let path = Bundle.main.path(forResource: "SampleData", ofType: "plist")
-        
-        let dataArray = NSArray(contentsOfFile: path!)!
-        
-        for d:Any in dataArray{
-            //recorrer registros datos ejemplo
-            let dicc = d as! NSDictionary
-            
-            //saveUser
-        }
-        
-        
-        
-        
-        
-        
-        
-    }
+}
+
+protocol UserManagerDelegate: class {
+    func userSession(_: UserManager, didUserChange user: User)
 }

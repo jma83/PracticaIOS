@@ -7,13 +7,25 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, RegisterViewModelDelegate {
 
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var countryText: UITextField!
     @IBOutlet weak var birthdateText: UIDatePicker!
+    @IBOutlet weak var genderOption: UISegmentedControl!
+    private let viewModel: RegisterViewModel
+    
+    init(viewModel: RegisterViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordText.isSecureTextEntry = true
@@ -22,29 +34,36 @@ class RegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func looseFocusText(_ sender: UITextField) {
+  
+    @IBAction func clickRegisterButton() {
+ 
+        let username = usernameText.text
+        let pass = passwordText.text
+        let email = emailText.text
+        
+        let birthdate = birthdateText?.date
+        let gender = genderOption.titleForSegment(at:genderOption.selectedSegmentIndex)
+        let country = countryText.text
+        
+        let res = viewModel.validateAndRegister(username: username!, password: pass!, email: email!, birthdate: birthdate!, country: country!)
+        if res != nil{
+            showAlert(title: "Error", message: res!)
+        }
+     //            performSegue(withIdentifier: "registerToHome", sender: self)
+
     }
     
-    @IBAction func clickRegisterButton() {
-        //check email ok
-        //check username ok
-        //check pass ok
-        //check birtdate > 18
-        //create and transition
-        //let u = User()
-        let uManager = UserManager()
-        let email = emailText?.text
-        let username = usernameText?.text
-        let pass = passwordText?.text
-        let birthdate = birthdateText.date as NSDate
-        let country = countryText?.text
+    func userSession(_: RegisterViewModel, didUserChange user: User) {
+        //prepare transition
+    }
+    
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+            print("salir")
+        }))
         
-        if uManager.validateUsername(username: username) && uManager.validateEmail(email: email) && uManager.validateCountry(country: country) && uManager.validateDate(date: birthdate) && uManager.validatePassword(password: pass){
-            
-            uManager.saveUser(username: username!, password: pass!, email: email!, birthdate: birthdate, country: country!)
-            
-            performSegue(withIdentifier: "registerToHome", sender: self)
-        }
+        present(alert, animated: true)
     }
 
     /*

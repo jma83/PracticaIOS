@@ -1,14 +1,13 @@
 //
-//  LoginViewController.swift
+//  LoginnViewController.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 20/03/2021.
+//  Created by Javier Martinez on 27/03/2021.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController, LoginViewModelDelegate {
-      
+class LoginnViewController: UIViewController {
 
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -26,7 +25,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordText.isSecureTextEntry = true
+        //passwordText.isSecureTextEntry = true
         // Do any additional setup after loading the view.
     }
     
@@ -40,14 +39,15 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
                 
         let exists = viewModel.validateAndLogin(username: username, password: password)
         
-        if !exists {
+        if exists {
+            performSegue(withIdentifier: "loginToHome", sender: self)
+        }else{
             // error login incorrect
         }
+        
     }
-    
-    func userSession(_: LoginViewModel, didUserChange user: User) {
-        //transicion
-    }
+
+
     /*
     // MARK: - Navigation
 

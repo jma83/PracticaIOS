@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EDC260400F400933CDB /* AppDelegate.swift */; };
 		1F2A1EDF260400F400933CDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EDE260400F400933CDB /* SceneDelegate.swift */; };
-		1F2A1EE1260400F400933CDB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EE0260400F400933CDB /* ViewController.swift */; };
+		1F2A1EE1260400F400933CDB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EE0260400F400933CDB /* WelcomeViewController.swift */; };
 		1F2A1EE4260400F400933CDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A1EE2260400F400933CDB /* Main.storyboard */; };
 		1F2A1EE6260400F500933CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A1EE5260400F500933CDB /* Assets.xcassets */; };
 		1F2A1EF4260400F500933CDB /* PracticaIOS_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EF3260400F500933CDB /* PracticaIOS_BooksTests.swift */; };
 		1F2A1EFF260400F500933CDB /* PracticaIOS_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EFE260400F500933CDB /* PracticaIOS_BooksUITests.swift */; };
+		1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */; };
+		1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A9A70260F64A50002CD72 /* LoginViewModel.swift */; };
+		1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A9A75260F65C20002CD72 /* RegisterViewModel.swift */; };
+		1F9A9A83260FA4510002CD72 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A9A82260FA4510002CD72 /* LoginViewController.xib */; };
+		1F9A9A98260FB3800002CD72 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9A9A97260FB3800002CD72 /* RegisterViewController.xib */; };
 		1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE76B2606AFE600C822AC /* LoginViewController.swift */; };
 		1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE7702606B00D00C822AC /* RegisterViewController.swift */; };
 		1F9BE77D2606BEB500C822AC /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE77C2606BEB500C822AC /* HomeViewController.swift */; };
@@ -45,7 +50,7 @@
 		1F2A1ED9260400F400933CDB /* PracticaIOS_Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaIOS_Books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2A1EDC260400F400933CDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F2A1EDE260400F400933CDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1F2A1EE0260400F400933CDB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1F2A1EE0260400F400933CDB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		1F2A1EE3260400F400933CDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1F2A1EE5260400F500933CDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F2A1EEA260400F500933CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,6 +60,11 @@
 		1F2A1EFA260400F500933CDB /* PracticaIOS_BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOS_BooksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2A1EFE260400F500933CDB /* PracticaIOS_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaIOS_BooksUITests.swift; sourceTree = "<group>"; };
 		1F2A1F00260400F500933CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = SOURCE_ROOT; };
+		1F9A9A70260F64A50002CD72 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		1F9A9A75260F65C20002CD72 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		1F9A9A82260FA4510002CD72 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		1F9A9A97260FB3800002CD72 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		1F9BE76B2606AFE600C822AC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F9BE7702606B00D00C822AC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1F9BE77C2606BEB500C822AC /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -117,14 +127,19 @@
 				1F9BE7842606C88300C822AC /* HomeCell.swift */,
 				1F2A1EDC260400F400933CDB /* AppDelegate.swift */,
 				1F2A1EDE260400F400933CDB /* SceneDelegate.swift */,
-				1F2A1EE0260400F400933CDB /* ViewController.swift */,
+				1F2A1EE0260400F400933CDB /* WelcomeViewController.swift */,
 				1F2A1EE2260400F400933CDB /* Main.storyboard */,
 				1F2A1EE5260400F500933CDB /* Assets.xcassets */,
 				1F2A1EEA260400F500933CDB /* Info.plist */,
 				1F9BE76B2606AFE600C822AC /* LoginViewController.swift */,
+				1F9A9A82260FA4510002CD72 /* LoginViewController.xib */,
+				1F9A9A70260F64A50002CD72 /* LoginViewModel.swift */,
 				1F9BE7702606B00D00C822AC /* RegisterViewController.swift */,
+				1F9A9A97260FB3800002CD72 /* RegisterViewController.xib */,
+				1F9A9A75260F65C20002CD72 /* RegisterViewModel.swift */,
 				1F9BE77C2606BEB500C822AC /* HomeViewController.swift */,
 				1F9F8ADE26080C67007ACEDB /* UserManager.swift */,
+				1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */,
 			);
 			path = PracticaIOS_Books;
 			sourceTree = "<group>";
@@ -252,6 +267,8 @@
 			files = (
 				1F2A1EE6260400F500933CDB /* Assets.xcassets in Resources */,
 				1F2A1EE4260400F400933CDB /* Main.storyboard in Resources */,
+				1F9A9A83260FA4510002CD72 /* LoginViewController.xib in Resources */,
+				1F9A9A98260FB3800002CD72 /* RegisterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,10 +295,13 @@
 			files = (
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
+				1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */,
 				1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */,
+				1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */,
 				1F9BE7852606C88300C822AC /* HomeCell.swift in Sources */,
 				1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */,
-				1F2A1EE1260400F400933CDB /* ViewController.swift in Sources */,
+				1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */,
+				1F2A1EE1260400F400933CDB /* WelcomeViewController.swift in Sources */,
 				1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */,
 				1F9BE77D2606BEB500C822AC /* HomeViewController.swift in Sources */,
 				1F2A1EDF260400F400933CDB /* SceneDelegate.swift in Sources */,
