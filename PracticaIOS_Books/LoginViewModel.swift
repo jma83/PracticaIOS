@@ -19,15 +19,15 @@ class LoginViewModel: UserManagerDelegate {
         self.userManager.delegate = self
     }
     
-    func validateAndLogin(username: String, password: String) -> Bool{
+    func validateAndLogin(username: String, password: String) -> String?{
         
-        if userValidator.validateUsername(username: username) && userValidator.validatePassword(password: password) {
+        if userValidator.validateLogin(username: username,password: password) {
             if userManager.checkLogin(username: username, password: password) {
-                return true
+                return nil
             }
         }
         
-        return false
+        return userValidator.getError()
     }
     
     func userSession(_: UserManager, didUserChange user: User) {

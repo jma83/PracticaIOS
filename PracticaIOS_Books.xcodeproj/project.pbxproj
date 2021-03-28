@@ -25,6 +25,7 @@
 		1F9BE7852606C88300C822AC /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE7842606C88300C822AC /* HomeCell.swift */; };
 		1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */; };
 		1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8ADE26080C67007ACEDB /* UserManager.swift */; };
+		1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F00AD95260BCD9300F97CEE /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataClass.swift"; path = "../../PracticaIOS/User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1F00AD96260BCD9300F97CEE /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "../../PracticaIOS/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1F2A1ED9260400F400933CDB /* PracticaIOS_Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaIOS_Books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2A1EDC260400F400933CDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F2A1EDE260400F400933CDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +70,9 @@
 		1F9BE7842606C88300C822AC /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
 		1F9F8ADE26080C67007ACEDB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		1FB09198261081CE002E9221 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FB09199261081CE002E9221 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1FB091A02610845B002E9221 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +123,8 @@
 		1F2A1EDB260400F400933CDB /* PracticaIOS_Books */ = {
 			isa = PBXGroup;
 			children = (
-				1F00AD95260BCD9300F97CEE /* User+CoreDataClass.swift */,
-				1F00AD96260BCD9300F97CEE /* User+CoreDataProperties.swift */,
+				1FB09198261081CE002E9221 /* User+CoreDataClass.swift */,
+				1FB09199261081CE002E9221 /* User+CoreDataProperties.swift */,
 				1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */,
 				1F9BE7842606C88300C822AC /* HomeCell.swift */,
 				1F2A1EDC260400F400933CDB /* AppDelegate.swift */,
@@ -140,6 +142,7 @@
 				1F9BE77C2606BEB500C822AC /* HomeViewController.swift */,
 				1F9F8ADE26080C67007ACEDB /* UserManager.swift */,
 				1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */,
+				1FB091A02610845B002E9221 /* ModalViewController.swift */,
 			);
 			path = PracticaIOS_Books;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */,
 				1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */,
 				1F2A1EE1260400F400933CDB /* WelcomeViewController.swift in Sources */,
+				1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */,
 				1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */,
 				1F9BE77D2606BEB500C822AC /* HomeViewController.swift in Sources */,
 				1F2A1EDF260400F400933CDB /* SceneDelegate.swift in Sources */,

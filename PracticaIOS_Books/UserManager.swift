@@ -78,13 +78,14 @@ class UserManager{
         return datos
     }
     
-    func saveUser(username:String,password:String,email:String,birthdate:Date,country:String){
+    func saveUser(username:String,password:String,email:String,gender:Int,birthdate:Date,country:String){
         
         let entity = NSEntityDescription.entity(forEntityName: USER_ENTITY, in: context)
         let object = User(entity: entity!, insertInto: context)
         object.username = username
         object.password = password
         object.email = email
+        object.gender = Int16(gender)
         object.birthdate = birthdate
         object.country = country
         object.createDate = Date()

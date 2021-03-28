@@ -21,28 +21,16 @@ class RegisterViewModel: UserManagerDelegate {
 
     }
     
-    func validateAndRegister(username: String, password: String, email: String, birthdate: Date, country: String) -> String?{
+    func validateAndRegister(username: String, password: String, email: String, gender: Int, birthdate: Date, country: String) -> String?{
         
-        if !userValidator.validateUsername(username: username){
-            return "Error, formato de username incorrecto"
-        }
-        if !userValidator.validatePassword(password: password){
-            return "Error, formato de password no valido"
-        }
-        if !userValidator.validateEmail(email: email){
-            return "Error, formato de email no valido"
-        }
-        if !userValidator.validateDate(date: birthdate){
-            return "Error, formato de birthdate no valido"
-        }
-        if !userValidator.validateCountry(country: country){
-            return "Error, formato de pais no valido"
+        if !userValidator.validateEmail(email: email) || !userValidator.validateUsername(username: username) || !userValidator.validatePassword(password: password)  || !userValidator.validateDate(date: birthdate) || !userValidator.validateGender(gender: gender) || !userValidator.validateCountry(country: country) {
+            return userValidator.getError()
         }
             
         let users = userManager.fetchByUsername(username: username)
 
         if users.count == 0 {
-            userManager.saveUser(username: username, password: password, email: email, birthdate: birthdate, country: country)
+            userManager.saveUser(username: username, password: password, email: email, gender: gender, birthdate: birthdate, country: country)
             return nil
         }
             

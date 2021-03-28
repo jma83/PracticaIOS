@@ -38,10 +38,10 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
             return
         }
                 
-        let exists = viewModel.validateAndLogin(username: username, password: password)
+        let res = viewModel.validateAndLogin(username: username, password: password)
         
-        if !exists {
-            // error login incorrect
+        if let res = res {
+            present(ModalViewController().showAlert(title: "Error", message: res), animated: true)
         }
     }
     

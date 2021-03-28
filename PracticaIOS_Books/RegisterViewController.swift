@@ -41,13 +41,13 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         let pass = passwordText.text
         let email = emailText.text
         
-        let birthdate = birthdateText?.date
-        let gender = genderOption.titleForSegment(at:genderOption.selectedSegmentIndex)
+        let birthdate = birthdateText!.date as NSDate
+        let gender = genderOption.selectedSegmentIndex
         let country = countryText.text
         
-        let res = viewModel.validateAndRegister(username: username!, password: pass!, email: email!, birthdate: birthdate!, country: country!)
-        if res != nil{
-            showAlert(title: "Error", message: res!)
+        let res = viewModel.validateAndRegister(username: username!, password: pass!, email: email!, gender: gender, birthdate: birthdate as Date, country: country!)
+        if let res = res{
+            present(ModalViewController().showAlert(title: "Error", message: res), animated: true)
         }
      //            performSegue(withIdentifier: "registerToHome", sender: self)
 
@@ -57,14 +57,8 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         //prepare transition
     }
     
-    func showAlert(title: String, message: String){
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
-            print("salir")
-        }))
-        
-        present(alert, animated: true)
-    }
+
+    
 
     /*
     // MARK: - Navigation
