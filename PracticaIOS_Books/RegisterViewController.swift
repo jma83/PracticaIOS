@@ -13,9 +13,10 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var countryText: UITextField!
-    @IBOutlet weak var birthdateText: UIDatePicker!
     @IBOutlet weak var genderOption: UISegmentedControl!
+    @IBOutlet weak var birthdateText: UITextField!
     private let viewModel: RegisterViewModel
+    let datePicker = UIDatePicker()
     
     init(viewModel: RegisterViewModel) {
         self.viewModel = viewModel
@@ -29,28 +30,54 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordText.isSecureTextEntry = true
-        birthdateText.maximumDate = Date()
-
+        datePicker.datePickerMode = .date
+        createdDatePicker()
         // Do any additional setup after loading the view.
     }
     
   
     @IBAction func clickRegisterButton() {
- 
+        
         let username = usernameText.text
         let pass = passwordText.text
         let email = emailText.text
-        
-        let birthdate = birthdateText!.date as NSDate
+        let date = datePicker.date
         let gender = genderOption.selectedSegmentIndex
         let country = countryText.text
         
-        let res = viewModel.validateAndRegister(username: username!, password: pass!, email: email!, gender: gender, birthdate: birthdate as Date, country: country!)
+        let res = viewModel.validateAndRegister(username: username!, password: pass!, email: email!, gender: gender, birthdate: date, country: country!)
         if let res = res{
             present(ModalViewController().showAlert(title: "Error", message: res), animated: true)
         }
      //            performSegue(withIdentifier: "registerToHome", sender: self)
 
+    }
+    
+    func createdDatePicker(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
+        
+        toolbar.setItems([doneBtn], animated: true)
+        
+        birthdateText.inputAccessoryView = toolbar
+        
+        birthdateText.inputView = datePicker
+    }
+    
+    @objc func donePressed(){
+        let dateFormatter = self.dateFormatter()
+        birthdateText.text = dateFormatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+    
+    func dateFormatter() -> DateFormatter{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        
+        return dateFormatter
     }
     
     func userSession(_: RegisterViewModel, didUserChange user: User) {

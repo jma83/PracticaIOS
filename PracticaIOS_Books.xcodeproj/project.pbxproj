@@ -70,9 +70,8 @@
 		1F9BE7842606C88300C822AC /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
 		1F9F8ADE26080C67007ACEDB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		1FB09198261081CE002E9221 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		1FB09199261081CE002E9221 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1FB091A02610845B002E9221 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		1FE692C82613D4B300CE8DF1 /* MyLibrary 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyLibrary 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +122,6 @@
 		1F2A1EDB260400F400933CDB /* PracticaIOS_Books */ = {
 			isa = PBXGroup;
 			children = (
-				1FB09198261081CE002E9221 /* User+CoreDataClass.swift */,
-				1FB09199261081CE002E9221 /* User+CoreDataProperties.swift */,
 				1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */,
 				1F9BE7842606C88300C822AC /* HomeCell.swift */,
 				1F2A1EDC260400F400933CDB /* AppDelegate.swift */,
@@ -632,6 +629,7 @@
 		1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				1FE692C82613D4B300CE8DF1 /* MyLibrary 2.xcdatamodel */,
 				1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */,
 			);
 			currentVersion = 1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */;
