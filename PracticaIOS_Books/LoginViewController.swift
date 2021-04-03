@@ -21,7 +21,8 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.viewModel = LoginViewModel(userManager: UserManager())
+        super.init(coder: coder)
     }
     
     override func viewDidLoad() {
@@ -46,7 +47,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     }
     
     func userSession(_: LoginViewModel, didUserChange user: User) {
-        //transicion
+        performSegue(withIdentifier: "loginToHome", sender: self)
     }
     /*
     // MARK: - Navigation

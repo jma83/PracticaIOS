@@ -2,29 +2,46 @@
 //  HomeViewController.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 21/03/2021.
+//  Created by Javier Martinez on 03/04/2021.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource {
-    
-    let datos = ["pepe","juan","andres"]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var tableView: UITableView!
+    private let CELL_ID = "HomeCell"
+    let viewModel: HomeViewModel
+    
+    let datos: [String] = ["pepe","manuel","javier"]
+    
+    init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
     
+    required init?(coder: NSCoder) {
+        self.viewModel = HomeViewModel(bookManager: BookManager())
+        super.init(coder: coder)
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datos.count
+        return viewModel.bookViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath)
         
+        //let cellViewModel = viewModel.
         return cell
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
+
     }
 
     /*

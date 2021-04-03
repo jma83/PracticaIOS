@@ -14,7 +14,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var countryText: UITextField!
     @IBOutlet weak var genderOption: UISegmentedControl!
-    @IBOutlet weak var birthdateText: UITextField!
+    @IBOutlet weak var birthdatePicker: UIDatePicker!
     private let viewModel: RegisterViewModel
     let datePicker = UIDatePicker()
     
@@ -24,14 +24,15 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.viewModel = RegisterViewModel(userManager: UserManager())
+        super.init(coder: coder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordText.isSecureTextEntry = true
-        datePicker.datePickerMode = .date
-        createdDatePicker()
+        birthdatePicker.datePickerMode = .date
+        // createdDatePicker()
         // Do any additional setup after loading the view.
     }
     
@@ -41,7 +42,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         let username = usernameText.text
         let pass = passwordText.text
         let email = emailText.text
-        let date = datePicker.date
+        let date = birthdatePicker.date
         let gender = genderOption.selectedSegmentIndex
         let country = countryText.text
         
@@ -49,27 +50,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         if let res = res{
             present(ModalViewController().showAlert(title: "Error", message: res), animated: true)
         }
-     //            performSegue(withIdentifier: "registerToHome", sender: self)
 
-    }
-    
-    func createdDatePicker(){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        
-        toolbar.setItems([doneBtn], animated: true)
-        
-        birthdateText.inputAccessoryView = toolbar
-        
-        birthdateText.inputView = datePicker
-    }
-    
-    @objc func donePressed(){
-        let dateFormatter = self.dateFormatter()
-        birthdateText.text = dateFormatter.string(from: datePicker.date)
-        self.view.endEditing(true)
     }
     
     func dateFormatter() -> DateFormatter{
@@ -81,7 +62,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     }
     
     func userSession(_: RegisterViewModel, didUserChange user: User) {
-        //prepare transition
+        performSegue(withIdentifier: "registerToHome", sender: self)
     }
     
 

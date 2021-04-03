@@ -17,15 +17,17 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     @IBAction func clickRegisterButton() {
-        let vm = RegisterViewModel(userManager: UserManager())
+        /*let vm = RegisterViewModel(userManager: UserManager())
         let vc = RegisterViewController(viewModel: vm)
-        presentViewController(viewController: vc);
+        presentViewController(viewController: vc);*/
+        performSegue(withIdentifier: "welcomeToRegister", sender: self)
         
     }
     @IBAction func clickLoginButton() {
-        let vm = LoginViewModel(userManager: UserManager())
+        /*let vm = LoginViewModel(userManager: UserManager())
         let vc = LoginViewController(viewModel: vm)
-        presentViewController(viewController: vc)
+        presentViewController(viewController: vc)*/
+        performSegue(withIdentifier: "welcomeToLogin", sender: self)
         
     }
     

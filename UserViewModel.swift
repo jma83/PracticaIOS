@@ -27,7 +27,7 @@ class UserViewModel {
     func validateUsername(username: String?) -> Bool{
         error = USERNAME_ERROR
         if let username = username {
-            return validateStringFormat(regex: USERNAME_PATTERN, value: username )
+            return StringUtils.validateStringFormat(regex: USERNAME_PATTERN, value: username )
         }
         
         return false
@@ -36,7 +36,7 @@ class UserViewModel {
     func validatePassword(password: String?) -> Bool{
         error = PASSWORD_ERROR
         if let password = password {
-            return validateStringFormat(regex: PASSWORD_PATTERN, value: password )
+            return StringUtils.validateStringFormat(regex: PASSWORD_PATTERN, value: password )
         }
         
         return false
@@ -52,7 +52,7 @@ class UserViewModel {
     func validateEmail(email: String?) -> Bool{
         error = EMAIL_ERROR
         if let email = email {
-            return validateStringFormat(regex: EMAIL_PATTERN, value: email )
+            return StringUtils.validateStringFormat(regex: EMAIL_PATTERN, value: email )
         }
         
         return false
@@ -72,7 +72,7 @@ class UserViewModel {
     func validateCountry(country: String?) -> Bool{
         error = COUNTRY_ERROR
         if let country = country {
-            return validateStringFormat(regex: COUNTRY_PATTERN, value: country )
+            return StringUtils.validateStringFormat(regex: COUNTRY_PATTERN, value: country )
         }
         
         return false
@@ -88,14 +88,6 @@ class UserViewModel {
             
         return false*/
         return true
-    }
-    
-    
-    func validateStringFormat(regex: String, value: String) -> Bool {
-        let predicate = NSPredicate(format:"SELF MATCHES %@", regex)
-        let check = predicate.evaluate(with: value)
-        
-        return check
     }
     
     

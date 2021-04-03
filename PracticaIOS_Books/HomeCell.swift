@@ -2,10 +2,22 @@
 //  HomeCell.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 21/03/2021.
+//  Created by Javier Martinez on 03/04/2021.
 //
 
 import UIKit
+
 class HomeCell: UITableViewCell {
+    var viewModel: BookViewModel? {
+        didSet {
+            guard let viewModel = viewModel else {
+                return
+            }
+            
+            textLabel?.text = viewModel.title
+            detailTextLabel?.text = viewModel.author
+        }
+    }
     
 }
+

@@ -93,7 +93,13 @@ class UserManager{
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.saveContext()
         addUserSession(user: object)
+        
+        
         datos.append(object)
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+                let count = try! context.count(for: fetchRequest)
+                print("count \(count)")
         
     }
     
