@@ -58,6 +58,7 @@ class BookNYT : APIManager {
         var resultados: Response_NYT?
 
         let url = concatKey(url: str) + getNYTAPIKey()
+        print("URL!  \(url)")
         URLSessionQuery(query: url, type: "GET", completition: { (status,result) -> () in
             var error2: String?
             if let status = status, status == 200 {

@@ -42,7 +42,7 @@ class APIManager{
     }
     
     func setNextParam(check:Bool, value:String) -> String{
-        if check {
+        if !check {
             return value + "?"
         }else{
             return value + "&"

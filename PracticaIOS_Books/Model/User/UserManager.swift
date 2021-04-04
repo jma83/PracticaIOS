@@ -9,8 +9,8 @@ import UIKit
 import CoreData
 
 class UserManager{
-    private var datos:[User] = []
-    private let context:NSManagedObjectContext
+    private var datos: [User] = []
+    private let context: NSManagedObjectContext
     private let USER_ENTITY = "User"
     weak var delegate: UserManagerDelegate?
     
@@ -46,8 +46,9 @@ class UserManager{
     func fetchAllUsers() -> [User]{
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         
-        datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
-        
+        //datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
+        datos = try! context.fetch(fetchRequest)
+        print("count \(datos.count)")
         return datos
     }
     
@@ -55,8 +56,9 @@ class UserManager{
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "username == %@", username)
         
-        datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
-        
+        //datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
+        datos = try! context.fetch(fetchRequest)
+        print("count \(datos.count)")
         return datos
     }
     
@@ -64,10 +66,11 @@ class UserManager{
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username,password)
         
-        datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
-        
+        //datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
+        datos = try! context.fetch(fetchRequest)
+        print("count \(datos.count)")
         if datos.count > 0 {
-            addUserSession(user: datos.first!)
+            delegate?.userSession(self, didUserChange: datos.first!)
             return true
         }
         return false
@@ -92,21 +95,17 @@ class UserManager{
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.saveContext()
-        addUserSession(user: object)
-        
+        delegate?.userSession(self, didUserChange: object)
         
         datos.append(object)
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-                let count = try! context.count(for: fetchRequest)
-                print("count \(count)")
+        let count = try! context.fetch(fetchRequest)
+        print("count \(count)")
         
     }
     
-    func addUserSession(user: User){
-        delegate?.userSession(self, didUserChange: user)
-    }
-    
+   
 }
 
 protocol UserManagerDelegate: class {

@@ -21,11 +21,13 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     init(viewModel: RegisterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
         self.viewModel = RegisterViewModel(userManager: UserManager())
         super.init(coder: coder)
+        self.viewModel.delegate = self
     }
     
     override func viewDidLoad() {
@@ -47,7 +49,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         let country = countryText.text
         
         let res = viewModel.validateAndRegister(username: username!, password: pass!, email: email!, gender: gender, birthdate: date, country: country!)
-        if let res = res{
+        if let res = res {
             present(ModalViewController().showAlert(title: "Error", message: res), animated: true)
         }
 

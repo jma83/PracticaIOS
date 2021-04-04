@@ -8,7 +8,7 @@
 import Foundation
 
 class RegisterViewModel: UserManagerDelegate {
-    
+
     private let userManager: UserManager
     let userValidator: UserViewModel
     weak var delegate: RegisterViewModelDelegate?
@@ -40,6 +40,9 @@ class RegisterViewModel: UserManagerDelegate {
     func userSession(_: UserManager, didUserChange user: User) {
         delegate?.userSession(self, didUserChange: user)
     }
+    
+    
+
     
 }
 protocol RegisterViewModelDelegate: class {

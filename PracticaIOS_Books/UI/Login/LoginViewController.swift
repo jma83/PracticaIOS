@@ -18,11 +18,13 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
         self.viewModel = LoginViewModel(userManager: UserManager())
         super.init(coder: coder)
+        self.viewModel.delegate = self
     }
     
     override func viewDidLoad() {

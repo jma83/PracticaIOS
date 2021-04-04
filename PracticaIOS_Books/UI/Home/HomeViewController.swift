@@ -7,33 +7,46 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeViewModelDelegate {
+     
 
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = "HomeCell"
     let viewModel: HomeViewModel
     
-    let datos: [String] = ["pepe","manuel","javier"]
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+        
     }
     
     required init?(coder: NSCoder) {
         self.viewModel = HomeViewModel(bookManager: BookManager())
         super.init(coder: coder)
+        self.viewModel.delegate = self
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("viewModel.bookViewModels.count: \(viewModel.bookViewModels.count)")
         return viewModel.bookViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath)
         
-        //let cellViewModel = viewModel.
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! HomeCell
+
+        let cellViewModel = viewModel.bookViewModels[indexPath.row]
+        cell.viewModel = cellViewModel
+        
         return cell
+    }
+    
+    func bookChanged(_: BookManager) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     
@@ -41,7 +54,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
-
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     /*

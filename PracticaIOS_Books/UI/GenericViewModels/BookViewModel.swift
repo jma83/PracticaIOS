@@ -8,11 +8,14 @@
 import Foundation
 
 class BookViewModel {
-    let book: BookManager
     
-    init(book: BookManager) {
+    
+    let book: BookManager.BookResult
+    
+    init(book: BookManager.BookResult) {
         self.book = book
     }
+
     	
     var title: String {
         return book.title ?? ""
@@ -25,5 +28,6 @@ class BookViewModel {
     var author: String {
         return book.author ?? ""
     }
+
     
 }
