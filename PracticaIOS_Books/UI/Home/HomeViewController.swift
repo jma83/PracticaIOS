@@ -29,13 +29,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("viewModel.bookViewModels.count: \(viewModel.bookViewModels.count)")
+        print("Count numberOfRowsInSection: \(viewModel.bookViewModels.count)")
         return viewModel.bookViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! HomeCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! HomeCell
 
         let cellViewModel = viewModel.bookViewModels[indexPath.row]
         cell.viewModel = cellViewModel
@@ -53,10 +53,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
+        self.tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
     }
 
     /*

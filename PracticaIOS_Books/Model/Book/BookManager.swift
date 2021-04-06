@@ -9,7 +9,6 @@ import Foundation
 
 class BookManager {
     struct BookResult {
-        var id: String?
         var title: String?
         var author: String?
         var description: String?
@@ -37,7 +36,7 @@ class BookManager {
                 let res=Int.random(in: 0..<count)
                 
                 for book in lists[res].books {
-                    let bookresult = BookResult(id: "0", title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
+                    let bookresult = BookResult(title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
                     bookResultArr.append(bookresult)
                 }
                 self.delegate?.bookChanged(self)

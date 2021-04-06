@@ -153,7 +153,6 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                         <outlet property="loginButton" destination="5Pa-1Y-FNp" id="7C6-bi-ETl"/>
                         <outlet property="passwordText" destination="G5d-dj-uEk" id="ASJ-eH-Jme"/>
                         <outlet property="usernameText" destination="GmT-bP-kuN" id="GnS-vf-69u"/>
-                        <segue destination="vFM-El-jOY" kind="show" identifier="loginToHome" id="S59-Au-wZW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZDP-Ob-RLC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -293,7 +292,6 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                         <outlet property="genderOption" destination="bTd-ob-Y0b" id="yNh-bb-Th0"/>
                         <outlet property="passwordText" destination="swj-wC-N85" id="Ho6-IA-hxO"/>
                         <outlet property="usernameText" destination="SNT-YH-mDJ" id="ZKH-FT-5NP"/>
-                        <segue destination="vFM-El-jOY" kind="show" identifier="registerToHome" id="fyQ-og-3Vn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54C-K4-2aX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -303,7 +301,7 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
         <!--Home View Controller-->
         <scene sceneID="7uc-La-Af9">
             <objects>
-                <viewController id="vFM-El-jOY" customClass="HomeViewController" customModule="PracticaIOS_Books" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="vFM-El-jOY" customClass="HomeViewController" customModule="PracticaIOS_Books" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uyf-98-ftv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -323,7 +321,8 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                     </view>
                     <navigationItem key="navigationItem" id="yiP-bY-smm"/>
                     <connections>
-                        <outlet property="tableView" destination="xGe-fQ-wi4" id="2M3-pA-dUb"/>
+                        <outlet property="table" destination="xGe-fQ-wi4" id="qsS-yz-CJi"/>
+                        <outlet property="tableView" destination="xGe-fQ-wi4" id="X2X-8p-XKO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="be5-UB-1uc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -349,9 +348,6 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
             <point key="canvasLocation" x="1050.7246376811595" y="103.79464285714285"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="fyQ-og-3Vn"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

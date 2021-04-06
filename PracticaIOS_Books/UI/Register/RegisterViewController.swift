@@ -34,8 +34,6 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         super.viewDidLoad()
         passwordText.isSecureTextEntry = true
         birthdatePicker.datePickerMode = .date
-        // createdDatePicker()
-        // Do any additional setup after loading the view.
     }
     
   

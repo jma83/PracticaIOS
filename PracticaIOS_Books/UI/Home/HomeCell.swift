@@ -18,9 +18,9 @@ class HomeCell: UITableViewCell {
                 return
             }
             textLabel?.text = viewModel.title
-            //detailTextLabel?.text = viewModel.author
+            detailTextLabel?.text = viewModel.author
             //titleLabel?.text = viewModel.title
-            authorLabel?.text = viewModel.author
+            //authorLabel?.text = viewModel.author
         }
     }
     

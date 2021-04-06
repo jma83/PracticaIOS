@@ -30,7 +30,6 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordText.isSecureTextEntry = true
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func clickLoginButton() {
@@ -49,7 +48,15 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     }
     
     func userSession(_: LoginViewModel, didUserChange user: User) {
-        performSegue(withIdentifier: "loginToHome", sender: self)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let vc =  HomeViewController(viewModel: HomeViewModel(bookManager: BookManager()))
+        navigationController?.setViewControllers([vc], animated: true)
+        appDelegate.window?.rootViewController = navigationController
+        
+        //appDelegate.window?.rootViewController = UINavigationController(rootViewController: vc)
+        //present(vc, animated: true, completion: nil)
+        //performSegue(withIdentifier: "loginToHome", sender: self)
     }
     /*
     // MARK: - Navigation

@@ -12,6 +12,8 @@ class UserManager{
     private var datos: [User] = []
     private let context: NSManagedObjectContext
     private let USER_ENTITY = "User"
+    private let DOMAIN = "com.mylibrary.keys.mykey"
+
     weak var delegate: UserManagerDelegate?
     
     
@@ -70,7 +72,14 @@ class UserManager{
         datos = try! context.fetch(fetchRequest)
         print("count \(datos.count)")
         if datos.count > 0 {
-            delegate?.userSession(self, didUserChange: datos.first!)
+            let u = datos.first!;
+            do{
+                try self.storeUserSession(user: u)
+            }catch {
+                return false
+            }
+            delegate?.userSession(self, didUserChange: u)
+            
             return true
         }
         return false
@@ -105,9 +114,51 @@ class UserManager{
         
     }
     
+    func storeUserSession(user: User) throws {
+        let defaults = UserDefaults.init(suiteName: DOMAIN)
+        defaults?.set(user.username, forKey: "Username")
+        let key = user.password
+        let tag = DOMAIN.data(using: .utf8)!
+        let addquery: [String: Any] = [kSecClass as String: kSecClassKey, kSecAttrApplicationTag as String: tag, kSecValueRef as String: key!]
+        
+        let status = SecItemAdd(addquery as CFDictionary, nil)
+        guard status == errSecSuccess else { throw MyError.runtimeError("Error storing user info") }
+    }
+    
+    func removeUserSession() throws {
+        let defaults = UserDefaults.init(suiteName: DOMAIN)
+        defaults?.removeSuite(named: DOMAIN)
+        let query = self.getDomainQuery()
+        
+        let status = SecItemDelete(query as CFDictionary)
+        guard status == errSecSuccess || status == errSecItemNotFound else {
+            throw MyError.runtimeError("Error removing user session")
+        }
+    }
+    
+    func retriveUserSession() throws -> (String,Int){
+        let defaults = UserDefaults.init(suiteName: DOMAIN)
+        let username: String = defaults?.string(forKey: "Username") ?? ""
+        let query = self.getDomainQuery()
+        
+        var it: CFTypeRef?
+        let status = SecItemCopyMatching(query as CFDictionary, &it)
+        guard status == errSecSuccess else { throw MyError.runtimeError("Error removing user session") }
+        let key = it as! SecKey
+        return (username,key.hashValue)
+    }
+    
+    func getDomainQuery() -> [String: Any]{
+        let tag = DOMAIN.data(using: .utf8)!
+        return [kSecClass as String: kSecClassKey,kSecAttrApplicationTag as String: tag, kSecAttrKeyType as String: kSecAttrKeyTypeRSA, kSecReturnRef as String: true]
+    }
    
 }
 
 protocol UserManagerDelegate: class {
     func userSession(_: UserManager, didUserChange user: User)
+}
+
+enum MyError: Error {
+    case runtimeError(String)
 }
