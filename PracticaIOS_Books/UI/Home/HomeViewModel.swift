@@ -10,7 +10,7 @@ import Foundation
 class HomeViewModel: BookManagerDelegate {
 
     let bookManager: BookManager
-    var bookViewModels: [BookViewModel] = []
+    var bookViewModels: [[BookViewModel]] = [ [], [], [] ]
     weak var delegate: HomeViewModelDelegate?
     
     init(bookManager: BookManager) {
@@ -18,9 +18,15 @@ class HomeViewModel: BookManagerDelegate {
         self.bookManager.delegate = self
         self.bookManager.getRelevantBooks(completition2: { result in
             if let result = result {
-                for item in result {
-                    self.bookViewModels.append(BookViewModel(book: item))
+                var count = 0
+                while count <= 2 {
+                    
+                    for item in result {
+                        self.bookViewModels[count].append(BookViewModel(book: item))
+                    }
+                    count+=1
                 }
+                
             }
         })
     }

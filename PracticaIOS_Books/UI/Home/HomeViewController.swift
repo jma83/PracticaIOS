@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let viewModel: HomeViewModel
     @IBOutlet weak var trailingMenu: NSLayoutConstraint!
     @IBOutlet weak var leadingMenu: NSLayoutConstraint!
+    let sections = ["Libros relevantes", "Novedades", "Mis listas"]
     
     private var menuActive = false
     
@@ -31,20 +32,31 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.init(coder: coder)
         self.viewModel.delegate = self
     }
-
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Count numberOfRowsInSection: \(viewModel.bookViewModels.count)")
-        return viewModel.bookViewModels.count
+        if viewModel.bookViewModels.isEmpty{
+            return 0
+        }
+        return viewModel.bookViewModels[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! HomeCell
 
-        let cellViewModel = viewModel.bookViewModels[indexPath.row]
+        let cellViewModel = viewModel.bookViewModels[indexPath.section][indexPath.row]
         cell.viewModel = cellViewModel
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
     }
     
     func bookChanged(_: BookManager) {
