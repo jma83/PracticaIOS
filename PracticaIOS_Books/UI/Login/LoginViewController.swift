@@ -48,15 +48,11 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     }
     
     func userSession(_: LoginViewModel, didUserChange user: User) {
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "NavHomeViewController") as! UINavigationController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        let vc =  HomeViewController(viewModel: HomeViewModel(bookManager: BookManager()))
-        navigationController?.setViewControllers([vc], animated: true)
-        appDelegate.window?.rootViewController = navigationController
-        
-        //appDelegate.window?.rootViewController = UINavigationController(rootViewController: vc)
-        //present(vc, animated: true, completion: nil)
-        //performSegue(withIdentifier: "loginToHome", sender: self)
+        appDelegate.window?.rootViewController = homeViewController
+        homeViewController.modalPresentationStyle = .overCurrentContext
+        present(homeViewController, animated: true)
     }
     /*
     // MARK: - Navigation

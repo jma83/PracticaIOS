@@ -62,7 +62,13 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     }
     
     func userSession(_: RegisterViewModel, didUserChange user: User) {
-        performSegue(withIdentifier: "registerToHome", sender: self)
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "NavHomeViewController") as! UINavigationController
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = homeViewController
+        homeViewController.modalPresentationStyle = .overCurrentContext
+        present(homeViewController, animated: true)
+        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //appDelegate.window?.rootViewController = navigationController
     }
     
 

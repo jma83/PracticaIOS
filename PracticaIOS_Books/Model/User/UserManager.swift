@@ -12,7 +12,7 @@ class UserManager{
     private var datos: [User] = []
     private let context: NSManagedObjectContext
     private let USER_ENTITY = "User"
-    private let DOMAIN = "com.mylibrary.keys.mykey"
+    private let DOMAIN = "es.upsa.mimo.PracticaIOS-Books"
 
     weak var delegate: UserManagerDelegate?
     
@@ -73,12 +73,12 @@ class UserManager{
         print("count \(datos.count)")
         if datos.count > 0 {
             let u = datos.first!;
+            delegate?.userSession(self, didUserChange: u)
             do{
-                try self.storeUserSession(user: u)
+                try self.storeUserSession(username: username, password: password)
             }catch {
                 return false
             }
-            delegate?.userSession(self, didUserChange: u)
             
             return true
         }
@@ -90,67 +90,55 @@ class UserManager{
         return datos
     }
     
-    func saveUser(username:String,password:String,email:String,gender:Int,birthdate:Date,country:String){
+    func saveUser(username:String,password:String,email:String,gender:Int,birthdate:Date,country:String) -> Bool {
         
         let entity = NSEntityDescription.entity(forEntityName: USER_ENTITY, in: context)
-        let object = User(entity: entity!, insertInto: context)
-        object.username = username
-        object.password = password
-        object.email = email
-        object.gender = Int16(gender)
-        object.birthdate = birthdate
-        object.country = country
-        object.createDate = Date()
+        let user = User(entity: entity!, insertInto: context)
+        user.username = username
+        user.password = password
+        user.email = email
+        user.gender = Int16(gender)
+        user.birthdate = birthdate
+        user.country = country
+        user.createDate = Date()
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.saveContext()
-        delegate?.userSession(self, didUserChange: object)
+        delegate?.userSession(self, didUserChange: user)
         
-        datos.append(object)
+        datos.append(user)
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: USER_ENTITY)
         let count = try! context.fetch(fetchRequest)
         print("count \(count)")
+        do{
+            try self.storeUserSession(username: username, password: password)
+        }catch{
+            return false
+        }
+        return true
+
         
     }
     
-    func storeUserSession(user: User) throws {
-        let defaults = UserDefaults.init(suiteName: DOMAIN)
-        defaults?.set(user.username, forKey: "Username")
-        let key = user.password
-        let tag = DOMAIN.data(using: .utf8)!
-        let addquery: [String: Any] = [kSecClass as String: kSecClassKey, kSecAttrApplicationTag as String: tag, kSecValueRef as String: key!]
+    func storeUserSession(username: String, password: String) throws {
+        let defaults = UserDefaults(suiteName: DOMAIN)
         
-        let status = SecItemAdd(addquery as CFDictionary, nil)
-        guard status == errSecSuccess else { throw MyError.runtimeError("Error storing user info") }
+        defaults?.set(username, forKey: "Username")
+        defaults?.set(password, forKey: "Pass")
     }
     
     func removeUserSession() throws {
-        let defaults = UserDefaults.init(suiteName: DOMAIN)
+        let defaults = UserDefaults(suiteName: DOMAIN)
         defaults?.removeSuite(named: DOMAIN)
-        let query = self.getDomainQuery()
-        
-        let status = SecItemDelete(query as CFDictionary)
-        guard status == errSecSuccess || status == errSecItemNotFound else {
-            throw MyError.runtimeError("Error removing user session")
-        }
     }
     
-    func retriveUserSession() throws -> (String,Int){
-        let defaults = UserDefaults.init(suiteName: DOMAIN)
+    func retrieveUserSession() throws {
+        let defaults = UserDefaults(suiteName: DOMAIN)
         let username: String = defaults?.string(forKey: "Username") ?? ""
-        let query = self.getDomainQuery()
-        
-        var it: CFTypeRef?
-        let status = SecItemCopyMatching(query as CFDictionary, &it)
-        guard status == errSecSuccess else { throw MyError.runtimeError("Error removing user session") }
-        let key = it as! SecKey
-        return (username,key.hashValue)
-    }
-    
-    func getDomainQuery() -> [String: Any]{
-        let tag = DOMAIN.data(using: .utf8)!
-        return [kSecClass as String: kSecClassKey,kSecAttrApplicationTag as String: tag, kSecAttrKeyType as String: kSecAttrKeyTypeRSA, kSecReturnRef as String: true]
+        let pass: String = defaults?.string(forKey: "Pass") ?? ""
+
+        let _ = self.checkLogin(username: username, password: pass)
     }
    
 }

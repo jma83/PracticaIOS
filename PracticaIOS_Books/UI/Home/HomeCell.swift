@@ -17,10 +17,10 @@ class HomeCell: UITableViewCell {
             guard let viewModel = viewModel else {
                 return
             }
-            textLabel?.text = viewModel.title
-            detailTextLabel?.text = viewModel.author
-            //titleLabel?.text = viewModel.title
-            //authorLabel?.text = viewModel.author
+            //textLabel?.text = viewModel.title
+            //detailTextLabel?.text = viewModel.author
+            titleLabel?.text = viewModel.title
+            authorLabel?.text = viewModel.author
         }
     }
     

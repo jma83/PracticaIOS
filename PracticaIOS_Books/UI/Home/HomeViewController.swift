@@ -13,6 +13,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = "HomeCell"
     let viewModel: HomeViewModel
+    @IBOutlet weak var trailingMenu: NSLayoutConstraint!
+    @IBOutlet weak var leadingMenu: NSLayoutConstraint!
+    
+    private var menuActive = false
     
     
     init(viewModel: HomeViewModel) {
@@ -53,12 +57,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
-        
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
 
+    @IBAction func clickMenuButton(_ sender: Any) {
+        if !menuActive {
+            leadingMenu.constant = 150
+            trailingMenu.constant = -150
+            menuActive = true
+        }else{
+            leadingMenu.constant = 0
+            leadingMenu.constant = 0
+            menuActive = false
+        }
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
     /*
     // MARK: - Navigation
 
