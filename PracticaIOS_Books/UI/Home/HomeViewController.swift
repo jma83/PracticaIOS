@@ -7,15 +7,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeViewModelDelegate {
-     
-
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeViewModelDelegate, HomeCellDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = "HomeCell"
     let viewModel: HomeViewModel
     @IBOutlet weak var trailingMenu: NSLayoutConstraint!
     @IBOutlet weak var leadingMenu: NSLayoutConstraint!
     let sections = ["Libros relevantes", "Novedades", "Mis listas"]
+    var collectionCellEvent: HomeCollectionCell?
     
     private var menuActive = false
     
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! HomeCell
-
+        cell.delegate = self
         let cellViewModel = viewModel.bookViewModels[indexPath.section]
         cell.viewModel = cellViewModel
         
@@ -87,6 +87,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.view.layoutIfNeeded()
         }, completion: nil)
         
+    }
+    
+    func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
+        collectionCellEvent=homeCell
+        performSegue(withIdentifier: "homeToDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dvc = segue.destination as? DetailViewController {
+            dvc.author = self.collectionCellEvent?.authorLabel.text ?? ""
+            dvc.titleT = self.collectionCellEvent?.titleLabel.text ?? ""
+            dvc.image = self.collectionCellEvent?.bookImage.image ?? UIImage()
+            dvc.descripT = self.collectionCellEvent?.viewModel?.description ?? ""
+        }
     }
 
 }

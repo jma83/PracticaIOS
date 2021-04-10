@@ -11,7 +11,7 @@ class HomeCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     let COL_CELL_ID = "HomeCollectionCell"
-
+    weak var delegate: HomeCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -61,5 +61,14 @@ extension HomeCell: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: COL_CELL_ID, for: indexPath) as! HomeCollectionCell
+        delegate?.clickBookEvent(self, homeCell: cell)
+    }
     
+    
+}
+
+protocol HomeCellDelegate: class {
+    func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell)
 }

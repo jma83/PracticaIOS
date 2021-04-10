@@ -449,7 +449,7 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                         <outlet property="leadingMenu" destination="ukz-5E-fzl" id="zZ3-W1-2cY"/>
                         <outlet property="tableView" destination="Yqv-9S-dbz" id="sm3-tk-ePH"/>
                         <outlet property="trailingMenu" destination="Ikl-4n-oAz" id="bmD-QO-nGp"/>
-                        <segue destination="ak5-eI-sVh" kind="show" id="UBQ-wN-p2C"/>
+                        <segue destination="ak5-eI-sVh" kind="show" identifier="homeToDetail" id="UBQ-wN-p2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Si-Lt-TON" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -464,7 +464,7 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
         <!--Detail-->
         <scene sceneID="ZFz-cR-q45">
             <objects>
-                <viewController id="ak5-eI-sVh" sceneMemberID="viewController">
+                <viewController restorationIdentifier="DetailViewController" storyboardIdentifier="DetailViewController" id="ak5-eI-sVh" customClass="DetailViewController" customModule="PracticaIOS_Books" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="joU-jT-WMK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -473,19 +473,19 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BWH-hs-vee">
-                                        <rect key="frame" x="87" y="27" width="240" height="276"/>
+                                        <rect key="frame" x="87" y="27" width="240" height="299.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="299.5" id="wqA-Qv-Wjb"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaY-Yd-tBH">
-                                        <rect key="frame" x="8" y="305" width="394" height="44"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="laV-fb-R7f"/>
-                                        </constraints>
+                                        <rect key="frame" x="30" y="328.5" width="354" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zG-mQ-dtz">
-                                        <rect key="frame" x="41" y="417" width="354" height="974"/>
+                                        <rect key="frame" x="30" y="417" width="354" height="974"/>
                                         <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit ex, interdum sed tellus eu, eleifend consequat ante. Vivamus sagittis nibh blandit, hendrerit lorem in, aliquam sem. Nullam lobortis velit nisi, sit amet pellentesque massa condimentum et. Phasellus vitae blandit ante. Nulla facilisi. Suspendisse ac orci leo. Curabitur vestibulum elit ut felis congue, quis iaculis lacus lacinia. Suspendisse a enim quis quam faucibus mollis vitae eget odio. Aenean in volutpat elit. Fusce luctus nunc purus, in sagittis leo vulputate nec. Suspendisse potenti. Nunc at tempor sem. Ut consectetur felis at lorem ullamcorper maximus. Praesent sollicitudin velit lectus, vitae maximus purus gravida eget.
 
 Cras tortor turpis, feugiat at aliquet at, aliquet sed odio. Vivamus maximus metus nec metus sodales commodo. Donec venenatis dui vitae nulla dictum, eget venenatis ipsum rutrum. Maecenas consectetur lectus quis nunc ultrices congue. Vestibulum eu consequat mi. Maecenas et sapien volutpat, varius lacus et, faucibus velit. Donec vel turpis et lacus gravida rutrum. Vestibulum accumsan semper lacus, sed ullamcorper tortor sollicitudin a. Ut tortor lacus, convallis sit amet suscipit nec, egestas at diam. Nulla in pellentesque eros. Morbi vitae auctor ex, vel dignissim justo. Sed arcu lorem, tristique at tortor ut, volutpat lacinia tortor. Aliquam id turpis cursus, scelerisque libero ac, vehicula ante. Quisque viverra ligula dui, vel maximus nunc facilisis eu.
@@ -496,7 +496,7 @@ Duis mollis, massa non maximus ullamcorper, magna nulla tempus augue, nec eleife
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0I9-Jk-TFX">
-                                        <rect key="frame" x="8" y="344" width="394" height="21"/>
+                                        <rect key="frame" x="30" y="357" width="354" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -504,18 +504,19 @@ Duis mollis, massa non maximus ullamcorper, magna nulla tempus augue, nec eleife
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="0I9-Jk-TFX" firstAttribute="trailing" secondItem="JaY-Yd-tBH" secondAttribute="trailing" id="0od-eo-71X"/>
-                                    <constraint firstItem="5zG-mQ-dtz" firstAttribute="top" secondItem="0I9-Jk-TFX" secondAttribute="bottom" constant="52" id="2fd-6s-Zea"/>
-                                    <constraint firstAttribute="bottom" secondItem="5zG-mQ-dtz" secondAttribute="bottom" constant="-617" id="4pI-OX-9m0"/>
-                                    <constraint firstItem="0I9-Jk-TFX" firstAttribute="top" secondItem="JaY-Yd-tBH" secondAttribute="bottom" constant="-5" id="Ny8-gu-236"/>
+                                    <constraint firstItem="5zG-mQ-dtz" firstAttribute="top" secondItem="0I9-Jk-TFX" secondAttribute="bottom" constant="39" id="2fd-6s-Zea"/>
+                                    <constraint firstItem="5zG-mQ-dtz" firstAttribute="leading" secondItem="bGl-Yo-j8B" secondAttribute="leading" constant="30" id="CVA-Qp-OLL"/>
+                                    <constraint firstItem="0I9-Jk-TFX" firstAttribute="top" secondItem="JaY-Yd-tBH" secondAttribute="bottom" constant="8" id="Ny8-gu-236"/>
                                     <constraint firstItem="BWH-hs-vee" firstAttribute="top" secondItem="E5B-Zv-mnX" secondAttribute="top" constant="27" id="RiQ-SY-jEZ"/>
+                                    <constraint firstItem="5zG-mQ-dtz" firstAttribute="trailing" secondItem="bGl-Yo-j8B" secondAttribute="trailing" constant="-30" id="U0b-gW-CoU"/>
                                     <constraint firstItem="JaY-Yd-tBH" firstAttribute="top" secondItem="BWH-hs-vee" secondAttribute="bottom" constant="2" id="UNZ-rT-efB"/>
+                                    <constraint firstItem="5zG-mQ-dtz" firstAttribute="top" secondItem="BWH-hs-vee" secondAttribute="bottom" constant="90.5" id="cLy-0B-glM"/>
                                     <constraint firstItem="BWH-hs-vee" firstAttribute="leading" secondItem="E5B-Zv-mnX" secondAttribute="leading" constant="87" id="eFN-Aj-Vof"/>
-                                    <constraint firstAttribute="trailing" secondItem="5zG-mQ-dtz" secondAttribute="trailing" constant="19" id="fhu-lv-iKL"/>
                                     <constraint firstItem="bGl-Yo-j8B" firstAttribute="trailing" secondItem="BWH-hs-vee" secondAttribute="trailing" constant="87" id="mYu-Tk-RuP"/>
                                     <constraint firstItem="0I9-Jk-TFX" firstAttribute="leading" secondItem="JaY-Yd-tBH" secondAttribute="leading" id="nNN-bf-eTi"/>
                                     <constraint firstAttribute="trailing" secondItem="BWH-hs-vee" secondAttribute="trailing" constant="87" id="uVH-Vd-F2p"/>
                                     <constraint firstItem="BWH-hs-vee" firstAttribute="leading" secondItem="bGl-Yo-j8B" secondAttribute="leading" constant="87" id="ueX-IN-XvN"/>
-                                    <constraint firstItem="5zG-mQ-dtz" firstAttribute="leading" secondItem="E5B-Zv-mnX" secondAttribute="leading" constant="41" id="zXj-ze-n50"/>
+                                    <constraint firstAttribute="bottom" secondItem="5zG-mQ-dtz" secondAttribute="bottom" constant="1000" id="x7b-i7-DLS"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="CAE-79-94I"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="bGl-Yo-j8B"/>
@@ -527,13 +528,18 @@ Duis mollis, massa non maximus ullamcorper, magna nulla tempus augue, nec eleife
                             <constraint firstItem="E5B-Zv-mnX" firstAttribute="leading" secondItem="Zdo-li-Gd4" secondAttribute="leading" id="BR0-xV-Cqu"/>
                             <constraint firstItem="E5B-Zv-mnX" firstAttribute="trailing" secondItem="Zdo-li-Gd4" secondAttribute="trailing" id="GkQ-Hs-nFw"/>
                             <constraint firstItem="E5B-Zv-mnX" firstAttribute="top" secondItem="joU-jT-WMK" secondAttribute="topMargin" id="L78-xY-mZx"/>
-                            <constraint firstItem="Zdo-li-Gd4" firstAttribute="trailing" secondItem="JaY-Yd-tBH" secondAttribute="trailing" constant="12" id="P1P-mR-jnZ"/>
-                            <constraint firstItem="5zG-mQ-dtz" firstAttribute="bottom" secondItem="bGl-Yo-j8B" secondAttribute="bottom" constant="617" id="ZL9-ra-DqF"/>
-                            <constraint firstItem="JaY-Yd-tBH" firstAttribute="leading" secondItem="Zdo-li-Gd4" secondAttribute="leading" constant="8" id="bhP-tz-Xpj"/>
+                            <constraint firstItem="bGl-Yo-j8B" firstAttribute="trailing" secondItem="JaY-Yd-tBH" secondAttribute="trailing" constant="30" id="P1P-mR-jnZ"/>
+                            <constraint firstItem="JaY-Yd-tBH" firstAttribute="leading" secondItem="bGl-Yo-j8B" secondAttribute="leading" constant="30" id="bhP-tz-Xpj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="E5B-Zv-mnX" secondAttribute="bottom" id="qO3-aF-Se7"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="Rf2-YG-m3C"/>
+                    <connections>
+                        <outlet property="authorText" destination="0I9-Jk-TFX" id="dgn-Ua-b9D"/>
+                        <outlet property="bookImage" destination="BWH-hs-vee" id="cZq-GL-UlL"/>
+                        <outlet property="descriptionText" destination="5zG-mQ-dtz" id="8YX-CN-jqi"/>
+                        <outlet property="titleText" destination="JaY-Yd-tBH" id="qVN-Ok-2VS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PN1-UE-Vdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
