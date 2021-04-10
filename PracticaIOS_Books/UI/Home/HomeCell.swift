@@ -9,20 +9,57 @@ import UIKit
 
 class HomeCell: UITableViewCell {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    let COL_CELL_ID = "HomeCollectionCell"
+
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var authorLabel: UILabel!
-    var viewModel: BookViewModel? {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+
+    }
+    
+    var viewModel: [BookViewModel]? {
         didSet {
-            guard let viewModel = viewModel else {
-                return
+            if viewModel != nil {
+                guard !viewModel!.isEmpty else {
+                    return
+                }
+                collectionView.reloadData()
+
             }
-            //textLabel?.text = viewModel.title
-            //detailTextLabel?.text = viewModel.author
-            titleLabel?.text = viewModel.title
-            authorLabel?.text = viewModel.author
         }
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: true)
+    }
+    
+    
 }
+extension HomeCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let viewModel = viewModel {
+            return viewModel.count
+        }else{
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: COL_CELL_ID, for: indexPath) as! HomeCollectionCell
+        
+        let cellViewModel = viewModel?[indexPath.row]
+        cell.viewModel = cellViewModel
+        
+        return cell
+        
+    }
+    
+    
+}

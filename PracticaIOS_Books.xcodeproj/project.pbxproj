@@ -29,6 +29,7 @@
 		1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A9A75260F65C20002CD72 /* RegisterViewModel.swift */; };
 		1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE76B2606AFE600C822AC /* LoginViewController.swift */; };
 		1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE7702606B00D00C822AC /* RegisterViewController.swift */; };
+		1F9F36122621A8AA00A6AB54 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */; };
 		1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */; };
 		1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8ADE26080C67007ACEDB /* UserManager.swift */; };
 		1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalViewController.swift */; };
@@ -80,6 +81,7 @@
 		1F9A9A75260F65C20002CD72 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		1F9BE76B2606AFE600C822AC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		1F9BE7702606B00D00C822AC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
 		1F9F8ADE26080C67007ACEDB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1FB091A02610845B002E9221 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				1F6B44D226188BB3004D1446 /* HomeViewController.swift */,
 				1F13D59526192B3B00A7AD97 /* HomeViewModel.swift */,
 				1F6B44DC2618B468004D1446 /* HomeCell.swift */,
+				1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9F36122621A8AA00A6AB54 /* HomeCollectionCell.swift in Sources */,
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,

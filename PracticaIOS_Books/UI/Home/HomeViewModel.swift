@@ -20,7 +20,6 @@ class HomeViewModel: BookManagerDelegate {
             if let result = result {
                 var count = 0
                 while count <= 2 {
-                    
                     for item in result {
                         self.bookViewModels[count].append(BookViewModel(book: item))
                     }

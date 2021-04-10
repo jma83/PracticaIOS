@@ -39,17 +39,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print("Count numberOfRowsInSection: \(viewModel.bookViewModels.count)")
-        if viewModel.bookViewModels.isEmpty{
+        /*if viewModel.bookViewModels[section].isEmpty{
             return 0
-        }
-        return viewModel.bookViewModels[section].count
+        }*/
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = self.tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! HomeCell
 
-        let cellViewModel = viewModel.bookViewModels[indexPath.section][indexPath.row]
+        let cellViewModel = viewModel.bookViewModels[indexPath.section]
         cell.viewModel = cellViewModel
         
         return cell
@@ -64,7 +64,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.tableView.reloadData()
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,14 +88,5 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }, completion: nil)
         
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
