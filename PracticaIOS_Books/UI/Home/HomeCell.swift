@@ -63,6 +63,9 @@ extension HomeCell: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: COL_CELL_ID, for: indexPath) as! HomeCollectionCell
+        
+        let cellViewModel = viewModel?[indexPath.row]
+        cell.viewModel = cellViewModel
         delegate?.clickBookEvent(self, homeCell: cell)
     }
     
