@@ -11,44 +11,38 @@ class BookGoogle: APIManager {
     let keyGoogle = "AIzaSyDYRLAp_eCC9aeyg4LysJXtNSqBDvPhZHg"
 
     
-    struct FINAL_RESPONSE2: Decodable {
+    struct FINAL_RESPONSE: Decodable {
         var status: Int
         var response: Response_Google?
         var error: String?
     }
     
     struct Response_Google: Decodable {
-        var kind: String
-        var totalItems: Int
         var items: [BookGoogle]
     }
-
+    
     struct BookGoogle: Decodable {
         var id: String
-        var etag: String
-        var selfLink: String
         var volumeInfo: BookGoogleInfo
     }
-
+    
     struct BookGoogleInfo: Decodable {
         var title: String
-        /*var authors: [String]
-        var publisher: String
+        var subtitle: String
+        var authors: [String]?
         var publishedDate: String
-        var description: String
+        var description: String?
         var industryIdentifiers: [ISBN_ID]
-        var language: String
-        var categories: [String]*/
+        var imageLinks: ImageInfo
+        var categories: [String]
     }
     struct ISBN_ID: Decodable {
-        var type: String
         var identifier: String
     }
         
-    /*struct Image: Decodable {
+    struct ImageInfo: Decodable {
         var thumbnail: String
-        var smallThumbnail: String
-    }*/
+    }
     
     
     func getGoogleAPIKey() -> String {
@@ -56,7 +50,7 @@ class BookGoogle: APIManager {
     }
     
     
-    func getResponse(str: String, completition2: @escaping (FINAL_RESPONSE2?) -> ()) {
+    func getResponse(str: String, completition2: @escaping (FINAL_RESPONSE?) -> ()) {
         var resultados: Response_Google?
         let url = concatKey(url: str) + getGoogleAPIKey()
         URLSessionQuery(query: url, type: "GET", completition: { (status,result) -> () in
@@ -75,7 +69,7 @@ class BookGoogle: APIManager {
             }else{
                 error2 = "Error: \(result!)"
             }
-            completition2(FINAL_RESPONSE2(status: status!, response: resultados, error: error2))
+            completition2(FINAL_RESPONSE(status: status!, response: resultados, error: error2))
         })
     }
 

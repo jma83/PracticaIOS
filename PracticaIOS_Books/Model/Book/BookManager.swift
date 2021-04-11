@@ -7,15 +7,17 @@
 
 import Foundation
 
+struct BookResult {
+    var title: String?
+    var author: String?
+    var description: String?
+    var book_image: String?
+    var created_date: String?
+    var primary_isbn10: String?
+}
+
 class BookManager {
-    struct BookResult {
-        var title: String?
-        var author: String?
-        var description: String?
-        var book_image: String?
-        var created_date: String?
-        var primary_isbn10: String?
-    }
+    
     
     let bookNYT: BookNYT
     let bookGoogle: BookGoogle
@@ -33,7 +35,7 @@ class BookManager {
             let lists = result?.response?.results.lists
             if let lists = lists {
                 let count = lists.count
-                let res=Int.random(in: 0..<count)
+                let res = Int.random(in: 0..<count)
                 
                 for book in lists[res].books {
                     let bookresult = BookResult(title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
@@ -49,14 +51,17 @@ class BookManager {
         
     }
     
-    func getBookDetail(){
-        
+    func getBookDetail(book: BookResult){
+        let isbn = book.primary_isbn10
+        let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=1"
+        bookGoogle.getResponse(str: url, completition2: { result in
+            
+        })
     }
-    
-    
     
 }
 
 protocol BookManagerDelegate: class {
     func bookChanged(_: BookManager)
+    func bookDetail(_:BookManager, bookResult: BookResult)
 }

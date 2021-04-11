@@ -11,6 +11,7 @@ class HomeCollectionCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var bookImage: UIImageView!
+    var image: UIImage?
     var viewModel: BookViewModel? {
         didSet {
             guard let viewModel = viewModel else {
@@ -37,7 +38,8 @@ class HomeCollectionCell: UICollectionViewCell {
             print(response?.suggestedFilename ?? url.lastPathComponent)
             print("Download Finished")
             DispatchQueue.main.async() { [weak self] in
-                self?.bookImage.image = UIImage(data: data)
+                self?.image = UIImage(data: data)
+                self?.bookImage.image = self?.image
             }
         }
     }

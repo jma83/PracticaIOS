@@ -96,10 +96,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dvc = segue.destination as? DetailViewController {
-            dvc.author = self.collectionCellEvent?.authorLabel.text ?? ""
-            dvc.titleT = self.collectionCellEvent?.titleLabel.text ?? ""
-            dvc.image = self.collectionCellEvent?.bookImage.image ?? UIImage()
-            dvc.descripT = self.collectionCellEvent?.viewModel?.description ?? ""
+            dvc.viewModel = self.collectionCellEvent?.viewModel
+            dvc.image = self.collectionCellEvent?.image
         }
     }
 

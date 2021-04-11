@@ -15,17 +15,19 @@ class DetailViewController:  UIViewController {
     @IBOutlet weak var authorText: UILabel!
     @IBOutlet weak var descriptionText: UILabel!
     
-    var image: UIImage = UIImage()
-    var titleT: String = ""
-    var author: String = ""
-    var descripT: String = ""
+    var image: UIImage?
+    
+    var viewModel: BookViewModel?
+    
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleText.text = titleT
-        authorText.text = author
-        descriptionText.text = descripT
+        titleText.text = viewModel?.book.title
+        authorText.text = viewModel?.book.author
+        descriptionText.text = viewModel?.book.description
         bookImage.image = image
         // Do any additional setup after loading the view.
     }

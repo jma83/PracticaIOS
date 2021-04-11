@@ -8,6 +8,10 @@
 import Foundation
 
 class HomeViewModel: BookManagerDelegate {
+    func bookDetail(_: BookManager, bookResult: BookResult) {
+        //applies for Detail
+    }
+    
 
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [ [], [], [] ]
@@ -29,6 +33,7 @@ class HomeViewModel: BookManagerDelegate {
             }
         })
     }
+    
     
     func bookChanged(_: BookManager) {
         delegate?.bookChanged(self.bookManager)
