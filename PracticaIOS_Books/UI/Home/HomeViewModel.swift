@@ -36,11 +36,11 @@ class HomeViewModel: BookManagerDelegate {
     
     
     func bookChanged(_: BookManager) {
-        delegate?.bookChanged(self.bookManager)
+        delegate?.bookChanged(self)
     }
     
 }
 
 protocol HomeViewModelDelegate: class {
-    func bookChanged(_: BookManager)
+    func bookChanged(_: HomeViewModel)
 }

@@ -21,30 +21,27 @@ class RegisterViewModel: UserManagerDelegate {
 
     }
     
-    func validateAndRegister(username: String, password: String, email: String, gender: Int, birthdate: Date, country: String) -> String?{
+    func validateAndRegister(username: String, password: String, email: String, gender: Int, birthdate: Date, country: String) -> Void {
         
         if !userValidator.validateEmail(email: email) || !userValidator.validateUsername(username: username) || !userValidator.validatePassword(password: password)  || !userValidator.validateDate(date: birthdate) || !userValidator.validateGender(gender: gender) || !userValidator.validateCountry(country: country) {
-            return userValidator.getError()
-        }
             
-        let users = userManager.fetchByUsername(username: username)
-
-        if users.count == 0 {
+            userCredentialError(self.userManager,error: userValidator.getError())
+        }else{
             userManager.saveUser(username: username, password: password, email: email, gender: gender, birthdate: birthdate, country: country)
-            return nil
         }
-            
-        return "Error, usuario ya existe"
+        
     }
     
     func userSession(_: UserManager, didUserChange user: User) {
         delegate?.userSession(self, didUserChange: user)
     }
     
-    
-
+    func userCredentialError(_: UserManager, error: String) {
+        delegate?.userRegisterError(self, error: error)
+    }
     
 }
 protocol RegisterViewModelDelegate: class {
     func userSession(_: RegisterViewModel, didUserChange user: User)
+    func userRegisterError(_: RegisterViewModel, error: String)
 }

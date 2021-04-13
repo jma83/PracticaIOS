@@ -8,23 +8,22 @@
 import UIKit
 
 class LoginViewController: UIViewController, LoginViewModelDelegate {
-      
-
+    
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    private let viewModel: LoginViewModel
+    var viewModel: LoginViewModel?
     
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.delegate = self
+        self.viewModel?.delegate = self
     }
     
     required init?(coder: NSCoder) {
         self.viewModel = LoginViewModel(userManager: UserManager())
         super.init(coder: coder)
-        self.viewModel.delegate = self
+        self.viewModel?.delegate = self
     }
     
     override func viewDidLoad() {
@@ -40,11 +39,8 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
             return
         }
                 
-        let res = viewModel.validateAndLogin(username: username, password: password)
+        viewModel?.validateAndLogin(username: username, password: password)
         
-        if let res = res {
-            present(ModalViewController().showAlert(title: "Error", message: res), animated: true)
-        }
     }
     
     func userSession(_: LoginViewModel, didUserChange user: User) {
@@ -53,6 +49,12 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
         appDelegate.window?.rootViewController = homeViewController
         homeViewController.modalPresentationStyle = .overCurrentContext
         present(homeViewController, animated: true)
+    }
+    
+
+    func userLoginError(_: LoginViewModel, error: String) {
+        present(ModalViewController().showAlert(title: "Error", message: error), animated: true)
+
     }
     /*
     // MARK: - Navigation

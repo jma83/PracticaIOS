@@ -7,7 +7,11 @@
 
 import UIKit
 
-class DetailViewController:  UIViewController {
+class DetailViewController:  UIViewController, DetailViewModelDelegate {
+    func bookDetail(_: DetailViewModel, book: BookResult) {
+        //setinfo
+    }
+    
 
     @IBOutlet weak var bookImage: UIImageView!
     
@@ -16,7 +20,7 @@ class DetailViewController:  UIViewController {
     @IBOutlet weak var descriptionText: UILabel!
     
     var image: UIImage?
-    
+    var isnb: String?
     var viewModel: BookViewModel?
     
 

@@ -7,14 +7,15 @@
 
 import Foundation
 
-class WelcomeViewModel: UserManagerDelegate {
-    
+class WelcomeViewModel: UserManagerStartDelegate {
+       
     let userManager: UserManager
     weak var delegate: WelcomeViewModelDelegate?
+    weak var routingDelegate: WelcomeViewModelRoutingDelegate?
     
     init(userManager: UserManager) {
         self.userManager = userManager
-        self.userManager.delegate = self
+        self.userManager.initialDelegate = self
         
     }
     
@@ -30,8 +31,21 @@ class WelcomeViewModel: UserManagerDelegate {
         delegate?.userFound(self.userManager, user: user)
     }
     
+    public func handleUserAccess() {
+        routingDelegate?.userWantsToAccess(self)
+    }
+    
+    public func handleUserRegister() {
+        routingDelegate?.userWantsToRegister(self)
+    }
+    
 }
 
 protocol WelcomeViewModelDelegate: class {
     func userFound(_: UserManager, user: User)
+}
+
+protocol WelcomeViewModelRoutingDelegate: class {
+    func userWantsToAccess(_: WelcomeViewModel)
+    func userWantsToRegister(_: WelcomeViewModel)
 }

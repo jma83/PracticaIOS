@@ -9,14 +9,13 @@ import UIKit
 
 class WelcomeViewController: UIViewController, UINavigationControllerDelegate, WelcomeViewModelDelegate {
     
-    let name = UIApplication.protectedDataDidBecomeAvailableNotification
-
     func userFound(_: UserManager, user: User) {
         
+        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "NavHomeViewController") as! UINavigationController
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let vc =  HomeViewController(viewModel: HomeViewModel(bookManager: BookManager()))
-        navigationController?.setViewControllers([vc], animated: true)
-        appDelegate.window?.rootViewController = navigationController
+        appDelegate.window?.rootViewController = homeViewController
+        homeViewController.modalPresentationStyle = .overCurrentContext
+        present(homeViewController, animated: true)
     }
     
 
@@ -29,18 +28,9 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate, W
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
 
-        let selector = #selector(Self.protectedDataAvailableNotification(_:))
-                switch UIApplication.shared.isProtectedDataAvailable {
-                case true  : self.dataDidBecomeAvailable()
-                case false: NotificationCenter.default.addObserver(self, selector: selector, name: name, object: nil)
-                }
         self.viewModel.delegate = self
     }
     
-    @objc func protectedDataAvailableNotification(_ notification: Notification) {
-            NotificationCenter.default.removeObserver(self, name: name, object: nil)
-            dataDidBecomeAvailable()
-        }
     
     required init?(coder: NSCoder) {
         self.viewModel = WelcomeViewModel(userManager: UserManager())
@@ -54,10 +44,6 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate, W
         
     }
     
-    func dataDidBecomeAvailable() {
-        viewModel.checkUser();
-      }
-
     @IBAction func clickRegisterButton() {
         performSegue(withIdentifier: "welcomeToRegister", sender: self)
         
@@ -71,6 +57,15 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate, W
         self.navigationController?.pushViewController(viewController, animated: true)
         
     }
+    
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dvc = segue.destination as? RegisterViewController {
+            dvc.viewModel = RegisterViewModel(userManager: UserManager())
+        }else if let dvc = segue.destination as? LoginViewController {
+            dvc.viewModel = LoginViewModel(userManager: UserManager())
+        }
+        
+    } */
     
 }
 

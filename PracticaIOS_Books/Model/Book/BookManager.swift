@@ -22,6 +22,8 @@ class BookManager {
     let bookNYT: BookNYT
     let bookGoogle: BookGoogle
     weak var delegate: BookManagerDelegate?
+    weak var detailDelegate: BookManagerDetailDelegate?
+    let sections = ["Libros relevantes", "Novedades", "Mis listas"]
     
     init() {
         bookNYT = BookNYT()
@@ -51,17 +53,28 @@ class BookManager {
         
     }
     
-    func getBookDetail(book: BookResult){
-        let isbn = book.primary_isbn10
+    func getBookDetail(isbn: String){
         let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=1"
         bookGoogle.getResponse(str: url, completition2: { result in
+            for r in result!.response!.items {
+                
+                let bookresult = BookResult(title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
+                self.detailDelegate?.bookDetail(self, bookResult: bookresult)
+                break;
+            }
             
         })
+    }
+    
+    func getSections() -> [String]{
+        return sections
     }
     
 }
 
 protocol BookManagerDelegate: class {
     func bookChanged(_: BookManager)
+}
+protocol BookManagerDetailDelegate: class {
     func bookDetail(_:BookManager, bookResult: BookResult)
 }

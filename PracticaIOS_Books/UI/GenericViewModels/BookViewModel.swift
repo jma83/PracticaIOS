@@ -10,9 +10,9 @@ import Foundation
 class BookViewModel {
     
     
-    let book: BookManager.BookResult
+    let book: BookResult
     
-    init(book: BookManager.BookResult) {
+    init(book: BookResult) {
         self.book = book
     }
 

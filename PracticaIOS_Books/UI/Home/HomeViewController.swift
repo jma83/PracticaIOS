@@ -38,10 +38,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Count numberOfRowsInSection: \(viewModel.bookViewModels.count)")
-        /*if viewModel.bookViewModels[section].isEmpty{
-            return 0
-        }*/
         return 1
     }
     
@@ -59,7 +55,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return sections[section]
     }
     
-    func bookChanged(_: BookManager) {
+    func bookChanged(_: HomeViewModel) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

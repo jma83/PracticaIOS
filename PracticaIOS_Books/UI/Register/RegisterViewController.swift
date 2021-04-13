@@ -15,7 +15,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     @IBOutlet weak var countryText: UITextField!
     @IBOutlet weak var genderOption: UISegmentedControl!
     @IBOutlet weak var birthdatePicker: UIDatePicker!
-    private let viewModel: RegisterViewModel
+    var viewModel: RegisterViewModel
     let datePicker = UIDatePicker()
     
     init(viewModel: RegisterViewModel) {
@@ -46,11 +46,7 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         let gender = genderOption.selectedSegmentIndex
         let country = countryText.text
         
-        let res = viewModel.validateAndRegister(username: username!, password: pass!, email: email!, gender: gender, birthdate: date, country: country!)
-        if let res = res {
-            present(ModalViewController().showAlert(title: "Error", message: res), animated: true)
-        }
-
+        viewModel.validateAndRegister(username: username!, password: pass!, email: email!, gender: gender, birthdate: date, country: country!)
     }
     
     func dateFormatter() -> DateFormatter{
@@ -67,21 +63,10 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         appDelegate.window?.rootViewController = homeViewController
         homeViewController.modalPresentationStyle = .overCurrentContext
         present(homeViewController, animated: true)
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //appDelegate.window?.rootViewController = navigationController
     }
     
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func userRegisterError(_: RegisterViewModel, error: String) {
+        present(ModalViewController().showAlert(title: "Error", message: error), animated: true)
     }
-    */
 
 }

@@ -33,6 +33,10 @@
 		1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F3619262253A300A6AB54 /* DetailViewController.swift */; };
 		1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */; };
 		1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8ADE26080C67007ACEDB /* UserManager.swift */; };
+		1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */; };
+		1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */; };
+		1FA207A72624D3CC001D7349 /* LoginRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207A62624D3CC001D7349 /* LoginRouteCoordinator.swift */; };
+		1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */; };
 		1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +90,10 @@
 		1F9F3619262253A300A6AB54 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
 		1F9F8ADE26080C67007ACEDB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FA207A62624D3CC001D7349 /* LoginRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		1FB091A02610845B002E9221 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
 		1FE692C82613D4B300CE8DF1 /* MyLibrary 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyLibrary 2.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +154,9 @@
 				1F2A1EE2260400F400933CDB /* Main.storyboard */,
 				1F2A1EE5260400F500933CDB /* Assets.xcassets */,
 				1F2A1EEA260400F500933CDB /* Info.plist */,
+				1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */,
+				1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */,
+				1FA207A62624D3CC001D7349 /* LoginRouteCoordinator.swift */,
 			);
 			path = PracticaIOS_Books;
 			sourceTree = "<group>";
@@ -278,6 +289,7 @@
 			isa = PBXGroup;
 			children = (
 				1F9F3619262253A300A6AB54 /* DetailViewController.swift */,
+				1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -415,6 +427,7 @@
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
 				1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
+				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
 				1F13D59626192B3B00A7AD97 /* HomeViewModel.swift in Sources */,
 				1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */,
@@ -423,7 +436,9 @@
 				1F57D3662618752C00FC26D0 /* BookManager.swift in Sources */,
 				1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */,
 				1F6B44E22618B58B004D1446 /* BookNYT.swift in Sources */,
+				1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */,
 				1F10AC38261E1BBF00889887 /* WelcomeViewModel.swift in Sources */,
+				1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */,
 				1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */,
 				1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */,
 				1F6B44DD2618B468004D1446 /* HomeCell.swift in Sources */,
@@ -433,6 +448,7 @@
 				1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */,
 				1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */,
 				1F6B44D426188BB3004D1446 /* HomeViewController.swift in Sources */,
+				1FA207A72624D3CC001D7349 /* LoginRouteCoordinator.swift in Sources */,
 				1F2A1EDF260400F400933CDB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

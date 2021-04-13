@@ -15,6 +15,7 @@ class UserManager{
     private let DOMAIN = "es.upsa.mimo.PracticaIOS-Books"
 
     weak var delegate: UserManagerDelegate?
+    weak var initialDelegate: UserManagerStartDelegate?
     
     
     init() {
@@ -22,18 +23,17 @@ class UserManager{
         context = appDelegate.managedObjectContext
     }
     
-    func fetchAsyncUsers(fetchAsyncRequest:NSFetchRequest<User>) -> [User] {
-        var output:[User] = []
+    func fetchAsyncUsers(fetchAsyncRequest:NSFetchRequest<User>, completionHandler: @escaping ([User]) -> Void) -> Void {
         
-        let asynchronousRequest = NSAsynchronousFetchRequest(fetchRequest: fetchAsyncRequest){ (result) in
+        let asynchronousRequest = NSAsynchronousFetchRequest(fetchRequest: fetchAsyncRequest) { (result) in
             guard let users = result.finalResult else {
                 if let error = result.operationError {
                     print("Couldn't load users \(error)")
                 }
-                output = []
+                completionHandler([])
                 return
             }
-            output = users
+            completionHandler(users)
         }
         
         do{
@@ -41,9 +41,7 @@ class UserManager{
         }catch let error {
             print("Error: \(error)")
         }
-        
-        return output
-    }
+   }
     
     func fetchAllUsers() -> [User]{
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
@@ -64,36 +62,39 @@ class UserManager{
         return datos
     }
     
-    func checkLogin(username:String, password: String) -> Bool{
+    func checkLogin(username:String, password: String) -> Void {
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username,password)
         
-        //datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
-        datos = try! context.fetch(fetchRequest)
-        print("count \(datos.count)")
-        if datos.count > 0 {
-            let u = datos.first!;
-            delegate?.userSession(self, didUserChange: u)
-            do{
-                try self.storeUserSession(username: username, password: password)
-            }catch {
-                return false
+        fetchAsyncUsers(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
+            print("count \(datos.count)")
+            if datos.count > 0 {
+                let u = datos.first!
+                self.delegate?.userSession(self, didUserChange: u)
+                do{
+                    try self.storeUserSession(username: username, password: password)
+                }catch {
+                    
+                }
             }
-            
-            return true
-        }
-        return false
-
+        })
     }
      
     func getDatos() -> [NSManagedObject]{
         return datos
     }
     
-    func saveUser(username:String,password:String,email:String,gender:Int,birthdate:Date,country:String) -> Bool {
+    func saveUser(username:String,password:String,email:String,gender:Int,birthdate:Date,country:String) -> Void {
+        
+        let users = self.fetchByUsername(username: username)
+        if users.count != 0 {
+            delegate?.userCredentialError(self,error: "Error, usuario ya existe")
+            return
+        }
         
         let entity = NSEntityDescription.entity(forEntityName: USER_ENTITY, in: context)
         let user = User(entity: entity!, insertInto: context)
+
         user.username = username
         user.password = password
         user.email = email
@@ -114,10 +115,8 @@ class UserManager{
         do{
             try self.storeUserSession(username: username, password: password)
         }catch{
-            return false
+            
         }
-        return true
-
         
     }
     
@@ -144,6 +143,11 @@ class UserManager{
 }
 
 protocol UserManagerDelegate: class {
+    func userSession(_: UserManager, didUserChange user: User)
+    func userCredentialError(_: UserManager, error: String)
+}
+
+protocol UserManagerStartDelegate: class {
     func userSession(_: UserManager, didUserChange user: User)
 }
 

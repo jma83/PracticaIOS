@@ -8,9 +8,12 @@
 import Foundation
 
 class LoginViewModel: UserManagerDelegate {
+    
+
     private let userManager: UserManager
     let userValidator: UserViewModel
     weak var delegate: LoginViewModelDelegate?
+    weak var routingDelegate: LoginViewModelRoutingDelegate?
 
     
     init(userManager: UserManager) {
@@ -19,22 +22,32 @@ class LoginViewModel: UserManagerDelegate {
         self.userManager.delegate = self
     }
     
-    func validateAndLogin(username: String, password: String) -> String?{
+    func validateAndLogin(username: String, password: String) -> Void{
         
         if userValidator.validateLogin(username: username,password: password) {
-            if userManager.checkLogin(username: username, password: password) {
-                return nil
-            }
+            userManager.checkLogin(username: username, password: password)
+                //routingDelegate?.userWantsToLogin(self)
+        }else{
+            self.userCredentialError(self.userManager,error: userValidator.getError())
         }
-        
-        return userValidator.getError()
     }
     
     func userSession(_: UserManager, didUserChange user: User) {
         delegate?.userSession(self, didUserChange: user)
     }
+    
+
+    func userCredentialError(_: UserManager, error: String) {
+        delegate?.userLoginError(self, error: error)
+
+    }
 }
 
 protocol LoginViewModelDelegate: class {
     func userSession(_: LoginViewModel, didUserChange user: User)
+    func userLoginError(_: LoginViewModel, error: String)
+}
+
+protocol LoginViewModelRoutingDelegate: class {
+    func userWantsToLogin(_: LoginViewModel)
 }
