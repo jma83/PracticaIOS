@@ -9,24 +9,34 @@ import UIKit
 
 class StartRouteCoordinator: WelcomeViewModelRoutingDelegate {
     func userWantsToRegister(_: WelcomeViewModel) {
-        //segue a register
+        let vm = RegisterViewModel(userManager: userManager)
+        let vc = RegisterViewController(viewModel: vm)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func userWantsToAccess(_: WelcomeViewModel) {
-        //segue a login
+        let vm = LoginViewModel(userManager: userManager)
+        let vc = LoginViewController(viewModel: vm)
+        navigationController.pushViewController(vc, animated: true)
     }
     
-    private let navigationController: UIViewController
+    func userAccessAllowed() {
+        let homeRouteCoordinator = HomeRouteCoordinator()
+        rootViewController.present(homeRouteCoordinator.rootViewController, animated: true, completion: nil)
+    }
+    
+    private let navigationController: UINavigationController
+    
+    private let userManager: UserManager
     
     var rootViewController: UIViewController {
         return navigationController
     }
     
     init() {
-        let userManager = UserManager()
+        userManager = UserManager()
         let welcomeViewModel = WelcomeViewModel(userManager: userManager)
         let welcomeViewController = WelcomeViewController(viewModel: welcomeViewModel)
-        
         navigationController = UINavigationController(rootViewController: welcomeViewController)
         
         welcomeViewModel.routingDelegate = self

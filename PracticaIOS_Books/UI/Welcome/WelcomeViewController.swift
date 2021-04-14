@@ -27,15 +27,12 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate, W
     init(viewModel: WelcomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-
         self.viewModel.delegate = self
     }
     
     
     required init?(coder: NSCoder) {
-        self.viewModel = WelcomeViewModel(userManager: UserManager())
-        super.init(coder: coder)
-        self.viewModel.delegate = self
+        fatalError()
     }
     
     override func viewDidLoad() {
@@ -45,12 +42,10 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate, W
     }
     
     @IBAction func clickRegisterButton() {
-        performSegue(withIdentifier: "welcomeToRegister", sender: self)
-        
+        viewModel.handleUserRegister()
     }
     @IBAction func clickLoginButton() {
-        performSegue(withIdentifier: "welcomeToLogin", sender: self)
-        
+        viewModel.handleUserAccess()
     }
     
     func presentViewController(viewController: UIViewController){

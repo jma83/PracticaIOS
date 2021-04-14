@@ -21,9 +21,7 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = LoginViewModel(userManager: UserManager())
-        super.init(coder: coder)
-        self.viewModel?.delegate = self
+        fatalError()
     }
     
     override func viewDidLoad() {
@@ -41,14 +39,6 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
                 
         viewModel?.validateAndLogin(username: username, password: password)
         
-    }
-    
-    func userSession(_: LoginViewModel, didUserChange user: User) {
-        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "NavHomeViewController") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = homeViewController
-        homeViewController.modalPresentationStyle = .overCurrentContext
-        present(homeViewController, animated: true)
     }
     
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WelcomeViewController" customModule="PracticaIOS_Books" customModuleProvider="target">
+            <connections>
+                <outlet property="loginButton" destination="hW4-Rl-uJH" id="uFj-oK-f4k"/>
+                <outlet property="registerButton" destination="duP-vi-qkS" id="ALS-Mv-A2m"/>
+                <outlet property="view" destination="Xvs-5N-Bqg" id="s8W-eD-3fb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Xvs-5N-Bqg">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-Rl-uJH">
+                    <rect key="frame" x="30" y="336" width="354" height="39"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Iniciar sesión">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickLoginButton" destination="-1" eventType="touchUpInside" id="LBc-f7-T4R"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="📚My Library📚" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-b1-vxd">
+                    <rect key="frame" x="40" y="114" width="334" height="51"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ulb-su-Zjn">
+                    <rect key="frame" x="30" y="225" width="354" height="30"/>
+                    <string key="text">¡Bienvenido/a!
+</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duP-vi-qkS">
+                    <rect key="frame" x="30" y="405" width="354" height="39"/>
+                    <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Registrarse">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="clickRegisterButton" destination="-1" eventType="touchUpInside" id="PEw-uj-UKz"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="V17-83-Rw6">
+                    <rect key="frame" x="50" y="263" width="314" height="23"/>
+                    <string key="text" base64-UTF8="YES">
+SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
+</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="ylr-La-tlx"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="eMb-b1-vxd" firstAttribute="top" secondItem="ylr-La-tlx" secondAttribute="top" constant="70" id="Bnx-fa-T9w"/>
+                <constraint firstItem="hW4-Rl-uJH" firstAttribute="leading" secondItem="ylr-La-tlx" secondAttribute="leading" constant="30" id="N74-aq-nOt"/>
+                <constraint firstItem="ylr-La-tlx" firstAttribute="trailing" secondItem="ulb-su-Zjn" secondAttribute="trailing" constant="30" id="Ntu-os-lcp"/>
+                <constraint firstItem="duP-vi-qkS" firstAttribute="trailing" secondItem="hW4-Rl-uJH" secondAttribute="trailing" id="Ulm-PD-yrm"/>
+                <constraint firstItem="ulb-su-Zjn" firstAttribute="top" secondItem="eMb-b1-vxd" secondAttribute="bottom" constant="60" id="Vcr-O7-mwi"/>
+                <constraint firstItem="ulb-su-Zjn" firstAttribute="leading" secondItem="ylr-La-tlx" secondAttribute="leading" constant="30" id="Wuo-a8-kXl"/>
+                <constraint firstItem="duP-vi-qkS" firstAttribute="top" secondItem="hW4-Rl-uJH" secondAttribute="bottom" constant="30" id="cUs-Hy-Sy7"/>
+                <constraint firstItem="V17-83-Rw6" firstAttribute="top" secondItem="ulb-su-Zjn" secondAttribute="bottom" constant="8" id="gQw-g5-Er0"/>
+                <constraint firstItem="eMb-b1-vxd" firstAttribute="leading" secondItem="ylr-La-tlx" secondAttribute="leading" constant="40" id="kHp-YQ-2Rc"/>
+                <constraint firstItem="V17-83-Rw6" firstAttribute="leading" secondItem="ulb-su-Zjn" secondAttribute="leading" constant="20" id="l9K-Ix-yIV"/>
+                <constraint firstItem="ylr-La-tlx" firstAttribute="trailing" secondItem="eMb-b1-vxd" secondAttribute="trailing" constant="40" id="oqr-WL-vUL"/>
+                <constraint firstItem="ylr-La-tlx" firstAttribute="trailing" secondItem="hW4-Rl-uJH" secondAttribute="trailing" constant="30" id="p44-bQ-b6j"/>
+                <constraint firstItem="hW4-Rl-uJH" firstAttribute="top" secondItem="V17-83-Rw6" secondAttribute="bottom" constant="50" id="pT0-nt-tfX"/>
+                <constraint firstItem="V17-83-Rw6" firstAttribute="trailing" secondItem="ulb-su-Zjn" secondAttribute="trailing" constant="-20" id="tGU-Vl-Yas"/>
+                <constraint firstItem="duP-vi-qkS" firstAttribute="leading" secondItem="hW4-Rl-uJH" secondAttribute="leading" id="y7H-A3-dUe"/>
+            </constraints>
+            <point key="canvasLocation" x="-155" y="66"/>
+        </view>
+        <navigationItem title="My Library" id="aM5-Rk-lYV"/>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

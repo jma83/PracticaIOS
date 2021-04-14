@@ -12,6 +12,7 @@ class RegisterViewModel: UserManagerDelegate {
     private let userManager: UserManager
     let userValidator: UserViewModel
     weak var delegate: RegisterViewModelDelegate?
+    weak var routingDelegate: WelcomeViewModelRoutingDelegate?
 
     
     init(userManager: UserManager) {
@@ -33,7 +34,7 @@ class RegisterViewModel: UserManagerDelegate {
     }
     
     func userSession(_: UserManager, didUserChange user: User) {
-        delegate?.userSession(self, didUserChange: user)
+        routingDelegate?.userAccessAllowed()
     }
     
     func userCredentialError(_: UserManager, error: String) {

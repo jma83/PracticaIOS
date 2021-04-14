@@ -13,7 +13,7 @@ class LoginViewModel: UserManagerDelegate {
     private let userManager: UserManager
     let userValidator: UserViewModel
     weak var delegate: LoginViewModelDelegate?
-    weak var routingDelegate: LoginViewModelRoutingDelegate?
+    weak var routingDelegate: WelcomeViewModelRoutingDelegate?
 
     
     init(userManager: UserManager) {
@@ -33,7 +33,7 @@ class LoginViewModel: UserManagerDelegate {
     }
     
     func userSession(_: UserManager, didUserChange user: User) {
-        delegate?.userSession(self, didUserChange: user)
+        routingDelegate?.userAccessAllowed()
     }
     
 
@@ -44,7 +44,6 @@ class LoginViewModel: UserManagerDelegate {
 }
 
 protocol LoginViewModelDelegate: class {
-    func userSession(_: LoginViewModel, didUserChange user: User)
     func userLoginError(_: LoginViewModel, error: String)
 }
 

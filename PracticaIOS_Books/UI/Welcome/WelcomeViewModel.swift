@@ -48,4 +48,5 @@ protocol WelcomeViewModelDelegate: class {
 protocol WelcomeViewModelRoutingDelegate: class {
     func userWantsToAccess(_: WelcomeViewModel)
     func userWantsToRegister(_: WelcomeViewModel)
+    func userAccessAllowed()
 }

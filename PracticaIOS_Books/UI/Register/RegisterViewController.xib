@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RegisterViewController" customModule="PracticaIOS_Books" customModuleProvider="target">
+            <connections>
+                <outlet property="birthdatePicker" destination="9gK-ng-ykj" id="k8J-Jj-LSh"/>
+                <outlet property="countryText" destination="gqp-f4-cxz" id="olb-SY-qeR"/>
+                <outlet property="emailText" destination="EJD-E7-HBG" id="Rby-xC-tGf"/>
+                <outlet property="genderOption" destination="Fpw-bd-ZhR" id="4hA-3S-URP"/>
+                <outlet property="passwordText" destination="7pD-gd-238" id="FlA-Zt-NRX"/>
+                <outlet property="usernameText" destination="TOB-QO-c9z" id="dDg-jc-e2j"/>
+                <outlet property="view" destination="mpt-vv-E6q" id="k0I-KS-4Zm"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="mpt-vv-E6q">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpu-RZ-eiG">
+                    <rect key="frame" x="0.0" y="20" width="414" height="856"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="EJD-E7-HBG">
+                            <rect key="frame" x="40" y="174.5" width="334" height="39"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de usuario" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="TOB-QO-c9z">
+                            <rect key="frame" x="40" y="243.5" width="334" height="39"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7pD-gd-238">
+                            <rect key="frame" x="40" y="313.5" width="334" height="39"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ay-cs-cFr">
+                            <rect key="frame" x="40" y="602" width="334" height="39"/>
+                            <color key="backgroundColor" name="AccentColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <state key="normal" title="Crear perfil">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="clickRegisterButton" destination="-1" eventType="touchUpInside" id="7LK-x1-6GD"/>
+                            </connections>
+                        </button>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="País de residencia" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="gqp-f4-cxz">
+                            <rect key="frame" x="40" y="518.5" width="334" height="39"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fpw-bd-ZhR">
+                            <rect key="frame" x="40" y="458.5" width="334" height="32"/>
+                            <segments>
+                                <segment title="Masculino"/>
+                                <segment title="Femenino"/>
+                                <segment title="Otro"/>
+                            </segments>
+                        </segmentedControl>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Completa tus datos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1du-T8-9gx">
+                            <rect key="frame" x="40" y="70" width="334" height="44.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sexo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbM-YN-dGe">
+                            <rect key="frame" x="48" y="438" width="326" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="9gK-ng-ykj">
+                            <rect key="frame" x="40" y="389" width="334" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="dNQ-8C-a37"/>
+                            </constraints>
+                        </datePicker>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha de nacimiento:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQh-Mo-hAD">
+                            <rect key="frame" x="48" y="363" width="326" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="EJD-E7-HBG" firstAttribute="top" secondItem="1du-T8-9gx" secondAttribute="bottom" constant="60" id="1E6-L3-ITK"/>
+                        <constraint firstAttribute="trailing" secondItem="1du-T8-9gx" secondAttribute="trailing" constant="40" id="7qH-A3-d8U"/>
+                        <constraint firstItem="8Ay-cs-cFr" firstAttribute="top" secondItem="1du-T8-9gx" secondAttribute="bottom" constant="487.5" id="8mm-30-oGE"/>
+                        <constraint firstItem="IXU-tM-KWN" firstAttribute="trailing" secondItem="8Ay-cs-cFr" secondAttribute="trailing" constant="40" id="CTh-MJ-jfX"/>
+                        <constraint firstItem="EJD-E7-HBG" firstAttribute="leading" secondItem="IXU-tM-KWN" secondAttribute="leading" constant="40" id="EuD-uz-jic"/>
+                        <constraint firstItem="gbM-YN-dGe" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="FZn-IC-OlG"/>
+                        <constraint firstItem="IXU-tM-KWN" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" constant="40" id="Ia0-2L-6OI"/>
+                        <constraint firstAttribute="bottom" secondItem="8Ay-cs-cFr" secondAttribute="bottom" constant="50" id="Kvs-Lw-ptW"/>
+                        <constraint firstItem="IXU-tM-KWN" firstAttribute="trailing" secondItem="1du-T8-9gx" secondAttribute="trailing" constant="40" id="Nvt-Rq-2dY"/>
+                        <constraint firstItem="TOB-QO-c9z" firstAttribute="top" secondItem="EJD-E7-HBG" secondAttribute="bottom" constant="30" id="Oct-BT-aGG"/>
+                        <constraint firstItem="7pD-gd-238" firstAttribute="leading" secondItem="EJD-E7-HBG" secondAttribute="leading" id="OdQ-lJ-o9i"/>
+                        <constraint firstItem="8Ay-cs-cFr" firstAttribute="leading" secondItem="IXU-tM-KWN" secondAttribute="leading" constant="40" id="P0n-TF-AZo"/>
+                        <constraint firstItem="jQh-Mo-hAD" firstAttribute="top" secondItem="EJD-E7-HBG" secondAttribute="bottom" constant="149.5" id="SiD-Y9-23F"/>
+                        <constraint firstItem="gqp-f4-cxz" firstAttribute="top" secondItem="EJD-E7-HBG" secondAttribute="bottom" constant="305" id="SrR-EK-nT5"/>
+                        <constraint firstItem="Fpw-bd-ZhR" firstAttribute="top" secondItem="EJD-E7-HBG" secondAttribute="bottom" constant="245" id="Yui-0h-ypa"/>
+                        <constraint firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" constant="40" id="ZGt-wv-fnp"/>
+                        <constraint firstItem="9gK-ng-ykj" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="ZXa-7q-tVf"/>
+                        <constraint firstItem="jQh-Mo-hAD" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="Zbe-yx-62t"/>
+                        <constraint firstItem="TOB-QO-c9z" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="c08-a7-SY0"/>
+                        <constraint firstItem="jQh-Mo-hAD" firstAttribute="leading" secondItem="EJD-E7-HBG" secondAttribute="leading" constant="8" id="cVs-qn-3m5"/>
+                        <constraint firstItem="9gK-ng-ykj" firstAttribute="top" secondItem="EJD-E7-HBG" secondAttribute="bottom" constant="175.5" id="cnn-zj-dAx"/>
+                        <constraint firstItem="gqp-f4-cxz" firstAttribute="leading" secondItem="EJD-E7-HBG" secondAttribute="leading" id="euv-sn-rvl"/>
+                        <constraint firstItem="Fpw-bd-ZhR" firstAttribute="leading" secondItem="EJD-E7-HBG" secondAttribute="leading" id="f8v-ZI-6D4"/>
+                        <constraint firstItem="gbM-YN-dGe" firstAttribute="top" secondItem="EJD-E7-HBG" secondAttribute="bottom" constant="224.5" id="gZI-jE-WD9"/>
+                        <constraint firstItem="gbM-YN-dGe" firstAttribute="leading" secondItem="EJD-E7-HBG" secondAttribute="leading" constant="8" id="heU-Oc-c8j"/>
+                        <constraint firstItem="TOB-QO-c9z" firstAttribute="leading" secondItem="EJD-E7-HBG" secondAttribute="leading" id="iaL-UJ-lP5"/>
+                        <constraint firstItem="9gK-ng-ykj" firstAttribute="leading" secondItem="EJD-E7-HBG" secondAttribute="leading" id="jxv-oN-YKS"/>
+                        <constraint firstItem="7pD-gd-238" firstAttribute="top" secondItem="EJD-E7-HBG" secondAttribute="bottom" constant="100" id="oKg-Tw-GMo"/>
+                        <constraint firstItem="Fpw-bd-ZhR" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="ohE-AC-7jS"/>
+                        <constraint firstItem="EJD-E7-HBG" firstAttribute="leading" secondItem="kpu-RZ-eiG" secondAttribute="leading" constant="40" id="qMt-Us-bim"/>
+                        <constraint firstItem="7pD-gd-238" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="tEF-cY-d48"/>
+                        <constraint firstItem="1du-T8-9gx" firstAttribute="top" secondItem="kpu-RZ-eiG" secondAttribute="top" constant="70" id="tSg-Mr-nk8"/>
+                        <constraint firstItem="1du-T8-9gx" firstAttribute="leading" secondItem="IXU-tM-KWN" secondAttribute="leading" constant="40" id="u78-Fj-geW"/>
+                        <constraint firstItem="gqp-f4-cxz" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="yaN-E1-gTZ"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="wt8-Is-Yhy"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="IXU-tM-KWN"/>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="gCV-sW-qAW"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="kpu-RZ-eiG" firstAttribute="top" secondItem="mpt-vv-E6q" secondAttribute="top" constant="20" symbolic="YES" id="EB9-wQ-JaL"/>
+                <constraint firstAttribute="bottom" secondItem="kpu-RZ-eiG" secondAttribute="bottom" constant="20" symbolic="YES" id="XaE-12-fGs"/>
+                <constraint firstItem="kpu-RZ-eiG" firstAttribute="trailing" secondItem="gCV-sW-qAW" secondAttribute="trailing" id="jVN-Nb-vHT"/>
+                <constraint firstItem="kpu-RZ-eiG" firstAttribute="leading" secondItem="gCV-sW-qAW" secondAttribute="leading" id="jcB-m5-2Ed"/>
+            </constraints>
+            <point key="canvasLocation" x="-155" y="66"/>
+        </view>
+        <navigationItem title="Registrarse" id="Qit-Nt-Vi0"/>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
