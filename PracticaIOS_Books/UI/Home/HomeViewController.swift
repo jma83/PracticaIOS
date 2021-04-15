@@ -15,7 +15,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var trailingMenu: NSLayoutConstraint!
     @IBOutlet weak var leadingMenu: NSLayoutConstraint!
     let sections = ["Libros relevantes", "Novedades", "Mis listas"]
-    var collectionCellEvent: HomeCollectionCell?
     
     private var menuActive = false
     
@@ -28,9 +27,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     required init?(coder: NSCoder) {
-        self.viewModel = HomeViewModel(bookManager: BookManager())
-        super.init(coder: coder)
-        self.viewModel.delegate = self
+        fatalError()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
+        
+        title = "Home"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,23 +69,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-    }
 
-    @IBAction func clickMenuButton(_ sender: Any) {
+    @objc func clickMenuButton(_ sender: Any) {
         if !menuActive {
             leadingMenu.constant = 150
             trailingMenu.constant = -150
-            menuActive = true
         }else{
             leadingMenu.constant = 0
             leadingMenu.constant = 0
-            menuActive = false
         }
+        menuActive = !menuActive
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
@@ -86,15 +87,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
-        collectionCellEvent=homeCell
-        performSegue(withIdentifier: "homeToDetail", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let dvc = segue.destination as? DetailViewController {
-            dvc.viewModel = self.collectionCellEvent?.viewModel
-            dvc.image = self.collectionCellEvent?.image
-        }
+        viewModel.bookDetail(bookResult: homeCell.viewModel!.book)
+        /*collectionCellEvent=homeCell
+        performSegue(withIdentifier: "homeToDetail", sender: self)*/
     }
 
 }

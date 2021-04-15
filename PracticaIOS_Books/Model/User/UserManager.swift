@@ -9,13 +9,14 @@ import UIKit
 import CoreData
 
 class UserManager{
-    private var datos: [User] = []
     private let context: NSManagedObjectContext
     private let USER_ENTITY = "User"
     private let DOMAIN = "es.upsa.mimo.PracticaIOS-Books"
 
     weak var delegate: UserManagerDelegate?
     weak var initialDelegate: UserManagerStartDelegate?
+    private let GENERIC_ERROR = "Error al enviar credenciales, intentalo de nuevo más tarde"
+    private let ALREADY_EXISTS_ERROR = "Error el usuario ya existe"
     
     
     init() {
@@ -40,26 +41,27 @@ class UserManager{
             try context.execute(asynchronousRequest)
         }catch let error {
             print("Error: \(error)")
+            self.delegate?.userCredentialError(self, error: GENERIC_ERROR)
         }
    }
     
-    func fetchAllUsers() -> [User]{
+    func fetchAllUsers(completionHandler: @escaping ([User]) -> Void) -> Void {
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         
-        //datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
-        datos = try! context.fetch(fetchRequest)
-        print("count \(datos.count)")
-        return datos
+        fetchAsyncUsers(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
+            print("count \(datos.count)")
+            completionHandler(datos)
+        })
     }
     
-    func fetchByUsername(username:String) -> [User]{
+    func fetchByUsername(username:String, completionHandler: @escaping ([User]) -> Void) -> Void{
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "username == %@", username)
         
-        //datos = fetchAsyncUsers(fetchAsyncRequest: fetchRequest)
-        datos = try! context.fetch(fetchRequest)
-        print("count \(datos.count)")
-        return datos
+        fetchAsyncUsers(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
+            print("count \(datos.count)")
+            completionHandler(datos)
+        })
     }
     
     func checkLogin(username:String, password: String) -> Void {
@@ -74,49 +76,38 @@ class UserManager{
                 do{
                     try self.storeUserSession(username: username, password: password)
                 }catch {
-                    
+                    self.delegate?.userCredentialError(self, error: self.GENERIC_ERROR)
                 }
             }
         })
     }
      
-    func getDatos() -> [NSManagedObject]{
-        return datos
-    }
-    
     func saveUser(username:String,password:String,email:String,gender:Int,birthdate:Date,country:String) -> Void {
         
-        let users = self.fetchByUsername(username: username)
-        if users.count != 0 {
-            delegate?.userCredentialError(self,error: "Error, usuario ya existe")
-            return
-        }
-        
-        let entity = NSEntityDescription.entity(forEntityName: USER_ENTITY, in: context)
-        let user = User(entity: entity!, insertInto: context)
-
-        user.username = username
-        user.password = password
-        user.email = email
-        user.gender = Int16(gender)
-        user.birthdate = birthdate
-        user.country = country
-        user.createDate = Date()
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.saveContext()
-        delegate?.userSession(self, didUserChange: user)
-        
-        datos.append(user)
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: USER_ENTITY)
-        let count = try! context.fetch(fetchRequest)
-        print("count \(count)")
-        do{
-            try self.storeUserSession(username: username, password: password)
-        }catch{
+        self.fetchByUsername(username: username, completionHandler: { datos in
+            if datos.count != 0 {
+                self.delegate?.userCredentialError(self, error: self.ALREADY_EXISTS_ERROR)
+                return
+            }
             
-        }
+            let entity = NSEntityDescription.entity(forEntityName: self.USER_ENTITY, in: self.context)
+            let user = User(entity: entity!, insertInto: self.context)
+
+            user.username = username
+            user.password = password
+            user.email = email
+            user.gender = Int16(gender)
+            user.birthdate = birthdate
+            user.country = country
+            user.createDate = Date()
+
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+            self.delegate?.userSession(self, didUserChange: user)
+            
+        })
+        
+
         
     }
     

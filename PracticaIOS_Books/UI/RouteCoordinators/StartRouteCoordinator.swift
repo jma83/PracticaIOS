@@ -10,12 +10,14 @@ import UIKit
 class StartRouteCoordinator: WelcomeViewModelRoutingDelegate {
     func userWantsToRegister(_: WelcomeViewModel) {
         let vm = RegisterViewModel(userManager: userManager)
+        vm.routingDelegate = self
         let vc = RegisterViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
     
     func userWantsToAccess(_: WelcomeViewModel) {
         let vm = LoginViewModel(userManager: userManager)
+        vm.routingDelegate = self
         let vc = LoginViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }

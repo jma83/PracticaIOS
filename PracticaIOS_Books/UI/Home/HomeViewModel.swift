@@ -8,15 +8,15 @@
 import Foundation
 
 class HomeViewModel: BookManagerDelegate {
-    func bookDetail(_: BookManager, bookResult: BookResult) {
-        //applies for Detail
+    func bookDetail(bookResult: BookResult) {
+        routingDelegate?.watchDetail(self,book: bookResult)
     }
     
 
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [ [], [], [] ]
     weak var delegate: HomeViewModelDelegate?
-    
+    weak var routingDelegate: HomeViewModelRoutingDelegate?
     init(bookManager: BookManager) {
         self.bookManager = bookManager
         self.bookManager.delegate = self
@@ -43,4 +43,8 @@ class HomeViewModel: BookManagerDelegate {
 
 protocol HomeViewModelDelegate: class {
     func bookChanged(_: HomeViewModel)
+}
+
+protocol HomeViewModelRoutingDelegate: class {
+    func watchDetail(_: HomeViewModel, book: BookResult)
 }
