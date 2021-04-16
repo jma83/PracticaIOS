@@ -336,10 +336,6 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
-                                        <connections>
-                                            <outlet property="dataSource" destination="dIY-yP-dfe" id="Jxm-r3-oRq"/>
-                                            <outlet property="delegate" destination="dIY-yP-dfe" id="qFi-u5-Or2"/>
-                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
@@ -374,9 +370,6 @@ SWRlbnRpZsOtY2F0ZSBwYXJhIANjb21lbnphciBhIGV4cGxvcmFyA
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="leadingMenu" destination="ukz-5E-fzl" id="zZ3-W1-2cY"/>
-                        <outlet property="tableView" destination="Yqv-9S-dbz" id="sm3-tk-ePH"/>
-                        <outlet property="trailingMenu" destination="Ikl-4n-oAz" id="bmD-QO-nGp"/>
                         <segue destination="ak5-eI-sVh" kind="show" identifier="homeToDetail" id="UBQ-wN-p2C"/>
                     </connections>
                 </viewController>

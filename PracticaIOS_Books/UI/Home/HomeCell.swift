@@ -9,7 +9,7 @@ import UIKit
 
 class HomeCell: UITableViewCell {
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
     let COL_CELL_ID = "HomeCollectionCell"
     weak var delegate: HomeCellDelegate?
     
@@ -17,7 +17,7 @@ class HomeCell: UITableViewCell {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.collectionView.register(HomeCollectionCell.self, forCellWithReuseIdentifier: COL_CELL_ID)
+        self.collectionView.register(UINib(nibName: String(describing: HomeCollectionCell.self), bundle: nil), forCellWithReuseIdentifier: COL_CELL_ID)
     }
     
     var viewModel: [BookViewModel]? {

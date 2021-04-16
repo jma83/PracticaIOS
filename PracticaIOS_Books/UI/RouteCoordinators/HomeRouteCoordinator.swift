@@ -8,12 +8,16 @@
 import UIKit
 
 class HomeRouteCoordinator: HomeViewModelRoutingDelegate {
+    func refresh() {
+        print("holi")
+    }
+    
     func watchDetail(_: HomeViewModel, book: BookResult) {
         let vm = DetailViewModel(bookManager: bookManager, isbn: book.primary_isbn10!)
         let vc = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
-    
+     
     private let navigationController: UINavigationController
     let bookManager: BookManager
     

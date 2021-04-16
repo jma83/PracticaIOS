@@ -35,7 +35,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
+        self.tableView.register(UINib(nibName: String(describing: HomeCell.self) , bundle: nil), forCellReuseIdentifier: CELL_ID)
+        //self.tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
         
         title = "Home"
