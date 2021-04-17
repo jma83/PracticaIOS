@@ -456,12 +456,6 @@ Duis mollis, massa non maximus ullamcorper, magna nulla tempus augue, nec eleife
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detail" id="Rf2-YG-m3C"/>
-                    <connections>
-                        <outlet property="authorText" destination="0I9-Jk-TFX" id="dgn-Ua-b9D"/>
-                        <outlet property="bookImage" destination="BWH-hs-vee" id="cZq-GL-UlL"/>
-                        <outlet property="descriptionText" destination="5zG-mQ-dtz" id="8YX-CN-jqi"/>
-                        <outlet property="titleText" destination="JaY-Yd-tBH" id="qVN-Ok-2VS"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PN1-UE-Vdf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

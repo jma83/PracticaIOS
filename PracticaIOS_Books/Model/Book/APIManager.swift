@@ -50,7 +50,7 @@ class APIManager{
     }
     
     func concatKey(url: String) -> String {
-        let check = StringUtils.validateStringFormat(regex: "^[?]$", value: url )
+        let check = StringUtils.validateStringFormat(regex: ".*[?].*", value: url )
         return self.setNextParam(check: check, value: url)
     }
     

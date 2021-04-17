@@ -8,10 +8,6 @@
 import UIKit
 
 class DetailViewController:  UIViewController, DetailViewModelDelegate {
-    func bookDetail(_: DetailViewModel, book: BookResult) {
-        //setinfo
-    }
-    
 
     @IBOutlet weak var bookImage: UIImageView!
     
@@ -36,12 +32,14 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        titleText.text = viewModel?.bookViewModel?.title
-        authorText.text = viewModel?.bookViewModel?.author
-        descriptionText.text = viewModel?.bookViewModel?.description
+    }
+    
+    func bookDetail(_: DetailViewModel, book: BookResult) {
+        //setinfo
+        titleText.text = book.title
+        authorText.text = book.author
+        descriptionText.text = book.description
         bookImage.image = image
-        // Do any additional setup after loading the view.
     }
     
 

@@ -15,6 +15,9 @@ class HomeViewModel: BookManagerDelegate {
     init(bookManager: BookManager) {
         self.bookManager = bookManager
         self.bookManager.delegate = self
+    }
+    
+    func getHomeBooks(){
         self.bookManager.getRelevantBooks(completition2: { result in
             if let result = result {
                 var count = 0
@@ -29,14 +32,15 @@ class HomeViewModel: BookManagerDelegate {
         })
     }
     
-    
     func bookChanged(_: BookManager) {
         delegate?.bookChanged(self)
     }
     
     func bookDetail(bookResult: BookResult) {
-        routingDelegate?.refresh()
-        routingDelegate?.watchDetail(self, book: bookResult)
+        if let routingDelegate = routingDelegate {
+            print(routingDelegate)
+            routingDelegate.watchDetail(book: bookResult)
+        }
     }
     
 }
@@ -46,6 +50,5 @@ protocol HomeViewModelDelegate: class {
 }
 
 protocol HomeViewModelRoutingDelegate: class {
-    func watchDetail(_: HomeViewModel, book: BookResult)
-    func refresh()
+    func watchDetail(book: BookResult)
 }

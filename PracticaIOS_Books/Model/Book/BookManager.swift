@@ -8,6 +8,7 @@
 import Foundation
 
 struct BookResult {
+    var id: String?
     var title: String?
     var author: String?
     var description: String?
@@ -23,6 +24,8 @@ class BookManager {
     let bookGoogle: BookGoogle
     weak var delegate: BookManagerDelegate?
     weak var detailDelegate: BookManagerDetailDelegate?
+    weak var searchDelegate: BookManagerSearchDelegate?
+    
     let sections = ["Libros relevantes", "Novedades", "Mis listas"]
     
     init() {
@@ -49,18 +52,30 @@ class BookManager {
         })
     }
     
-    func findBook(){
-        
-    }
-    
     func getBookDetail(isbn: String){
         let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=1"
         bookGoogle.getResponse(str: url, completition2: { result in
-            for r in result!.response!.items {
-                
-                let bookresult = BookResult(title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
+            let r = result!.response?.items.first
+            if let r = r {
+                let bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
                 self.detailDelegate?.bookDetail(self, bookResult: bookresult)
-                break;
+            }
+            
+        })
+    }
+    
+    func searchBook(text: String){
+        let url = "https://www.googleapis.com/books/v1/volumes?q=\(String(describing: text))&orderBy=relevance"
+        bookGoogle.getResponse(str: url, completition2: { result in
+            var bookResultArr = [BookResult]()
+            let lists = result?.response?.items
+            if let lists = lists {              
+                for item in lists {
+                    let book = item.volumeInfo
+                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors![0], description: book.description, book_image: book.imageLinks.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
+                    bookResultArr.append(bookresult)
+                }
+                self.searchDelegate?.searchBook(self, bookResult: bookResultArr)
             }
             
         })
@@ -77,4 +92,8 @@ protocol BookManagerDelegate: class {
 }
 protocol BookManagerDetailDelegate: class {
     func bookDetail(_:BookManager, bookResult: BookResult)
+}
+protocol BookManagerSearchDelegate: class {
+    func bookDetail(_:BookManager, bookResult: BookResult)
+    func searchBook(_:BookManager, bookResult: [BookResult])
 }

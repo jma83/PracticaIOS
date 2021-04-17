@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeViewModelDelegate, HomeCellDelegate {
     
     @IBOutlet weak var tableView: UITableView!
-    private let CELL_ID = "HomeCell"
+    private let CELL_ID = String(describing: HomeCell.self)
     let viewModel: HomeViewModel
     @IBOutlet weak var trailingMenu: NSLayoutConstraint!
     @IBOutlet weak var leadingMenu: NSLayoutConstraint!
@@ -35,10 +35,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(UINib(nibName: String(describing: HomeCell.self) , bundle: nil), forCellReuseIdentifier: CELL_ID)
-        //self.tableView.register(HomeCell.self, forCellReuseIdentifier: CELL_ID)
+        self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
-        
+        viewModel.getHomeBooks()
         title = "Home"
     }
     

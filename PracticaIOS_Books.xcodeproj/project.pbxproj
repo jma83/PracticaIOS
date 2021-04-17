@@ -23,6 +23,9 @@
 		1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44EB2618B6D7004D1446 /* APIManager.swift */; };
 		1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44F02618BE19004D1446 /* StringUtils.swift */; };
 		1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44FB2619257C004D1446 /* BookViewModel.swift */; };
+		1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F98FF1C262B3729007D637C /* SearchViewController.swift */; };
+		1F98FF1F262B3729007D637C /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F98FF1D262B3729007D637C /* SearchViewController.xib */; };
+		1F98FF27262B3E57007D637C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F98FF26262B3E57007D637C /* SearchViewModel.swift */; };
 		1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */; };
 		1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A9A70260F64A50002CD72 /* LoginViewModel.swift */; };
 		1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9A9A75260F65C20002CD72 /* RegisterViewModel.swift */; };
@@ -93,6 +96,9 @@
 		1F6B44EB2618B6D7004D1446 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		1F6B44F02618BE19004D1446 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		1F6B44FB2619257C004D1446 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		1F98FF1C262B3729007D637C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1F98FF1D262B3729007D637C /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		1F98FF26262B3E57007D637C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserViewModel.swift; path = PracticaIOS_Books/UI/GenericViewModels/UserViewModel.swift; sourceTree = SOURCE_ROOT; };
 		1F9A9A70260F64A50002CD72 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		1F9A9A75260F65C20002CD72 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -205,6 +211,7 @@
 		1F91F1262619B5F700B063B3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1F98FF1B262B3660007D637C /* Search */,
 				1FB879642628C4D700BD1B8D /* Likes */,
 				1FB879632628C4BF00BD1B8D /* Lists */,
 				1FB879612628C46A00BD1B8D /* Profile */,
@@ -317,6 +324,16 @@
 				1F6B44F02618BE19004D1446 /* StringUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		1F98FF1B262B3660007D637C /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				1F98FF1C262B3729007D637C /* SearchViewController.swift */,
+				1F98FF1D262B3729007D637C /* SearchViewController.xib */,
+				1F98FF26262B3E57007D637C /* SearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		1F9F36182622537E00A6AB54 /* Detail */ = {
@@ -488,6 +505,7 @@
 				1FB8795526286EA200BD1B8D /* Main.storyboard in Resources */,
 				1FB66732262763B80005F4B9 /* WelcomeViewController.xib in Resources */,
 				1FB66741262765A90005F4B9 /* HomeViewController.xib in Resources */,
+				1F98FF1F262B3729007D637C /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +537,7 @@
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
+				1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
 				1F13D59626192B3B00A7AD97 /* HomeViewModel.swift in Sources */,
 				1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */,
@@ -529,6 +548,7 @@
 				1FB8796B2628C81B00BD1B8D /* CommentsViewModel.swift in Sources */,
 				1F6B44E22618B58B004D1446 /* BookNYT.swift in Sources */,
 				1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */,
+				1F98FF27262B3E57007D637C /* SearchViewModel.swift in Sources */,
 				1F10AC38261E1BBF00889887 /* WelcomeViewModel.swift in Sources */,
 				1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */,
 				1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */,
