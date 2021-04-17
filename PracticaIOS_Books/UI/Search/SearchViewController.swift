@@ -8,12 +8,7 @@
 import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDelegate, SearchViewModelDelegate  {
-    
-    func searchBook(_: SearchViewModel, bookResult: BookResult) {
-        //dd
-    }
-    
-    
+        
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
         //onclick
     }

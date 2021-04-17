@@ -53,5 +53,4 @@ class SearchViewModel: BookManagerSearchDelegate {
 
 protocol SearchViewModelDelegate: class {
     func bookChanged(_: SearchViewModel)
-    func searchBook(_: SearchViewModel, bookResult: BookResult)
 }

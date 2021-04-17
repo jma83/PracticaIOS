@@ -29,17 +29,13 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate {
         let homeViewModel = HomeViewModel(bookManager: bookManager)
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         
-        //let searchViewModel = SearchViewModel(bookManager: bookManager)
-        //let searchViewController = SearchViewController(viewModel: searchViewModel)
-       
         
-        tabBarController = UITabBarController()
-        
-        tabBarController.setViewControllers([homeViewController], animated: true)
-        navigationController = UINavigationController(rootViewController: tabBarController)
+        navigationController = UINavigationController(rootViewController: homeViewController)
         
         navigationController.modalPresentationStyle = .fullScreen
         
+        tabBarController = UITabBarController()
+        //tabBarController.setViewControllers([navigationController], animated: true)
         homeViewModel.routingDelegate = self
     }
     
