@@ -51,4 +51,5 @@ protocol HomeViewModelDelegate: class {
 
 protocol HomeViewModelRoutingDelegate: class {
     func watchDetail(book: BookResult)
+    func showCommentsView(book: BookResult)
 }

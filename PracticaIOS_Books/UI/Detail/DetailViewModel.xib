@@ -13,7 +13,10 @@
             <connections>
                 <outlet property="authorText" destination="Jue-ad-mej" id="f3x-qD-vQb"/>
                 <outlet property="bookImage" destination="Mf3-Ix-Flc" id="uxg-O5-ktQ"/>
+                <outlet property="commentsButton" destination="UJl-w6-3RF" id="oCV-I9-h9U"/>
                 <outlet property="descriptionText" destination="fBa-BU-fkJ" id="yCq-DM-cQo"/>
+                <outlet property="likeButton" destination="Nta-m4-0IB" id="NHU-IL-1me"/>
+                <outlet property="myListButton" destination="yuy-Sg-vif" id="XvY-fb-lXc"/>
                 <outlet property="titleText" destination="p6g-Wg-57D" id="17K-B5-P35"/>
                 <outlet property="view" destination="JGY-3O-YGn" id="xOY-b0-0S8"/>
             </connections>

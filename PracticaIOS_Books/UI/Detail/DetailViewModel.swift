@@ -24,6 +24,12 @@ class DetailViewModel: BookManagerDetailDelegate {
         delegate?.bookDetail(self, book: bookResult)
     }
     
+    func showComments() {
+        if let bookViewModel = bookViewModel {
+        routingDelegate?.showCommentsView(book: bookViewModel.book)
+        }
+    }
+    
     
 }
 

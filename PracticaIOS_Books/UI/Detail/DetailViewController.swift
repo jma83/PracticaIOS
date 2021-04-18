@@ -14,6 +14,9 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var authorText: UILabel!
     @IBOutlet weak var descriptionText: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var myListButton: UIButton!
+    @IBOutlet weak var commentsButton: UIButton!
     
     var image: UIImage?
     var isnb: String?

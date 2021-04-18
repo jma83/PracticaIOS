@@ -8,6 +8,14 @@
 import UIKit
 
 class HomeRouteCoordinator: HomeViewModelRoutingDelegate {
+    func showCommentsView(book: BookResult) {
+        let vm = CommentsViewModel(bookManager: bookManager)
+        vm.routingDelegate = self
+        vc2 = CommentsViewController(viewModel: vm)
+        navigationController.pushViewController(vc2!, animated: true)
+    }
+
+    
     func watchDetail(book: BookResult) {
         let vm = DetailViewModel(bookManager: bookManager, isbn: book.primary_isbn10!)
         vm.routingDelegate = self
@@ -22,7 +30,8 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate {
     var rootViewController: UIViewController {
         return navigationController
     }
-    var vc:DetailViewController? 
+    var vc:DetailViewController?
+    var vc2:CommentsViewController?
     
     init() {
         bookManager = BookManager()
