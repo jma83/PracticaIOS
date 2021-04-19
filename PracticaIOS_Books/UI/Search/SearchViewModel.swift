@@ -8,7 +8,7 @@
 import Foundation
 
 class SearchViewModel: BookManagerSearchDelegate {
-    func searchBook(_: BookManager, bookResult: [BookResult]) {
+    func searchBookResult(_: BookManager, bookResult: [BookResult]) {
         var count3 = 1;
         var count = 0
         for item in bookResult {
@@ -31,7 +31,7 @@ class SearchViewModel: BookManagerSearchDelegate {
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [ [] ]
     weak var delegate: SearchViewModelDelegate?
-    weak var routingDelegate: HomeViewModelRoutingDelegate?
+    weak var routingDelegate: SearchViewModelRoutingDelegate?
     init(bookManager: BookManager) {
         self.bookManager = bookManager
         self.bookManager.searchDelegate = self
@@ -53,4 +53,10 @@ class SearchViewModel: BookManagerSearchDelegate {
 
 protocol SearchViewModelDelegate: class {
     func bookChanged(_: SearchViewModel)
+}
+
+
+protocol SearchViewModelRoutingDelegate: class {
+    func watchDetail(book: BookResult)
+    func showCommentsView(book: BookResult)
 }

@@ -23,12 +23,14 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate {
     }
     
     func userAccessAllowed() {
-        self.homeRouteCoordinator = HomeRouteCoordinator()
-        rootViewController.present(self.homeRouteCoordinator!.rootViewController, animated: true, completion: nil)
+        self.mainRouteCoordinator = MainRouteCoordinator()
+        if let mainRouteCoordinator = mainRouteCoordinator {
+            rootViewController.present(mainRouteCoordinator.rootViewController, animated: true, completion: nil)
+        }
     }
     
     private let navigationController: UINavigationController
-    private var homeRouteCoordinator: HomeRouteCoordinator?
+    private var mainRouteCoordinator: MainRouteCoordinator?
     
     private let userManager: UserManager
     

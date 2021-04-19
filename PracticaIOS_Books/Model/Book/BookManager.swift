@@ -75,7 +75,7 @@ class BookManager {
                     let bookresult = BookResult(id: item.id, title: book.title, author: book.authors![0], description: book.description, book_image: book.imageLinks.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
                     bookResultArr.append(bookresult)
                 }
-                self.searchDelegate?.searchBook(self, bookResult: bookResultArr)
+                self.searchDelegate?.searchBookResult(self, bookResult: bookResultArr)
             }
             
         })
@@ -95,5 +95,5 @@ protocol BookManagerDetailDelegate: class {
 }
 protocol BookManagerSearchDelegate: class {
     func bookDetail(_:BookManager, bookResult: BookResult)
-    func searchBook(_:BookManager, bookResult: [BookResult])
+    func searchBookResult(_:BookManager, bookResult: [BookResult])
 }

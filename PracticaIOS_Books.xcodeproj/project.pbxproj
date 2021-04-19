@@ -44,8 +44,12 @@
 		1FB6673C262764DC0005F4B9 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6673B262764DC0005F4B9 /* RegisterViewController.xib */; };
 		1FB66741262765A90005F4B9 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66740262765A90005F4B9 /* HomeViewController.xib */; };
 		1FB66746262766A90005F4B9 /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66745262766A90005F4B9 /* HomeCell.xib */; };
-		1FB6674B262768890005F4B9 /* DetailViewModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6674A262768890005F4B9 /* DetailViewModel.xib */; };
+		1FB6674B262768890005F4B9 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6674A262768890005F4B9 /* DetailViewController.xib */; };
 		1FB667532627A7C90005F4B9 /* HomeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB667522627A7C90005F4B9 /* HomeCollectionCell.xib */; };
+		1FB733A4262E009700CF70E4 /* SearchRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB733A3262E009700CF70E4 /* SearchRouteCoordinator.swift */; };
+		1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */; };
+		1FB733AE262E012300CF70E4 /* LikeRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB733AD262E012300CF70E4 /* LikeRouteCoordinator.swift */; };
+		1FB733B3262E04D000CF70E4 /* MainRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB733B2262E04D000CF70E4 /* MainRouteCoordinator.swift */; };
 		1FB8795526286EA200BD1B8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB8795326286EA200BD1B8D /* Main.storyboard */; };
 		1FB879662628C71F00BD1B8D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB879652628C71F00BD1B8D /* CommentsViewController.swift */; };
 		1FB8796B2628C81B00BD1B8D /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB8796A2628C81B00BD1B8D /* CommentsViewModel.swift */; };
@@ -117,8 +121,12 @@
 		1FB6673B262764DC0005F4B9 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		1FB66740262765A90005F4B9 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		1FB66745262766A90005F4B9 /* HomeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
-		1FB6674A262768890005F4B9 /* DetailViewModel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewModel.xib; sourceTree = "<group>"; };
+		1FB6674A262768890005F4B9 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		1FB667522627A7C90005F4B9 /* HomeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionCell.xib; sourceTree = "<group>"; };
+		1FB733A3262E009700CF70E4 /* SearchRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FB733AD262E012300CF70E4 /* LikeRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FB733B2262E04D000CF70E4 /* MainRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FB8795426286EA200BD1B8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FB879652628C71F00BD1B8D /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		1FB8796A2628C81B00BD1B8D /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
@@ -341,7 +349,7 @@
 			children = (
 				1F9F3619262253A300A6AB54 /* DetailViewController.swift */,
 				1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */,
-				1FB6674A262768890005F4B9 /* DetailViewModel.xib */,
+				1FB6674A262768890005F4B9 /* DetailViewController.xib */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -350,7 +358,11 @@
 			isa = PBXGroup;
 			children = (
 				1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */,
+				1FB733B2262E04D000CF70E4 /* MainRouteCoordinator.swift */,
 				1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */,
+				1FB733A3262E009700CF70E4 /* SearchRouteCoordinator.swift */,
+				1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */,
+				1FB733AD262E012300CF70E4 /* LikeRouteCoordinator.swift */,
 			);
 			path = RouteCoordinators;
 			sourceTree = "<group>";
@@ -500,7 +512,7 @@
 				1FB66737262764790005F4B9 /* LoginViewController.xib in Resources */,
 				1FB6673C262764DC0005F4B9 /* RegisterViewController.xib in Resources */,
 				1FB879772628CB9900BD1B8D /* AddCommentViewController.xib in Resources */,
-				1FB6674B262768890005F4B9 /* DetailViewModel.xib in Resources */,
+				1FB6674B262768890005F4B9 /* DetailViewController.xib in Resources */,
 				1F2A1EE6260400F500933CDB /* Assets.xcassets in Resources */,
 				1FB8795526286EA200BD1B8D /* Main.storyboard in Resources */,
 				1FB66732262763B80005F4B9 /* WelcomeViewController.xib in Resources */,
@@ -531,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9F36122621A8AA00A6AB54 /* HomeCollectionCell.swift in Sources */,
+				1FB733B3262E04D000CF70E4 /* MainRouteCoordinator.swift in Sources */,
 				1FB879852628F48A00BD1B8D /* CommentsCell.swift in Sources */,
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
 				1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */,
@@ -538,10 +551,12 @@
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
 				1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */,
+				1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
 				1F13D59626192B3B00A7AD97 /* HomeViewModel.swift in Sources */,
 				1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */,
 				1F6B44E72618B5A9004D1446 /* BookGoogle.swift in Sources */,
+				1FB733A4262E009700CF70E4 /* SearchRouteCoordinator.swift in Sources */,
 				1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */,
 				1F57D3662618752C00FC26D0 /* BookManager.swift in Sources */,
 				1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */,
@@ -555,6 +570,7 @@
 				1FB879662628C71F00BD1B8D /* CommentsViewController.swift in Sources */,
 				1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */,
 				1F6B44DD2618B468004D1446 /* HomeCell.swift in Sources */,
+				1FB733AE262E012300CF70E4 /* LikeRouteCoordinator.swift in Sources */,
 				1F2A1EE1260400F400933CDB /* WelcomeViewController.swift in Sources */,
 				1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */,
 				1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */,

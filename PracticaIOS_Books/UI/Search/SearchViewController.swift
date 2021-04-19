@@ -38,7 +38,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
-
+        title = "Search"
     }
     
     required init?(coder: NSCoder) {

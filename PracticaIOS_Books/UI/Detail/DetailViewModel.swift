@@ -29,8 +29,6 @@ class DetailViewModel: BookManagerDetailDelegate {
         routingDelegate?.showCommentsView(book: bookViewModel.book)
         }
     }
-    
-    
 }
 
 protocol DetailViewModelDelegate: class {
