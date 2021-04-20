@@ -8,6 +8,13 @@
 import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDelegate, SearchViewModelDelegate  {
+    func searchResult(_: SearchViewModel) {
+        result = true
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
         
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
         //onclick
@@ -25,11 +32,14 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
     @IBOutlet weak var searchBar: UISearchBar!
     let viewModel: SearchViewModel
     private let CELL_ID = String(describing: HomeCell.self)
+    private var result = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.searchBar.delegate = self
+        self.viewModel.delegate = self
         self.tableView.register(UINib(nibName: CELL_ID , bundle: nil), forCellReuseIdentifier: CELL_ID)
         // Do any additional setup after loading the view.
     }
@@ -46,11 +56,11 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count > 2 {
+        if searchText.count > 2 && result {
+            result = false
             viewModel.searchBook(text: searchText)
         }
     }
-
 }
 
 extension SearchViewController:  UITableViewDelegate, UITableViewDataSource {

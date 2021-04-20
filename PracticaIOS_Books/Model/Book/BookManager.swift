@@ -72,12 +72,11 @@ class BookManager {
             if let lists = lists {              
                 for item in lists {
                     let book = item.volumeInfo
-                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors![0], description: book.description, book_image: book.imageLinks.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
+                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
                     bookResultArr.append(bookresult)
                 }
-                self.searchDelegate?.searchBookResult(self, bookResult: bookResultArr)
             }
-            
+            self.searchDelegate?.searchBookResult(self, bookResult: bookResultArr)
         })
     }
     

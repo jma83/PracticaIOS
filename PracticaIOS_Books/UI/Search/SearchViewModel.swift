@@ -20,6 +20,8 @@ class SearchViewModel: BookManagerSearchDelegate {
                 count3+=1
             }
         }
+        
+        self.delegate?.searchResult(self)
     }
     
     func bookDetail(_: BookManager, bookResult: BookResult) {
@@ -29,7 +31,7 @@ class SearchViewModel: BookManagerSearchDelegate {
     
     
     let bookManager: BookManager
-    var bookViewModels: [[BookViewModel]] = [ [] ]
+    var bookViewModels: [[BookViewModel]] = [ [], [], [], [] ]
     weak var delegate: SearchViewModelDelegate?
     weak var routingDelegate: SearchViewModelRoutingDelegate?
     init(bookManager: BookManager) {
@@ -53,6 +55,7 @@ class SearchViewModel: BookManagerSearchDelegate {
 
 protocol SearchViewModelDelegate: class {
     func bookChanged(_: SearchViewModel)
+    func searchResult(_: SearchViewModel)
 }
 
 

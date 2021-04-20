@@ -27,14 +27,14 @@ class BookGoogle: APIManager {
     }
     
     struct BookGoogleInfo: Decodable {
-        var title: String
-        var subtitle: String
+        var title: String?
+        var subtitle: String?
         var authors: [String]?
-        var publishedDate: String
+        var publishedDate: String?
         var description: String?
         var industryIdentifiers: [ISBN_ID]
         var imageLinks: ImageInfo
-        var categories: [String]
+        var categories: [String]?
     }
     struct ISBN_ID: Decodable {
         var identifier: String
