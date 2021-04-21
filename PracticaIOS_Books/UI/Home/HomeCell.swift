@@ -10,22 +10,19 @@ import UIKit
 class HomeCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    let COL_CELL_ID = "HomeCollectionCell"
+    let COL_CELL_ID = String(describing: HomeCollectionCell.self)
     weak var delegate: HomeCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.delegate = self
         collectionView.dataSource = self
-        self.collectionView.register(UINib(nibName: String(describing: HomeCollectionCell.self), bundle: nil), forCellWithReuseIdentifier: COL_CELL_ID)
+        self.collectionView.register(UINib(nibName: COL_CELL_ID, bundle: nil), forCellWithReuseIdentifier: COL_CELL_ID)
     }
     
     var viewModel: [BookViewModel]? {
         didSet {
             if viewModel != nil {
-                guard !viewModel!.isEmpty else {
-                    return
-                }
                 self.collectionView.reloadData()
 
             }

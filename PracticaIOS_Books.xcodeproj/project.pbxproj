@@ -33,7 +33,6 @@
 		1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BE7702606B00D00C822AC /* RegisterViewController.swift */; };
 		1F9F36122621A8AA00A6AB54 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */; };
 		1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F3619262253A300A6AB54 /* DetailViewController.swift */; };
-		1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */; };
 		1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8ADE26080C67007ACEDB /* UserManager.swift */; };
 		1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */; };
 		1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */; };
@@ -58,6 +57,7 @@
 		1FB879772628CB9900BD1B8D /* AddCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB879752628CB9900BD1B8D /* AddCommentViewController.xib */; };
 		1FB879852628F48A00BD1B8D /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB879832628F48900BD1B8D /* CommentsCell.swift */; };
 		1FB879862628F48A00BD1B8D /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB879842628F48900BD1B8D /* CommentsCell.xib */; };
+		1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +110,6 @@
 		1F9BE7702606B00D00C822AC /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		1F9F3619262253A300A6AB54 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
 		1F9F8ADE26080C67007ACEDB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouteCoordinator.swift; sourceTree = "<group>"; };
@@ -135,7 +134,9 @@
 		1FB879752628CB9900BD1B8D /* AddCommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentViewController.xib; sourceTree = "<group>"; };
 		1FB879832628F48900BD1B8D /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		1FB879842628F48900BD1B8D /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
-		1FE692C82613D4B300CE8DF1 /* MyLibrary 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MyLibrary 2.xcdatamodel"; sourceTree = "<group>"; };
+		1FC540052630AC93003DC820 /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
+		1FC5401F2630AE81003DC820 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FC540202630AE81003DC820 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,7 +240,7 @@
 		1F91F1272619B60200B063B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */,
+				1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */,
 				1F91F1292619B63C00B063B3 /* Book */,
 				1F91F1282619B63200B063B3 /* User */,
 			);
@@ -249,6 +250,8 @@
 		1F91F1282619B63200B063B3 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				1FC5401F2630AE81003DC820 /* User+CoreDataClass.swift */,
+				1FC540202630AE81003DC820 /* User+CoreDataProperties.swift */,
 				1F9F8ADE26080C67007ACEDB /* UserManager.swift */,
 			);
 			path = User;
@@ -547,6 +550,7 @@
 				1FB879852628F48A00BD1B8D /* CommentsCell.swift in Sources */,
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
 				1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */,
+				1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
@@ -557,7 +561,6 @@
 				1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */,
 				1F6B44E72618B5A9004D1446 /* BookGoogle.swift in Sources */,
 				1FB733A4262E009700CF70E4 /* SearchRouteCoordinator.swift in Sources */,
-				1F9F8AD226076AC4007ACEDB /* MyLibrary.xcdatamodeld in Sources */,
 				1F57D3662618752C00FC26D0 /* BookManager.swift in Sources */,
 				1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */,
 				1FB8796B2628C81B00BD1B8D /* CommentsViewModel.swift in Sources */,
@@ -898,13 +901,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		1F9F8AD026076AC4007ACEDB /* MyLibrary.xcdatamodeld */ = {
+		1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				1FE692C82613D4B300CE8DF1 /* MyLibrary 2.xcdatamodel */,
-				1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */,
+				1FC540052630AC93003DC820 /* MyLibrary.xcdatamodel */,
 			);
-			currentVersion = 1F9F8AD126076AC4007ACEDB /* MyLibrary.xcdatamodel */;
+			currentVersion = 1FC540052630AC93003DC820 /* MyLibrary.xcdatamodel */;
 			path = MyLibrary.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

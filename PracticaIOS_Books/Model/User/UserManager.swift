@@ -17,6 +17,7 @@ class UserManager{
     weak var initialDelegate: UserManagerStartDelegate?
     private let GENERIC_ERROR = "Error al enviar credenciales, intentalo de nuevo más tarde"
     private let ALREADY_EXISTS_ERROR = "Error el usuario ya existe"
+    private let INVALID_CREDENTIALS_ERROR = "Error. El usuario o la contraseña no coinciden"
     
     
     init() {
@@ -78,6 +79,8 @@ class UserManager{
                 }catch {
                     self.delegate?.userCredentialError(self, error: self.GENERIC_ERROR)
                 }
+            }else{
+                self.delegate?.userCredentialError(self, error: self.INVALID_CREDENTIALS_ERROR)
             }
         })
     }

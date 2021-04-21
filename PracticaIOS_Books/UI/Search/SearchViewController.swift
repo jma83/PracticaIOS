@@ -55,12 +55,22 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
         fatalError("init(coder:) has not been implemented")
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    /*func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.count > 2 && result {
             result = false
             viewModel.searchBook(text: searchText)
         }
+    }*/
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let text = searchBar.text
+        if let text = text {
+            if text.count > 2 && result {
+                result = false
+                viewModel.searchBook(text: text)
+            }
+        }
     }
+
 }
 
 extension SearchViewController:  UITableViewDelegate, UITableViewDataSource {

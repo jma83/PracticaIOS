@@ -24,10 +24,14 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Buscar libros" id="5NF-6q-pvk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Buscar libros" showsSearchResultsButton="YES" showsCancelButton="YES" id="5NF-6q-pvk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <textInputTraits key="textInputTraits"/>
+                        <scopeButtonTitles>
+                            <string>Title</string>
+                            <string>Title</string>
+                        </scopeButtonTitles>
                         <connections>
                             <outlet property="delegate" destination="-1" id="VvQ-GO-VIA"/>
                         </connections>

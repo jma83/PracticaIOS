@@ -18,7 +18,7 @@ class HomeCollectionCell: UICollectionViewCell {
                 return
             }
             let image = bookImage?.image
-            if  image == nil {
+            if  image == nil || viewModel.book.title != titleLabel?.text{
                 titleLabel?.text = viewModel.book.title
                 authorLabel?.text = viewModel.book.author
                 let url = URL(string: viewModel.book.book_image!)

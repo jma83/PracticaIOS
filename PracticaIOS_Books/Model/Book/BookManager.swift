@@ -65,7 +65,9 @@ class BookManager {
     }
     
     func searchBook(text: String){
+        let text = encodeURLParam(param: text)
         let url = "https://www.googleapis.com/books/v1/volumes?q=\(String(describing: text))&orderBy=relevance"
+
         bookGoogle.getResponse(str: url, completition2: { result in
             var bookResultArr = [BookResult]()
             let lists = result?.response?.items
@@ -78,10 +80,15 @@ class BookManager {
             }
             self.searchDelegate?.searchBookResult(self, bookResult: bookResultArr)
         })
+
     }
     
     func getSections() -> [String]{
         return sections
+    }
+    
+    func encodeURLParam(param: String) -> String {
+        return param.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
     }
     
 }

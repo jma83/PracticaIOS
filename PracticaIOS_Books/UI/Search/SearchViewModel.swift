@@ -11,9 +11,10 @@ class SearchViewModel: BookManagerSearchDelegate {
     func searchBookResult(_: BookManager, bookResult: [BookResult]) {
         var count3 = 1;
         var count = 0
+        bookViewModels = [ [], [], [], [] ]
         for item in bookResult {
+            bookViewModels[count].append(BookViewModel(book: item))
             if count3 == 3 {
-                bookViewModels[count].append(BookViewModel(book: item))
                 count3 = 1
                 count+=1
             }else{

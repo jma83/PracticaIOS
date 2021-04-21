@@ -10,6 +10,7 @@ class APIManager{
     func URLSessionQuery(query: String, type: String, completition: @escaping (Int?, String?)->()){
         var status = 500
         var result = "Bad Request"
+        
         if let url = URL(string:query){
             var request = URLRequest(url:url);
             request.httpMethod = type
@@ -38,6 +39,8 @@ class APIManager{
                 }
             }
             task.resume()
+        }else{
+            completition(status,result)
         }
     }
     
