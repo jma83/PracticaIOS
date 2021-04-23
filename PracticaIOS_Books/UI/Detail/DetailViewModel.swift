@@ -9,6 +9,8 @@ import Foundation
 
 class DetailViewModel: BookManagerDetailDelegate {
 
+    
+
     let bookManager: BookManager
     var bookViewModel: BookViewModel?
     weak var delegate: DetailViewModelDelegate?
@@ -22,8 +24,8 @@ class DetailViewModel: BookManagerDetailDelegate {
     
     init(bookManager: BookManager, bookResult: BookResult) {
         self.bookManager = bookManager
-        // self.bookManager.getBookDetail(isbn: isbn)
-        self.bookDetail(bookManager, bookResult: bookResult)
+        self.bookViewModel = BookViewModel(book: bookResult)
+        //self.bookDetail(bookManager, bookResult: bookResult)
         self.bookManager.detailDelegate = self
     }
     
@@ -34,6 +36,12 @@ class DetailViewModel: BookManagerDetailDelegate {
     func showComments() {
         if let bookViewModel = bookViewModel {
         routingDelegate?.showCommentsView(book: bookViewModel.book)
+        }
+    }
+    
+    func loadBook(){
+        if let book = bookViewModel?.book {
+            bookDetail(bookManager, bookResult: book)
         }
     }
 }

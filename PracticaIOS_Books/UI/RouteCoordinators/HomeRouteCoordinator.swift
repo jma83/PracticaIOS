@@ -22,7 +22,12 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate {
         navigationController.pushViewController(vc2, animated: true)
     }
     func watchDetail(book: BookResult) {
-        let vm = DetailViewModel(bookManager: bookManager, isbn: book.primary_isbn10!)
+        var vm: DetailViewModel;
+        if let isbn = book.primary_isbn10, isbn != "None", isbn != "" {
+            vm = DetailViewModel(bookManager: bookManager, isbn: book.primary_isbn10!)
+        }else{
+            vm = DetailViewModel(bookManager: bookManager, bookResult: book)
+        }
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
