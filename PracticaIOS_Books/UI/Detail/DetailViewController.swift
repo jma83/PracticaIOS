@@ -20,12 +20,14 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     
     var image: UIImage?
     var isnb: String?
-    var viewModel: DetailViewModel?
+    var viewModel: DetailViewModel
     
     
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+
     }
     
     required init?(coder: NSCoder) {
@@ -39,10 +41,12 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     
     func bookDetail(_: DetailViewModel, book: BookResult) {
         //setinfo
-        titleText.text = book.title
-        authorText.text = book.author
-        descriptionText.text = book.description
-        bookImage.image = image
+        DispatchQueue.main.async { [self] in
+            self.titleText.text = book.title
+            self.authorText.text = book.author
+            self.descriptionText.text = book.description
+            self.bookImage.image = self.image
+        }
     }
     
 

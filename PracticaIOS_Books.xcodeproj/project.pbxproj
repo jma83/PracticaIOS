@@ -15,6 +15,8 @@
 		1F2A1EE6260400F500933CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A1EE5260400F500933CDB /* Assets.xcassets */; };
 		1F2A1EF4260400F500933CDB /* PracticaIOS_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EF3260400F500933CDB /* PracticaIOS_BooksTests.swift */; };
 		1F2A1EFF260400F500933CDB /* PracticaIOS_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EFE260400F500933CDB /* PracticaIOS_BooksUITests.swift */; };
+		1F30B26026333C5900CF0223 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B25E26333C5900CF0223 /* User+CoreDataClass.swift */; };
+		1F30B26126333C5900CF0223 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B25F26333C5900CF0223 /* User+CoreDataProperties.swift */; };
 		1F57D3662618752C00FC26D0 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F57D3652618752C00FC26D0 /* BookManager.swift */; };
 		1F6B44D426188BB3004D1446 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44D226188BB3004D1446 /* HomeViewController.swift */; };
 		1F6B44DD2618B468004D1446 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44DC2618B468004D1446 /* HomeCell.swift */; };
@@ -92,6 +94,8 @@
 		1F2A1EFA260400F500933CDB /* PracticaIOS_BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOS_BooksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2A1EFE260400F500933CDB /* PracticaIOS_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaIOS_BooksUITests.swift; sourceTree = "<group>"; };
 		1F2A1F00260400F500933CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F30B25E26333C5900CF0223 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1F30B25F26333C5900CF0223 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1F57D3652618752C00FC26D0 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		1F6B44D226188BB3004D1446 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F6B44DC2618B468004D1446 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
@@ -135,8 +139,6 @@
 		1FB879832628F48900BD1B8D /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		1FB879842628F48900BD1B8D /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
 		1FC540052630AC93003DC820 /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
-		1FC5401F2630AE81003DC820 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		1FC540202630AE81003DC820 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,8 +252,8 @@
 		1F91F1282619B63200B063B3 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				1FC5401F2630AE81003DC820 /* User+CoreDataClass.swift */,
-				1FC540202630AE81003DC820 /* User+CoreDataProperties.swift */,
+				1F30B25E26333C5900CF0223 /* User+CoreDataClass.swift */,
+				1F30B25F26333C5900CF0223 /* User+CoreDataProperties.swift */,
 				1F9F8ADE26080C67007ACEDB /* UserManager.swift */,
 			);
 			path = User;
@@ -546,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9F36122621A8AA00A6AB54 /* HomeCollectionCell.swift in Sources */,
+				1F30B26026333C5900CF0223 /* User+CoreDataClass.swift in Sources */,
 				1FB733B3262E04D000CF70E4 /* MainRouteCoordinator.swift in Sources */,
 				1FB879852628F48A00BD1B8D /* CommentsCell.swift in Sources */,
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
@@ -554,6 +557,7 @@
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
+				1F30B26126333C5900CF0223 /* User+CoreDataProperties.swift in Sources */,
 				1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */,
 				1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,

@@ -57,7 +57,7 @@ class BookManager {
         bookGoogle.getResponse(str: url, completition2: { result in
             let r = result!.response?.items.first
             if let r = r {
-                let bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
+                let bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
                 self.detailDelegate?.bookDetail(self, bookResult: bookresult)
             }
             
@@ -74,7 +74,7 @@ class BookManager {
             if let lists = lists {              
                 for item in lists {
                     let book = item.volumeInfo
-                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
+                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks?.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
                     bookResultArr.append(bookresult)
                 }
             }
@@ -88,7 +88,7 @@ class BookManager {
     }
     
     func encodeURLParam(param: String) -> String {
-        return param.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        return param.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
     
 }

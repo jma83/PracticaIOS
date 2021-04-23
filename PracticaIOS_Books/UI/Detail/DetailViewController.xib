@@ -36,20 +36,19 @@
                                 <constraint firstAttribute="height" constant="299.5" id="Rkw-aD-Wsq"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6g-Wg-57D">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6g-Wg-57D">
                             <rect key="frame" x="6" y="334" width="354" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBa-BU-fkJ">
-                            <rect key="frame" x="30" y="417" width="354" height="649.5"/>
-                            <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit ex, interdum sed tellus eu, eleifend consequat ante. Vivamus sagittis nibh blandit, hendrerit lorem in, aliquam sem. Nullam lobortis velit nisi, sit amet pellentesque massa condimentum et. Phasellus vitae blandit ante. Nulla facilisi. Suspendisse ac orci leo. Curabitur vestibulum elit ut felis congue, quis iaculis lacus lacinia. Suspendisse a enim quis quam faucibus mollis vitae eget odio. Aenean in volutpat elit. Fusce luctus nunc purus, in sagittis leo vulputate nec. Suspendisse potenti. Nunc at tempor sem. Ut consectetur felis at lorem ullamcorper maximus. Praesent sollicitudin velit lectus, vitae maximus purus gravida eget. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur velit ex, interdum sed tellus eu, eleifend consequat ante. Vivamus sagittis nibh blandit, hendrerit lorem in, aliquam sem. Nullam lobortis velit nisi, sit amet pellentesque massa condimentum et. Phasellus vitae blandit ante. Nulla facilisi. Suspendisse ac orci leo. Curabitur vestibulum elit ut felis congue, quis iaculis lacus lacinia. Suspendisse a enim quis quam faucibus mollis vitae eget odio. Aenean in volutpat elit. Fusce luctus nunc purus, in sagittis leo vulputate nec. Suspendisse potenti. Nunc at tempor sem. Ut consectetur felis at lorem ullamcorper maximus. Praesent sollicitudin velit lectus, vitae maximus purus gravida eget.</string>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1" verticalCompressionResistancePriority="1" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBa-BU-fkJ">
+                            <rect key="frame" x="30" y="417" width="354" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jue-ad-mej">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jue-ad-mej">
                             <rect key="frame" x="6" y="355" width="354" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
@@ -64,7 +63,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJl-w6-3RF">
-                            <rect key="frame" x="30" y="1091.5" width="354" height="20"/>
+                            <rect key="frame" x="30" y="442" width="354" height="20"/>
                             <color key="backgroundColor" name="AccentColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="ZLg-cz-h6f"/>

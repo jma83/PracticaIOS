@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 21/04/2021.
+//  Created by Javier Martinez on 23/04/2021.
 //
 //
 

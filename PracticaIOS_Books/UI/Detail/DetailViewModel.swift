@@ -20,6 +20,13 @@ class DetailViewModel: BookManagerDetailDelegate {
         self.bookManager.detailDelegate = self
     }
     
+    init(bookManager: BookManager, bookResult: BookResult) {
+        self.bookManager = bookManager
+        // self.bookManager.getBookDetail(isbn: isbn)
+        self.bookDetail(bookManager, bookResult: bookResult)
+        self.bookManager.detailDelegate = self
+    }
+    
     func bookDetail(_: BookManager, bookResult: BookResult) {
         delegate?.bookDetail(self, book: bookResult)
     }
