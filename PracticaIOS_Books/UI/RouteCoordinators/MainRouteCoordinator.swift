@@ -21,8 +21,7 @@ class MainRouteCoordinator {
     var likeRouteCoordinator: LikeRouteCoordinator?
     
     
-    init() {
-        let bookManager = BookManager()
+    init(userManager: UserManager, bookManager: BookManager) {
         
         homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager)
         searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager)

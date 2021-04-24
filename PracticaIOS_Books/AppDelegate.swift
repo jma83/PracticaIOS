@@ -10,8 +10,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
     {
         // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        
-        startRouteCoordinator = StartRouteCoordinator()
+        let userManager = UserManager()
+        let bookManager = BookManager()
+        startRouteCoordinator = StartRouteCoordinator(userManager: userManager, bookManager: bookManager)
         window?.rootViewController = startRouteCoordinator.rootViewController
         
         window?.makeKeyAndVisible()

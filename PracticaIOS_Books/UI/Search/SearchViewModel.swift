@@ -11,7 +11,7 @@ class SearchViewModel: BookManagerSearchDelegate {
     func searchBookResult(_: BookManager, bookResult: [BookResult]) {
         var count3 = 1;
         var count = 0
-        bookViewModels = [ [], [], [], [] ]
+        self.resetResults()
         for item in bookResult {
             bookViewModels[count].append(BookViewModel(book: item))
             if count3 == 3 {
@@ -24,12 +24,6 @@ class SearchViewModel: BookManagerSearchDelegate {
         
         self.delegate?.searchResult(self)
     }
-    
-    func bookDetail(_: BookManager, bookResult: BookResult) {
-        delegate?.bookChanged(self)
-    }
-    
-    
     
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [ [], [], [], [] ]
@@ -44,12 +38,21 @@ class SearchViewModel: BookManagerSearchDelegate {
     func searchBook(text: String){
         bookManager.searchBook(text: text)
     }
-     
-    func bookDetail(bookResult: BookResult) {
+    
+    func bookDetailRouting(bookResult: BookResult) {
         if let routingDelegate = routingDelegate {
             print(routingDelegate)
             routingDelegate.watchDetail(book: bookResult)
         }
+    }
+    
+    func resetResults(){
+        bookViewModels = [ [], [], [], [] ]
+    }
+    
+    func resetAndShow() {
+        self.resetResults()
+        self.delegate?.searchResult(self)
     }
     
 }
@@ -62,5 +65,4 @@ protocol SearchViewModelDelegate: class {
 
 protocol SearchViewModelRoutingDelegate: class {
     func watchDetail(book: BookResult)
-    func showCommentsView(book: BookResult)
 }

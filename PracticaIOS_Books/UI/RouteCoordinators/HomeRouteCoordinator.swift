@@ -7,27 +7,36 @@
 
 import UIKit
 
-class HomeRouteCoordinator: HomeViewModelRoutingDelegate {
+class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate,CommentsViewModelRoutingDelegate {
+    
     
     private let navigationController: UINavigationController
     let bookManager: BookManager
     var rootViewController: UIViewController {
         return navigationController
     }
+
+    // CommentsViewModelRoutingDelegate: From Comments to AddComment
+    func addComment(_: CommentsViewModel) {
+        //TODO
+    }
     
+    // CommentsViewModelRoutingDelegate: From Comments to CommentDetail
+    func showCommentDetail(_: CommentsViewModel) {
+        //TODO
+    }
+    
+    // DetailViewModelRoutingDelegate: From Detail to Comments
     func showCommentsView(book: BookResult) {
         let vm = CommentsViewModel(bookManager: bookManager)
         vm.routingDelegate = self
         let vc2: CommentsViewController = CommentsViewController(viewModel: vm)
         navigationController.pushViewController(vc2, animated: true)
     }
+    
+    // SearchViewModelRoutingDelegate: From Search to Detail
     func watchDetail(book: BookResult) {
-        var vm: DetailViewModel;
-        if let isbn = book.primary_isbn10, isbn != "None", isbn != "" {
-            vm = DetailViewModel(bookManager: bookManager, isbn: book.primary_isbn10!)
-        }else{
-            vm = DetailViewModel(bookManager: bookManager, bookResult: book)
-        }
+        let vm = DetailViewModel(bookManager: bookManager, bookResult: book)
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

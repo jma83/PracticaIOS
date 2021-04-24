@@ -39,13 +39,14 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
         super.viewDidLoad()
     }
     
-    func bookDetail(_: DetailViewModel, book: BookResult) {
+    func bookDetailResult(_: DetailViewModel) {
         //setinfo
-        DispatchQueue.main.async { [self] in
-            self.titleText.text = book.title
-            self.authorText.text = book.author
-            self.descriptionText.text = book.description
-            if let imageURL = book.book_image {
+        let book = self.viewModel.bookViewModel?.book
+        DispatchQueue.main.async {
+            self.titleText.text = book?.title
+            self.authorText.text = book?.author
+            self.descriptionText.text = book?.description
+            if let imageURL = book?.book_image {
                 let url = URL(string: imageURL)
                 self.downloadImage(from: url!)
             }

@@ -17,7 +17,7 @@ class CommentsViewModel: BookManagerDelegate {
     let bookManager: BookManager
     var bookViewModel: BookViewModel?
     weak var delegate: CommentsViewModel?
-    weak var routingDelegate: HomeViewModelRoutingDelegate?
+    weak var routingDelegate: CommentsViewModelRoutingDelegate?
     
     init(bookManager: BookManager) {
         self.bookManager = bookManager
@@ -31,5 +31,6 @@ protocol CommentsViewModelDelegate: class {
 }
 
 protocol CommentsViewModelRoutingDelegate: class {
-    func showCommentsView(_: DetailViewModel)
+    func addComment(_: CommentsViewModel)
+    func showCommentDetail(_: CommentsViewModel)
 }

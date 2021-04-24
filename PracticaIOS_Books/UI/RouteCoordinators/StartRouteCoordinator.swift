@@ -23,7 +23,7 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate {
     }
     
     func userAccessAllowed() {
-        self.mainRouteCoordinator = MainRouteCoordinator()
+        self.mainRouteCoordinator = MainRouteCoordinator(userManager: userManager, bookManager: bookManager)
         if let mainRouteCoordinator = mainRouteCoordinator {
             rootViewController.present(mainRouteCoordinator.rootViewController, animated: true, completion: nil)
         }
@@ -33,13 +33,15 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate {
     private var mainRouteCoordinator: MainRouteCoordinator?
     
     private let userManager: UserManager
-    
+    private let bookManager: BookManager
+
     var rootViewController: UIViewController {
         return navigationController
     }
     
-    init() {
-        userManager = UserManager()
+    init(userManager: UserManager, bookManager: BookManager) {
+        self.userManager = userManager
+        self.bookManager = bookManager
         let welcomeViewModel = WelcomeViewModel(userManager: userManager)
         let welcomeViewController = WelcomeViewController(viewModel: welcomeViewModel)
         navigationController = UINavigationController(rootViewController: welcomeViewController)

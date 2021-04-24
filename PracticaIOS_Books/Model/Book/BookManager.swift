@@ -56,10 +56,12 @@ class BookManager {
         let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=1"
         bookGoogle.getResponse(str: url, completition2: { result in
             let r = result!.response?.items.first
+            var bookresult: BookResult?
             if let r = r {
-                let bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
-                self.detailDelegate?.bookDetail(self, bookResult: bookresult)
+                bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
             }
+            self.detailDelegate?.bookDetail(self, bookResult: bookresult)
+
             
         })
     }
@@ -97,9 +99,8 @@ protocol BookManagerDelegate: class {
     func bookChanged(_: BookManager)
 }
 protocol BookManagerDetailDelegate: class {
-    func bookDetail(_:BookManager, bookResult: BookResult)
+    func bookDetail(_: BookManager, bookResult: BookResult?)
 }
 protocol BookManagerSearchDelegate: class {
-    func bookDetail(_:BookManager, bookResult: BookResult)
-    func searchBookResult(_:BookManager, bookResult: [BookResult])
+    func searchBookResult(_: BookManager, bookResult: [BookResult])
 }

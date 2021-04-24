@@ -8,25 +8,6 @@
 import UIKit
 
 class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDelegate, SearchViewModelDelegate  {
-    func searchResult(_: SearchViewModel) {
-        result = true
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
-        
-    func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
-        //onclick
-    }
-    
-    
-    func bookChanged(_: SearchViewModel) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
-    
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -55,12 +36,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
         fatalError("init(coder:) has not been implemented")
     }
     
-    /*func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.count > 2 && result {
-            result = false
-            viewModel.searchBook(text: searchText)
-        }
-    }*/
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let text = searchBar.text
         if let text = text {
@@ -68,6 +43,30 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
                 result = false
                 viewModel.searchBook(text: text)
             }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        viewModel.resetAndShow()
+    }
+    
+    
+    func searchResult(_: SearchViewModel) {
+        result = true
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    func bookChanged(_: SearchViewModel) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+        
+    func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
+        if let vm = homeCell.viewModel {
+            viewModel.bookDetailRouting(bookResult: vm.book)
         }
     }
 

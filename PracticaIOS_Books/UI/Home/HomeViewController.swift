@@ -37,6 +37,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(clickNewBooks))
         viewModel.getHomeBooks()
         title = "Home"
     }
@@ -86,10 +87,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    @objc func clickNewBooks(_ sender: Any) {
+        viewModel.getHomeBooks()
+        
+    }
+    
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
-        viewModel.bookDetail(bookResult: homeCell.viewModel!.book)
-        /*collectionCellEvent=homeCell
-        performSegue(withIdentifier: "homeToDetail", sender: self)*/
+        if let vm = homeCell.viewModel {
+            viewModel.bookDetailRouting(bookResult: vm.book)
+        }
     }
 
 }
