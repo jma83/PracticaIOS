@@ -14,6 +14,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     @IBOutlet weak var titleText: UILabel!
     @IBOutlet weak var authorText: UILabel!
     @IBOutlet weak var descriptionText: UILabel!
+    @IBOutlet weak var dateText: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var myListButton: UIButton!
     @IBOutlet weak var commentsButton: UIButton!
@@ -43,9 +44,22 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
         //setinfo
         let book = self.viewModel.bookViewModel?.book
         DispatchQueue.main.async {
-            self.titleText.text = book?.title
-            self.authorText.text = book?.author
-            self.descriptionText.text = book?.description
+            if let title = book?.title {
+                self.titleText.text = "Title: \(title)"
+            }
+            
+            if let author = book?.author {
+                self.authorText.text = "Author: \(author)"
+            }
+            
+            if let date = book?.created_date {
+                self.dateText.text = "Publish date: \(date)"
+            }
+            
+            if let descrip = book?.description{
+                self.descriptionText.text = descrip
+            }
+            
             if let imageURL = book?.book_image {
                 let url = URL(string: imageURL)
                 self.downloadImage(from: url!)
@@ -70,4 +84,15 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
         }
     }
 
+    @IBAction func clickCommentsButton(_ sender: Any) {
+        self.viewModel.showComments()
+    }
+    
+    @IBAction func clickLikeButton(_ sender: Any) {
+        
+    }
+    
+    @IBAction func clickAddListButton(_ sender: Any) {
+        
+    }
 }

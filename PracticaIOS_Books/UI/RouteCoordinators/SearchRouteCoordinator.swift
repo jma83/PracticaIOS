@@ -35,6 +35,12 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
         //TODO
     }
     
+    // DetailViewModelRoutingDelegate: From Detail to Lists
+    //Redirect to New RouteCoordinator! -> AddToExistingList (Modal)
+    func showAddList(book: BookResult) {
+        //TODO
+    }
+    
     // DetailViewModelRoutingDelegate: From Detail to Comments
     func showCommentsView(book: BookResult) {
         let vm = CommentsViewModel(bookManager: bookManager)
@@ -50,4 +56,5 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
+
 }

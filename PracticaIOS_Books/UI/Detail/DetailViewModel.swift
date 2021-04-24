@@ -23,7 +23,7 @@ class DetailViewModel: BookManagerDetailDelegate {
     }
     
     func bookDetail(_: BookManager, bookResult: BookResult?) {
-        if let result = bookResult, checkValidResult(property: result.title) {
+        if let result = bookResult, checkValidResult(property: result.title), self.checkValidResult(property: self.bookViewModel?.book.primary_isbn10) {
             self.bookViewModel = BookViewModel(book: result)
             delegate?.bookDetailResult(self)
             return
@@ -31,23 +31,17 @@ class DetailViewModel: BookManagerDetailDelegate {
         self.loadDefaultBook()
     }
     
-    func showComments() {
-        if let bookViewModel = bookViewModel {
-            routingDelegate?.showCommentsView(book: bookViewModel.book)
-        }
-    }
-    
+
     func loadBook(){
-        if let isbn = self.bookViewModel?.book.primary_isbn10, self.checkValidResult(property: isbn) {
+        if let isbn = self.bookViewModel?.book.primary_isbn10 {
             self.bookManager.getBookDetail(isbn: isbn)
-        }else{
-            self.loadDefaultBook()
         }
     }
     
     func loadDefaultBook(){
         if let book = self.bookViewModel?.book {
-            self.bookDetail(bookManager, bookResult: book)
+            self.bookViewModel = BookViewModel(book: book)
+            delegate?.bookDetailResult(self)
         }
     }
     
@@ -58,6 +52,22 @@ class DetailViewModel: BookManagerDetailDelegate {
         
         return false
     }
+    
+    func likeBook() {
+        
+    }
+    
+    func showComments() {
+        if let bookViewModel = bookViewModel {
+            routingDelegate?.showCommentsView(book: bookViewModel.book)
+        }
+    }
+    
+    func addBookToList() {
+        if let bookViewModel = bookViewModel {
+            routingDelegate?.showAddList(book: bookViewModel.book)
+        }
+    }
 }
 
 protocol DetailViewModelDelegate: class {
@@ -66,4 +76,5 @@ protocol DetailViewModelDelegate: class {
 
 protocol DetailViewModelRoutingDelegate: class {
     func showCommentsView(book: BookResult)
+    func showAddList(book: BookResult)
 }

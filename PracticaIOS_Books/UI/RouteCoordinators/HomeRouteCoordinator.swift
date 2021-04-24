@@ -9,7 +9,6 @@ import UIKit
 
 class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate,CommentsViewModelRoutingDelegate {
     
-    
     private let navigationController: UINavigationController
     let bookManager: BookManager
     var rootViewController: UIViewController {
@@ -33,14 +32,21 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         let vc2: CommentsViewController = CommentsViewController(viewModel: vm)
         navigationController.pushViewController(vc2, animated: true)
     }
+    // DetailViewModelRoutingDelegate: From Detail to Lists
+    //Redirect to New RouteCoordinator! -> AddToExistingList  (Modal)
+    func showAddList(book: BookResult) {
+        //TODO
+    }
     
-    // SearchViewModelRoutingDelegate: From Search to Detail
+    // HomeViewModelRoutingDelegate: From Home to Detail
     func watchDetail(book: BookResult) {
         let vm = DetailViewModel(bookManager: bookManager, bookResult: book)
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    
     
     init(bookManager: BookManager) {
         self.bookManager = bookManager
@@ -51,3 +57,4 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         homeViewModel.routingDelegate = self
     }
 }
+ 
