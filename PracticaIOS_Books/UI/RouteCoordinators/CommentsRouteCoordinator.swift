@@ -13,6 +13,7 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate {
     private var navigationController: UINavigationController
     let bookManager: BookManager
     let userManager: UserManager
+    let commentManager: CommentManager
     //let listManager: ListManager
     // REEPLACE LISTMANAGER FOR COMMENTSMANAGER
     weak var delegate: CommentsRouteCoordinatorDelegate?
@@ -24,8 +25,8 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate {
     init(bookManager: BookManager, userManager: UserManager) {
         self.bookManager = bookManager
         self.userManager = userManager
-        //self.listManager = ListManager()
-        let vm = CommentsViewModel(bookManager: bookManager)
+        self.commentManager = CommentManager()
+        let vm = CommentsViewModel(commentManager: commentManager, userManager: userManager)
         let vc = CommentsViewController(viewModel: vm)
         
         
@@ -33,7 +34,7 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate {
         vm.routingDelegate = self
     }
     
-    func closeComments(){
+    func closeComments(_: CommentsViewModel){
         delegate?.closeComments()
     }
     
@@ -44,6 +45,8 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate {
     func showCommentDetail(_: CommentsViewModel) {
         //TODO
     }
+    
+    
 }
 
 protocol CommentsRouteCoordinatorDelegate: class {

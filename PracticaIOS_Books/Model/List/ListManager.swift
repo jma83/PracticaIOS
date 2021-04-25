@@ -15,10 +15,11 @@ struct ListResult {
 
 class ListManager{
     private let context: NSManagedObjectContext
-    private let LIST_ENTITY = "User"
+    private let LIST_ENTITY = "List"
     private let DOMAIN = "es.upsa.mimo.PracticaIOS-Books"
 
     weak var delegate: ListManagerDelegate?
+    weak var delegateAdd: AddListManagerDelegate?
     private let GENERIC_ERROR = "Error al recuperar listas, intentalo de nuevo más tarde"
     private let ALREADY_EXISTS_ERROR = "Error la lista ya existe"    
     
@@ -44,7 +45,7 @@ class ListManager{
             try context.execute(asynchronousRequest)
         }catch let error {
             print("Error: \(error)")
-            self.delegate?.listError(self, error: GENERIC_ERROR)
+            self.delegateAdd?.listError(self, error: GENERIC_ERROR)
         }
    }
     
@@ -71,7 +72,7 @@ class ListManager{
         
         self.fetchByName(nameList: name, completionHandler: { datos in
             if datos.count != 0 {
-                self.delegate?.listError(self, error: self.ALREADY_EXISTS_ERROR)
+                self.delegateAdd?.listError(self, error: self.ALREADY_EXISTS_ERROR)
                 return
             }
             
@@ -84,7 +85,7 @@ class ListManager{
 
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.saveContext()
-            self.delegate?.listUpdatedResult(self, didListChange: list)
+            self.delegateAdd?.listUpdatedResult(self, didListChange: list)
             
         })
         
@@ -94,7 +95,7 @@ class ListManager{
         
         self.fetchByName(nameList: name, completionHandler: { datos in
             if datos.count != 0 {
-                self.delegate?.listError(self, error: self.ALREADY_EXISTS_ERROR)
+                self.delegateAdd?.listError(self, error: self.ALREADY_EXISTS_ERROR)
                 return
             }
             
@@ -107,7 +108,7 @@ class ListManager{
 
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.saveContext()
-            self.delegate?.listUpdatedResult(self, didListChange: list)
+            self.delegateAdd?.listUpdatedResult(self, didListChange: list)
             
         })
         
@@ -115,7 +116,10 @@ class ListManager{
    
 }
 
-protocol ListManagerDelegate: class {
+protocol AddListManagerDelegate: class {
     func listUpdatedResult(_: ListManager, didListChange list: List)
     func listError(_: ListManager, error: String)
+}
+protocol ListManagerDelegate: class {
+    func listsResult(_: ListManager, didListChange list: List)
 }

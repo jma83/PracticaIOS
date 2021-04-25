@@ -32,7 +32,6 @@ class SearchViewModel: BookManagerSearchDelegate {
     init(bookManager: BookManager) {
         self.bookManager = bookManager
         self.bookManager.searchDelegate = self
-        
     }
     
     func searchBook(text: String){

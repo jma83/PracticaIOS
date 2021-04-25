@@ -57,16 +57,8 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         return dateFormatter
     }
     
-    func userSession(_: RegisterViewModel, didUserChange user: User) {
-        let homeViewController = storyboard?.instantiateViewController(withIdentifier: "NavHomeViewController") as! UINavigationController
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = homeViewController
-        homeViewController.modalPresentationStyle = .overCurrentContext
-        present(homeViewController, animated: true)
-    }
-    
     func userRegisterError(_: RegisterViewModel, error: String) {
-        present(ModalViewController().showAlert(title: "Error", message: error), animated: true)
+        present(ModalView().showAlert(title: "Error", message: error), animated: true)
     }
 
 }

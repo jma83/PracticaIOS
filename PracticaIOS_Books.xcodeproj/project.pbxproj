@@ -39,7 +39,7 @@
 		1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */; };
 		1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */; };
 		1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */; };
-		1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalViewController.swift */; };
+		1FB091A12610845B002E9221 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalView.swift */; };
 		1FB66732262763B80005F4B9 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66731262763B80005F4B9 /* WelcomeViewController.xib */; };
 		1FB66737262764790005F4B9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66736262764790005F4B9 /* LoginViewController.xib */; };
 		1FB6673C262764DC0005F4B9 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6673B262764DC0005F4B9 /* RegisterViewController.xib */; };
@@ -70,6 +70,11 @@
 		1FC42A22263592E700DD1B07 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */; };
 		1FC42A23263592E700DD1B07 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */; };
 		1FC42A282635CE3600DD1B07 /* CommentsRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */; };
+		1FC42A312635D5EA00DD1B07 /* CreateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A2F2635D5EA00DD1B07 /* CreateListViewController.swift */; };
+		1FC42A322635D5EA00DD1B07 /* CreateListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC42A302635D5EA00DD1B07 /* CreateListViewController.xib */; };
+		1FC42A372635D99300DD1B07 /* CreateListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A362635D99300DD1B07 /* CreateListViewModel.swift */; };
+		1FC42A4726360FA600DD1B07 /* CommentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A4626360FA600DD1B07 /* CommentManager.swift */; };
+		1FC42A4C2636130700DD1B07 /* CommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A4B2636130700DD1B07 /* CommentViewModel.swift */; };
 		1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -129,7 +134,7 @@
 		1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		1FB091A02610845B002E9221 /* ModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalViewController.swift; sourceTree = "<group>"; };
+		1FB091A02610845B002E9221 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		1FB66731262763B80005F4B9 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		1FB66736262764790005F4B9 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		1FB6673B262764DC0005F4B9 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -160,6 +165,11 @@
 		1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FC42A2F2635D5EA00DD1B07 /* CreateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListViewController.swift; sourceTree = "<group>"; };
+		1FC42A302635D5EA00DD1B07 /* CreateListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateListViewController.xib; sourceTree = "<group>"; };
+		1FC42A362635D99300DD1B07 /* CreateListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListViewModel.swift; sourceTree = "<group>"; };
+		1FC42A4626360FA600DD1B07 /* CommentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentManager.swift; sourceTree = "<group>"; };
+		1FC42A4B2636130700DD1B07 /* CommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentViewModel.swift; sourceTree = "<group>"; };
 		1FC540052630AC93003DC820 /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -345,6 +355,7 @@
 				1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */,
 				1F6B44FB2619257C004D1446 /* BookViewModel.swift */,
 				1FC42A0E263575DA00DD1B07 /* ListViewModel.swift */,
+				1FC42A4B2636130700DD1B07 /* CommentViewModel.swift */,
 			);
 			path = GenericViewModels;
 			sourceTree = "<group>";
@@ -352,7 +363,7 @@
 		1F91F1342619B70900B063B3 /* Modal */ = {
 			isa = PBXGroup;
 			children = (
-				1FB091A02610845B002E9221 /* ModalViewController.swift */,
+				1FB091A02610845B002E9221 /* ModalView.swift */,
 			);
 			path = Modal;
 			sourceTree = "<group>";
@@ -429,6 +440,9 @@
 				1FC429F72635628A00DD1B07 /* AddToListViewModel.swift */,
 				1FC429FC263568A500DD1B07 /* ListTableViewCell.swift */,
 				1FC429FD263568A500DD1B07 /* ListTableViewCell.xib */,
+				1FC42A2F2635D5EA00DD1B07 /* CreateListViewController.swift */,
+				1FC42A302635D5EA00DD1B07 /* CreateListViewController.xib */,
+				1FC42A362635D99300DD1B07 /* CreateListViewModel.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -460,6 +474,7 @@
 		1FC42A0526356F3B00DD1B07 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				1FC42A4626360FA600DD1B07 /* CommentManager.swift */,
 			);
 			path = Comment;
 			sourceTree = "<group>";
@@ -579,6 +594,7 @@
 				1FB6674B262768890005F4B9 /* DetailViewController.xib in Resources */,
 				1F2A1EE6260400F500933CDB /* Assets.xcassets in Resources */,
 				1FB8795526286EA200BD1B8D /* Main.storyboard in Resources */,
+				1FC42A322635D5EA00DD1B07 /* CreateListViewController.xib in Resources */,
 				1FB66732262763B80005F4B9 /* WelcomeViewController.xib in Resources */,
 				1FB66741262765A90005F4B9 /* HomeViewController.xib in Resources */,
 				1F98FF1F262B3729007D637C /* SearchViewController.xib in Resources */,
@@ -624,12 +640,16 @@
 				1FC42A282635CE3600DD1B07 /* CommentsRouteCoordinator.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
 				1F13D59626192B3B00A7AD97 /* HomeViewModel.swift in Sources */,
+				1FC42A4C2636130700DD1B07 /* CommentViewModel.swift in Sources */,
 				1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */,
 				1F6B44E72618B5A9004D1446 /* BookGoogle.swift in Sources */,
 				1FB733A4262E009700CF70E4 /* SearchRouteCoordinator.swift in Sources */,
 				1F57D3662618752C00FC26D0 /* BookManager.swift in Sources */,
 				1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */,
 				1FB8796B2628C81B00BD1B8D /* CommentsViewModel.swift in Sources */,
+				1FC42A372635D99300DD1B07 /* CreateListViewModel.swift in Sources */,
+				1FC42A4726360FA600DD1B07 /* CommentManager.swift in Sources */,
+				1FC42A312635D5EA00DD1B07 /* CreateListViewController.swift in Sources */,
 				1F6B44E22618B58B004D1446 /* BookNYT.swift in Sources */,
 				1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */,
 				1F98FF27262B3E57007D637C /* SearchViewModel.swift in Sources */,
@@ -649,7 +669,7 @@
 				1FC42A0726356F9100DD1B07 /* ListManager.swift in Sources */,
 				1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */,
 				1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */,
-				1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */,
+				1FB091A12610845B002E9221 /* ModalView.swift in Sources */,
 				1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */,
 				1F6B44D426188BB3004D1446 /* HomeViewController.swift in Sources */,
 				1F2A1EDF260400F400933CDB /* SceneDelegate.swift in Sources */,

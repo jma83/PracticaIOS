@@ -23,6 +23,10 @@ class AddToListViewController: UIViewController, UITableViewDelegate, UITableVie
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createListEvent))
     }
     
+    override func viewDidAppear(_ animated: Bool){
+        self.viewModel.retrieveLists()
+    }
+    
     init(viewModel: AddToListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -66,7 +70,7 @@ class AddToListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @objc func createListEvent(){
-        
+        self.viewModel.createListRouting()
     }
 
 }

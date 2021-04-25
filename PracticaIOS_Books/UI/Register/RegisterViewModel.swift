@@ -43,6 +43,5 @@ class RegisterViewModel: UserManagerDelegate {
     
 }
 protocol RegisterViewModelDelegate: class {
-    func userSession(_: RegisterViewModel, didUserChange user: User)
     func userRegisterError(_: RegisterViewModel, error: String)
 }

@@ -8,7 +8,8 @@
 import Foundation
 
 
-class AddToListViewModel {
+class AddToListViewModel: ListManagerDelegate {
+    
     var listViewModels: [ListViewModel] = []
     let listManager: ListManager
     let userManager: UserManager
@@ -18,7 +19,12 @@ class AddToListViewModel {
     init(listManager: ListManager, userManager: UserManager) {
         self.listManager = listManager
         self.userManager = userManager
+        self.retrieveLists()
         
+    }
+    
+    func retrieveLists() {
+        //TODO
         // call userManager to retrieve current user
         // call listManagerMethod to retrieve Lists for this user
         var list = ListResult()
@@ -38,7 +44,13 @@ class AddToListViewModel {
         self.routingDelegate?.closeAddToList()
     }
     
+    func listsResult(_: ListManager, didListChange list: List) {
+        //TODO
+        //Event recieved from 
+    }
+    
     func addBookToList(listViewModel: ListViewModel){
+        //TODO
         // call listManagerMethod or bookManager to add book to selected list
         
         

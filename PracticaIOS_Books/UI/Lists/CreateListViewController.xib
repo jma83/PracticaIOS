@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreateListViewController" customModule="PracticaIOS_Books" customModuleProvider="target">
+            <connections>
+                <outlet property="createListButton" destination="UNm-ur-GXS" id="3Hd-7T-V5a"/>
+                <outlet property="nameTextField" destination="K99-Jr-fMa" id="fqg-Ls-oeg"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Example: Fantasy books" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K99-Jr-fMa">
+                    <rect key="frame" x="60" y="137" width="284" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNm-ur-GXS">
+                    <rect key="frame" x="60" y="211" width="284" height="30"/>
+                    <color key="backgroundColor" name="AccentColor"/>
+                    <color key="tintColor" red="1" green="0.99578061139999996" blue="0.97255397229999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" title="Create"/>
+                    <connections>
+                        <action selector="clickCreateButton:" destination="-1" eventType="touchUpInside" id="fEI-db-M7j"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="List name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hak-Hf-gUY">
+                    <rect key="frame" x="60" y="104" width="284" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="hak-Hf-gUY" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="60" id="3rz-64-lAo"/>
+                <constraint firstItem="UNm-ur-GXS" firstAttribute="top" secondItem="K99-Jr-fMa" secondAttribute="bottom" constant="40" id="O0i-dW-Oxe"/>
+                <constraint firstItem="UNm-ur-GXS" firstAttribute="trailing" secondItem="hak-Hf-gUY" secondAttribute="trailing" id="Pnv-uP-Eyh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hak-Hf-gUY" secondAttribute="trailing" constant="70" id="X9B-Di-lWv"/>
+                <constraint firstItem="hak-Hf-gUY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="60" id="gew-8R-ydI"/>
+                <constraint firstItem="K99-Jr-fMa" firstAttribute="trailing" secondItem="hak-Hf-gUY" secondAttribute="trailing" id="m5Q-fQ-eYS"/>
+                <constraint firstItem="K99-Jr-fMa" firstAttribute="leading" secondItem="hak-Hf-gUY" secondAttribute="leading" id="sVo-yP-jIx"/>
+                <constraint firstItem="UNm-ur-GXS" firstAttribute="leading" secondItem="hak-Hf-gUY" secondAttribute="leading" id="tLg-Gn-28n"/>
+                <constraint firstItem="K99-Jr-fMa" firstAttribute="top" secondItem="hak-Hf-gUY" secondAttribute="bottom" constant="12" id="y9x-wg-8jd"/>
+            </constraints>
+            <point key="canvasLocation" x="114" y="104"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

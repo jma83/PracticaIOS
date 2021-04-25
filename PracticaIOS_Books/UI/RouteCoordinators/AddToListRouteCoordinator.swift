@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate {
+class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListViewModelRoutingDelegate {
     private var navigationController: UINavigationController
     let bookManager: BookManager
     let userManager: UserManager
@@ -35,8 +35,18 @@ class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate {
     }
     
     func createList(){
-        //TODO
+        let vm = CreateListViewModel(listManager: listManager, userManager: userManager)
+        vm.routingDelegate = self
+        let vc = CreateListViewController(viewModel: vm)
+        navigationController.pushViewController(vc, animated: true)
     }
+    
+    func createListResult(){
+        //TODO
+        //pop and update
+        navigationController.popViewController(animated: true)
+    }
+    
 }
 
 protocol AddToListRouteCoordinatorDelegate: class {
