@@ -23,8 +23,8 @@ class MainRouteCoordinator {
     
     init(userManager: UserManager, bookManager: BookManager) {
         
-        homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager)
-        searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager)
+        homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager, userManager: userManager)
         //listsRouteCoordinator = ListsRouteCoordinator(bookManager: bookManager)
         //likeRouteCoordinator = LikeRouteCoordinator(bookManager: bookManager)
     

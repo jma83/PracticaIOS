@@ -59,6 +59,17 @@
 		1FB879772628CB9900BD1B8D /* AddCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB879752628CB9900BD1B8D /* AddCommentViewController.xib */; };
 		1FB879852628F48A00BD1B8D /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB879832628F48900BD1B8D /* CommentsCell.swift */; };
 		1FB879862628F48A00BD1B8D /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB879842628F48900BD1B8D /* CommentsCell.xib */; };
+		1FC429E826355CE000DD1B07 /* AddToListRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC429E726355CE000DD1B07 /* AddToListRouteCoordinator.swift */; };
+		1FC429EF2635627800DD1B07 /* AddToListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC429ED2635627800DD1B07 /* AddToListViewController.swift */; };
+		1FC429F02635627800DD1B07 /* AddToListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC429EE2635627800DD1B07 /* AddToListViewController.xib */; };
+		1FC429F82635628A00DD1B07 /* AddToListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC429F72635628A00DD1B07 /* AddToListViewModel.swift */; };
+		1FC429FE263568A500DD1B07 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC429FC263568A500DD1B07 /* ListTableViewCell.swift */; };
+		1FC429FF263568A500DD1B07 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC429FD263568A500DD1B07 /* ListTableViewCell.xib */; };
+		1FC42A0726356F9100DD1B07 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A0626356F9100DD1B07 /* ListManager.swift */; };
+		1FC42A0F263575DA00DD1B07 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A0E263575DA00DD1B07 /* ListViewModel.swift */; };
+		1FC42A22263592E700DD1B07 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */; };
+		1FC42A23263592E700DD1B07 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */; };
+		1FC42A282635CE3600DD1B07 /* CommentsRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */; };
 		1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +149,17 @@
 		1FB879752628CB9900BD1B8D /* AddCommentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCommentViewController.xib; sourceTree = "<group>"; };
 		1FB879832628F48900BD1B8D /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		1FB879842628F48900BD1B8D /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
+		1FC429E726355CE000DD1B07 /* AddToListRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToListRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FC429ED2635627800DD1B07 /* AddToListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToListViewController.swift; sourceTree = "<group>"; };
+		1FC429EE2635627800DD1B07 /* AddToListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddToListViewController.xib; sourceTree = "<group>"; };
+		1FC429F72635628A00DD1B07 /* AddToListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToListViewModel.swift; sourceTree = "<group>"; };
+		1FC429FC263568A500DD1B07 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		1FC429FD263568A500DD1B07 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		1FC42A0626356F9100DD1B07 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
+		1FC42A0E263575DA00DD1B07 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FC540052630AC93003DC820 /* MyLibrary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyLibrary.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,7 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				1F98FF1B262B3660007D637C /* Search */,
-				1FB879642628C4D700BD1B8D /* Likes */,
+				1FB879642628C4D700BD1B8D /* Like */,
 				1FB879632628C4BF00BD1B8D /* Lists */,
 				1FB879612628C46A00BD1B8D /* Profile */,
 				1FB879602628C44D00BD1B8D /* Comments */,
@@ -242,6 +264,9 @@
 		1F91F1272619B60200B063B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1FC42A0526356F3B00DD1B07 /* Comment */,
+				1FC42A0426356F3000DD1B07 /* Like */,
+				1FC42A0326356F1600DD1B07 /* List */,
 				1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */,
 				1F91F1292619B63C00B063B3 /* Book */,
 				1F91F1282619B63200B063B3 /* User */,
@@ -319,6 +344,7 @@
 			children = (
 				1F9A9A6B260F556D0002CD72 /* UserViewModel.swift */,
 				1F6B44FB2619257C004D1446 /* BookViewModel.swift */,
+				1FC42A0E263575DA00DD1B07 /* ListViewModel.swift */,
 			);
 			path = GenericViewModels;
 			sourceTree = "<group>";
@@ -366,8 +392,10 @@
 				1FB733B2262E04D000CF70E4 /* MainRouteCoordinator.swift */,
 				1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */,
 				1FB733A3262E009700CF70E4 /* SearchRouteCoordinator.swift */,
-				1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */,
 				1FB733AD262E012300CF70E4 /* LikeRouteCoordinator.swift */,
+				1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */,
+				1FC429E726355CE000DD1B07 /* AddToListRouteCoordinator.swift */,
+				1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */,
 			);
 			path = RouteCoordinators;
 			sourceTree = "<group>";
@@ -396,15 +424,44 @@
 		1FB879632628C4BF00BD1B8D /* Lists */ = {
 			isa = PBXGroup;
 			children = (
+				1FC429ED2635627800DD1B07 /* AddToListViewController.swift */,
+				1FC429EE2635627800DD1B07 /* AddToListViewController.xib */,
+				1FC429F72635628A00DD1B07 /* AddToListViewModel.swift */,
+				1FC429FC263568A500DD1B07 /* ListTableViewCell.swift */,
+				1FC429FD263568A500DD1B07 /* ListTableViewCell.xib */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
 		};
-		1FB879642628C4D700BD1B8D /* Likes */ = {
+		1FB879642628C4D700BD1B8D /* Like */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Likes;
+			path = Like;
+			sourceTree = "<group>";
+		};
+		1FC42A0326356F1600DD1B07 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */,
+				1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */,
+				1FC42A0626356F9100DD1B07 /* ListManager.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		1FC42A0426356F3000DD1B07 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		1FC42A0526356F3B00DD1B07 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -513,6 +570,8 @@
 				1FB879702628C8D900BD1B8D /* CommentsViewController.xib in Resources */,
 				1FB66746262766A90005F4B9 /* HomeCell.xib in Resources */,
 				1FB667532627A7C90005F4B9 /* HomeCollectionCell.xib in Resources */,
+				1FC429F02635627800DD1B07 /* AddToListViewController.xib in Resources */,
+				1FC429FF263568A500DD1B07 /* ListTableViewCell.xib in Resources */,
 				1FB879862628F48A00BD1B8D /* CommentsCell.xib in Resources */,
 				1FB66737262764790005F4B9 /* LoginViewController.xib in Resources */,
 				1FB6673C262764DC0005F4B9 /* RegisterViewController.xib in Resources */,
@@ -554,12 +613,15 @@
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
 				1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */,
 				1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */,
+				1FC42A22263592E700DD1B07 /* List+CoreDataClass.swift in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
+				1FC42A0F263575DA00DD1B07 /* ListViewModel.swift in Sources */,
 				1F30B26126333C5900CF0223 /* User+CoreDataProperties.swift in Sources */,
 				1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */,
 				1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */,
+				1FC42A282635CE3600DD1B07 /* CommentsRouteCoordinator.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
 				1F13D59626192B3B00A7AD97 /* HomeViewModel.swift in Sources */,
 				1F9A9A71260F64A50002CD72 /* LoginViewModel.swift in Sources */,
@@ -572,13 +634,19 @@
 				1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */,
 				1F98FF27262B3E57007D637C /* SearchViewModel.swift in Sources */,
 				1F10AC38261E1BBF00889887 /* WelcomeViewModel.swift in Sources */,
+				1FC42A23263592E700DD1B07 /* List+CoreDataProperties.swift in Sources */,
 				1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */,
+				1FC429E826355CE000DD1B07 /* AddToListRouteCoordinator.swift in Sources */,
 				1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */,
 				1FB879662628C71F00BD1B8D /* CommentsViewController.swift in Sources */,
 				1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */,
+				1FC429F82635628A00DD1B07 /* AddToListViewModel.swift in Sources */,
 				1F6B44DD2618B468004D1446 /* HomeCell.swift in Sources */,
+				1FC429EF2635627800DD1B07 /* AddToListViewController.swift in Sources */,
 				1FB733AE262E012300CF70E4 /* LikeRouteCoordinator.swift in Sources */,
 				1F2A1EE1260400F400933CDB /* WelcomeViewController.swift in Sources */,
+				1FC429FE263568A500DD1B07 /* ListTableViewCell.swift in Sources */,
+				1FC42A0726356F9100DD1B07 /* ListManager.swift in Sources */,
 				1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */,
 				1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */,
 				1FB091A12610845B002E9221 /* ModalViewController.swift in Sources */,

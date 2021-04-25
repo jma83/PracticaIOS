@@ -7,17 +7,21 @@
 
 import UIKit
 
-class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsViewModelRoutingDelegate {
+class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate,  AddToListRouteCoordinatorDelegate {
 
     private var navigationController: UINavigationController
+    private var addToListRouteCoordinator: AddToListRouteCoordinator!
+    private var commentsRouteCoordinator: CommentsRouteCoordinator!
+
     let bookManager: BookManager
+    let userManager: UserManager
     var rootViewController: UIViewController {
         return navigationController
     }
 
-    
-    init(bookManager:BookManager) {
+    init(bookManager:BookManager, userManager: UserManager) {
         self.bookManager = bookManager
+        self.userManager = userManager
         let searchViewModel = SearchViewModel(bookManager: bookManager)
         let searchViewController = SearchViewController(viewModel: searchViewModel)
         
@@ -25,28 +29,29 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
         searchViewModel.routingDelegate = self
     }
     
-    // CommentsViewModelRoutingDelegate: From Comments to AddComment
-    func addComment(_: CommentsViewModel) {
-        //TODO
-    }
-    
-    // CommentsViewModelRoutingDelegate: From Comments to CommentDetail
-    func showCommentDetail(_: CommentsViewModel) {
-        //TODO
+    // DetailViewModelRoutingDelegate: From Detail to Comments
+    //Redirect to New RouteCoordinator! -> Comments  (Modal)
+    func showCommentsView(book: BookResult) {
+        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        rootViewController.present(commentsRouteCoordinator.rootViewController, animated: true, completion: nil)
     }
     
     // DetailViewModelRoutingDelegate: From Detail to Lists
     //Redirect to New RouteCoordinator! -> AddToExistingList (Modal)
     func showAddList(book: BookResult) {
-        //TODO
+        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        addToListRouteCoordinator.delegate = self
+        rootViewController.present(addToListRouteCoordinator.rootViewController, animated: true, completion: nil)
     }
     
-    // DetailViewModelRoutingDelegate: From Detail to Comments
-    func showCommentsView(book: BookResult) {
-        let vm = CommentsViewModel(bookManager: bookManager)
-        vm.routingDelegate = self
-        let vc2: CommentsViewController = CommentsViewController(viewModel: vm)
-        navigationController.pushViewController(vc2, animated: true)
+    // AddToListRouteCoordinatorDelegate
+    func closeAddToList() {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    // CommentsRouteCoordinatorDelegate
+    func closeComments() {
+        rootViewController.dismiss(animated: true, completion: nil)
     }
     
     // SearchViewModelRoutingDelegate: From Search to Detail

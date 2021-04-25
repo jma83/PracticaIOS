@@ -93,6 +93,6 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     @IBAction func clickAddListButton(_ sender: Any) {
-        
+        self.viewModel.addBookToList()
     }
 }

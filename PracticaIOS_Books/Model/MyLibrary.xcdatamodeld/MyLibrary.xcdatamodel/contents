@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="V1">
-    <entity name="Like" representedClassName="Like" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
+        <attribute name="descrip" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="isbn" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="List" representedClassName="List" syncable="YES" codeGenerationType="class">
-        <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="information" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-    </entity>
-    <entity name="Opinion" representedClassName="Opinion" syncable="YES" codeGenerationType="class">
+    <entity name="Comment" representedClassName="Comment" syncable="YES" codeGenerationType="class">
         <attribute name="comment" optional="YES" attributeType="String"/>
         <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="spoiler" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="like" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
     </entity>
-    <entity name="User" representedClassName="User" isAbstract="YES" syncable="YES">
+    <entity name="Like" representedClassName="Like" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book"/>
+        <relationship name="relationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+    </entity>
+    <entity name="List" representedClassName="List" syncable="YES">
+        <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book"/>
+        <relationship name="relationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -27,9 +41,10 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Like" positionX="-18" positionY="72" width="128" height="58"/>
-        <element name="List" positionX="-54" positionY="-9" width="128" height="103"/>
-        <element name="Opinion" positionX="-36" positionY="9" width="128" height="118"/>
+        <element name="Like" positionX="-18" positionY="72" width="128" height="88"/>
+        <element name="List" positionX="-54" positionY="-9" width="128" height="118"/>
+        <element name="Comment" positionX="-36" positionY="9" width="128" height="148"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Book" positionX="-36" positionY="45" width="128" height="148"/>
     </elements>
 </model>
