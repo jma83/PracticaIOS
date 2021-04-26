@@ -8,8 +8,10 @@
 import Foundation
 
 class HomeViewModel: BookManagerDelegate {
+    
     let bookManager: BookManager
-    var bookViewModels: [[BookViewModel]] = [ [], [], [] ]
+    var bookViewModels: [[BookViewModel]] = [[]]
+    var sections: [String] = []
     weak var delegate: HomeViewModelDelegate?
     weak var routingDelegate: HomeViewModelRoutingDelegate?
     init(bookManager: BookManager) {
@@ -18,23 +20,28 @@ class HomeViewModel: BookManagerDelegate {
     }
     
     func getHomeBooks(){
-        self.bookViewModels = [ [], [], [] ]
-        self.bookManager.getRelevantBooks(completition2: { result in
-            if let result = result {
-                var count = 0
-                while count <= 2 {
-                    for item in result {
-                        self.bookViewModels[count].append(BookViewModel(book: item))
-                    }
-                    count+=1
-                }
-                
-            }
-        })
+        self.bookViewModels = []
+        self.bookManager.getRelevantBooks()
     }
     
-    func bookChanged(_: BookManager) {
+    func booksChanged(_: BookManager, books: [[BookResult]]?) {
+        if let result = books {
+            var count = 0
+            self.bookViewModels = [[BookViewModel]](repeating: [], count: result.count)
+            for listCat in result {
+                for item in listCat {
+                    self.bookViewModels[count].append(BookViewModel(book: item))
+                }
+                count+=1
+            }
+        }
         delegate?.bookChanged(self)
+    }
+    
+    func booksSectionChanged(_: BookManager, sections: [String]?) {
+        if let sections = sections {
+            self.sections = sections
+        }
     }
     
     func bookDetailRouting(bookResult: BookResult) {

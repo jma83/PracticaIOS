@@ -14,7 +14,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     let viewModel: HomeViewModel
     @IBOutlet weak var trailingMenu: NSLayoutConstraint!
     @IBOutlet weak var leadingMenu: NSLayoutConstraint!
-    let sections = ["Libros relevantes", "Novedades", "Mis listas"]
     
     private var menuActive = false
     
@@ -43,7 +42,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return self.viewModel.sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,7 +60,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
+        return self.viewModel.sections[section]
     }
     
     func bookChanged(_: HomeViewModel) {

@@ -33,21 +33,26 @@ class BookManager {
         bookGoogle = BookGoogle()
     }
     
-    func getRelevantBooks(completition2: @escaping ([BookResult]?) -> ()){
+    func getRelevantBooks(){
         
         bookNYT.getResponse(str: "https://api.nytimes.com/svc/books/v3/lists/overview.json", completition2: { result in
-            var bookResultArr = [BookResult]()
+            var bookResultArr: [[BookResult]] = []
+            var sectionArr: [String] = []
             let lists = result?.response?.results.lists
             if let lists = lists {
-                let count = lists.count
-                let res = Int.random(in: 0..<count)
-                
-                for book in lists[res].books {
-                    let bookresult = BookResult(title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
-                    bookResultArr.append(bookresult)
+                bookResultArr = [[BookResult]](repeating: [], count: lists.count)
+
+                var count = 0
+                for itemList in lists {
+                    for book in itemList.books {
+                        let bookresult = BookResult(title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
+                        bookResultArr[count].append(bookresult)
+                    }
+                    sectionArr.append(itemList.list_name)
+                    count+=1
                 }
-                self.delegate?.bookChanged(self)
-                completition2(bookResultArr)
+                self.delegate?.booksChanged(self, books: bookResultArr)
+                self.delegate?.booksSectionChanged(self, sections: sectionArr)
             }
         })
     }
@@ -68,7 +73,7 @@ class BookManager {
     
     func searchBook(text: String){
         let text = encodeURLParam(param: text)
-        let url = "https://www.googleapis.com/books/v1/volumes?q=\(String(describing: text))&orderBy=relevance"
+        let url = "https://www.googleapis.com/books/v1/volumes?q=\(String(describing: text))&orderBy=relevance&maxResults=30"
 
         bookGoogle.getResponse(str: url, completition2: { result in
             var bookResultArr = [BookResult]()
@@ -96,7 +101,8 @@ class BookManager {
 }
 
 protocol BookManagerDelegate: class {
-    func bookChanged(_: BookManager)
+    func booksChanged(_: BookManager, books: [[BookResult]]?)
+    func booksSectionChanged(_: BookManager, sections: [String]?)
 }
 protocol BookManagerDetailDelegate: class {
     func bookDetail(_: BookManager, bookResult: BookResult?)

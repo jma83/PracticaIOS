@@ -21,6 +21,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
         self.tableView.dataSource = self
         self.searchBar.delegate = self
         self.viewModel.delegate = self
+
         self.tableView.register(UINib(nibName: CELL_ID , bundle: nil), forCellReuseIdentifier: CELL_ID)
         // Do any additional setup after loading the view.
     }
