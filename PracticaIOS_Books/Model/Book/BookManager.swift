@@ -39,22 +39,39 @@ class BookManager {
             var bookResultArr: [[BookResult]] = []
             var sectionArr: [String] = []
             let lists = result?.response?.results.lists
+            let maxSize = 3
             if let lists = lists {
-                bookResultArr = [[BookResult]](repeating: [], count: lists.count)
-
+                bookResultArr = [[BookResult]](repeating: [], count: maxSize)
+                let arrItems = self.calcRandom(maxSize: maxSize, listSize: lists.count)
+                
                 var count = 0
+                var internalCount = 0
                 for itemList in lists {
-                    for book in itemList.books {
-                        let bookresult = BookResult(title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
-                        bookResultArr[count].append(bookresult)
+                    if arrItems.contains(count){
+                        for book in itemList.books {
+                            let bookresult = BookResult(title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
+                            bookResultArr[internalCount].append(bookresult)
+                        }
+                        internalCount+=1
+                        sectionArr.append(itemList.list_name)
                     }
-                    sectionArr.append(itemList.list_name)
                     count+=1
                 }
                 self.delegate?.booksChanged(self, books: bookResultArr)
                 self.delegate?.booksSectionChanged(self, sections: sectionArr)
             }
         })
+    }
+    
+    func calcRandom(maxSize: Int, listSize: Int) -> [Int]{
+        var arr:[Int] = []
+        while maxSize > arr.count  {
+            let result = Int.random(in: 0..<listSize)
+            if !arr.contains(result){
+                arr.append(result)
+            }
+        }
+        return arr
     }
     
     func getBookDetail(isbn: String){

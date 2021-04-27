@@ -16,9 +16,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fgx-B8-lKZ">
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fgx-B8-lKZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rMr-vp-m5E">
                             <size key="itemSize" width="128" height="190"/>
@@ -33,6 +32,12 @@
                         </connections>
                     </collectionView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="fgx-B8-lKZ" secondAttribute="bottom" id="B92-dp-7Eq"/>
+                    <constraint firstItem="fgx-B8-lKZ" firstAttribute="leading" secondItem="Me3-ca-Wx8" secondAttribute="leading" id="KWv-O5-qPT"/>
+                    <constraint firstItem="fgx-B8-lKZ" firstAttribute="top" secondItem="Me3-ca-Wx8" secondAttribute="top" id="YuT-5O-yo6"/>
+                    <constraint firstAttribute="trailing" secondItem="fgx-B8-lKZ" secondAttribute="trailing" id="mxS-ix-lNQ"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="collectionView" destination="fgx-B8-lKZ" id="H9P-sx-6d1"/>

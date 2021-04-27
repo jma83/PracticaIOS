@@ -20,9 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="-1" id="JuY-y3-CLq">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JuY-y3-CLq">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <searchBar key="tableHeaderView" contentMode="redraw" text="" placeholder="Buscar libros" showsSearchResultsButton="YES" showsCancelButton="YES" id="5NF-6q-pvk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -44,6 +43,12 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="JuY-y3-CLq" secondAttribute="bottom" id="15b-WM-aVp"/>
+                <constraint firstItem="JuY-y3-CLq" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Jb0-7P-KDx"/>
+                <constraint firstItem="JuY-y3-CLq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Jgy-d3-mUq"/>
+                <constraint firstItem="JuY-y3-CLq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="zbf-sT-Gfc"/>
+            </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="88.392857142857139"/>
         </view>
     </objects>
