@@ -39,6 +39,9 @@
 		1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */; };
 		1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */; };
 		1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */; };
+		1FA62C32263B2C6F00A6BD8F /* LikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA62C30263B2C6F00A6BD8F /* LikeViewController.swift */; };
+		1FA62C33263B2C6F00A6BD8F /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA62C31263B2C6F00A6BD8F /* LikeViewController.xib */; };
+		1FA62C38263B2C8500A6BD8F /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA62C37263B2C8500A6BD8F /* LikeViewModel.swift */; };
 		1FB091A12610845B002E9221 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalView.swift */; };
 		1FB66732262763B80005F4B9 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66731262763B80005F4B9 /* WelcomeViewController.xib */; };
 		1FB66737262764790005F4B9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66736262764790005F4B9 /* LoginViewController.xib */; };
@@ -134,6 +137,9 @@
 		1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		1FA62C30263B2C6F00A6BD8F /* LikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewController.swift; sourceTree = "<group>"; };
+		1FA62C31263B2C6F00A6BD8F /* LikeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
+		1FA62C37263B2C8500A6BD8F /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		1FB091A02610845B002E9221 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		1FB66731262763B80005F4B9 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		1FB66736262764790005F4B9 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -450,6 +456,9 @@
 		1FB879642628C4D700BD1B8D /* Like */ = {
 			isa = PBXGroup;
 			children = (
+				1FA62C30263B2C6F00A6BD8F /* LikeViewController.swift */,
+				1FA62C31263B2C6F00A6BD8F /* LikeViewController.xib */,
+				1FA62C37263B2C8500A6BD8F /* LikeViewModel.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";
@@ -586,6 +595,7 @@
 				1FB66746262766A90005F4B9 /* HomeCell.xib in Resources */,
 				1FB667532627A7C90005F4B9 /* HomeCollectionCell.xib in Resources */,
 				1FC429F02635627800DD1B07 /* AddToListViewController.xib in Resources */,
+				1FA62C33263B2C6F00A6BD8F /* LikeViewController.xib in Resources */,
 				1FC429FF263568A500DD1B07 /* ListTableViewCell.xib in Resources */,
 				1FB879862628F48A00BD1B8D /* CommentsCell.xib in Resources */,
 				1FB66737262764790005F4B9 /* LoginViewController.xib in Resources */,
@@ -638,6 +648,7 @@
 				1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */,
 				1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */,
 				1FC42A282635CE3600DD1B07 /* CommentsRouteCoordinator.swift in Sources */,
+				1FA62C38263B2C8500A6BD8F /* LikeViewModel.swift in Sources */,
 				1F9BE76C2606AFE600C822AC /* LoginViewController.swift in Sources */,
 				1F13D59626192B3B00A7AD97 /* HomeViewModel.swift in Sources */,
 				1FC42A4C2636130700DD1B07 /* CommentViewModel.swift in Sources */,
@@ -669,6 +680,7 @@
 				1FC42A0726356F9100DD1B07 /* ListManager.swift in Sources */,
 				1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */,
 				1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */,
+				1FA62C32263B2C6F00A6BD8F /* LikeViewController.swift in Sources */,
 				1FB091A12610845B002E9221 /* ModalView.swift in Sources */,
 				1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */,
 				1F6B44D426188BB3004D1446 /* HomeViewController.swift in Sources */,
