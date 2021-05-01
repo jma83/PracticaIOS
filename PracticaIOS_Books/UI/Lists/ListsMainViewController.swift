@@ -1,35 +1,37 @@
 //
-//  AddToListViewController.swift
+//  ListsMainViewController.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 25/04/2021.
+//  Created by Javier Martinez on 01/05/2021.
 //
 
 import UIKit
 
-class AddToListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AddToListViewModelDelegate, ListTableViewCellDelegate {
-   
+class ListsMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ListMainTableViewCellDelegate, ListsMainViewModelDelegate {
+ 
     @IBOutlet weak var tableView: UITableView!
-    private let CELL_ID = String(describing: ListTableViewCell.self)
-    let viewModel: AddToListViewModel
-    
+    private let CELL_ID = String(describing: ListMainTableViewCell.self)
+    let viewModel:ListsMainViewModel
+    var checkRouting: Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
-        title = "Add book to list"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeAddListEvent))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createListEvent))
     }
     
     override func viewDidAppear(_ animated: Bool){
+        checkRouting = false
         self.viewModel.retrieveLists()
     }
     
-    init(viewModel: AddToListViewModel) {
+    init(viewModel: ListsMainViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+        title = "My lists"
     }
     
     required init?(coder: NSCoder) {
@@ -42,7 +44,7 @@ class AddToListViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! ListTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! ListMainTableViewCell
         cell.delegate = self
         let cellViewModel = viewModel.listViewModels[indexPath.item]
         cell.viewModel = cellViewModel
@@ -60,17 +62,15 @@ class AddToListViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func clickListEvent(_: ListTableViewCell, listViewModel: ListViewModel) {
-        
-        self.viewModel.createListRouting()
-    }
-    
-    @objc func closeAddListEvent(){
-        self.viewModel.closeListRouting()
+    func clickListEvent(_: ListMainTableViewCell, listViewModel: ListViewModel) {
+        if self.checkRouting == false {
+            self.checkRouting = true
+            self.viewModel.showListRouting(listViewModel: listViewModel)
+        }
+
     }
     
     @objc func createListEvent(){
         self.viewModel.createListRouting()
     }
-
 }

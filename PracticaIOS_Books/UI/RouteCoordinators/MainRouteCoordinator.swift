@@ -17,7 +17,7 @@ class MainRouteCoordinator {
     
     let homeRouteCoordinator: HomeRouteCoordinator
     let searchRouteCoordinator: SearchRouteCoordinator
-    var listsRouteCoordinator: ListsRouteCoordinator?
+    var listsRouteCoordinator: ListsRouteCoordinator
     var likeRouteCoordinator: LikeRouteCoordinator
     
     
@@ -25,23 +25,22 @@ class MainRouteCoordinator {
         
         homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager, userManager: userManager)
         searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager, userManager: userManager)
-        //listsRouteCoordinator = ListsRouteCoordinator(bookManager: bookManager)
+        listsRouteCoordinator = ListsRouteCoordinator(bookManager: bookManager, userManager: userManager)
         likeRouteCoordinator = LikeRouteCoordinator(bookManager: bookManager, userManager: userManager)
     
         
         tabBarController = UITabBarController()
-        tabBarController.setViewControllers([homeRouteCoordinator.rootViewController, searchRouteCoordinator.rootViewController,likeRouteCoordinator.rootViewController], animated: true)
+        tabBarController.setViewControllers([homeRouteCoordinator.rootViewController, searchRouteCoordinator.rootViewController,likeRouteCoordinator.rootViewController,listsRouteCoordinator.rootViewController], animated: true)
         
         tabBarController.tabBar.items?[0].image = UIImage(systemName: "house.fill")
         tabBarController.tabBar.items?[1].image = UIImage(systemName: "magnifyingglass")
-        tabBarController.tabBar.items?[2].image = UIImage(systemName: "magnifyingglass")
+        tabBarController.tabBar.items?[2].image = UIImage(systemName: "hand.thumbsup.fill")
+        tabBarController.tabBar.items?[3].image = UIImage(systemName: "books.vertical.fill")
+        
         
         
         tabBarController.modalPresentationStyle = .fullScreen
         
-        /*
-         ,listsRouteCoordinator.rootViewController!, likeRouteCoordinator.rootViewController!
-         */
         
                
     }

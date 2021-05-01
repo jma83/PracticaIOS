@@ -1,38 +1,32 @@
 //
-//  LikeViewController.swift
+//  ListDetailViewController.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 29/04/2021.
+//  Created by Javier Martinez on 01/05/2021.
 //
 
 import UIKit
 
-class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HomeCellDelegate, LikeViewModelDelegate {
-    
+class ListDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeCellDelegate, ListDetailViewModelDelegate {
+
     @IBOutlet weak var tableView: UITableView!
+    let viewModel: ListDetailViewModel
     private let CELL_ID = String(describing: HomeCell.self)
-    let viewModel: LikeViewModel
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
+        self.viewModel.delegate = self
+
+        self.tableView.register(UINib(nibName: CELL_ID , bundle: nil), forCellReuseIdentifier: CELL_ID)
         // Do any additional setup after loading the view.
     }
     
-    
-    init(viewModel: LikeViewModel) {
+    init(viewModel: ListDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
-        title = "Likes"
-    }
-    
-    func bookChanged(_: LikeViewModel) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        title = "List books"
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +34,7 @@ class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        self.viewModel.bookViewModels.count
+        return viewModel.bookViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -58,9 +52,14 @@ class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
         if let vm = homeCell.viewModel {
-            self.viewModel.bookDetailRouting(bookResult: vm.book)
+            viewModel.bookDetailRouting(bookResult: vm.book)
         }
     }
     
+    func bookChanged(_: LikeViewModel) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 
 }

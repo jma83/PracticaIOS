@@ -1,26 +1,25 @@
 //
-//  LikeViewModel.swift
+//  ListDetailViewModel.swift
 //  PracticaIOS_Books
 //
-//  Created by Javier Martinez on 29/04/2021.
+//  Created by Javier Martinez on 01/05/2021.
 //
 
 import Foundation
 
-class LikeViewModel: BookManagerLikeDelegate {
-    
+class ListDetailViewModel: BookManagerListDelegate {
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [[]]
-    weak var delegate: LikeViewModelDelegate?
-    weak var routingDelegate: LikeViewModelRoutingDelegate?
+    weak var delegate: ListDetailViewModelDelegate?
+    weak var routingDelegate: ListDetailViewModelRoutingDelegate?
     init(bookManager: BookManager, userManager: UserManager) {
         self.bookManager = bookManager
-        self.bookManager.likeDelegate = self
-        self.getLikedBooks()
+        self.bookManager.listDelegate = self
+        self.getListDetailBooks()
         
     }
     
-    func getLikedBooks(){
+    func getListDetailBooks(){
         //TODO
         //call bookManager and Usermanager to get the books with likes for this user
     }
@@ -37,10 +36,10 @@ class LikeViewModel: BookManagerLikeDelegate {
     }
 }
 
-protocol LikeViewModelDelegate: class {
+protocol ListDetailViewModelDelegate: class {
     func bookChanged(_: LikeViewModel)
 }
 
-protocol LikeViewModelRoutingDelegate: class {
+protocol ListDetailViewModelRoutingDelegate: class {
     func watchDetail(book: BookResult)
 }

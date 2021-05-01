@@ -25,9 +25,9 @@ class BookManager {
     weak var delegate: BookManagerDelegate?
     weak var detailDelegate: BookManagerDetailDelegate?
     weak var searchDelegate: BookManagerSearchDelegate?
-    
-    let sections = ["Libros relevantes", "Novedades", "Mis listas"]
-    
+    weak var likeDelegate: BookManagerLikeDelegate?
+    weak var listDelegate: BookManagerListDelegate?
+        
     init() {
         bookNYT = BookNYT()
         bookGoogle = BookGoogle()
@@ -80,7 +80,7 @@ class BookManager {
             let r = result!.response?.items.first
             var bookresult: BookResult?
             if let r = r {
-                bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors![0], description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
+                bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors?[0] ?? "N/A", description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
             }
             self.detailDelegate?.bookDetail(self, bookResult: bookresult)
 
@@ -106,11 +106,7 @@ class BookManager {
         })
 
     }
-    
-    func getSections() -> [String]{
-        return sections
-    }
-    
+
     func encodeURLParam(param: String) -> String {
         return param.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
@@ -120,6 +116,12 @@ class BookManager {
 protocol BookManagerDelegate: class {
     func booksChanged(_: BookManager, books: [[BookResult]]?)
     func booksSectionChanged(_: BookManager, sections: [String]?)
+}
+protocol BookManagerLikeDelegate: class {
+    func booksChanged(_: BookManager, books: [[BookResult]]?)
+}
+protocol BookManagerListDelegate: class {
+    func booksChanged(_: BookManager, books: [[BookResult]]?)
 }
 protocol BookManagerDetailDelegate: class {
     func bookDetail(_: BookManager, bookResult: BookResult?)
