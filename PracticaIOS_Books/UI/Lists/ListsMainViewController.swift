@@ -12,7 +12,8 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: ListMainTableViewCell.self)
     let viewModel:ListsMainViewModel
-    var checkRouting: Bool = false
+    var checkRouting: Bool = true
+    var deleteListViewModel: ListViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,7 +57,13 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
         return 1
     }
     
-    func updateList(_: AddToListViewModel) {
+    func updateList(_: ListsMainViewModel) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func deleteListResult(_: ListsMainViewModel) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -72,5 +79,32 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @objc func createListEvent(){
         self.viewModel.createListRouting()
+    }
+    
+    func clickDeleteEvent(_: ListMainTableViewCell, listViewModel: ListViewModel) {
+        self.deleteListViewModel = listViewModel
+        present(self.showConfirmDeleteAlert(title:  "Delete list", message: "Do you want to delete the list \(listViewModel.name)" ), animated: true)
+    }
+    
+    func showConfirmDeleteAlert(title: String, message: String) -> UIViewController{
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(alert: UIAlertAction!) in
+            self.confirmDeleteEvent()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(alert: UIAlertAction!) in
+            self.cancelDeleteEvent()
+        }))
+        
+        return alert
+    }
+    
+    func confirmDeleteEvent(){
+        if let deleteListViewModel = deleteListViewModel {
+        self.viewModel.deleteList(listViewModel: deleteListViewModel)
+        }
+    }
+    
+    func cancelDeleteEvent(){
+        self.deleteListViewModel = nil
     }
 }

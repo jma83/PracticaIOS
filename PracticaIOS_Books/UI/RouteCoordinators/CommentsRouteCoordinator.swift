@@ -8,7 +8,7 @@
 import UIKit
 
 
-class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate {
+class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate, AddCommentViewModelRoutingDelegate {
        
     private var navigationController: UINavigationController
     let bookManager: BookManager
@@ -39,13 +39,19 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate {
     }
     
     func addComment(_: CommentsViewModel) {
-        //TODO
+        let vm = AddCommentViewModel(commentManager: CommentManager(), userManager: userManager)
+        vm.routingDelegate = self
+        let vc = AddCommentViewController(viewModel: vm)
+        navigationController.pushViewController(vc, animated: true)
     }
     
     func showCommentDetail(_: CommentsViewModel) {
         //TODO
     }
     
+    func createCommentResult() {
+        navigationController.popViewController(animated: true)
+    }
     
 }
 

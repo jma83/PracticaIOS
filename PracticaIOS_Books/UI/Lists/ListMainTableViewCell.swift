@@ -11,6 +11,7 @@ class ListMainTableViewCell: UITableViewCell {
 
     weak var delegate: ListMainTableViewCellDelegate?
     
+    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var nameListText: UILabel!
     @IBOutlet weak var dateListText: UILabel!
     var viewModel: ListViewModel? {
@@ -36,12 +37,25 @@ class ListMainTableViewCell: UITableViewCell {
         }
     }
 
+    @IBAction func clickDeleteButton(_ sender: Any) {
+        if let viewModel = viewModel {
+            self.delegate?.clickDeleteEvent(self, listViewModel: viewModel)
+        }
+    }
+    
+    @objc func deleteConfirmEvent(){
+        if let viewModel = viewModel {
+            self.delegate?.clickDeleteEvent(self, listViewModel: viewModel)
+        }
+    }
+    
     
     
 }
 
 protocol ListMainTableViewCellDelegate: class {
     func clickListEvent(_: ListMainTableViewCell, listViewModel: ListViewModel)
+    func clickDeleteEvent(_:ListMainTableViewCell, listViewModel: ListViewModel)
 }
 
 

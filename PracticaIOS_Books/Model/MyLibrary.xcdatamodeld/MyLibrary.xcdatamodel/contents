@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="V1">
-    <entity name="Book" representedClassName="Book" syncable="YES" codeGenerationType="class">
+    <entity name="Book" representedClassName="Book" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="descrip" optional="YES" attributeType="String"/>
@@ -8,27 +8,30 @@
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="isbn" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="book" inverseEntity="Comment"/>
+        <relationship name="like" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="book" inverseEntity="Like"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="List" inverseName="books" inverseEntity="List"/>
     </entity>
-    <entity name="Comment" representedClassName="Comment" syncable="YES" codeGenerationType="class">
+    <entity name="Comment" representedClassName="Comment" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String"/>
         <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="like" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="comments" inverseEntity="Book"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="comments" inverseEntity="User"/>
     </entity>
-    <entity name="Like" representedClassName="Like" syncable="YES" codeGenerationType="class">
+    <entity name="Like" representedClassName="Like" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book"/>
-        <relationship name="relationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book" inverseName="like" inverseEntity="Book"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="likes" inverseEntity="User"/>
     </entity>
     <entity name="List" representedClassName="List" syncable="YES">
         <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Book"/>
-        <relationship name="relationship1" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User"/>
+        <relationship name="books" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Book" inverseName="lists" inverseEntity="Book"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="lists" inverseEntity="User"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -39,12 +42,15 @@
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment"/>
+        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="user" inverseEntity="Like"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="List" inverseName="user" inverseEntity="List"/>
     </entity>
     <elements>
+        <element name="Book" positionX="-36" positionY="45" width="128" height="193"/>
+        <element name="Comment" positionX="-36" positionY="9" width="128" height="148"/>
         <element name="Like" positionX="-18" positionY="72" width="128" height="88"/>
         <element name="List" positionX="-54" positionY="-9" width="128" height="118"/>
-        <element name="Comment" positionX="-36" positionY="9" width="128" height="148"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="163"/>
-        <element name="Book" positionX="-36" positionY="45" width="128" height="148"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="208"/>
     </elements>
 </model>

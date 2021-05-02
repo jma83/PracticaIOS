@@ -15,8 +15,6 @@
 		1F2A1EE6260400F500933CDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F2A1EE5260400F500933CDB /* Assets.xcassets */; };
 		1F2A1EF4260400F500933CDB /* PracticaIOS_BooksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EF3260400F500933CDB /* PracticaIOS_BooksTests.swift */; };
 		1F2A1EFF260400F500933CDB /* PracticaIOS_BooksUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EFE260400F500933CDB /* PracticaIOS_BooksUITests.swift */; };
-		1F30B26026333C5900CF0223 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B25E26333C5900CF0223 /* User+CoreDataClass.swift */; };
-		1F30B26126333C5900CF0223 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F30B25F26333C5900CF0223 /* User+CoreDataProperties.swift */; };
 		1F57D3662618752C00FC26D0 /* BookManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F57D3652618752C00FC26D0 /* BookManager.swift */; };
 		1F6B44D426188BB3004D1446 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44D226188BB3004D1446 /* HomeViewController.swift */; };
 		1F6B44DD2618B468004D1446 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44DC2618B468004D1446 /* HomeCell.swift */; };
@@ -51,6 +49,19 @@
 		1FA62C33263B2C6F00A6BD8F /* LikeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FA62C31263B2C6F00A6BD8F /* LikeViewController.xib */; };
 		1FA62C38263B2C8500A6BD8F /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA62C37263B2C8500A6BD8F /* LikeViewModel.swift */; };
 		1FB091A12610845B002E9221 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalView.swift */; };
+		1FB50D63263EA0CC0017B970 /* AddCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */; };
+		1FB50D73263EC65D0017B970 /* ConfirmDeleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */; };
+		1FB50D78263EE6180017B970 /* LikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D77263EE6180017B970 /* LikeManager.swift */; };
+		1FB50DA4263F135C0017B970 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DA2263F135C0017B970 /* User+CoreDataClass.swift */; };
+		1FB50DA5263F135C0017B970 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DA3263F135C0017B970 /* User+CoreDataProperties.swift */; };
+		1FB50DAB263F13770017B970 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DA9263F13770017B970 /* List+CoreDataClass.swift */; };
+		1FB50DAC263F13770017B970 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DAA263F13770017B970 /* List+CoreDataProperties.swift */; };
+		1FB50DB2263F13910017B970 /* Like+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DB0263F13910017B970 /* Like+CoreDataClass.swift */; };
+		1FB50DB3263F13910017B970 /* Like+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DB1263F13910017B970 /* Like+CoreDataProperties.swift */; };
+		1FB50DB9263F26050017B970 /* Book+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DB7263F26050017B970 /* Book+CoreDataClass.swift */; };
+		1FB50DBA263F26050017B970 /* Book+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DB8263F26050017B970 /* Book+CoreDataProperties.swift */; };
+		1FB50DC0263F26280017B970 /* Comment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DBE263F26280017B970 /* Comment+CoreDataClass.swift */; };
+		1FB50DC1263F26280017B970 /* Comment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DBF263F26280017B970 /* Comment+CoreDataProperties.swift */; };
 		1FB66732262763B80005F4B9 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66731262763B80005F4B9 /* WelcomeViewController.xib */; };
 		1FB66737262764790005F4B9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB66736262764790005F4B9 /* LoginViewController.xib */; };
 		1FB6673C262764DC0005F4B9 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB6673B262764DC0005F4B9 /* RegisterViewController.xib */; };
@@ -78,8 +89,6 @@
 		1FC429FF263568A500DD1B07 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC429FD263568A500DD1B07 /* ListTableViewCell.xib */; };
 		1FC42A0726356F9100DD1B07 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A0626356F9100DD1B07 /* ListManager.swift */; };
 		1FC42A0F263575DA00DD1B07 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A0E263575DA00DD1B07 /* ListViewModel.swift */; };
-		1FC42A22263592E700DD1B07 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */; };
-		1FC42A23263592E700DD1B07 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */; };
 		1FC42A282635CE3600DD1B07 /* CommentsRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */; };
 		1FC42A312635D5EA00DD1B07 /* CreateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FC42A2F2635D5EA00DD1B07 /* CreateListViewController.swift */; };
 		1FC42A322635D5EA00DD1B07 /* CreateListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FC42A302635D5EA00DD1B07 /* CreateListViewController.xib */; };
@@ -121,8 +130,6 @@
 		1F2A1EFA260400F500933CDB /* PracticaIOS_BooksUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PracticaIOS_BooksUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2A1EFE260400F500933CDB /* PracticaIOS_BooksUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticaIOS_BooksUITests.swift; sourceTree = "<group>"; };
 		1F2A1F00260400F500933CDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F30B25E26333C5900CF0223 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		1F30B25F26333C5900CF0223 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1F57D3652618752C00FC26D0 /* BookManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookManager.swift; sourceTree = "<group>"; };
 		1F6B44D226188BB3004D1446 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1F6B44DC2618B468004D1446 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
@@ -157,6 +164,19 @@
 		1FA62C31263B2C6F00A6BD8F /* LikeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeViewController.xib; sourceTree = "<group>"; };
 		1FA62C37263B2C8500A6BD8F /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		1FB091A02610845B002E9221 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
+		1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewModel.swift; sourceTree = "<group>"; };
+		1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeleteListView.swift; sourceTree = "<group>"; };
+		1FB50D77263EE6180017B970 /* LikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManager.swift; sourceTree = "<group>"; };
+		1FB50DA2263F135C0017B970 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DA3263F135C0017B970 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DA9263F13770017B970 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DAA263F13770017B970 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DB0263F13910017B970 /* Like+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Like+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DB1263F13910017B970 /* Like+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Like+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DB7263F26050017B970 /* Book+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DB8263F26050017B970 /* Book+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Book+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DBE263F26280017B970 /* Comment+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1FB50DBF263F26280017B970 /* Comment+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comment+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1FB66731262763B80005F4B9 /* WelcomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		1FB66736262764790005F4B9 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		1FB6673B262764DC0005F4B9 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
@@ -184,8 +204,6 @@
 		1FC429FD263568A500DD1B07 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
 		1FC42A0626356F9100DD1B07 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		1FC42A0E263575DA00DD1B07 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FC42A2F2635D5EA00DD1B07 /* CreateListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListViewController.swift; sourceTree = "<group>"; };
 		1FC42A302635D5EA00DD1B07 /* CreateListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateListViewController.xib; sourceTree = "<group>"; };
@@ -296,10 +314,10 @@
 		1F91F1272619B60200B063B3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */,
 				1FC42A0526356F3B00DD1B07 /* Comment */,
 				1FC42A0426356F3000DD1B07 /* Like */,
 				1FC42A0326356F1600DD1B07 /* List */,
-				1FC540042630AC93003DC820 /* MyLibrary.xcdatamodeld */,
 				1F91F1292619B63C00B063B3 /* Book */,
 				1F91F1282619B63200B063B3 /* User */,
 			);
@@ -309,8 +327,8 @@
 		1F91F1282619B63200B063B3 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				1F30B25E26333C5900CF0223 /* User+CoreDataClass.swift */,
-				1F30B25F26333C5900CF0223 /* User+CoreDataProperties.swift */,
+				1FB50DA2263F135C0017B970 /* User+CoreDataClass.swift */,
+				1FB50DA3263F135C0017B970 /* User+CoreDataProperties.swift */,
 				1F9F8ADE26080C67007ACEDB /* UserManager.swift */,
 			);
 			path = User;
@@ -319,6 +337,8 @@
 		1F91F1292619B63C00B063B3 /* Book */ = {
 			isa = PBXGroup;
 			children = (
+				1FB50DB7263F26050017B970 /* Book+CoreDataClass.swift */,
+				1FB50DB8263F26050017B970 /* Book+CoreDataProperties.swift */,
 				1F57D3652618752C00FC26D0 /* BookManager.swift */,
 				1F6B44E12618B58B004D1446 /* BookNYT.swift */,
 				1F6B44EB2618B6D7004D1446 /* APIManager.swift */,
@@ -452,6 +472,7 @@
 				1FB879652628C71F00BD1B8D /* CommentsViewController.swift */,
 				1FB8796A2628C81B00BD1B8D /* CommentsViewModel.swift */,
 				1FB8796F2628C8D900BD1B8D /* CommentsViewController.xib */,
+				1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */,
 				1FB879742628CB9900BD1B8D /* AddCommentViewController.swift */,
 				1FB879752628CB9900BD1B8D /* AddCommentViewController.xib */,
 				1FB879832628F48900BD1B8D /* CommentsCell.swift */,
@@ -481,6 +502,7 @@
 				1F9C1CB2263D655000B494F6 /* ListsMainViewModel.swift */,
 				1F9C1CBF263E105300B494F6 /* ListMainTableViewCell.swift */,
 				1F9C1CC0263E105300B494F6 /* ListMainTableViewCell.xib */,
+				1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -498,8 +520,8 @@
 		1FC42A0326356F1600DD1B07 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				1FC42A20263592E700DD1B07 /* List+CoreDataClass.swift */,
-				1FC42A21263592E700DD1B07 /* List+CoreDataProperties.swift */,
+				1FB50DA9263F13770017B970 /* List+CoreDataClass.swift */,
+				1FB50DAA263F13770017B970 /* List+CoreDataProperties.swift */,
 				1FC42A0626356F9100DD1B07 /* ListManager.swift */,
 			);
 			path = List;
@@ -508,6 +530,9 @@
 		1FC42A0426356F3000DD1B07 /* Like */ = {
 			isa = PBXGroup;
 			children = (
+				1FB50DB0263F13910017B970 /* Like+CoreDataClass.swift */,
+				1FB50DB1263F13910017B970 /* Like+CoreDataProperties.swift */,
+				1FB50D77263EE6180017B970 /* LikeManager.swift */,
 			);
 			path = Like;
 			sourceTree = "<group>";
@@ -515,6 +540,8 @@
 		1FC42A0526356F3B00DD1B07 /* Comment */ = {
 			isa = PBXGroup;
 			children = (
+				1FB50DBE263F26280017B970 /* Comment+CoreDataClass.swift */,
+				1FB50DBF263F26280017B970 /* Comment+CoreDataProperties.swift */,
 				1FC42A4626360FA600DD1B07 /* CommentManager.swift */,
 			);
 			path = Comment;
@@ -668,20 +695,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9F36122621A8AA00A6AB54 /* HomeCollectionCell.swift in Sources */,
-				1F30B26026333C5900CF0223 /* User+CoreDataClass.swift in Sources */,
 				1FB733B3262E04D000CF70E4 /* MainRouteCoordinator.swift in Sources */,
 				1FB879852628F48A00BD1B8D /* CommentsCell.swift in Sources */,
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
+				1FB50D78263EE6180017B970 /* LikeManager.swift in Sources */,
 				1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */,
+				1FB50DC1263F26280017B970 /* Comment+CoreDataProperties.swift in Sources */,
+				1FB50D63263EA0CC0017B970 /* AddCommentViewModel.swift in Sources */,
+				1FB50DAB263F13770017B970 /* List+CoreDataClass.swift in Sources */,
 				1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */,
-				1FC42A22263592E700DD1B07 /* List+CoreDataClass.swift in Sources */,
+				1FB50DA4263F135C0017B970 /* User+CoreDataClass.swift in Sources */,
 				1F9C1CB8263DD4C900B494F6 /* ListDetailViewModel.swift in Sources */,
+				1FB50D73263EC65D0017B970 /* ConfirmDeleteListView.swift in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
 				1F9C1CB3263D655000B494F6 /* ListsMainViewModel.swift in Sources */,
 				1FC42A0F263575DA00DD1B07 /* ListViewModel.swift in Sources */,
-				1F30B26126333C5900CF0223 /* User+CoreDataProperties.swift in Sources */,
+				1FB50DA5263F135C0017B970 /* User+CoreDataProperties.swift in Sources */,
 				1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */,
 				1F9C1CA0263D62E000B494F6 /* ListDetailViewController.swift in Sources */,
 				1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */,
@@ -698,25 +729,30 @@
 				1F9A9A6C260F556D0002CD72 /* UserViewModel.swift in Sources */,
 				1FB8796B2628C81B00BD1B8D /* CommentsViewModel.swift in Sources */,
 				1F9C1CC1263E105300B494F6 /* ListMainTableViewCell.swift in Sources */,
+				1FB50DB9263F26050017B970 /* Book+CoreDataClass.swift in Sources */,
 				1FC42A372635D99300DD1B07 /* CreateListViewModel.swift in Sources */,
 				1FC42A4726360FA600DD1B07 /* CommentManager.swift in Sources */,
+				1FB50DB2263F13910017B970 /* Like+CoreDataClass.swift in Sources */,
 				1FC42A312635D5EA00DD1B07 /* CreateListViewController.swift in Sources */,
 				1F6B44E22618B58B004D1446 /* BookNYT.swift in Sources */,
 				1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */,
 				1F98FF27262B3E57007D637C /* SearchViewModel.swift in Sources */,
 				1F10AC38261E1BBF00889887 /* WelcomeViewModel.swift in Sources */,
-				1FC42A23263592E700DD1B07 /* List+CoreDataProperties.swift in Sources */,
 				1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */,
 				1FC429E826355CE000DD1B07 /* AddToListRouteCoordinator.swift in Sources */,
+				1FB50DAC263F13770017B970 /* List+CoreDataProperties.swift in Sources */,
 				1F9BE7712606B00D00C822AC /* RegisterViewController.swift in Sources */,
 				1FB879662628C71F00BD1B8D /* CommentsViewController.swift in Sources */,
 				1F9A9A76260F65C20002CD72 /* RegisterViewModel.swift in Sources */,
 				1FC429F82635628A00DD1B07 /* AddToListViewModel.swift in Sources */,
 				1F6B44DD2618B468004D1446 /* HomeCell.swift in Sources */,
+				1FB50DC0263F26280017B970 /* Comment+CoreDataClass.swift in Sources */,
 				1FC429EF2635627800DD1B07 /* AddToListViewController.swift in Sources */,
 				1FB733AE262E012300CF70E4 /* LikeRouteCoordinator.swift in Sources */,
+				1FB50DBA263F26050017B970 /* Book+CoreDataProperties.swift in Sources */,
 				1F2A1EE1260400F400933CDB /* WelcomeViewController.swift in Sources */,
 				1FC429FE263568A500DD1B07 /* ListTableViewCell.swift in Sources */,
+				1FB50DB3263F13910017B970 /* Like+CoreDataProperties.swift in Sources */,
 				1FC42A0726356F9100DD1B07 /* ListManager.swift in Sources */,
 				1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */,
 				1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */,

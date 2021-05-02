@@ -89,7 +89,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     @IBAction func clickLikeButton(_ sender: Any) {
-        
+        self.viewModel.likeBook()
     }
     
     @IBAction func clickAddListButton(_ sender: Any) {

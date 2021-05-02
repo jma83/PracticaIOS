@@ -49,22 +49,30 @@ class ListManager{
         }
    }
     
-    func fetchAllLists(completionHandler: @escaping ([List]) -> Void) -> Void {
+    func fetchAllLists() {
         let fetchRequest = NSFetchRequest<List>(entityName: LIST_ENTITY)
         
         fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-            print("count \(datos.count)")
-            completionHandler(datos)
+            self.delegate?.listsResult(self, didListChange: datos)
         })
     }
     
-    func fetchByName(nameList:String, completionHandler: @escaping ([List]) -> Void) -> Void{
+    private func fetchByName(nameList:String, completionHandler: @escaping ([List]) -> Void){
         let fetchRequest = NSFetchRequest<List>(entityName: LIST_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "name == %@", nameList)
         
         fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
+            self.delegate?.listsResult(self, didListChange: datos)
+        })
+    }
+    
+    func fetchAllByUser(user: User) {
+        let fetchRequest = NSFetchRequest<List>(entityName: LIST_ENTITY)
+        fetchRequest.predicate = NSPredicate(format: "user == %@", user)
+        
+        fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
             print("count \(datos.count)")
-            completionHandler(datos)
+            self.delegate?.listsResult(self, didListChange: datos)
         })
     }
      
@@ -121,5 +129,5 @@ protocol AddListManagerDelegate: class {
     func listError(_: ListManager, error: String)
 }
 protocol ListManagerDelegate: class {
-    func listsResult(_: ListManager, didListChange list: List)
+    func listsResult(_: ListManager, didListChange list: [List])
 }

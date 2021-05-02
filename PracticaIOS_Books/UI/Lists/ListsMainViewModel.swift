@@ -33,13 +33,18 @@ class ListsMainViewModel: ListManagerDelegate {
         listViewModels = [ListViewModel(list:list),ListViewModel(list:list2)]
     }
     
-    func createListRouting(){
-        self.routingDelegate?.createList()
-    }
     
     func listsResult(_: ListManager, didListChange list: List) {
         //TODO
         //Event recieved from ListManager
+    }
+    
+    func deleteList(listViewModel: ListViewModel){
+        // self.listManager.deleteList(name: listViewModel.name)
+    }
+    
+    func createListRouting(){
+        self.routingDelegate?.createList()
     }
     
     func showListRouting(listViewModel: ListViewModel){
@@ -51,7 +56,8 @@ class ListsMainViewModel: ListManagerDelegate {
 
 
 protocol ListsMainViewModelDelegate: class {
-    func updateList(_: AddToListViewModel)
+    func updateList(_: ListsMainViewModel)
+    func deleteListResult(_: ListsMainViewModel)
 }
 
 protocol ListsMainViewModelRoutingDelegate: class {

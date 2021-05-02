@@ -7,23 +7,43 @@
 
 import UIKit
 
-class AddCommentViewController: UIViewController {
+class AddCommentViewController: UIViewController, AddCommentViewModelDelegate {
+    
+    
+
+    @IBOutlet weak var titleText: UITextField!
+    @IBOutlet weak var descriptionText: UITextView!
+    @IBOutlet weak var submitButton: UIButton!
+    let viewModel: AddCommentViewModel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    @IBAction func postComment(_ sender: Any) {
+        let name = titleText.text ?? ""
+        if name.count <= 2 {
+            return
+        }
+        
+        let desc = descriptionText.text ?? ""
+        if desc.count <= 4 {
+            return
+        }
+        
+        self.viewModel.createComment(summary: name, descrip: desc)
+    }
+    
+    init(viewModel: AddCommentViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func commentError(_: AddCommentViewModel, message: String) {
+        present(ModalView().showAlert(title: "Error", message: message), animated: true)
     }
-    */
-
 }

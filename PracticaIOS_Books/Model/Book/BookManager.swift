@@ -5,7 +5,8 @@
 //  Created by Javier Martinez on 03/04/2021.
 //
 
-import Foundation
+import UIKit
+import CoreData
 
 struct BookResult {
     var id: String?
@@ -19,7 +20,6 @@ struct BookResult {
 
 class BookManager {
     
-    
     let bookNYT: BookNYT
     let bookGoogle: BookGoogle
     weak var delegate: BookManagerDelegate?
@@ -27,10 +27,14 @@ class BookManager {
     weak var searchDelegate: BookManagerSearchDelegate?
     weak var likeDelegate: BookManagerLikeDelegate?
     weak var listDelegate: BookManagerListDelegate?
+    private let context: NSManagedObjectContext
+    private let BOOK_ENTITY = "Book"
         
     init() {
         bookNYT = BookNYT()
         bookGoogle = BookGoogle()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        context = appDelegate.managedObjectContext
     }
     
     func getRelevantBooks(){
@@ -38,9 +42,8 @@ class BookManager {
         bookNYT.getResponse(str: "https://api.nytimes.com/svc/books/v3/lists/overview.json", completition2: { result in
             var bookResultArr: [[BookResult]] = []
             var sectionArr: [String] = []
-            let lists = result?.response?.results.lists
             let maxSize = 3
-            if let lists = lists {
+            if let lists = result?.response?.results.lists {
                 bookResultArr = [[BookResult]](repeating: [], count: maxSize)
                 let arrItems = self.calcRandom(maxSize: maxSize, listSize: lists.count)
                 
@@ -77,9 +80,8 @@ class BookManager {
     func getBookDetail(isbn: String){
         let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=1"
         bookGoogle.getResponse(str: url, completition2: { result in
-            let r = result!.response?.items.first
             var bookresult: BookResult?
-            if let r = r {
+            if let r = result!.response?.items.first {
                 bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors?[0] ?? "N/A", description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
             }
             self.detailDelegate?.bookDetail(self, bookResult: bookresult)
@@ -94,8 +96,7 @@ class BookManager {
 
         bookGoogle.getResponse(str: url, completition2: { result in
             var bookResultArr = [BookResult]()
-            let lists = result?.response?.items
-            if let lists = lists {              
+            if let lists = result?.response?.items {
                 for item in lists {
                     let book = item.volumeInfo
                     let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks?.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
@@ -111,7 +112,35 @@ class BookManager {
         return param.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
     
+    
+    
 }
+
+extension BookManager {
+    
+    func fetchAsyncBooks(fetchAsyncRequest:NSFetchRequest<Book>, completionHandler: @escaping ([Book]) -> Void) -> Void {
+        
+        let asynchronousRequest = NSAsynchronousFetchRequest(fetchRequest: fetchAsyncRequest) { (result) in
+            guard let books = result.finalResult else {
+                if let error = result.operationError {
+                    print("Couldn't load books \(error)")
+                }
+                completionHandler([])
+                return
+            }
+            completionHandler(books)
+        }
+        
+        do{
+            try context.execute(asynchronousRequest)
+        }catch let error {
+            print("Error: \(error)")
+        }
+    }
+    
+}
+
+
 
 protocol BookManagerDelegate: class {
     func booksChanged(_: BookManager, books: [[BookResult]]?)
