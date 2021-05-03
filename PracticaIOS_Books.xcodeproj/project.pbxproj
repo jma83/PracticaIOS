@@ -23,6 +23,8 @@
 		1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44EB2618B6D7004D1446 /* APIManager.swift */; };
 		1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44F02618BE19004D1446 /* StringUtils.swift */; };
 		1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6B44FB2619257C004D1446 /* BookViewModel.swift */; };
+		1F97FC1626405DF000A2F176 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FC1426405DF000A2F176 /* User+CoreDataClass.swift */; };
+		1F97FC1726405DF000A2F176 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F97FC1526405DF000A2F176 /* User+CoreDataProperties.swift */; };
 		1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F98FF1C262B3729007D637C /* SearchViewController.swift */; };
 		1F98FF1F262B3729007D637C /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F98FF1D262B3729007D637C /* SearchViewController.xib */; };
 		1F98FF27262B3E57007D637C /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F98FF26262B3E57007D637C /* SearchViewModel.swift */; };
@@ -52,8 +54,6 @@
 		1FB50D63263EA0CC0017B970 /* AddCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */; };
 		1FB50D73263EC65D0017B970 /* ConfirmDeleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */; };
 		1FB50D78263EE6180017B970 /* LikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D77263EE6180017B970 /* LikeManager.swift */; };
-		1FB50DA4263F135C0017B970 /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DA2263F135C0017B970 /* User+CoreDataClass.swift */; };
-		1FB50DA5263F135C0017B970 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DA3263F135C0017B970 /* User+CoreDataProperties.swift */; };
 		1FB50DAB263F13770017B970 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DA9263F13770017B970 /* List+CoreDataClass.swift */; };
 		1FB50DAC263F13770017B970 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DAA263F13770017B970 /* List+CoreDataProperties.swift */; };
 		1FB50DB2263F13910017B970 /* Like+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DB0263F13910017B970 /* Like+CoreDataClass.swift */; };
@@ -73,7 +73,6 @@
 		1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */; };
 		1FB733AE262E012300CF70E4 /* LikeRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB733AD262E012300CF70E4 /* LikeRouteCoordinator.swift */; };
 		1FB733B3262E04D000CF70E4 /* MainRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB733B2262E04D000CF70E4 /* MainRouteCoordinator.swift */; };
-		1FB8795526286EA200BD1B8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB8795326286EA200BD1B8D /* Main.storyboard */; };
 		1FB879662628C71F00BD1B8D /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB879652628C71F00BD1B8D /* CommentsViewController.swift */; };
 		1FB8796B2628C81B00BD1B8D /* CommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB8796A2628C81B00BD1B8D /* CommentsViewModel.swift */; };
 		1FB879702628C8D900BD1B8D /* CommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FB8796F2628C8D900BD1B8D /* CommentsViewController.xib */; };
@@ -138,6 +137,8 @@
 		1F6B44EB2618B6D7004D1446 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		1F6B44F02618BE19004D1446 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		1F6B44FB2619257C004D1446 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		1F97FC1426405DF000A2F176 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1F97FC1526405DF000A2F176 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1F98FF1C262B3729007D637C /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1F98FF1D262B3729007D637C /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		1F98FF26262B3E57007D637C /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -167,8 +168,6 @@
 		1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewModel.swift; sourceTree = "<group>"; };
 		1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeleteListView.swift; sourceTree = "<group>"; };
 		1FB50D77263EE6180017B970 /* LikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManager.swift; sourceTree = "<group>"; };
-		1FB50DA2263F135C0017B970 /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		1FB50DA3263F135C0017B970 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1FB50DA9263F13770017B970 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1FB50DAA263F13770017B970 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		1FB50DB0263F13910017B970 /* Like+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Like+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -188,7 +187,6 @@
 		1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FB733AD262E012300CF70E4 /* LikeRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FB733B2262E04D000CF70E4 /* MainRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouteCoordinator.swift; sourceTree = "<group>"; };
-		1FB8795426286EA200BD1B8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1FB879652628C71F00BD1B8D /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		1FB8796A2628C81B00BD1B8D /* CommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewModel.swift; sourceTree = "<group>"; };
 		1FB8796F2628C8D900BD1B8D /* CommentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsViewController.xib; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				1F91F1272619B60200B063B3 /* Model */,
 				1F91F1262619B5F700B063B3 /* UI */,
 				1F2A1EDC260400F400933CDB /* AppDelegate.swift */,
-				1FB8795326286EA200BD1B8D /* Main.storyboard */,
 				1F2A1EDE260400F400933CDB /* SceneDelegate.swift */,
 				1F2A1EE5260400F500933CDB /* Assets.xcassets */,
 				1F2A1EEA260400F500933CDB /* Info.plist */,
@@ -327,8 +324,8 @@
 		1F91F1282619B63200B063B3 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				1FB50DA2263F135C0017B970 /* User+CoreDataClass.swift */,
-				1FB50DA3263F135C0017B970 /* User+CoreDataProperties.swift */,
+				1F97FC1426405DF000A2F176 /* User+CoreDataClass.swift */,
+				1F97FC1526405DF000A2F176 /* User+CoreDataProperties.swift */,
 				1F9F8ADE26080C67007ACEDB /* UserManager.swift */,
 			);
 			path = User;
@@ -663,7 +660,6 @@
 				1FB879772628CB9900BD1B8D /* AddCommentViewController.xib in Resources */,
 				1FB6674B262768890005F4B9 /* DetailViewController.xib in Resources */,
 				1F2A1EE6260400F500933CDB /* Assets.xcassets in Resources */,
-				1FB8795526286EA200BD1B8D /* Main.storyboard in Resources */,
 				1F9C1CC2263E105300B494F6 /* ListMainTableViewCell.xib in Resources */,
 				1FC42A322635D5EA00DD1B07 /* CreateListViewController.xib in Resources */,
 				1F9C1CAE263D654200B494F6 /* ListsMainViewController.xib in Resources */,
@@ -700,11 +696,12 @@
 				1F6B44F12618BE19004D1446 /* StringUtils.swift in Sources */,
 				1FB50D78263EE6180017B970 /* LikeManager.swift in Sources */,
 				1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */,
+				1F97FC1726405DF000A2F176 /* User+CoreDataProperties.swift in Sources */,
 				1FB50DC1263F26280017B970 /* Comment+CoreDataProperties.swift in Sources */,
 				1FB50D63263EA0CC0017B970 /* AddCommentViewModel.swift in Sources */,
+				1F97FC1626405DF000A2F176 /* User+CoreDataClass.swift in Sources */,
 				1FB50DAB263F13770017B970 /* List+CoreDataClass.swift in Sources */,
 				1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */,
-				1FB50DA4263F135C0017B970 /* User+CoreDataClass.swift in Sources */,
 				1F9C1CB8263DD4C900B494F6 /* ListDetailViewModel.swift in Sources */,
 				1FB50D73263EC65D0017B970 /* ConfirmDeleteListView.swift in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
@@ -712,7 +709,6 @@
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
 				1F9C1CB3263D655000B494F6 /* ListsMainViewModel.swift in Sources */,
 				1FC42A0F263575DA00DD1B07 /* ListViewModel.swift in Sources */,
-				1FB50DA5263F135C0017B970 /* User+CoreDataProperties.swift in Sources */,
 				1F98FF1E262B3729007D637C /* SearchViewController.swift in Sources */,
 				1F9C1CA0263D62E000B494F6 /* ListDetailViewController.swift in Sources */,
 				1FB733A9262E00B100CF70E4 /* ListsRouteCoordinator.swift in Sources */,
@@ -794,17 +790,6 @@
 			targetProxy = 1F2A1EFB260400F500933CDB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1FB8795326286EA200BD1B8D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1FB8795426286EA200BD1B8D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1F2A1F01260400F500933CDB /* Debug */ = {
@@ -947,12 +932,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AUGC7T295P;
 				INFOPLIST_FILE = PracticaIOS_Books/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "es.upsa.mimo.PracticaIOS-Books";
+				PRODUCT_BUNDLE_IDENTIFIER = es.upsa.mimo.PracticaIOSBooks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

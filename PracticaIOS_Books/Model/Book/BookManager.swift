@@ -118,7 +118,7 @@ class BookManager {
 
 extension BookManager {
     
-    func fetchAsyncBooks(fetchAsyncRequest:NSFetchRequest<Book>, completionHandler: @escaping ([Book]) -> Void) -> Void {
+    private func fetchAsyncBooks(fetchAsyncRequest:NSFetchRequest<Book>, completionHandler: @escaping ([Book]) -> Void) -> Void {
         
         let asynchronousRequest = NSAsynchronousFetchRequest(fetchRequest: fetchAsyncRequest) { (result) in
             guard let books = result.finalResult else {
@@ -138,6 +138,40 @@ extension BookManager {
         }
     }
     
+    private func fetchById(id: String, completionHandler: @escaping ([Book]) -> Void) -> Void {
+        let fetchRequest = NSFetchRequest<Book>(entityName: BOOK_ENTITY)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        
+        fetchAsyncBooks(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
+            print("count \(datos.count)")
+            completionHandler(datos)
+        })
+    }
+    
+    func createBook(book: BookResult) {
+        self.fetchById(id: book.id ?? "", completionHandler: { datos in
+            if datos.count != 0 {
+                self.detailDelegate?.createBookResult(self, book: datos.first!)
+            }
+            
+            let entity = NSEntityDescription.entity(forEntityName: self.BOOK_ENTITY, in: self.context)
+            let newbook = Book(entity: entity!, insertInto: self.context)
+            
+            newbook.id = book.id
+            newbook.title = book.title
+            newbook.descrip = book.description
+            newbook.author = book.author
+            newbook.date = book.created_date
+            newbook.image = book.book_image
+            newbook.isbn = book.primary_isbn10
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+            self.detailDelegate?.createBookResult(self, book: newbook)
+            
+        })
+    }
+    
 }
 
 
@@ -154,6 +188,7 @@ protocol BookManagerListDelegate: class {
 }
 protocol BookManagerDetailDelegate: class {
     func bookDetail(_: BookManager, bookResult: BookResult?)
+    func createBookResult(_: BookManager, book: Book?)
 }
 protocol BookManagerSearchDelegate: class {
     func searchBookResult(_: BookManager, bookResult: [BookResult])

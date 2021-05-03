@@ -11,7 +11,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         window = UIWindow(frame: UIScreen.main.bounds)
         let userManager = UserManager()
         let bookManager = BookManager()
-        startRouteCoordinator = StartRouteCoordinator(userManager: userManager, bookManager: bookManager)
+        let listManager = ListManager()
+        let likeManager = LikeManager()
+        let commentManager = CommentManager()
+        startRouteCoordinator = StartRouteCoordinator(userManager: userManager, bookManager: bookManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
         window?.rootViewController = startRouteCoordinator.rootViewController
         
         window?.makeKeyAndVisible()

@@ -18,10 +18,10 @@ class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListVi
         return navigationController
     }
      
-    init(bookManager: BookManager, userManager: UserManager) {
+    init(bookManager: BookManager, userManager: UserManager, listManager: ListManager) {
         self.bookManager = bookManager
         self.userManager = userManager
-        self.listManager = ListManager()
+        self.listManager = listManager
         let vm = AddToListViewModel(listManager: listManager, userManager: userManager)
         let vc = AddToListViewController(viewModel: vm)
         

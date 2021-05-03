@@ -15,13 +15,20 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
     
     let bookManager: BookManager
     let userManager: UserManager
+    let listManager: ListManager
+    let likeManager: LikeManager
+    let commentManager: CommentManager
     var rootViewController: UIViewController {
         return navigationController
     }
     
-    init(bookManager: BookManager, userManager: UserManager) {
+    init(bookManager: BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
         self.bookManager = bookManager
         self.userManager = userManager
+        self.listManager = listManager
+        self.likeManager = likeManager
+        self.commentManager = commentManager
+        
         let homeViewModel = HomeViewModel(bookManager: bookManager)
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         
@@ -29,35 +36,35 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         homeViewModel.routingDelegate = self
     }    
     
-    // DetailViewModelRoutingDelegate: From Detail to Comments
+    // MARK: DetailViewModelRoutingDelegate: From Detail to Comments
     //Redirect to New RouteCoordinator! -> Comments  (Modal)
     func showCommentsView(book: BookResult) {
-        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, userManager: userManager, commentManager: commentManager)
         commentsRouteCoordinator.delegate = self
         rootViewController.present(commentsRouteCoordinator.rootViewController, animated: true, completion: nil)
         
     }
-    // DetailViewModelRoutingDelegate: From Detail to Lists
+    // MARK: DetailViewModelRoutingDelegate: From Detail to Lists
     //Redirect to New RouteCoordinator! -> AddToExistingList  (Modal)
     func showAddList(book: BookResult) {
         //TODO
-        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager)
         addToListRouteCoordinator.delegate = self
         rootViewController.present(addToListRouteCoordinator.rootViewController, animated: true, completion: nil)
     }
-    // AddToListRouteCoordinatorDelegate
+    // MARK: AddToListRouteCoordinatorDelegate
     func closeAddToList() {
         rootViewController.dismiss(animated: true, completion: nil)
     }
     
-    // CommentsRouteCoordinatorDelegate
+    // MARK: CommentsRouteCoordinatorDelegate
     func closeComments() {
         rootViewController.dismiss(animated: true, completion: nil)
     }
     
-    // HomeViewModelRoutingDelegate: From Home to Detail
+    // MARK: HomeViewModelRoutingDelegate: From Home to Detail
     func watchDetail(book: BookResult) {
-        let vm = DetailViewModel(bookManager: bookManager, bookResult: book)
+        let vm = DetailViewModel(bookManager: bookManager, userManager: userManager, bookResult: book, likeManager: likeManager)
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

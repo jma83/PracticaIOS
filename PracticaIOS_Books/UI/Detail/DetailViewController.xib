@@ -55,7 +55,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyB-xn-pyZ">
-                            <rect key="frame" x="30" y="414.5" width="254" height="21"/>
+                            <rect key="frame" x="30" y="414.5" width="314" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -97,6 +97,7 @@
                         </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="yC7-C0-ZT3" firstAttribute="trailing" secondItem="gyB-xn-pyZ" secondAttribute="trailing" constant="60" id="0rV-jk-KmQ"/>
                         <constraint firstItem="fBa-BU-fkJ" firstAttribute="trailing" secondItem="kn7-DR-lFi" secondAttribute="trailing" constant="-30" id="2eQ-tO-s0K"/>
                         <constraint firstItem="yuy-Sg-vif" firstAttribute="trailing" secondItem="Nta-m4-0IB" secondAttribute="trailing" constant="29" id="2pn-YQ-3JD"/>
                         <constraint firstItem="kn7-DR-lFi" firstAttribute="trailing" secondItem="Mf3-Ix-Flc" secondAttribute="trailing" constant="70" id="Hgj-LW-fhq"/>
@@ -119,7 +120,6 @@
                         <constraint firstItem="gyB-xn-pyZ" firstAttribute="top" secondItem="Jue-ad-mej" secondAttribute="bottom" constant="18" id="m00-X3-LIS"/>
                         <constraint firstItem="Mf3-Ix-Flc" firstAttribute="top" secondItem="ioM-RC-ciI" secondAttribute="top" constant="26" id="s07-3H-jPh"/>
                         <constraint firstAttribute="trailing" secondItem="Nta-m4-0IB" secondAttribute="trailing" constant="40" id="uAp-j8-5kW"/>
-                        <constraint firstItem="gyB-xn-pyZ" firstAttribute="trailing" secondItem="p6g-Wg-57D" secondAttribute="trailing" id="xoo-go-NjH"/>
                         <constraint firstItem="Nta-m4-0IB" firstAttribute="centerY" secondItem="p6g-Wg-57D" secondAttribute="centerY" id="ytf-TK-vQt"/>
                         <constraint firstItem="Mf3-Ix-Flc" firstAttribute="leading" secondItem="kn7-DR-lFi" secondAttribute="leading" constant="70" id="zAN-9C-etQ"/>
                     </constraints>

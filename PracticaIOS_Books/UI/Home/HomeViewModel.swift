@@ -17,6 +17,7 @@ class HomeViewModel: BookManagerDelegate {
     init(bookManager: BookManager) {
         self.bookManager = bookManager
         self.bookManager.delegate = self
+        self.userManager.retrieveUserSession(initial: false)
     }
     
     func getHomeBooks(){

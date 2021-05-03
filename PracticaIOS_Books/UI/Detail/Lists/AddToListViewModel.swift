@@ -44,9 +44,9 @@ class AddToListViewModel: ListManagerDelegate {
         self.routingDelegate?.closeAddToList()
     }
     
-    func listsResult(_: ListManager, didListChange list: List) {
+    func listsResult(_: ListManager, didListChange list: [List]) {
         //TODO
-        //Event recieved from 
+        //Event recieved from
     }
     
     func addBookToList(listViewModel: ListViewModel){

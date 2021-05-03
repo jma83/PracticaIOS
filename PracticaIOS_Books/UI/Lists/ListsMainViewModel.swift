@@ -34,7 +34,7 @@ class ListsMainViewModel: ListManagerDelegate {
     }
     
     
-    func listsResult(_: ListManager, didListChange list: List) {
+    func listsResult(_: ListManager, didListChange list: [List]) {
         //TODO
         //Event recieved from ListManager
     }

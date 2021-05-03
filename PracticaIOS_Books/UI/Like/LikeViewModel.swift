@@ -9,12 +9,16 @@ import Foundation
 
 class LikeViewModel: BookManagerLikeDelegate {
     
+    let likeManager: LikeManager
+    let userManager: UserManager
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [[]]
     weak var delegate: LikeViewModelDelegate?
     weak var routingDelegate: LikeViewModelRoutingDelegate?
-    init(bookManager: BookManager, userManager: UserManager) {
+    init(bookManager: BookManager, userManager: UserManager, likeManager: LikeManager) {
         self.bookManager = bookManager
+        self.userManager = userManager
+        self.likeManager = likeManager
         self.bookManager.likeDelegate = self
         self.getLikedBooks()
         
@@ -23,6 +27,7 @@ class LikeViewModel: BookManagerLikeDelegate {
     func getLikedBooks(){
         //TODO
         //call bookManager and Usermanager to get the books with likes for this user
+       // self.likeManager.findLikedByUser(user: )
     }
     
     func booksChanged(_: BookManager, books: [[BookResult]]?) {

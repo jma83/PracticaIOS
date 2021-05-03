@@ -42,6 +42,7 @@
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="username" optional="YES" attributeType="String"/>
+        <attribute name="userToken" optional="YES" attributeType="String"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment"/>
         <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="user" inverseEntity="Like"/>
         <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="List" inverseName="user" inverseEntity="List"/>
@@ -51,6 +52,6 @@
         <element name="Comment" positionX="-36" positionY="9" width="128" height="148"/>
         <element name="Like" positionX="-18" positionY="72" width="128" height="88"/>
         <element name="List" positionX="-54" positionY="-9" width="128" height="118"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="223"/>
     </elements>
 </model>

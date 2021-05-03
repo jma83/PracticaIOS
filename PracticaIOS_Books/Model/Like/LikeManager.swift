@@ -21,15 +21,17 @@ class LikeManager {
         context = appDelegate.managedObjectContext
     }
     
-    func addLike(book: Book, user: User) {
+    func manageLike(book: Book, user: User) {
         self.findLikedByBookAndUser(user: user, book: book,
             completionHandler:{ datos in
-                if datos.count != 0 {
+                if datos.count == 0 {
                     let entity = NSEntityDescription.entity(forEntityName: self.LIKE_ENTITY, in: self.context)
                     let like = Like(entity: entity!, insertInto: self.context)
                     like.book = book
-                    like.date = Date()
                     like.user = user
+                    like.date = Date()
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.saveContext()
                     self.delegate?.likeAddResult(self, like: datos)
                 }else{
                     self.deleteLike(like: datos.first!)

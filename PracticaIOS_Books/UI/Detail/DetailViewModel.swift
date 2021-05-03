@@ -7,16 +7,20 @@
 
 import Foundation
 
-class DetailViewModel: BookManagerDetailDelegate {
-
+class DetailViewModel: BookManagerDetailDelegate, LikeManagerDelegate {
     
 
     let bookManager: BookManager
+    let likeManager: LikeManager
+    let userManager: UserManager
+    var userSession: User? = nil
     var bookViewModel: BookViewModel?
     weak var delegate: DetailViewModelDelegate?
     weak var routingDelegate: DetailViewModelRoutingDelegate?
 
-    init(bookManager: BookManager, bookResult: BookResult) {
+    init(bookManager: BookManager,userManager: UserManager, bookResult: BookResult, likeManager: LikeManager) {
+        self.likeManager = likeManager
+        self.userManager = userManager
         self.bookManager = bookManager
         self.bookViewModel = BookViewModel(book: bookResult)
         self.bookManager.detailDelegate = self
@@ -54,6 +58,9 @@ class DetailViewModel: BookManagerDetailDelegate {
     }
     
     func likeBook() {
+        if let bookR = self.bookViewModel?.book {
+            self.bookManager.createBook(book: bookR)
+        }
         
     }
     
@@ -68,6 +75,33 @@ class DetailViewModel: BookManagerDetailDelegate {
             routingDelegate?.showAddList(book: bookViewModel.book)
         }
     }
+    
+    func userSession(_: UserManager, didUserChange user: User) {
+        self.userSession = user
+    }
+    
+    func userCredentialError(_: UserManager, error: String) {
+        //show error getting current User
+    }
+    
+    func createBookResult(_: BookManager, book: Book?) {
+        if let book = book, let user = userSession {
+            likeManager.manageLike(book: book, user: user)
+        }
+    }
+    
+    func likeAddResult(_: LikeManager, like: [Like]) {
+        //TODO
+    }
+    
+    func likeError(_: LikeManager, message: String) {
+        //TODO
+    }
+    
+    func likeFetchResult(_: LikeManager, like: [Like]) {
+        //TODO
+    }
+    
 }
 
 protocol DetailViewModelDelegate: class {

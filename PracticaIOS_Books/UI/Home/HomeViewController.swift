@@ -23,7 +23,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
         self.viewModel.getHomeBooks()
-        
+        title = "Home"
+
     }
     
     required init?(coder: NSCoder) {
@@ -38,7 +39,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(clickNewBooks))
-        title = "Home"
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

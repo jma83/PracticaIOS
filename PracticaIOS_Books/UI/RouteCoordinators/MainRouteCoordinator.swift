@@ -17,16 +17,16 @@ class MainRouteCoordinator {
     
     let homeRouteCoordinator: HomeRouteCoordinator
     let searchRouteCoordinator: SearchRouteCoordinator
-    var listsRouteCoordinator: ListsRouteCoordinator
-    var likeRouteCoordinator: LikeRouteCoordinator
+    let listsRouteCoordinator: ListsRouteCoordinator
+    let likeRouteCoordinator: LikeRouteCoordinator
     
     
-    init(userManager: UserManager, bookManager: BookManager) {
+    init(userManager: UserManager, bookManager: BookManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
         
-        homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager, userManager: userManager)
-        searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager, userManager: userManager)
-        listsRouteCoordinator = ListsRouteCoordinator(bookManager: bookManager, userManager: userManager)
-        likeRouteCoordinator = LikeRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
+        searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
+        listsRouteCoordinator = ListsRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
+        likeRouteCoordinator = LikeRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
     
         
         tabBarController = UITabBarController()

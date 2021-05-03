@@ -7,21 +7,28 @@
 
 import UIKit
 //LikeViewModelRoutingDelegate
-class LikeRouteCoordinator: LikeViewModelRoutingDelegate {
+class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate {
     
-        
     private var navigationController: UINavigationController
     let bookManager: BookManager
     let userManager: UserManager
+    let listManager: ListManager
+    let likeManager: LikeManager
+    let commentManager: CommentManager
     var rootViewController: UIViewController {
         return navigationController
     }
+    private var addToListRouteCoordinator: AddToListRouteCoordinator!
+    private var commentsRouteCoordinator: CommentsRouteCoordinator!
 
     
-    init(bookManager:BookManager, userManager: UserManager) {
-            self.bookManager = bookManager
-            self.userManager = userManager
-        let likeViewModel = LikeViewModel(bookManager: bookManager, userManager: userManager)
+    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
+        self.bookManager = bookManager
+        self.userManager = userManager
+        self.listManager = listManager
+        self.likeManager = likeManager
+        self.commentManager = commentManager
+        let likeViewModel = LikeViewModel(bookManager: bookManager, userManager: userManager, likeManager: likeManager)
             let likeViewController = LikeViewController(viewModel: likeViewModel)
             
             navigationController = UINavigationController(rootViewController: likeViewController)
@@ -29,11 +36,36 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate {
         
     }
     
+    // MARK: DetailViewModelRoutingDelegate: From Detail to Comments
+    //Redirect to New RouteCoordinator! -> Comments  (Modal)
+    func showCommentsView(book: BookResult) {
+        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, userManager: userManager, commentManager: commentManager)
+        commentsRouteCoordinator.delegate = self
+        rootViewController.present(commentsRouteCoordinator.rootViewController, animated: true, completion: nil)
+        
+    }
+    // MARK: DetailViewModelRoutingDelegate: From Detail to Lists
+    //Redirect to New RouteCoordinator! -> AddToExistingList  (Modal)
+    func showAddList(book: BookResult) {
+        //TODO
+        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager)
+        addToListRouteCoordinator.delegate = self
+        rootViewController.present(addToListRouteCoordinator.rootViewController, animated: true, completion: nil)
+    }
+    // MARK: AddToListRouteCoordinatorDelegate
+    func closeAddToList() {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: CommentsRouteCoordinatorDelegate
+    func closeComments() {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
     
     func watchDetail(book: BookResult) {
-        let vm = LikeViewModel(bookManager: bookManager, userManager: userManager)
+        let vm = DetailViewModel(bookManager: bookManager,userManager: userManager, bookResult: book, likeManager: likeManager)
         vm.routingDelegate = self
-        let vc: LikeViewController = LikeViewController(viewModel: vm)
+        let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
 }

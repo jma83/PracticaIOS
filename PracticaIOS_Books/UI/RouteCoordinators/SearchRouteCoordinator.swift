@@ -15,13 +15,19 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
 
     let bookManager: BookManager
     let userManager: UserManager
+    let listManager: ListManager
+    let likeManager: LikeManager
+    let commentManager: CommentManager
     var rootViewController: UIViewController {
         return navigationController
     }
 
-    init(bookManager:BookManager, userManager: UserManager) {
+    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
         self.bookManager = bookManager
         self.userManager = userManager
+        self.listManager = listManager
+        self.likeManager = likeManager
+        self.commentManager = commentManager
         let searchViewModel = SearchViewModel(bookManager: bookManager)
         let searchViewController = SearchViewController(viewModel: searchViewModel)
         
@@ -32,7 +38,7 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
     // DetailViewModelRoutingDelegate: From Detail to Comments
     //Redirect to New RouteCoordinator! -> Comments  (Modal)
     func showCommentsView(book: BookResult) {
-        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, userManager: userManager, commentManager: commentManager)
         commentsRouteCoordinator.delegate = self
         rootViewController.present(commentsRouteCoordinator.rootViewController, animated: true, completion: nil)
     }
@@ -40,7 +46,7 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
     // DetailViewModelRoutingDelegate: From Detail to Lists
     //Redirect to New RouteCoordinator! -> AddToExistingList (Modal)
     func showAddList(book: BookResult) {
-        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager)
+        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager)
         addToListRouteCoordinator.delegate = self
         rootViewController.present(addToListRouteCoordinator.rootViewController, animated: true, completion: nil)
     }
@@ -57,7 +63,7 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
     
     // SearchViewModelRoutingDelegate: From Search to Detail
     func watchDetail(book: BookResult) {
-        let vm = DetailViewModel(bookManager: bookManager, bookResult: book)
+        let vm = DetailViewModel(bookManager: bookManager, userManager: userManager, bookResult: book, likeManager: likeManager)
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

@@ -21,24 +21,27 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LI6-Uq-Lbn">
-                    <rect key="frame" x="30" y="86" width="36" height="74"/>
-                    <state key="normal" title="Perfil"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="JcJ-9c-WUF" userLabel="Mis listas">
-                    <rect key="frame" x="30" y="190" width="69" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="npr-5b-pQU">
+                    <rect key="frame" x="14" y="474" width="94" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Mis Listas"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Logout" image="arrowshape.turn.up.left.fill" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="21"/>
+                    </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="aeR-tP-lid">
-                    <rect key="frame" x="30" y="500" width="92" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Cerrar sesión"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQa-xP-tVa">
+                    <rect key="frame" x="5" y="144" width="149" height="40"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <state key="normal" title="Profile">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="LwI-8H-2We">
-                    <rect key="frame" x="30" y="250" width="64" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bHc-Xa-D2Y">
+                    <rect key="frame" x="35" y="102" width="64" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Me gusta"/>
+                    <state key="normal" image="person.fill" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="48"/>
+                    </state>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0U-lV-nLk">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
@@ -64,14 +67,12 @@
             <viewLayoutGuide key="safeArea" id="6pc-wc-2Ch"/>
             <color key="backgroundColor" systemColor="systemGrayColor"/>
             <constraints>
-                <constraint firstItem="6pc-wc-2Ch" firstAttribute="trailing" secondItem="LI6-Uq-Lbn" secondAttribute="trailing" constant="348" id="6S2-xG-Jn3"/>
+                <constraint firstItem="pQa-xP-tVa" firstAttribute="leading" secondItem="6pc-wc-2Ch" secondAttribute="leading" constant="5" id="5OR-dx-jkd"/>
                 <constraint firstItem="C0U-lV-nLk" firstAttribute="leading" secondItem="6pc-wc-2Ch" secondAttribute="leading" id="6sf-W4-UOw"/>
-                <constraint firstItem="LI6-Uq-Lbn" firstAttribute="leading" secondItem="6pc-wc-2Ch" secondAttribute="leading" constant="30" id="Hc5-L6-7u8"/>
-                <constraint firstItem="LwI-8H-2We" firstAttribute="leading" secondItem="LI6-Uq-Lbn" secondAttribute="leading" id="K5v-Q3-Xqj"/>
-                <constraint firstItem="JcJ-9c-WUF" firstAttribute="top" secondItem="LI6-Uq-Lbn" secondAttribute="bottom" constant="30" id="QA5-8f-hZA"/>
-                <constraint firstItem="JcJ-9c-WUF" firstAttribute="leading" secondItem="LI6-Uq-Lbn" secondAttribute="leading" id="USe-kW-jRF"/>
+                <constraint firstItem="npr-5b-pQU" firstAttribute="top" secondItem="pQa-xP-tVa" secondAttribute="bottom" constant="290" id="BfO-CX-LOd"/>
+                <constraint firstItem="pQa-xP-tVa" firstAttribute="top" secondItem="bHc-Xa-D2Y" secondAttribute="bottom" id="Utx-aF-y1A"/>
                 <constraint firstItem="C0U-lV-nLk" firstAttribute="bottom" secondItem="6pc-wc-2Ch" secondAttribute="bottom" constant="34" id="Y1K-Ab-6ha"/>
-                <constraint firstItem="LI6-Uq-Lbn" firstAttribute="top" secondItem="6pc-wc-2Ch" secondAttribute="top" constant="42" id="p6r-zb-SAg"/>
+                <constraint firstItem="6pc-wc-2Ch" firstAttribute="trailing" secondItem="pQa-xP-tVa" secondAttribute="trailing" constant="260" id="nvM-PB-v1y"/>
                 <constraint firstItem="C0U-lV-nLk" firstAttribute="top" secondItem="6pc-wc-2Ch" secondAttribute="top" id="tIR-Ls-fu3"/>
                 <constraint firstItem="6pc-wc-2Ch" firstAttribute="trailing" secondItem="C0U-lV-nLk" secondAttribute="trailing" id="x5M-Lm-QVR"/>
             </constraints>
@@ -82,6 +83,8 @@
         </navigationItem>
     </objects>
     <resources>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

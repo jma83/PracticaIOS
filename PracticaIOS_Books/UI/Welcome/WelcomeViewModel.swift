@@ -10,25 +10,22 @@ import Foundation
 class WelcomeViewModel: UserManagerStartDelegate {
        
     let userManager: UserManager
-    weak var delegate: WelcomeViewModelDelegate?
     weak var routingDelegate: WelcomeViewModelRoutingDelegate?
     
     init(userManager: UserManager) {
         self.userManager = userManager
         self.userManager.initialDelegate = self
-        
+        self.checkUser()
     }
     
     func checkUser(){
-        do {
-            try self.userManager.retrieveUserSession()
-        }catch{
-            print("Error retrieving")
-        }
+        self.userManager.retrieveUserSession(initial: true)
+        
     }
     
     func userSession(_: UserManager, didUserChange user: User) {
-        delegate?.userFound(self.userManager, user: user)
+        // TODO
+        routingDelegate?.userAccessAllowed()
     }
     
     public func handleUserAccess() {
@@ -39,10 +36,6 @@ class WelcomeViewModel: UserManagerStartDelegate {
         routingDelegate?.userWantsToRegister(self)
     }
     
-}
-
-protocol WelcomeViewModelDelegate: class {
-    func userFound(_: UserManager, user: User)
 }
 
 protocol WelcomeViewModelRoutingDelegate: class {

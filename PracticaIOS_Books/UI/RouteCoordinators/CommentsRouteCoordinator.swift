@@ -14,18 +14,16 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate, AddCommentView
     let bookManager: BookManager
     let userManager: UserManager
     let commentManager: CommentManager
-    //let listManager: ListManager
-    // REEPLACE LISTMANAGER FOR COMMENTSMANAGER
     weak var delegate: CommentsRouteCoordinatorDelegate?
     
     var rootViewController: UIViewController {
         return navigationController
     }
      
-    init(bookManager: BookManager, userManager: UserManager) {
+    init(bookManager: BookManager, userManager: UserManager, commentManager: CommentManager) {
         self.bookManager = bookManager
         self.userManager = userManager
-        self.commentManager = CommentManager()
+        self.commentManager = commentManager
         let vm = CommentsViewModel(commentManager: commentManager, userManager: userManager)
         let vc = CommentsViewController(viewModel: vm)
         
