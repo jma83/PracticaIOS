@@ -8,9 +8,10 @@
 
 import UIKit
 
-class MainRouteCoordinator {
-    private let tabBarController: UITabBarController
+class MainRouteCoordinator: HomeRouteCoordinatorDelegate{
     
+    private let tabBarController: UITabBarController
+    weak var delegate: MainRouteCoordinatorDelegate?
     var rootViewController: UIViewController {
         return tabBarController
     }
@@ -21,12 +22,12 @@ class MainRouteCoordinator {
     let likeRouteCoordinator: LikeRouteCoordinator
     
     
-    init(userManager: UserManager, bookManager: BookManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
+    init(userManager: UserManager, bookManager: BookManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager, userSession: User) {
         
-        homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
-        searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
-        listsRouteCoordinator = ListsRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
-        likeRouteCoordinator = LikeRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
+        homeRouteCoordinator = HomeRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager, userSession: userSession)
+        searchRouteCoordinator = SearchRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager, userSession: userSession)
+        listsRouteCoordinator = ListsRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager, userSession: userSession)
+        likeRouteCoordinator = LikeRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager, userSession: userSession)
     
         
         tabBarController = UITabBarController()
@@ -40,8 +41,17 @@ class MainRouteCoordinator {
         
         
         tabBarController.modalPresentationStyle = .fullScreen
-        
+        homeRouteCoordinator.delegate = self
+
         
                
     }
+    
+    func redirectToWelcome(_: HomeRouteCoordinator) {
+        delegate?.redirectToWelcome(self)
+    }
+}
+
+protocol MainRouteCoordinatorDelegate: class {
+    func redirectToWelcome(_: MainRouteCoordinator)
 }

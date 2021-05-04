@@ -15,7 +15,6 @@ class UserManager{
 
     weak var delegate: UserManagerDelegate?
     weak var initialDelegate: UserManagerStartDelegate?
-    weak var detailDelegate: UserManagerDetailDelegate?
     private let GENERIC_ERROR = "Error al enviar credenciales, intentalo de nuevo más tarde"
     private let ALREADY_EXISTS_ERROR = "Error el usuario ya existe"
     private let INVALID_CREDENTIALS_ERROR = "Error. El usuario o la contraseña no coinciden"
@@ -169,13 +168,9 @@ class UserManager{
 
         self.checkSession(username: username, userToken: userToken, completionHandler: { user in
             if let user = user  {
-                if initial == false {
-                    self.detailDelegate?.userSession(self, didUserChange: user)
-                }else{
-                    self.initialDelegate?.userSession(self, didUserChange: user)
-                }
+                self.initialDelegate?.userSession(self, didUserChange: user)
             }else{
-                self.delegate?.userCredentialError(self, error: "User not found")
+                self.initialDelegate?.userSessionError(self, message: "Error user not found")
             }
         })
     }
@@ -190,10 +185,7 @@ protocol UserManagerDelegate: class {
 
 protocol UserManagerStartDelegate: class {
     func userSession(_: UserManager, didUserChange user: User)
-}
-
-protocol UserManagerDetailDelegate: class {
-    func userSession(_: UserManager, didUserChange user: User)
+    func userSessionError(_: UserManager, message: String)
 }
 
 enum MyError: Error {

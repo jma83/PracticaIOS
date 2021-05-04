@@ -22,7 +22,7 @@ class BookManager {
     
     let bookNYT: BookNYT
     let bookGoogle: BookGoogle
-    weak var delegate: BookManagerDelegate?
+    weak var delegate: BookManagerHomeDelegate?
     weak var detailDelegate: BookManagerDetailDelegate?
     weak var searchDelegate: BookManagerSearchDelegate?
     weak var likeDelegate: BookManagerLikeDelegate?
@@ -52,7 +52,7 @@ class BookManager {
                 for itemList in lists {
                     if arrItems.contains(count){
                         for book in itemList.books {
-                            let bookresult = BookResult(title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
+                            let bookresult = BookResult(id: book.primary_isbn10 ,title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
                             bookResultArr[internalCount].append(bookresult)
                         }
                         internalCount+=1
@@ -60,8 +60,8 @@ class BookManager {
                     }
                     count+=1
                 }
-                self.delegate?.booksChanged(self, books: bookResultArr)
-                self.delegate?.booksSectionChanged(self, sections: sectionArr)
+                self.delegate?.homeBooksResult(self, books: bookResultArr)
+                self.delegate?.booksSectionResult(self, sections: sectionArr)
             }
         })
     }
@@ -84,8 +84,16 @@ class BookManager {
             if let r = result!.response?.items.first {
                 bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors?[0] ?? "N/A", description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
             }
-            self.detailDelegate?.bookDetail(self, bookResult: bookresult)
-
+            
+            self.detailDelegate?.bookResultDetail(self, bookResult: bookresult)
+            
+            let id = (bookresult?.id ?? bookresult?.primary_isbn10) ?? ""
+            self.fetchById(id: id, completionHandler: { books in
+                if books.count > 0 {
+                    self.detailDelegate?.bookDetail(self, book: books.first)
+                }
+            })
+            
             
         })
     }
@@ -99,7 +107,7 @@ class BookManager {
             if let lists = result?.response?.items {
                 for item in lists {
                     let book = item.volumeInfo
-                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks?.thumbnail, created_date: book.publishedDate, primary_isbn10: "")
+                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks?.thumbnail, created_date: book.publishedDate, primary_isbn10: book.industryIdentifiers?[0]?.identifier ?? "")
                     bookResultArr.append(bookresult)
                 }
             }
@@ -111,8 +119,6 @@ class BookManager {
     func encodeURLParam(param: String) -> String {
         return param.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
     }
-    
-    
     
 }
 
@@ -149,9 +155,11 @@ extension BookManager {
     }
     
     func createBook(book: BookResult) {
-        self.fetchById(id: book.id ?? "", completionHandler: { datos in
+        let id = (book.id ?? book.primary_isbn10) ?? ""
+        self.fetchById(id: id, completionHandler: { datos in
             if datos.count != 0 {
                 self.detailDelegate?.createBookResult(self, book: datos.first!)
+                return
             }
             
             let entity = NSEntityDescription.entity(forEntityName: self.BOOK_ENTITY, in: self.context)
@@ -176,9 +184,9 @@ extension BookManager {
 
 
 
-protocol BookManagerDelegate: class {
-    func booksChanged(_: BookManager, books: [[BookResult]]?)
-    func booksSectionChanged(_: BookManager, sections: [String]?)
+protocol BookManagerHomeDelegate: class {
+    func homeBooksResult(_: BookManager, books: [[BookResult]]?)
+    func booksSectionResult(_: BookManager, sections: [String]?)
 }
 protocol BookManagerLikeDelegate: class {
     func booksChanged(_: BookManager, books: [[BookResult]]?)
@@ -187,7 +195,8 @@ protocol BookManagerListDelegate: class {
     func booksChanged(_: BookManager, books: [[BookResult]]?)
 }
 protocol BookManagerDetailDelegate: class {
-    func bookDetail(_: BookManager, bookResult: BookResult?)
+    func bookResultDetail(_: BookManager, bookResult: BookResult?)
+    func bookDetail(_: BookManager, book: Book?)
     func createBookResult(_: BookManager, book: Book?)
 }
 protocol BookManagerSearchDelegate: class {

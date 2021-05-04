@@ -34,7 +34,7 @@ class RegisterViewModel: UserManagerDelegate {
     }
     
     func userSession(_: UserManager, didUserChange user: User) {
-        routingDelegate?.userAccessAllowed()
+        routingDelegate?.userAccessAllowed(userSession: user)
     }
     
     func userCredentialError(_: UserManager, error: String) {

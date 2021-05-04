@@ -7,8 +7,9 @@
 
 import UIKit
 
-class StartRouteCoordinator: WelcomeViewModelRoutingDelegate {
-        private let navigationController: UINavigationController
+class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, HomeRouteCoordinatorDelegate {
+    
+    private let navigationController: UINavigationController
     private var mainRouteCoordinator: MainRouteCoordinator?
     
     private let userManager: UserManager
@@ -50,11 +51,14 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate {
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func userAccessAllowed() {
-        self.mainRouteCoordinator = MainRouteCoordinator(userManager: userManager, bookManager: bookManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager)
+    func userAccessAllowed(userSession: User) {
+        self.mainRouteCoordinator = MainRouteCoordinator(userManager: userManager, bookManager: bookManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager, userSession: userSession)
         if let mainRouteCoordinator = mainRouteCoordinator {
             rootViewController.present(mainRouteCoordinator.rootViewController, animated: true, completion: nil)
         }
     }
     
+    func redirectToWelcome(_: HomeRouteCoordinator) {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
 }

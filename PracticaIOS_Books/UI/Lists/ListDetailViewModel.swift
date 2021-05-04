@@ -12,10 +12,13 @@ class ListDetailViewModel: BookManagerListDelegate {
     var bookViewModels: [[BookViewModel]] = [[]]
     weak var delegate: ListDetailViewModelDelegate?
     weak var routingDelegate: ListDetailViewModelRoutingDelegate?
-    init(bookManager: BookManager, userManager: UserManager) {
+    var userSession: User?
+    init(bookManager: BookManager, userSession: User) {
         self.bookManager = bookManager
         self.bookManager.listDelegate = self
         self.getListDetailBooks()
+        self.userSession = userSession
+        
         
     }
     
@@ -31,7 +34,9 @@ class ListDetailViewModel: BookManagerListDelegate {
     func bookDetailRouting(bookResult: BookResult) {
         if let routingDelegate = routingDelegate {
             print(routingDelegate)
-            routingDelegate.watchDetail(book: bookResult)
+            if let user = userSession {
+            routingDelegate.watchDetail(self, book: bookResult, userSession: user)
+            }
         }
     }
 }
@@ -41,5 +46,5 @@ protocol ListDetailViewModelDelegate: class {
 }
 
 protocol ListDetailViewModelRoutingDelegate: class {
-    func watchDetail(book: BookResult)
+    func watchDetail(_: ListDetailViewModel, book: BookResult, userSession: User)
 }

@@ -7,17 +7,20 @@
 
 import Foundation
 
-class HomeViewModel: BookManagerDelegate {
+class HomeViewModel: BookManagerHomeDelegate {
     
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [[]]
     var sections: [String] = []
+    let userSession: User?
     weak var delegate: HomeViewModelDelegate?
     weak var routingDelegate: HomeViewModelRoutingDelegate?
-    init(bookManager: BookManager) {
+    
+    init(bookManager: BookManager, userSession: User) {
         self.bookManager = bookManager
+        self.userSession = userSession
         self.bookManager.delegate = self
-        self.userManager.retrieveUserSession(initial: false)
+
     }
     
     func getHomeBooks(){
@@ -25,13 +28,13 @@ class HomeViewModel: BookManagerDelegate {
         self.bookManager.getRelevantBooks()
     }
     
-    func booksChanged(_: BookManager, books: [[BookResult]]?) {
+    func homeBooksResult(_: BookManager, books: [[BookResult]]?) {
         if let result = books {
             var count = 0
             self.bookViewModels = [[BookViewModel]](repeating: [], count: result.count)
             for listCat in result {
                 for item in listCat {
-                    self.bookViewModels[count].append(BookViewModel(book: item))
+                    self.bookViewModels[count].append(BookViewModel(bookResult: item))
                 }
                 count+=1
             }
@@ -39,16 +42,16 @@ class HomeViewModel: BookManagerDelegate {
         delegate?.bookChanged(self)
     }
     
-    func booksSectionChanged(_: BookManager, sections: [String]?) {
+    func booksSectionResult(_: BookManager, sections: [String]?) {
         if let sections = sections {
             self.sections = sections
         }
     }
     
     func bookDetailRouting(bookResult: BookResult) {
-        if let routingDelegate = routingDelegate {
+        if let routingDelegate = routingDelegate, let user = userSession {
             print(routingDelegate)
-            routingDelegate.watchDetail(book: bookResult)
+            routingDelegate.watchDetail(self, book: bookResult, userSession: user)
         }
     }
     
@@ -59,5 +62,6 @@ protocol HomeViewModelDelegate: class {
 }
 
 protocol HomeViewModelRoutingDelegate: class {
-    func watchDetail(book: BookResult)
+    func watchDetail(_: HomeViewModel, book: BookResult, userSession: User)
+    func redirectToWelcome(_: HomeViewModel)
 }

@@ -22,6 +22,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     var image: UIImage?
     var isnb: String?
     var viewModel: DetailViewModel
+    var checkLikeBook: Bool = false
     
     
     init(viewModel: DetailViewModel) {
@@ -42,7 +43,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     
     func bookDetailResult(_: DetailViewModel) {
         //setinfo
-        let book = self.viewModel.bookViewModel?.book
+        let book = self.viewModel.bookViewModel?.bookResult
         DispatchQueue.main.async {
             if let title = book?.title {
                 self.titleText.text = "Title: \(title)"
@@ -85,14 +86,36 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
 
     @IBAction func clickCommentsButton(_ sender: Any) {
-        self.viewModel.showComments()
+        self.viewModel.showCommentsRouting()
     }
     
     @IBAction func clickLikeButton(_ sender: Any) {
-        self.viewModel.likeBook()
+        if checkLikeBook == false {
+            checkLikeBook = true
+            self.viewModel.likeBook()
+        }
     }
     
     @IBAction func clickAddListButton(_ sender: Any) {
-        self.viewModel.addBookToList()
+        self.viewModel.addBookToListRouting()
     }
+
+    func likeAddResult(_: DetailViewModel, checkLike: Bool) {
+        if checkLike == true {
+            likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+        }else{
+            likeButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        }
+        checkLikeBook = false
+
+    }
+    
+    func likeCheckBook(_: DetailViewModel) {
+        likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+    }
+    
+    func likeError(_: DetailViewModel, message: String) {
+        present(ModalView().showAlert(title: "Error", message: message), animated: true)
+    }
+    
 }

@@ -70,9 +70,9 @@ class ListManager{
         let fetchRequest = NSFetchRequest<List>(entityName: LIST_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "user == %@", user)
         
-        fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-            print("count \(datos.count)")
-            self.delegate?.listsResult(self, didListChange: datos)
+        fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { lists in
+            print("count \(lists.count)")
+            self.delegate?.listsResult(self, didListChange: lists)
         })
     }
      

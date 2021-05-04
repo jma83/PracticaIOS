@@ -15,6 +15,7 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
     let listManager: ListManager
     let likeManager: LikeManager
     let commentManager: CommentManager
+    let userSession: User
     var rootViewController: UIViewController {
         return navigationController
     }
@@ -22,13 +23,14 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
     private var commentsRouteCoordinator: CommentsRouteCoordinator!
 
     
-    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
+    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager, userSession: User) {
         self.bookManager = bookManager
         self.userManager = userManager
         self.listManager = listManager
         self.likeManager = likeManager
         self.commentManager = commentManager
-        let likeViewModel = LikeViewModel(bookManager: bookManager, userManager: userManager, likeManager: likeManager)
+        self.userSession = userSession
+        let likeViewModel = LikeViewModel(bookManager: bookManager, likeManager: likeManager, userSession: userSession)
             let likeViewController = LikeViewController(viewModel: likeViewModel)
             
             navigationController = UINavigationController(rootViewController: likeViewController)
@@ -62,10 +64,11 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
         rootViewController.dismiss(animated: true, completion: nil)
     }
     
-    func watchDetail(book: BookResult) {
-        let vm = DetailViewModel(bookManager: bookManager,userManager: userManager, bookResult: book, likeManager: likeManager)
+    func watchDetail(_: LikeViewModel, book: BookResult, userSession: User) {
+        let vm = DetailViewModel(bookManager: bookManager, likeManager: likeManager, bookResult: book, userSession: userSession)
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
+    
 }

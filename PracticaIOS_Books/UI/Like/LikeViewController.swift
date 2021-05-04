@@ -22,9 +22,7 @@ class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.viewModel.getLikedBooks()
     }
     
     
@@ -37,7 +35,7 @@ class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func bookChanged(_: LikeViewModel) {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.tableView?.reloadData()
         }
     }
     
@@ -72,7 +70,7 @@ class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
         if let vm = homeCell.viewModel {
-            self.viewModel.bookDetailRouting(bookResult: vm.book)
+            self.viewModel.bookDetailRouting(bookResult: vm.bookResult)
         }
     }
     

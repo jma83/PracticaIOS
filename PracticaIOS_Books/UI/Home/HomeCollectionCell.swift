@@ -18,10 +18,10 @@ class HomeCollectionCell: UICollectionViewCell {
                 return
             }
             let image = bookImage?.image
-            if  image == nil || viewModel.book.title != titleLabel?.text{
-                titleLabel?.text = viewModel.book.title
-                authorLabel?.text = viewModel.book.author
-                if let imageURL = viewModel.book.book_image{
+            if  image == nil || viewModel.bookResult.title != titleLabel?.text{
+                titleLabel?.text = viewModel.bookResult.title
+                authorLabel?.text = viewModel.bookResult.author
+                if let imageURL = viewModel.bookResult.book_image{
                     let url = URL(string: imageURL)
                     self.downloadImage(from: url!)
                 }

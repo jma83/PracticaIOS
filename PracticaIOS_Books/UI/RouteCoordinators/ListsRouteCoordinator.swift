@@ -7,8 +7,6 @@
 
 import UIKit
 class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewModelRoutingDelegate, ListDetailViewModelRoutingDelegate, DetailViewModelRoutingDelegate, AddToListRouteCoordinatorDelegate, CommentsRouteCoordinatorDelegate {
-
-    
         
     private var navigationController: UINavigationController
     private var addToListRouteCoordinator: AddToListRouteCoordinator!
@@ -21,21 +19,20 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
     var rootViewController: UIViewController {
         return navigationController
     }
-
     
-    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
+    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager, userSession: User) {
         self.bookManager = bookManager
         self.userManager = userManager
         self.listManager = listManager
         self.likeManager = likeManager
         self.commentManager = commentManager
-        let vm = ListsMainViewModel(listManager: self.listManager, userManager: self.userManager)
+        let vm = ListsMainViewModel(listManager: listManager, userSession: userSession)
         let vc = ListsMainViewController(viewModel: vm)
         navigationController = UINavigationController(rootViewController: vc)
         vm.routingDelegate = self
     }
     
-    func createList() {
+    func createList(_:ListsMainViewModel,userSession: User) {
         let vm = CreateListViewModel(listManager: listManager, userManager: userManager)
         vm.routingDelegate = self
         let vc = CreateListViewController(viewModel: vm)
@@ -46,17 +43,17 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
         navigationController.popViewController(animated: true)
     }
     
-    func showBooksFromList(listViewModel: ListViewModel) {
-        let vm = ListDetailViewModel(bookManager: bookManager, userManager: userManager)
+    func showBooksFromList(_: ListsMainViewModel, listViewModel: ListViewModel, userSession: User) {
+        let vm = ListDetailViewModel(bookManager: bookManager, userSession: userSession)
         vm.routingDelegate = self
         let vc = ListDetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func watchDetail(book: BookResult) {
-        let vm = DetailViewModel(bookManager: bookManager, userManager: userManager, bookResult: book, likeManager: likeManager)
+    func watchDetail(_: ListDetailViewModel, book: BookResult, userSession: User) {
+        let vm = DetailViewModel(bookManager: bookManager, likeManager: likeManager, bookResult: book, userSession: userSession)
         vm.routingDelegate = self
-        let vc: DetailViewController = DetailViewController(viewModel: vm)
+        let vc = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
     
@@ -79,4 +76,6 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
     func closeComments() {
         rootViewController.dismiss(animated: true, completion: nil)
     }
+    
 }
+

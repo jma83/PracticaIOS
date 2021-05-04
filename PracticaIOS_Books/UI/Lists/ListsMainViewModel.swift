@@ -10,14 +10,13 @@ import Foundation
 class ListsMainViewModel: ListManagerDelegate {
     var listViewModels: [ListViewModel] = []
     let listManager: ListManager
-    let userManager: UserManager
+    var userSession: User?
     weak var delegate: ListsMainViewModelDelegate?
     weak var routingDelegate: ListsMainViewModelRoutingDelegate?
-    init(listManager: ListManager, userManager: UserManager) {
+    init(listManager: ListManager, userSession: User) {
         self.listManager = listManager
-        self.userManager = userManager
-        self.retrieveLists()
-        
+        self.userSession = userSession
+        self.listManager.delegate = self
     }
     
     func retrieveLists() {
@@ -36,6 +35,7 @@ class ListsMainViewModel: ListManagerDelegate {
     
     func listsResult(_: ListManager, didListChange list: [List]) {
         //TODO
+        print(list)
         //Event recieved from ListManager
     }
     
@@ -44,14 +44,16 @@ class ListsMainViewModel: ListManagerDelegate {
     }
     
     func createListRouting(){
-        self.routingDelegate?.createList()
+        if let user = self.userSession {
+           self.routingDelegate?.createList(self, userSession: user)
+        }
     }
     
     func showListRouting(listViewModel: ListViewModel){
-        self.routingDelegate?.showBooksFromList(listViewModel: listViewModel)
+        if let user = self.userSession {
+           self.routingDelegate?.showBooksFromList(self, listViewModel: listViewModel, userSession: user)
+        }
     }
-    
-    
 }
 
 
@@ -61,7 +63,7 @@ protocol ListsMainViewModelDelegate: class {
 }
 
 protocol ListsMainViewModelRoutingDelegate: class {
-    func createList()
-    func showBooksFromList(listViewModel: ListViewModel)
+    func createList(_: ListsMainViewModel, userSession: User)
+    func showBooksFromList(_: ListsMainViewModel, listViewModel: ListViewModel, userSession: User)
 }
 

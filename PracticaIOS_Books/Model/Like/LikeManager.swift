@@ -16,6 +16,7 @@ class LikeManager {
     private let LIKE_ENTITY = "Like"
     private let context: NSManagedObjectContext
     weak var delegate: LikeManagerDelegate?
+    weak var detailDelegate: LikeManagerDetailDelegate?
     init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.managedObjectContext
@@ -32,9 +33,10 @@ class LikeManager {
                     like.date = Date()
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.saveContext()
-                    self.delegate?.likeAddResult(self, like: datos)
+                    self.detailDelegate?.likeAddResult(self, checkLike: true)
                 }else{
                     self.deleteLike(like: datos.first!)
+                    self.detailDelegate?.likeAddResult(self, checkLike: false)
                 }
             })
     }
@@ -47,7 +49,7 @@ class LikeManager {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.saveContext()
                 }else{
-                    self.delegate?.likeError(self, message: "Couldn't delete like - not found")
+                    self.detailDelegate?.likeError(self, message: "Couldn't delete like - not found")
                 }
             })
     }
@@ -62,7 +64,15 @@ class LikeManager {
         let fetchRequest = NSFetchRequest<Like>(entityName: LIKE_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "user == %@", user)
         self.fetchAsyncLikes(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-                self.delegate?.likeFetchResult(self, like: datos)
+                var bookResultArr = [BookResult]()
+                for item in datos {
+                    let book = item.book! as Book
+
+                    let bookresult = BookResult(id: book.id, title: book.title, author: book.author ?? "N/A", description: book.description, book_image: book.image, created_date: book.date, primary_isbn10: book.isbn)
+                    bookResultArr.append(bookresult)
+                    
+                }
+            self.delegate?.likeFetchResult(self, books: bookResultArr)
             })
     }
     
@@ -74,12 +84,22 @@ class LikeManager {
             })
     }
     
-    func findLikedByBookAndUser(user: User, book: Book, completionHandler: @escaping ([Like]) -> Void) -> Void{
+    private func findLikedByBookAndUser(user: User, book: Book, completionHandler: @escaping ([Like]) -> Void) -> Void{
         let fetchRequest = NSFetchRequest<Like>(entityName: LIKE_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "user == %@ AND book == %@", user, book)
         self.fetchAsyncLikes(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
                 completionHandler(datos)
             })
+    }
+    
+    func checkLikedByBookAndUser(user: User, book: Book) {
+        self.findLikedByBookAndUser(user: user, book: book, completionHandler: { books in
+            if books.count > 0 {
+                self.detailDelegate?.likeCheckBook(self, checkLike: true)
+            }else{
+                self.detailDelegate?.likeCheckBook(self, checkLike: false)
+            }
+        })
     }
     
     func fetchAsyncLikes(fetchAsyncRequest:NSFetchRequest<Like>, completionHandler: @escaping ([Like]) -> Void) -> Void {
@@ -105,7 +125,13 @@ class LikeManager {
 }
 
 protocol LikeManagerDelegate: class {
-    func likeAddResult(_:LikeManager, like:[Like])
     func likeError(_:LikeManager, message: String)
-    func likeFetchResult(_:LikeManager, like:[Like])
+    func likeFetchResult(_:LikeManager, books: [BookResult])
+    
+}
+
+protocol LikeManagerDetailDelegate: class {
+    func likeAddResult(_:LikeManager, checkLike: Bool)
+    func likeCheckBook(_:LikeManager, checkLike: Bool)
+    func likeError(_:LikeManager, message: String)
 }

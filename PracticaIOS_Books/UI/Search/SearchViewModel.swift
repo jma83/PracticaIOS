@@ -14,9 +14,11 @@ class SearchViewModel: BookManagerSearchDelegate {
     weak var delegate: SearchViewModelDelegate?
     weak var routingDelegate: SearchViewModelRoutingDelegate?
     let colsPerRow: Int = 3
+    let userSession: User?
     
-    init(bookManager: BookManager) {
+    init(bookManager: BookManager, userSession: User) {
         self.bookManager = bookManager
+        self.userSession = userSession
         self.bookManager.searchDelegate = self
     }
     
@@ -27,7 +29,9 @@ class SearchViewModel: BookManagerSearchDelegate {
     func bookDetailRouting(bookResult: BookResult) {
         if let routingDelegate = routingDelegate {
             print(routingDelegate)
-            routingDelegate.watchDetail(book: bookResult)
+            if let user = userSession {
+                routingDelegate.watchDetail(self, book: bookResult, userSession: user)
+            }
         }
     }
     
@@ -53,7 +57,7 @@ class SearchViewModel: BookManagerSearchDelegate {
         var count = 0
         self.resetResults(size: bookResult.count)
         for item in bookResult {
-            bookViewModels[count].append(BookViewModel(book: item))
+            bookViewModels[count].append(BookViewModel(bookResult: item))
             if colsCount == (self.colsPerRow - 1) {
                 colsCount = 0
                 count+=1
@@ -64,7 +68,7 @@ class SearchViewModel: BookManagerSearchDelegate {
         
         self.delegate?.searchResult(self)
     }
-    
+
 }
 
 protocol SearchViewModelDelegate: class {
@@ -74,5 +78,5 @@ protocol SearchViewModelDelegate: class {
 
 
 protocol SearchViewModelRoutingDelegate: class {
-    func watchDetail(book: BookResult)
+    func watchDetail(_: SearchViewModel, book: BookResult, userSession: User)
 }

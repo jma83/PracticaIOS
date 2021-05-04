@@ -87,7 +87,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nta-m4-0IB">
                             <rect key="frame" x="294" y="335" width="70" height="22"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                            <state key="normal" title=" Like" image="hand.thumbsup.fill" catalog="system">
+                            <state key="normal" title=" Like" image="hand.thumbsup" catalog="system">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
                             </state>
@@ -142,7 +142,7 @@
     </objects>
     <resources>
         <image name="books.vertical.fill" catalog="system" width="128" height="100"/>
-        <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
+        <image name="hand.thumbsup" catalog="system" width="128" height="128"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

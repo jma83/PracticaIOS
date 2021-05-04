@@ -52,7 +52,6 @@
 		1FA62C38263B2C8500A6BD8F /* LikeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA62C37263B2C8500A6BD8F /* LikeViewModel.swift */; };
 		1FB091A12610845B002E9221 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB091A02610845B002E9221 /* ModalView.swift */; };
 		1FB50D63263EA0CC0017B970 /* AddCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */; };
-		1FB50D73263EC65D0017B970 /* ConfirmDeleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */; };
 		1FB50D78263EE6180017B970 /* LikeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50D77263EE6180017B970 /* LikeManager.swift */; };
 		1FB50DAB263F13770017B970 /* List+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DA9263F13770017B970 /* List+CoreDataClass.swift */; };
 		1FB50DAC263F13770017B970 /* List+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB50DAA263F13770017B970 /* List+CoreDataProperties.swift */; };
@@ -166,7 +165,6 @@
 		1FA62C37263B2C8500A6BD8F /* LikeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeViewModel.swift; sourceTree = "<group>"; };
 		1FB091A02610845B002E9221 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
 		1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewModel.swift; sourceTree = "<group>"; };
-		1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeleteListView.swift; sourceTree = "<group>"; };
 		1FB50D77263EE6180017B970 /* LikeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeManager.swift; sourceTree = "<group>"; };
 		1FB50DA9263F13770017B970 /* List+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1FB50DAA263F13770017B970 /* List+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -499,7 +497,6 @@
 				1F9C1CB2263D655000B494F6 /* ListsMainViewModel.swift */,
 				1F9C1CBF263E105300B494F6 /* ListMainTableViewCell.swift */,
 				1F9C1CC0263E105300B494F6 /* ListMainTableViewCell.xib */,
-				1FB50D72263EC65D0017B970 /* ConfirmDeleteListView.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -703,7 +700,6 @@
 				1FB50DAB263F13770017B970 /* List+CoreDataClass.swift in Sources */,
 				1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */,
 				1F9C1CB8263DD4C900B494F6 /* ListDetailViewModel.swift in Sources */,
-				1FB50D73263EC65D0017B970 /* ConfirmDeleteListView.swift in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,

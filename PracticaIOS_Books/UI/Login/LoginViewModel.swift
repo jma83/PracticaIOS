@@ -33,7 +33,7 @@ class LoginViewModel: UserManagerDelegate {
     }
     
     func userSession(_: UserManager, didUserChange user: User) {
-        routingDelegate?.userAccessAllowed()
+        routingDelegate?.userAccessAllowed(userSession: user)
     }
     
 

@@ -8,6 +8,7 @@
 import UIKit
 
 class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate,  AddToListRouteCoordinatorDelegate {
+    
 
     private var navigationController: UINavigationController
     private var addToListRouteCoordinator: AddToListRouteCoordinator!
@@ -18,17 +19,19 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
     let listManager: ListManager
     let likeManager: LikeManager
     let commentManager: CommentManager
+    let userSession: User
     var rootViewController: UIViewController {
         return navigationController
     }
-
-    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager) {
+    
+    init(bookManager:BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager, userSession: User) {
+        self.userSession = userSession
         self.bookManager = bookManager
         self.userManager = userManager
         self.listManager = listManager
         self.likeManager = likeManager
         self.commentManager = commentManager
-        let searchViewModel = SearchViewModel(bookManager: bookManager)
+        let searchViewModel = SearchViewModel(bookManager: bookManager, userSession: userSession)
         let searchViewController = SearchViewController(viewModel: searchViewModel)
         
         navigationController = UINavigationController(rootViewController: searchViewController)
@@ -62,8 +65,8 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
     }
     
     // SearchViewModelRoutingDelegate: From Search to Detail
-    func watchDetail(book: BookResult) {
-        let vm = DetailViewModel(bookManager: bookManager, userManager: userManager, bookResult: book, likeManager: likeManager)
+    func watchDetail(_: SearchViewModel, book: BookResult, userSession: User) {
+        let vm = DetailViewModel(bookManager: bookManager, likeManager: likeManager, bookResult: book, userSession: userSession)
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

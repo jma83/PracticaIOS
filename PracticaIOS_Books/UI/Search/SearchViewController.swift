@@ -67,7 +67,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
         
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
         if let vm = homeCell.viewModel {
-            viewModel.bookDetailRouting(bookResult: vm.book)
+            viewModel.bookDetailRouting(bookResult: vm.bookResult)
         }
     }
 

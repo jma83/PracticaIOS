@@ -10,35 +10,28 @@ import Foundation
 class BookViewModel {
     
     
-    let book: BookResult
+    let bookResult: BookResult
     
-    init(book: BookResult) {
-        self.book = book
+    
+    
+    init(bookResult: BookResult) {
+        self.bookResult = bookResult
     }
 
     	
     var title: String {
-        return book.title ?? ""
+        return bookResult.title ?? ""
     }
     
     var description: String {
-        return book.description ?? ""
+        return bookResult.description ?? ""
     }
     
     var author: String {
-        return book.author ?? ""
+        return bookResult.author ?? ""
     }
     
-    func getBookObj() -> Book {
-        let book = Book()
-        book.author = self.book.author
-        book.isbn = self.book.primary_isbn10
-        book.descrip = self.book.description
-        book.title = self.book.title
-        book.date = self.book.created_date
-        book.image = self.book.book_image
-        
-        return book
-    }
+    var book: Book?
+
     
 }
