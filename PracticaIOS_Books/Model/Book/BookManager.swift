@@ -154,11 +154,11 @@ extension BookManager {
         })
     }
     
-    func createBook(book: BookResult) {
+    func createBook(book: BookResult, completionHandler: @escaping (Book) -> Void) -> Void {
         let id = (book.id ?? book.primary_isbn10) ?? ""
         self.fetchById(id: id, completionHandler: { datos in
             if datos.count != 0 {
-                self.detailDelegate?.createBookResult(self, book: datos.first!)
+                completionHandler(datos.first!)
                 return
             }
             
@@ -175,7 +175,7 @@ extension BookManager {
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.saveContext()
-            self.detailDelegate?.createBookResult(self, book: newbook)
+            completionHandler(newbook)
             
         })
     }
@@ -197,7 +197,6 @@ protocol BookManagerListDelegate: class {
 protocol BookManagerDetailDelegate: class {
     func bookResultDetail(_: BookManager, bookResult: BookResult?)
     func bookDetail(_: BookManager, book: Book?)
-    func createBookResult(_: BookManager, book: Book?)
 }
 protocol BookManagerSearchDelegate: class {
     func searchBookResult(_: BookManager, bookResult: [BookResult])

@@ -50,7 +50,7 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
     //Redirect to New RouteCoordinator! -> AddToExistingList  (Modal)
     func showAddList(book: BookResult) {
         //TODO
-        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager)
+        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, listManager: listManager, userSession: userSession, book: book)
         addToListRouteCoordinator.delegate = self
         rootViewController.present(addToListRouteCoordinator.rootViewController, animated: true, completion: nil)
     }

@@ -10,19 +10,18 @@ import Foundation
 class ListViewModel {
     
     
-    let list: ListResult
+    let list: List
     
-    init(list: ListResult) {
+    init(list: List) {
         self.list = list
     }
 
-        
     var name: String {
         return list.name ?? ""
     }
     
     var date: Date {
-        return list.date ?? Date()
+        return list.updateDate ?? Date()
     }
 
     

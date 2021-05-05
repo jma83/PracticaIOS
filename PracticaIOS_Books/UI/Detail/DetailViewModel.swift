@@ -64,7 +64,11 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
     
     func likeBook() {
         if let bookR = self.bookViewModel?.bookResult {
-            self.bookManager.createBook(book: bookR)
+            self.bookManager.createBook(book: bookR, completionHandler: { book in
+                if let user = self.userSession {
+                    self.likeManager.manageLike(book: book, user: user)
+                }
+            })
         }
     }
     
@@ -77,12 +81,6 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
     func addBookToListRouting() {
         if let bookViewModel = bookViewModel {
             routingDelegate?.showAddList(book: bookViewModel.bookResult)
-        }
-    }
-
-    func createBookResult(_: BookManager, book: Book?) {
-        if let book = book, let user = userSession {
-            likeManager.manageLike(book: book, user: user)
         }
     }
     

@@ -76,7 +76,7 @@ class ListManager{
         })
     }
      
-    func createList(name: String) -> Void {
+    func createList(name: String, user: User) -> Void {
         
         self.fetchByName(nameList: name, completionHandler: { datos in
             if datos.count != 0 {
@@ -89,6 +89,7 @@ class ListManager{
             list.name = name
             list.createDate = Date()
             list.updateDate = Date()
+            list.user = user
             
 
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -100,26 +101,23 @@ class ListManager{
     }
     
     func deleteList(name: String) -> Void {
-        
         self.fetchByName(nameList: name, completionHandler: { datos in
             if datos.count != 0 {
-                self.delegateAdd?.listError(self, error: self.ALREADY_EXISTS_ERROR)
-                return
+                self.context.delete(datos.first!)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.saveContext()
             }
-            
-            let entity = NSEntityDescription.entity(forEntityName: self.LIST_ENTITY, in: self.context)
-            let list = List(entity: entity!, insertInto: self.context)
-            list.name = name
-            list.createDate = Date()
-            list.updateDate = Date()
-            
-
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.saveContext()
-            self.delegateAdd?.listUpdatedResult(self, didListChange: list)
-            
         })
-        
+    }
+    
+    func addBookToList(name: String, book: Book) {
+        self.fetchByName(nameList: name, completionHandler: { datos in
+            if datos.count != 0 {
+                datos.first!.addToBooks(book)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.saveContext()
+            }
+        })
     }
    
 }

@@ -10,7 +10,7 @@ import UIKit
 class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListViewModelRoutingDelegate {
     private var navigationController: UINavigationController
     let bookManager: BookManager
-    let userManager: UserManager
+    let userSession: User
     let listManager: ListManager
     weak var delegate: AddToListRouteCoordinatorDelegate?
     
@@ -18,11 +18,11 @@ class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListVi
         return navigationController
     }
      
-    init(bookManager: BookManager, userManager: UserManager, listManager: ListManager) {
+    init(bookManager: BookManager, listManager: ListManager, userSession: User, book: BookResult) {
         self.bookManager = bookManager
-        self.userManager = userManager
+        self.userSession = userSession
         self.listManager = listManager
-        let vm = AddToListViewModel(listManager: listManager, userManager: userManager)
+        let vm = AddToListViewModel(bookManager: bookManager, listManager: listManager, userSession: userSession, book: book)
         let vc = AddToListViewController(viewModel: vm)
         
         
@@ -35,7 +35,7 @@ class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListVi
     }
     
     func createList(){
-        let vm = CreateListViewModel(listManager: listManager, userManager: userManager)
+        let vm = CreateListViewModel(listManager: listManager, userSession: userSession)
         vm.routingDelegate = self
         let vc = CreateListViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

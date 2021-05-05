@@ -12,28 +12,25 @@ class AddToListViewModel: ListManagerDelegate {
     
     var listViewModels: [ListViewModel] = []
     let listManager: ListManager
-    let userManager: UserManager
+    let bookManager: BookManager
+    let userSession: User
+    let bookDetail: BookResult
     weak var delegate: AddToListViewModelDelegate?
     weak var routingDelegate: AddToListViewModelRoutingDelegate?
     
-    init(listManager: ListManager, userManager: UserManager) {
+    init(bookManager: BookManager, listManager: ListManager, userSession: User, book: BookResult) {
         self.listManager = listManager
-        self.userManager = userManager
+        self.bookManager = bookManager
+        self.userSession = userSession
+        self.bookDetail = book
+        self.listManager.delegate = self
+        //self.bookManager.addListDelegate*****
         self.retrieveLists()
         
     }
     
     func retrieveLists() {
-        //TODO
-        // call userManager to retrieve current user
-        // call listManagerMethod to retrieve Lists for this user
-        var list = ListResult()
-        list.name = "Pepe"
-        list.date = Date()
-        var list2 = ListResult()
-        list2.name = "Juan"
-        list2.date = Date()
-        listViewModels = [ListViewModel(list:list),ListViewModel(list:list2)]
+        self.listManager.fetchAllByUser(user: userSession)
     }
     
     func createListRouting(){
@@ -44,20 +41,22 @@ class AddToListViewModel: ListManagerDelegate {
         self.routingDelegate?.closeAddToList()
     }
     
-    func listsResult(_: ListManager, didListChange list: [List]) {
-        //TODO
-        //Event recieved from
+    func listsResult(_: ListManager, didListChange lists: [List]) {
+
+        for item in lists {
+            listViewModels.append(ListViewModel(list: item))
+        }
+        self.delegate?.updateList(self)
     }
     
     func addBookToList(listViewModel: ListViewModel){
-        //TODO
-        // call listManagerMethod or bookManager to add book to selected list
+        self.bookManager.createBook(book: bookDetail, completionHandler: { book in
+            self.listManager.addBookToList(name: listViewModel.name, book: book)
+        })
         
         
     }
-    
-    
-    
+
 }
 
 protocol AddToListViewModelDelegate: class {

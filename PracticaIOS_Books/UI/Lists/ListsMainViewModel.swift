@@ -20,16 +20,10 @@ class ListsMainViewModel: ListManagerDelegate {
     }
     
     func retrieveLists() {
-        //TODO
-        // call userManager to retrieve current user
-        // call listManagerMethod to retrieve Lists for this user
-        var list = ListResult()
-        list.name = "Pepe"
-        list.date = Date()
-        var list2 = ListResult()
-        list2.name = "Juan"
-        list2.date = Date()
-        listViewModels = [ListViewModel(list:list),ListViewModel(list:list2)]
+        if let user = userSession {
+            self.listManager.fetchAllByUser(user: user)
+        }
+
     }
     
     

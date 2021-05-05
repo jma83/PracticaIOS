@@ -12,18 +12,17 @@ class CreateListViewModel: AddListManagerDelegate {
     weak var delegate: CreateListViewModelDelegate?
     weak var routingDelegate: CreateListViewModelRoutingDelegate?
     let listManager: ListManager
-    let userManager: UserManager
+    let userSession: User
 
-    init(listManager: ListManager, userManager: UserManager) {
+    init(listManager: ListManager, userSession: User) {
         self.listManager = listManager
-        self.userManager = userManager
-        
+        self.userSession = userSession
+        self.listManager.delegateAdd = self
     }
     
     func createList(listName: String){
-        //TODO
-        //listManager.createList(name: listName)
-        listUpdatedResult(self.listManager, didListChange: List())
+        listManager.createList(name: listName, user: userSession)
+        
     }
     
     func listUpdatedResult(_: ListManager, didListChange list: List) {

@@ -16,6 +16,7 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
     let listManager: ListManager
     let likeManager: LikeManager
     let commentManager: CommentManager
+    let userSession: User
     var rootViewController: UIViewController {
         return navigationController
     }
@@ -26,14 +27,15 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
         self.listManager = listManager
         self.likeManager = likeManager
         self.commentManager = commentManager
+        self.userSession = userSession
         let vm = ListsMainViewModel(listManager: listManager, userSession: userSession)
         let vc = ListsMainViewController(viewModel: vm)
         navigationController = UINavigationController(rootViewController: vc)
         vm.routingDelegate = self
     }
     
-    func createList(_:ListsMainViewModel,userSession: User) {
-        let vm = CreateListViewModel(listManager: listManager, userManager: userManager)
+    func createList(_:ListsMainViewModel, userSession: User) {
+        let vm =  CreateListViewModel(listManager: listManager, userSession: userSession)
         vm.routingDelegate = self
         let vc = CreateListViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
@@ -64,7 +66,7 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
     }
     
     func showAddList(book: BookResult) {
-        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, userManager: userManager, listManager: listManager)
+        addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, listManager: listManager, userSession: userSession, book: book)
         addToListRouteCoordinator.delegate = self
         rootViewController.present(addToListRouteCoordinator.rootViewController, animated: true, completion: nil)
     }

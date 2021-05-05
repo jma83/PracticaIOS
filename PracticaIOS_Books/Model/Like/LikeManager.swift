@@ -68,7 +68,7 @@ class LikeManager {
                 for item in datos {
                     let book = item.book! as Book
 
-                    let bookresult = BookResult(id: book.id, title: book.title, author: book.author ?? "N/A", description: book.description, book_image: book.image, created_date: book.date, primary_isbn10: book.isbn)
+                    let bookresult = BookResult(id: book.id, title: book.title, author: book.author ?? "N/A", description: book.descrip, book_image: book.image, created_date: book.date, primary_isbn10: book.isbn)
                     bookResultArr.append(bookresult)
                     
                 }
