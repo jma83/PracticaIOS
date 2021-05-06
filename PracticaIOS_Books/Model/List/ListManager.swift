@@ -62,7 +62,7 @@ class ListManager{
         fetchRequest.predicate = NSPredicate(format: "name == %@", nameList)
         
         fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-            self.delegate?.listsResult(self, didListChange: datos)
+            completionHandler(datos)
         })
     }
     

@@ -77,7 +77,7 @@ class BookManager {
         return arr
     }
     
-    func getBookDetail(isbn: String){
+    func getBookDetail(isbn: String, id: String){
         let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=1"
         bookGoogle.getResponse(str: url, completition2: { result in
             var bookresult: BookResult?
@@ -87,7 +87,7 @@ class BookManager {
             
             self.detailDelegate?.bookResultDetail(self, bookResult: bookresult)
             
-            let id = (bookresult?.id ?? bookresult?.primary_isbn10) ?? ""
+            let id = (bookresult?.id ?? bookresult?.primary_isbn10) ?? id
             self.fetchById(id: id, completionHandler: { books in
                 if books.count > 0 {
                     self.detailDelegate?.bookDetail(self, book: books.first)

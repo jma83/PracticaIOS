@@ -9,8 +9,8 @@
         <attribute name="isbn" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="book" inverseEntity="Comment"/>
-        <relationship name="like" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="book" inverseEntity="Like"/>
-        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="List" inverseName="books" inverseEntity="List"/>
+        <relationship name="like" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Like" inverseName="book" inverseEntity="Like"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="List" inverseName="books" inverseEntity="List"/>
     </entity>
     <entity name="Comment" representedClassName="Comment" syncable="YES">
         <attribute name="comment" optional="YES" attributeType="String"/>
@@ -43,9 +43,9 @@
         <attribute name="updateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="username" optional="YES" attributeType="String"/>
         <attribute name="userToken" optional="YES" attributeType="String"/>
-        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="user" inverseEntity="Comment"/>
-        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Like" inverseName="user" inverseEntity="Like"/>
-        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="List" inverseName="user" inverseEntity="List"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Comment" inverseName="user" inverseEntity="Comment"/>
+        <relationship name="likes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Like" inverseName="user" inverseEntity="Like"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="List" inverseName="user" inverseEntity="List"/>
     </entity>
     <elements>
         <element name="Book" positionX="-36" positionY="45" width="128" height="193"/>

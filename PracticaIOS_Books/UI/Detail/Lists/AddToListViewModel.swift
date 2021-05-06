@@ -14,7 +14,7 @@ class AddToListViewModel: ListManagerDelegate {
     let listManager: ListManager
     let bookManager: BookManager
     let userSession: User
-    let bookDetail: BookResult
+    let bookResult: BookResult
     weak var delegate: AddToListViewModelDelegate?
     weak var routingDelegate: AddToListViewModelRoutingDelegate?
     
@@ -22,11 +22,8 @@ class AddToListViewModel: ListManagerDelegate {
         self.listManager = listManager
         self.bookManager = bookManager
         self.userSession = userSession
-        self.bookDetail = book
+        self.bookResult = book
         self.listManager.delegate = self
-        //self.bookManager.addListDelegate*****
-        self.retrieveLists()
-        
     }
     
     func retrieveLists() {
@@ -42,7 +39,7 @@ class AddToListViewModel: ListManagerDelegate {
     }
     
     func listsResult(_: ListManager, didListChange lists: [List]) {
-
+        listViewModels = []
         for item in lists {
             listViewModels.append(ListViewModel(list: item))
         }
@@ -50,11 +47,9 @@ class AddToListViewModel: ListManagerDelegate {
     }
     
     func addBookToList(listViewModel: ListViewModel){
-        self.bookManager.createBook(book: bookDetail, completionHandler: { book in
+        self.bookManager.createBook(book: bookResult, completionHandler: { book in
             self.listManager.addBookToList(name: listViewModel.name, book: book)
         })
-        
-        
     }
 
 }

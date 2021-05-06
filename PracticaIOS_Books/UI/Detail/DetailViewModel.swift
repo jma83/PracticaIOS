@@ -42,8 +42,8 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
     
 
     func loadBook(){
-        if let isbn = self.bookViewModel?.bookResult.primary_isbn10 {
-            self.bookManager.getBookDetail(isbn: isbn)
+        if let isbn = self.bookViewModel?.bookResult.primary_isbn10, let id = self.bookViewModel?.bookResult.id {
+            self.bookManager.getBookDetail(isbn: isbn, id: id)
         }
     }
     
