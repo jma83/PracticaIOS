@@ -11,9 +11,11 @@ class ListViewModel {
     
     
     let list: List
-    
-    init(list: List) {
+    var active: Bool
+
+    init(list: List, active: Bool = false) {
         self.list = list
+        self.active = active
     }
 
     var name: String {
@@ -23,6 +25,8 @@ class ListViewModel {
     var date: Date {
         return list.updateDate ?? Date()
     }
+    
+    
 
     
 }

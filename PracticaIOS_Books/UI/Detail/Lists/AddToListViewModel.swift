@@ -39,17 +39,35 @@ class AddToListViewModel: ListManagerDelegate {
     }
     
     func listsResult(_: ListManager, didListChange lists: [List]) {
-        listViewModels = []
-        for item in lists {
-            listViewModels.append(ListViewModel(list: item))
-        }
-        self.delegate?.updateList(self)
+        self.bookManager.getBook(book: bookResult, completionHandler: { book in
+            self.listViewModels = []
+            for item in lists {
+                var check = false
+
+                if let book = book, let books = item.books {
+                    check = books.contains(book)
+                }
+                self.listViewModels.append(ListViewModel(list: item, active: check))
+                
+            }
+            self.delegate?.updateList(self)
+            
+        })
+        
     }
     
-    func addBookToList(listViewModel: ListViewModel){
-        self.bookManager.createBook(book: bookResult, completionHandler: { book in
-            self.listManager.addBookToList(name: listViewModel.name, book: book)
-        })
+    func addBookToList(listViewModel: ListViewModel, isOn: Bool){
+        if isOn == true {
+            self.bookManager.createBook(book: bookResult, completionHandler: { book in
+                self.listManager.addBookToList(name: listViewModel.name, book: book)
+            })
+        }else{
+            self.bookManager.getBook(book: bookResult, completionHandler: { book in
+                if let book = book {
+                    self.listManager.removeBookFromList(name: listViewModel.name, book: book)
+                }
+            })
+        }
     }
 
 }

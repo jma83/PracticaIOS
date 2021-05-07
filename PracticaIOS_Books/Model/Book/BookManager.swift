@@ -180,6 +180,19 @@ extension BookManager {
         })
     }
     
+    func getBook(book: BookResult, completionHandler: @escaping (Book?) -> Void) -> Void {
+        let id = (book.id ?? book.primary_isbn10) ?? ""
+        self.fetchById(id: id, completionHandler: { datos in
+            if datos.count != 0 {
+                completionHandler(datos.first!)
+                return
+            }
+            
+            completionHandler(nil)
+            
+        })
+    }
+    
 }
 
 

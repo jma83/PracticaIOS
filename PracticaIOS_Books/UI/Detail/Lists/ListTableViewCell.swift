@@ -22,6 +22,9 @@ class ListTableViewCell: UITableViewCell {
                 formatter1.dateStyle = .long
                 let dateStr = formatter1.string(from: viewModel!.date)
                 self.dateListText.text = dateStr
+                if let active = viewModel?.active {
+                    self.switchList.setOn(active, animated: true)
+                }
             }
         }
     }
@@ -29,21 +32,17 @@ class ListTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     @IBAction func toggleSwitch(_ sender: Any) {
-        
+        if let vm = viewModel, let isOn = self.switchList?.isOn {
+            self.delegate?.toggleListEvent(self, listViewModel: vm, isOn: isOn)
+        }
     }
     
     
 }
 
 protocol ListTableViewCellDelegate: class {
-    func clickListEvent(_: ListTableViewCell, listViewModel: ListViewModel)
+    func toggleListEvent(_: ListTableViewCell, listViewModel: ListViewModel, isOn: Bool)
 }
 

@@ -61,9 +61,9 @@ class AddToListViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func clickListEvent(_: ListTableViewCell, listViewModel: ListViewModel) {
+    func toggleListEvent(_: ListTableViewCell, listViewModel: ListViewModel, isOn: Bool) {
         
-        self.viewModel.addBookToList(listViewModel: listViewModel)
+        self.viewModel.addBookToList(listViewModel: listViewModel, isOn: isOn)
     }
     
     @objc func closeAddListEvent(){

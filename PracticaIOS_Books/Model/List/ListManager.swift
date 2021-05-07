@@ -119,6 +119,16 @@ class ListManager{
             }
         })
     }
+    
+    func removeBookFromList(name: String, book: Book) {
+        self.fetchByName(nameList: name, completionHandler: { datos in
+            if datos.count != 0 {
+                datos.first!.removeFromBooks(book)
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.saveContext()
+            }
+        })
+    }
    
 }
 
