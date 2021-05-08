@@ -8,8 +8,8 @@
 import Foundation
 
 
-class AddToListViewModel: ListManagerDelegate {
-    
+class AddToListViewModel: AddToListManagerDelegate {
+     
     var listViewModels: [ListViewModel] = []
     let listManager: ListManager
     let bookManager: BookManager
@@ -23,7 +23,7 @@ class AddToListViewModel: ListManagerDelegate {
         self.bookManager = bookManager
         self.userSession = userSession
         self.bookResult = book
-        self.listManager.delegate = self
+        self.listManager.delegateAddTo = self
     }
     
     func retrieveLists() {

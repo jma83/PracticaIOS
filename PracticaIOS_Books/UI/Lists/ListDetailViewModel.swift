@@ -7,36 +7,42 @@
 
 import Foundation
 
-class ListDetailViewModel {
+class ListDetailViewModel: ListDetailManagerDelegate {
     var bookViewModels: [[BookViewModel]] = [[]]
     weak var delegate: ListDetailViewModelDelegate?
     weak var routingDelegate: ListDetailViewModelRoutingDelegate?
     var userSession: User?
     var listDetail: List
     let colsPerRow: Int = 3
-    init(userSession: User, listDetail: ListViewModel) {
+    let listManager: ListManager
+    init(listManager: ListManager,userSession: User, listDetail: ListViewModel) {
+        self.listManager = listManager
         self.userSession = userSession
         self.listDetail = listDetail.list
+        self.listManager.listDetailDelegate = self
         self.getBookLists()
     }
     
     func getBookLists(){
         if let user = userSession, user == listDetail.user, let books = listDetail.books, books.count > 0 {
-            var colsCount = 0;
-            var count = 0
-            self.resetResults(size: books.count)
-            for item in books {
-                let book = item as! Book
-                let bookresult = BookResult(id: book.id, title: book.title, author: book.author ?? "N/A", description: book.descrip, book_image: book.image, created_date: book.date, primary_isbn10: book.isbn)
-                bookViewModels[count].append(BookViewModel(bookResult: bookresult))
-                if colsCount == (self.colsPerRow - 1) {
-                    colsCount = 0
-                    count+=1
-                }else{
-                    colsCount+=1
-                }
-            }
+            self.listManager.getBooksResultFromList(list: listDetail)
+            
             self.delegate?.bookChanged(self)
+        }
+    }
+    
+    func booksListResult(_: ListManager, books: [BookResult]) {
+        var colsCount = 0;
+        var count = 0
+        self.resetResults(size: books.count)
+        for book in books {
+            bookViewModels[count].append(BookViewModel(bookResult: book))
+            if colsCount == (self.colsPerRow - 1) {
+                colsCount = 0
+                count+=1
+            }else{
+                colsCount+=1
+            }
         }
     }
     
@@ -45,7 +51,7 @@ class ListDetailViewModel {
         var cont = 0
         if colsPerRow > 0 {
             let sizeForCols = size/colsPerRow
-            while sizeForCols > cont {
+            while sizeForCols >= cont {
                 bookViewModels.append([])
                 cont+=1
             }

@@ -30,7 +30,7 @@ class ListDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
-        title = "List books"
+        title = "\(viewModel.listDetail.name ?? "List")"
     }
     
     required init?(coder: NSCoder) {

@@ -11,9 +11,11 @@ class CommentViewModel {
     
     
     let comment: Comment
+    var ownComment: Bool
     
-    init(comment: Comment) {
+    init(comment: Comment, ownComment: Bool = false) {
         self.comment = comment
+        self.ownComment = ownComment
     }
 
         
@@ -31,6 +33,13 @@ class CommentViewModel {
     
     var date: Date {
         return comment.updateDate ?? Date()
+    }
+    
+    var author: String {
+        if let user = comment.user {
+            return user.username!
+        }
+        return ""
     }
 
     

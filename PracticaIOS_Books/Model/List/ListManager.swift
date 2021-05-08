@@ -19,7 +19,9 @@ class ListManager{
     private let DOMAIN = "es.upsa.mimo.PracticaIOS-Books"
 
     weak var delegate: ListManagerDelegate?
+    weak var delegateAddTo: AddToListManagerDelegate?
     weak var delegateAdd: AddListManagerDelegate?
+    weak var listDetailDelegate: ListDetailManagerDelegate?
     private let GENERIC_ERROR = "Error al recuperar listas, intentalo de nuevo más tarde"
     private let ALREADY_EXISTS_ERROR = "Error la lista ya existe"    
     
@@ -49,14 +51,6 @@ class ListManager{
         }
    }
     
-    func fetchAllLists() {
-        let fetchRequest = NSFetchRequest<List>(entityName: LIST_ENTITY)
-        
-        fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-            self.delegate?.listsResult(self, didListChange: datos)
-        })
-    }
-    
     private func fetchByName(nameList:String, completionHandler: @escaping ([List]) -> Void){
         let fetchRequest = NSFetchRequest<List>(entityName: LIST_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "name == %@", nameList)
@@ -73,6 +67,7 @@ class ListManager{
         fetchAsyncLists(fetchAsyncRequest: fetchRequest, completionHandler: { lists in
             print("count \(lists.count)")
             self.delegate?.listsResult(self, didListChange: lists)
+            self.delegateAddTo?.listsResult(self, didListChange: lists)
         })
     }
      
@@ -100,14 +95,13 @@ class ListManager{
         
     }
     
-    func deleteList(name: String) -> Void {
-        self.fetchByName(nameList: name, completionHandler: { datos in
-            if datos.count != 0 {
-                self.context.delete(datos.first!)
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.saveContext()
-            }
-        })
+    func deleteList(list: List, user: User) -> Void {
+        if list.user == user {
+            self.context.delete(list)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+        }
+        self.delegate?.deleteListResult(self)
     }
     
     func addBookToList(name: String, book: Book) {
@@ -129,6 +123,18 @@ class ListManager{
             }
         })
     }
+    
+    func getBooksResultFromList(list: List) {
+        var bookResultArr: [BookResult] = []
+        if let books = list.books {
+            for item in books {
+                let book = item as! Book
+                let bookresult = BookResult(id: book.id, title: book.title, author: book.author ??  "N/A", description: book.descrip, book_image: book.image, created_date: book.date, primary_isbn10: book.isbn)
+                bookResultArr.append(bookresult)
+            }
+        }
+        self.listDetailDelegate?.booksListResult(self, books: bookResultArr)
+    }
    
 }
 
@@ -136,6 +142,16 @@ protocol AddListManagerDelegate: class {
     func listUpdatedResult(_: ListManager, didListChange list: List)
     func listError(_: ListManager, error: String)
 }
+
+protocol AddToListManagerDelegate: class {
+    func listsResult(_: ListManager, didListChange list: [List])
+}
+
 protocol ListManagerDelegate: class {
     func listsResult(_: ListManager, didListChange list: [List])
+    func deleteListResult(_: ListManager)
+}
+
+protocol ListDetailManagerDelegate: class {
+    func booksListResult(_: ListManager, books: [BookResult])
 }

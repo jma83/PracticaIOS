@@ -8,7 +8,6 @@
 import UIKit
 
 class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CommentsCellDelegate {
-    
 
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: CommentsCell.self)
@@ -58,7 +57,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         return 1
     }
     
-    func clickCommentEvent(_: CommentsCell, commentViewModel: CommentViewModel) {
-        //TODO
+    func clickDeleteEvent(_: CommentsCell, commentViewModel: CommentViewModel) {
+        <#code#>
     }
 }

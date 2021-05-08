@@ -10,7 +10,7 @@ import Foundation
 class ListsMainViewModel: ListManagerDelegate {
     var listViewModels: [ListViewModel] = []
     let listManager: ListManager
-    var userSession: User?
+    var userSession: User
     weak var delegate: ListsMainViewModelDelegate?
     weak var routingDelegate: ListsMainViewModelRoutingDelegate?
     init(listManager: ListManager, userSession: User) {
@@ -20,10 +20,7 @@ class ListsMainViewModel: ListManagerDelegate {
     }
     
     func retrieveLists() {
-        if let user = userSession {
-            self.listManager.fetchAllByUser(user: user)
-        }
-
+        self.listManager.fetchAllByUser(user: userSession)
     }
     
     
@@ -37,19 +34,19 @@ class ListsMainViewModel: ListManagerDelegate {
     }
     
     func deleteList(listViewModel: ListViewModel){
-        self.listManager.deleteList(name: listViewModel.name)
+        self.listManager.deleteList(list: listViewModel.list, user: userSession)
+    }
+    
+    func deleteListResult(_: ListManager) {
+        self.delegate?.deleteListResult(self)
     }
     
     func createListRouting(){
-        if let user = self.userSession {
-           self.routingDelegate?.createList(self, userSession: user)
-        }
+        self.routingDelegate?.createList(self, userSession: userSession)
     }
     
     func showListRouting(listViewModel: ListViewModel){
-        if let user = self.userSession {
-           self.routingDelegate?.showBooksFromList(self, listViewModel: listViewModel, userSession: user)
-        }
+        self.routingDelegate?.showBooksFromList(self, listViewModel: listViewModel, userSession: userSession)
     }
 }
 

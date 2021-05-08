@@ -18,7 +18,6 @@ struct CommentResult {
 class CommentManager{
     private let context: NSManagedObjectContext
     private let COMMENT_ENTITY = "Comment"
-    private let DOMAIN = "es.upsa.mimo.PracticaIOS-Books"
 
     weak var delegate: CommentManagerDelegate?
     weak var delegateAdd: AddCommentManagerDelegate?
@@ -60,13 +59,15 @@ class CommentManager{
         })
     }
      
-    func createComment(name: String) -> Void {
+    func createComment(name: String, user: User, book: Book) -> Void {
         
         let entity = NSEntityDescription.entity(forEntityName: self.COMMENT_ENTITY, in: self.context)
         let comment = Comment(entity: entity!, insertInto: self.context)
         comment.summary = name
         comment.createDate = Date()
         comment.updateDate = Date()
+        comment.user = user
+        comment.book = book
         
 
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -76,20 +77,10 @@ class CommentManager{
         
     }
     
-    func deleteList(name: String) -> Void {
-        
-        let entity = NSEntityDescription.entity(forEntityName: self.COMMENT_ENTITY, in: self.context)
-        let comment = Comment(entity: entity!, insertInto: self.context)
-        comment.summary = name
-        comment.createDate = Date()
-        comment.updateDate = Date()
-        
-
+    func deleteComment(comment: Comment) -> Void {
+        self.context.delete(comment)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.saveContext()
-        self.delegateAdd?.commentUpdatedResult(self, didListChange: comment)
-            
-        
     }
    
 }

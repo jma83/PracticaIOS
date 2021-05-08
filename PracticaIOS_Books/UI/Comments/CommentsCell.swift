@@ -15,14 +15,14 @@ class CommentsCell: UITableViewCell {
     @IBOutlet weak var summaryText: UILabel!
     @IBOutlet weak var commentText: UILabel!
     @IBOutlet weak var dateText: UILabel!
-    @IBOutlet weak var rateImage: UIImageView!
+    @IBOutlet weak var deleteCommentButton: UIButton!
     var viewModel: CommentViewModel? {
         didSet {
             if viewModel != nil {
                 self.summaryText.text = viewModel?.summary
                 self.commentText.text = viewModel?.descrip
-                self.authorText.text = "Pepe"
-                self.rateImage.image = UIImage(systemName: "hand.thumbsup")
+                self.authorText.text = viewModel?.author
+                deleteCommentButton.isEnabled =  viewModel?.ownComment ?? false
                 
                 let formatter1 = DateFormatter()
                 formatter1.dateStyle = .long
@@ -41,9 +41,14 @@ class CommentsCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    @IBAction func clickDeleteComment(_ sender: Any) {
+        if let viewModel = viewModel {
+            self.delegate?.clickDeleteEvent(self, commentViewModel: viewModel)
+        }
+    }
     
 }
 
 protocol CommentsCellDelegate: class {
-    func clickCommentEvent(_: CommentsCell, commentViewModel: CommentViewModel)
+    func clickDeleteEvent(_: CommentsCell, commentViewModel: CommentViewModel)
 }

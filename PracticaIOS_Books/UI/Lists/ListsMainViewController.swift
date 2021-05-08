@@ -64,9 +64,7 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func deleteListResult(_: ListsMainViewModel) {
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.viewModel.retrieveLists()
     }
     
     func clickListEvent(_: ListMainTableViewCell, listViewModel: ListViewModel) {
@@ -100,7 +98,7 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func confirmDeleteEvent(){
         if let deleteListViewModel = deleteListViewModel {
-        self.viewModel.deleteList(listViewModel: deleteListViewModel)
+            self.viewModel.deleteList(listViewModel: deleteListViewModel)
         }
     }
     

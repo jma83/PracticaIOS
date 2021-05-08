@@ -38,7 +38,7 @@ class SearchViewModel: BookManagerSearchDelegate {
     func resetResults(size: Int){
         bookViewModels = []
         var cont = 0
-        if colsPerRow > 0 {
+        if colsPerRow >= 0 {
             let sizeForCols = size/colsPerRow
             while sizeForCols > cont {
                 bookViewModels.append([])
