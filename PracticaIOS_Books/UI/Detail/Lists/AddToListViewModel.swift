@@ -56,7 +56,7 @@ class AddToListViewModel: ListManagerDelegate {
         
     }
     
-    func addBookToList(listViewModel: ListViewModel, isOn: Bool){
+    func manageBookInList(listViewModel: ListViewModel, isOn: Bool){
         if isOn == true {
             self.bookManager.createBook(book: bookResult, completionHandler: { book in
                 self.listManager.addBookToList(name: listViewModel.name, book: book)

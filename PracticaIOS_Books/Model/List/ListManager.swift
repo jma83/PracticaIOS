@@ -28,7 +28,7 @@ class ListManager{
         context = appDelegate.managedObjectContext
     }
     
-    func fetchAsyncLists(fetchAsyncRequest:NSFetchRequest<List>, completionHandler: @escaping ([List]) -> Void) -> Void {
+    private func fetchAsyncLists(fetchAsyncRequest:NSFetchRequest<List>, completionHandler: @escaping ([List]) -> Void) -> Void {
         
         let asynchronousRequest = NSAsynchronousFetchRequest(fetchRequest: fetchAsyncRequest) { (result) in
             guard let users = result.finalResult else {

@@ -20,7 +20,7 @@ class CommentsCell: UITableViewCell {
         didSet {
             if viewModel != nil {
                 self.summaryText.text = viewModel?.summary
-                self.commentText.text = viewModel?.comment
+                self.commentText.text = viewModel?.descrip
                 self.authorText.text = "Pepe"
                 self.rateImage.image = UIImage(systemName: "hand.thumbsup")
                 

@@ -22,6 +22,10 @@ class ListDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewModel.getBookLists()
+    }
+    
     init(viewModel: ListDetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -56,7 +60,7 @@ class ListDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    func bookChanged(_: LikeViewModel) {
+    func bookChanged(_: ListDetailViewModel) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }

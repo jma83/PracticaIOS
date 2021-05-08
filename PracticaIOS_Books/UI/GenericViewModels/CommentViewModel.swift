@@ -10,27 +10,27 @@ import Foundation
 class CommentViewModel {
     
     
-    let commentResult: CommentResult
+    let comment: Comment
     
-    init(comment: CommentResult) {
-        self.commentResult = comment
+    init(comment: Comment) {
+        self.comment = comment
     }
 
         
     var summary: String {
-        return commentResult.summary ?? ""
+        return comment.summary ?? ""
     }
     
-    var comment: String {
-        return commentResult.comment ?? ""
+    var descrip: String {
+        return comment.comment ?? ""
     }
     
     var like: Bool {
-        return commentResult.like ?? true
+        return comment.like
     }
     
     var date: Date {
-        return commentResult.date ?? Date()
+        return comment.updateDate ?? Date()
     }
 
     

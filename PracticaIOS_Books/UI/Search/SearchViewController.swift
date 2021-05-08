@@ -75,6 +75,7 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
 
 extension SearchViewController:  UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return viewModel.bookViewModels.count
     }
     
@@ -83,6 +84,15 @@ extension SearchViewController:  UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         let cellViewModel = viewModel.bookViewModels[indexPath.item]
         cell.viewModel = cellViewModel
+        
+        let vm = viewModel.bookViewModels[0]
+        if vm.count == 0 {
+            cell.textLabel?.text = "No books found..."
+            cell.detailTextLabel?.text = "Please, try again with other words"
+        }else{
+            cell.textLabel?.text = ""
+            cell.detailTextLabel?.text = ""
+        }
         
         return cell
     }

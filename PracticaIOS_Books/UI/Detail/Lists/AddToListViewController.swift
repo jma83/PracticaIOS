@@ -63,7 +63,7 @@ class AddToListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func toggleListEvent(_: ListTableViewCell, listViewModel: ListViewModel, isOn: Bool) {
         
-        self.viewModel.addBookToList(listViewModel: listViewModel, isOn: isOn)
+        self.viewModel.manageBookInList(listViewModel: listViewModel, isOn: isOn)
     }
     
     @objc func closeAddListEvent(){

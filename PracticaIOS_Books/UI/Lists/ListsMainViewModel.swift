@@ -27,14 +27,17 @@ class ListsMainViewModel: ListManagerDelegate {
     }
     
     
-    func listsResult(_: ListManager, didListChange list: [List]) {
-        //TODO
-        print(list)
-        //Event recieved from ListManager
+    func listsResult(_: ListManager, didListChange lists: [List]) {
+        self.listViewModels = []
+        for item in lists {
+            self.listViewModels.append(ListViewModel(list: item))
+            
+        }
+        self.delegate?.updateList(self)
     }
     
     func deleteList(listViewModel: ListViewModel){
-        // self.listManager.deleteList(name: listViewModel.name)
+        self.listManager.deleteList(name: listViewModel.name)
     }
     
     func createListRouting(){
