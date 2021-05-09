@@ -42,6 +42,7 @@ class CommentsViewModel: CommentManagerDelegate {
                         self.commentViewModels.append(CommentViewModel(comment: comment, ownComment: ownComment))
                     }
                 }
+                self.delegate?.updateList(self)
             }
         })
         

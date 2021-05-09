@@ -59,7 +59,7 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func updateList(_: ListsMainViewModel) {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.tableView?.reloadData()
         }
     }
     

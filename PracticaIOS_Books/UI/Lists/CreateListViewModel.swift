@@ -22,7 +22,6 @@ class CreateListViewModel: AddListManagerDelegate {
     
     func createList(listName: String){
         listManager.createList(name: listName, user: userSession)
-        
     }
     
     func listUpdatedResult(_: ListManager, didListChange list: List) {

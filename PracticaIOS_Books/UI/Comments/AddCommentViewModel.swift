@@ -6,29 +6,35 @@
 //
 
 
-class AddCommentViewModel {
+class AddCommentViewModel: AddCommentManagerDelegate {
     weak var delegate: AddCommentViewModelDelegate?
     weak var routingDelegate: AddCommentViewModelRoutingDelegate?
     let commentManager: CommentManager
+    let bookManager: BookManager
+    let bookDetail: BookResult
     let userSession: User
 
-    init(commentManager: CommentManager, userSession: User) {
+    init(bookManager: BookManager,commentManager: CommentManager, userSession: User, bookResult: BookResult) {
         self.commentManager = commentManager
+        self.bookManager = bookManager
+        self.bookDetail = bookResult
         self.userSession = userSession
+        self.commentManager.delegateAdd = self
         
     }
     
     func createComment(summary: String, descrip: String){
-        //TODO
-        //commentManager.createComment(summary: String, descrip: String)
-        commentUpdatedResult(self.commentManager, didListChange: List())
+        self.bookManager.createBook(book: bookDetail, completionHandler: { book in
+            self.commentManager.createComment(name: summary, descrip: descrip, user: self.userSession, book: book)
+        })
+        
     }
     
-    func commentUpdatedResult(_: CommentManager, didListChange list: List) {
+    func commentUpdatedResult(_: CommentManager, didListChange comment: Comment) {
         self.routingDelegate?.createCommentResult()
     }
     
-    func commentError(_: ListManager, error: String) {
+    func commentError(_: CommentManager, error: String) {
         delegate?.commentError(self, message: error)
     }
 

@@ -39,7 +39,7 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate, AddCommentView
     }
     
     func addComment(_: CommentsViewModel) {
-        let vm = AddCommentViewModel(commentManager: commentManager, userSession: userSession)
+        let vm = AddCommentViewModel(bookManager: bookManager, commentManager: commentManager, userSession: userSession, bookResult: bookDetail)
         vm.routingDelegate = self
         let vc = AddCommentViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

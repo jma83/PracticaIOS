@@ -37,6 +37,7 @@ class AddCommentViewController: UIViewController, AddCommentViewModelDelegate {
     init(viewModel: AddCommentViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {

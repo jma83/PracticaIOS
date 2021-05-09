@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CommentsCellDelegate {
+class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CommentsCellDelegate, CommentsViewModelDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: CommentsCell.self)
@@ -30,6 +30,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     init(viewModel: CommentsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -64,4 +65,11 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     func clickDeleteEvent(_: CommentsCell, commentViewModel: CommentViewModel) {
         self.viewModel.commentDelete(commentViewModel: commentViewModel)
     }
+    
+    func updateList(_: CommentsViewModel) {
+        DispatchQueue.main.async {
+            self.tableView?.reloadData()
+        }
+    }
+    
 }

@@ -50,24 +50,36 @@ class CommentManager{
         }
    }
     
-    
-    
-    
-    func createComment(name: String, user: User, book: Book) -> Void {
-        
-        let entity = NSEntityDescription.entity(forEntityName: self.COMMENT_ENTITY, in: self.context)
-        let comment = Comment(entity: entity!, insertInto: self.context)
-        comment.summary = name
-        comment.createDate = Date()
-        comment.updateDate = Date()
-        comment.user = user
-        comment.book = book
-        
-
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.saveContext()
-        self.delegateAdd?.commentUpdatedResult(self, didListChange: comment)
+    func fetchCommentByUserAndBook(user: User, book: Book, completionHandler: @escaping ([Comment]) -> Void) -> Void {
+        let fetchRequest = NSFetchRequest<Comment>(entityName: COMMENT_ENTITY)
+        fetchRequest.predicate = NSPredicate(format: "user == %@ AND book == %@", user, book)
+        self.fetchAsyncComments(fetchAsyncRequest: fetchRequest, completionHandler: { comments in
+            completionHandler(comments)
             
+        })
+    }
+    
+    
+    func createComment(name: String, descrip: String, user: User, book: Book) -> Void {
+        self.fetchCommentByUserAndBook(user: user, book: book, completionHandler: { comments in
+            if comments.count == 0 {
+                let entity = NSEntityDescription.entity(forEntityName: self.COMMENT_ENTITY, in: self.context)
+                let comment = Comment(entity: entity!, insertInto: self.context)
+                comment.summary = name
+                comment.comment = descrip
+                comment.createDate = Date()
+                comment.updateDate = Date()
+                comment.user = user
+                comment.book = book
+                
+
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.saveContext()
+                self.delegateAdd?.commentUpdatedResult(self, didListChange: comment)
+                return
+            }
+            self.delegateAdd?.commentError(self, error: "You already have a comment in this book. The maximum is one per book.")
+        })
         
     }
     
