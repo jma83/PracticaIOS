@@ -7,7 +7,8 @@
 
 import UIKit
 
-class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, HomeRouteCoordinatorDelegate {
+class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, MainRouteCoordinatorDelegate {
+    
     
     private let navigationController: UINavigationController
     private var mainRouteCoordinator: MainRouteCoordinator?
@@ -17,6 +18,7 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, HomeRouteCoordinat
     private let listManager: ListManager
     private let likeManager: LikeManager
     private let commentManager: CommentManager
+    private var welcomePresenter: Bool
 
 
     var rootViewController: UIViewController {
@@ -29,6 +31,7 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, HomeRouteCoordinat
         self.listManager = listManager
         self.likeManager = likeManager
         self.commentManager = commentManager
+        self.welcomePresenter = true
         
         let welcomeViewModel = WelcomeViewModel(userManager: userManager)
         let welcomeViewController = WelcomeViewController(viewModel: welcomeViewModel)
@@ -40,6 +43,8 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, HomeRouteCoordinat
     func userWantsToRegister(_: WelcomeViewModel) {
         let vm = RegisterViewModel(userManager: userManager)
         vm.routingDelegate = self
+        self.welcomePresenter = false
+
         let vc = RegisterViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
@@ -47,18 +52,26 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, HomeRouteCoordinat
     func userWantsToAccess(_: WelcomeViewModel) {
         let vm = LoginViewModel(userManager: userManager)
         vm.routingDelegate = self
+        self.welcomePresenter = false
+
         let vc = LoginViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
     }
     
     func userAccessAllowed(userSession: User) {
         self.mainRouteCoordinator = MainRouteCoordinator(userManager: userManager, bookManager: bookManager, listManager: listManager, likeManager: likeManager, commentManager: commentManager, userSession: userSession)
+        
         if let mainRouteCoordinator = mainRouteCoordinator {
+            mainRouteCoordinator.delegate = self
             rootViewController.present(mainRouteCoordinator.rootViewController, animated: true, completion: nil)
         }
     }
     
-    func redirectToWelcome(_: HomeRouteCoordinator) {
+    func redirectToWelcome(_: MainRouteCoordinator) {
         rootViewController.dismiss(animated: true, completion: nil)
+        if self.welcomePresenter == false {
+            navigationController.popViewController(animated: true)
+        }
+        
     }
 }

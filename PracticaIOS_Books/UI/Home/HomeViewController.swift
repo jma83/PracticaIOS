@@ -39,6 +39,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(clickNewBooks))
+        // arrow.triangle.2.circlepath
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -89,6 +90,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func clickNewBooks(_ sender: Any) {
         viewModel.getHomeBooks()
         
+    }
+    @IBAction func clickLogoutButton(_ sender: Any) {
+        viewModel.logoutUser()
     }
     
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {

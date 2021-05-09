@@ -15,6 +15,7 @@ class UserManager{
 
     weak var delegate: UserManagerDelegate?
     weak var initialDelegate: UserManagerStartDelegate?
+    weak var homeDelegate: UserHomeManagerDelegate?
     private let GENERIC_ERROR = "Error al enviar credenciales, intentalo de nuevo más tarde"
     private let ALREADY_EXISTS_ERROR = "Error el usuario ya existe"
     private let INVALID_CREDENTIALS_ERROR = "Error. El usuario o la contraseña no coinciden"
@@ -75,6 +76,8 @@ class UserManager{
                 let u = datos.first!
                 let token = self.generateUserToken(username: u.username!)
                 u.setValue(token, forKey: "userToken")
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.saveContext()
                 self.delegate?.userSession(self, didUserChange: u)
                 do{
                     try self.storeUserSession(username: username, userToken: token)
@@ -156,9 +159,12 @@ class UserManager{
         defaults?.set(userToken, forKey: "UserToken")
     }
     
-    func removeUserSession() throws {
+    func removeUserSession() {
         let defaults = UserDefaults(suiteName: DOMAIN)
+        defaults?.removeObject(forKey: "Username")
+        defaults?.removeObject(forKey:"UserToken")
         defaults?.removeSuite(named: DOMAIN)
+        self.homeDelegate?.userLogoutResult(self)
     }
     
     func retrieveUserSession(initial: Bool) {
@@ -181,6 +187,10 @@ class UserManager{
 protocol UserManagerDelegate: class {
     func userSession(_: UserManager, didUserChange user: User)
     func userCredentialError(_: UserManager, error: String)
+}
+
+protocol UserHomeManagerDelegate: class {
+    func userLogoutResult(_: UserManager)
 }
 
 protocol UserManagerStartDelegate: class {

@@ -7,8 +7,10 @@
 
 import Foundation
 
-class HomeViewModel: BookManagerHomeDelegate {
+class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
+
     
+    let userManager: UserManager
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [[]]
     var sections: [String] = []
@@ -16,10 +18,12 @@ class HomeViewModel: BookManagerHomeDelegate {
     weak var delegate: HomeViewModelDelegate?
     weak var routingDelegate: HomeViewModelRoutingDelegate?
     
-    init(bookManager: BookManager, userSession: User) {
+    init(userManager: UserManager, bookManager: BookManager, userSession: User) {
+        self.userManager = userManager
         self.bookManager = bookManager
         self.userSession = userSession
         self.bookManager.delegate = self
+        self.userManager.homeDelegate = self
 
     }
     
@@ -54,6 +58,15 @@ class HomeViewModel: BookManagerHomeDelegate {
             routingDelegate.watchDetail(self, book: bookResult, userSession: user)
         }
     }
+    
+    func logoutUser(){
+        self.userManager.removeUserSession()
+    }
+    
+    func userLogoutResult(_: UserManager) {
+        self.routingDelegate?.redirectToWelcome(self)
+    }
+    
     
 }
 

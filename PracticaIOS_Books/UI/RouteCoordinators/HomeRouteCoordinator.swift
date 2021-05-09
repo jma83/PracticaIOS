@@ -34,7 +34,7 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         self.likeManager = likeManager
         self.commentManager = commentManager
         
-        let homeViewModel = HomeViewModel(bookManager: bookManager, userSession: userSession)
+        let homeViewModel = HomeViewModel(userManager: userManager, bookManager: bookManager, userSession: userSession)
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         
         navigationController = UINavigationController(rootViewController: homeViewController)

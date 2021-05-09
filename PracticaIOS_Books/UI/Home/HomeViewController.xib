@@ -28,6 +28,9 @@
                     <state key="normal" title="Logout" image="arrowshape.turn.up.left.fill" catalog="system">
                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="21"/>
                     </state>
+                    <connections>
+                        <action selector="clickLogoutButton:" destination="-1" eventType="touchUpInside" id="BYW-4Z-RSE"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQa-xP-tVa">
                     <rect key="frame" x="5" y="144" width="149" height="40"/>
