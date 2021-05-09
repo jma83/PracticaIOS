@@ -23,6 +23,10 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCommentEvent))
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewModel.getBookComments()
+    }
+    
     init(viewModel: CommentsViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -58,6 +62,6 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func clickDeleteEvent(_: CommentsCell, commentViewModel: CommentViewModel) {
-        <#code#>
+        self.viewModel.commentDelete(commentViewModel: commentViewModel)
     }
 }

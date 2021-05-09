@@ -12,7 +12,8 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate, AddCommentView
        
     private var navigationController: UINavigationController
     let bookManager: BookManager
-    let userManager: UserManager
+    let bookDetail: BookResult
+    let userSession: User
     let commentManager: CommentManager
     weak var delegate: CommentsRouteCoordinatorDelegate?
     
@@ -20,11 +21,12 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate, AddCommentView
         return navigationController
     }
      
-    init(bookManager: BookManager, userManager: UserManager, commentManager: CommentManager) {
+    init(bookManager: BookManager,  commentManager: CommentManager, userSession: User, book: BookResult) {
         self.bookManager = bookManager
-        self.userManager = userManager
+        self.userSession = userSession
+        self.bookDetail = book
         self.commentManager = commentManager
-        let vm = CommentsViewModel(commentManager: commentManager, userManager: userManager)
+        let vm = CommentsViewModel(bookManager: bookManager, commentManager: commentManager, userSession: userSession, book: book)
         let vc = CommentsViewController(viewModel: vm)
         
         
@@ -37,7 +39,7 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate, AddCommentView
     }
     
     func addComment(_: CommentsViewModel) {
-        let vm = AddCommentViewModel(commentManager: CommentManager(), userManager: userManager)
+        let vm = AddCommentViewModel(commentManager: commentManager, userSession: userSession)
         vm.routingDelegate = self
         let vc = AddCommentViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

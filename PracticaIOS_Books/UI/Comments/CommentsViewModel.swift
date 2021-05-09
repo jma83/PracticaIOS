@@ -12,20 +12,38 @@ class CommentsViewModel: CommentManagerDelegate {
         
     var commentViewModels: [CommentViewModel] = []
     let commentManager: CommentManager
-    let userManager: UserManager
+    let bookManager: BookManager
+    let userSession: User
+    let bookResult: BookResult
     weak var delegate: CommentsViewModelDelegate?
     weak var routingDelegate: CommentsViewModelRoutingDelegate?
     
-    init(commentManager: CommentManager, userManager: UserManager) {
+    init(bookManager: BookManager,commentManager: CommentManager, userSession: User, book: BookResult) {
         self.commentManager = commentManager
-        self.userManager = userManager
-        self.retrieveComments()
+        self.bookManager = bookManager
+        self.userSession = userSession
+        self.bookResult = book
+        self.commentManager.delegate = self
         
     }
     
-    func retrieveComments() {
-        //TODO
-        // call commentManagerMethod to retrieve Comments for this book
+    func getBookComments() {
+        self.bookManager.getBook(book: bookResult, completionHandler: { book in
+            
+            if let book = book, let comments = book.comments {
+                self.commentViewModels = []
+                for item in comments {
+                    let comment = item as? Comment
+                    if let comment = comment {
+                        var ownComment = false
+                        if self.userSession == comment.user {
+                            ownComment = true
+                        }
+                        self.commentViewModels.append(CommentViewModel(comment: comment, ownComment: ownComment))
+                    }
+                }
+            }
+        })
         
     }
     
@@ -40,6 +58,15 @@ class CommentsViewModel: CommentManagerDelegate {
     func closeListRouting() {
         self.routingDelegate?.closeComments(self)
     }
+    
+    func commentDelete(commentViewModel: CommentViewModel){
+        self.commentManager.deleteComment(comment: commentViewModel.comment)
+    }
+    
+    func commentDeleteResult(_: CommentManager, comment: Comment) {
+        self.getBookComments()
+    }
+    
     
     
 }

@@ -10,11 +10,11 @@ class AddCommentViewModel {
     weak var delegate: AddCommentViewModelDelegate?
     weak var routingDelegate: AddCommentViewModelRoutingDelegate?
     let commentManager: CommentManager
-    let userManager: UserManager
+    let userSession: User
 
-    init(commentManager: CommentManager, userManager: UserManager) {
+    init(commentManager: CommentManager, userSession: User) {
         self.commentManager = commentManager
-        self.userManager = userManager
+        self.userSession = userSession
         
     }
     

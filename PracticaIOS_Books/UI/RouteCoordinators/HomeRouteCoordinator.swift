@@ -44,7 +44,7 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
     // MARK: DetailViewModelRoutingDelegate: From Detail to Comments
     //Redirect to New RouteCoordinator! -> Comments  (Modal)
     func showCommentsView(book: BookResult) {
-        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, userManager: userManager, commentManager: commentManager)
+        commentsRouteCoordinator = CommentsRouteCoordinator(bookManager: bookManager, commentManager: commentManager, userSession: userSession, book: book)
         commentsRouteCoordinator.delegate = self
         rootViewController.present(commentsRouteCoordinator.rootViewController, animated: true, completion: nil)
         

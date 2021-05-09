@@ -50,15 +50,9 @@ class CommentManager{
         }
    }
     
-    func fetchAllComments(completionHandler: @escaping ([Comment]) -> Void) -> Void {
-        let fetchRequest = NSFetchRequest<Comment>(entityName: COMMENT_ENTITY)
-        
-        fetchAsyncComments(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-            print("count \(datos.count)")
-            completionHandler(datos)
-        })
-    }
-     
+    
+    
+    
     func createComment(name: String, user: User, book: Book) -> Void {
         
         let entity = NSEntityDescription.entity(forEntityName: self.COMMENT_ENTITY, in: self.context)
@@ -81,6 +75,7 @@ class CommentManager{
         self.context.delete(comment)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.saveContext()
+        self.delegate?.commentDeleteResult(self, comment: comment)
     }
    
 }
@@ -92,4 +87,5 @@ protocol AddCommentManagerDelegate: class {
 
 protocol CommentManagerDelegate: class {
     func commentsResult(_: CommentManager, didCommentChange comment: Comment)
+    func commentDeleteResult(_: CommentManager, comment: Comment)
 }
