@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, LoginViewModelDelegate {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -17,7 +17,6 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
     init(viewModel: LoginViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel?.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -39,12 +38,6 @@ class LoginViewController: UIViewController, LoginViewModelDelegate {
                 
         viewModel?.validateAndLogin(username: username, password: password)
         
-    }
-    
-
-    func userLoginError(_: LoginViewModel, error: String) {
-        present(ModalView().showAlert(title: "Error", message: error), animated: true)
-
     }
 
 }

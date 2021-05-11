@@ -7,13 +7,12 @@
 
 import UIKit
 
-class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate {
-    
-    
+class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate, ProfileRouteCoordinatorDelegate {
     
     private let navigationController: UINavigationController
     private var addToListRouteCoordinator: AddToListRouteCoordinator!
     private var commentsRouteCoordinator: CommentsRouteCoordinator!
+    private var profileRouteCoordinator: ProfileRouteCoordinator!
     weak var delegate: HomeRouteCoordinatorDelegate?
     
     let bookManager: BookManager
@@ -76,6 +75,16 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
     
     func redirectToWelcome(_: HomeViewModel) {
         delegate?.redirectToWelcome(self)
+    }
+    
+    func closeProfile() {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func showProfile(_: HomeViewModel) {
+        profileRouteCoordinator = ProfileRouteCoordinator(userManager: userManager, userSession: userSession)
+        profileRouteCoordinator.delegate = self
+        rootViewController.present(profileRouteCoordinator.rootViewController, animated: true, completion: nil)
     }
 }
  

@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1F10AC38261E1BBF00889887 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F10AC37261E1BBF00889887 /* WelcomeViewModel.swift */; };
 		1F13D59626192B3B00A7AD97 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F13D59526192B3B00A7AD97 /* HomeViewModel.swift */; };
+		1F189F722649BCEA00EA01F5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189F702649BCEA00EA01F5 /* ProfileViewController.swift */; };
+		1F189F732649BCEA00EA01F5 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F189F712649BCEA00EA01F5 /* ProfileViewController.xib */; };
+		1F189F7C2649BF4600EA01F5 /* ProfileChangePassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F189F7A2649BF4600EA01F5 /* ProfileChangePassViewController.swift */; };
+		1F189F7D2649BF4600EA01F5 /* ProfileChangePassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F189F7B2649BF4600EA01F5 /* ProfileChangePassViewController.xib */; };
+		1F1D23DC2649CF93000DFCAA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F1D23DB2649CF93000DFCAA /* ProfileViewModel.swift */; };
 		1F2A1EDD260400F400933CDB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EDC260400F400933CDB /* AppDelegate.swift */; };
 		1F2A1EDF260400F400933CDB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EDE260400F400933CDB /* SceneDelegate.swift */; };
 		1F2A1EE1260400F400933CDB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2A1EE0260400F400933CDB /* WelcomeViewController.swift */; };
@@ -44,6 +49,8 @@
 		1F9F36122621A8AA00A6AB54 /* HomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */; };
 		1F9F361A262253A300A6AB54 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F3619262253A300A6AB54 /* DetailViewController.swift */; };
 		1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F8ADE26080C67007ACEDB /* UserManager.swift */; };
+		1FA17189264AF1AA006EFDE6 /* ProfileRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA17188264AF1AA006EFDE6 /* ProfileRouteCoordinator.swift */; };
+		1FA1718E264AF5BE006EFDE6 /* ProfileChangePassViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA1718D264AF5BE006EFDE6 /* ProfileChangePassViewModel.swift */; };
 		1FA2079A2624C543001D7349 /* HomeRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */; };
 		1FA207A22624CA86001D7349 /* StartRouteCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */; };
 		1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */; };
@@ -116,6 +123,11 @@
 /* Begin PBXFileReference section */
 		1F10AC37261E1BBF00889887 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		1F13D59526192B3B00A7AD97 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		1F189F702649BCEA00EA01F5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		1F189F712649BCEA00EA01F5 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		1F189F7A2649BF4600EA01F5 /* ProfileChangePassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChangePassViewController.swift; sourceTree = "<group>"; };
+		1F189F7B2649BF4600EA01F5 /* ProfileChangePassViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileChangePassViewController.xib; sourceTree = "<group>"; };
+		1F1D23DB2649CF93000DFCAA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1F2A1ED9260400F400933CDB /* PracticaIOS_Books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticaIOS_Books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F2A1EDC260400F400933CDB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F2A1EDE260400F400933CDB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +169,8 @@
 		1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionCell.swift; sourceTree = "<group>"; };
 		1F9F3619262253A300A6AB54 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1F9F8ADE26080C67007ACEDB /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		1FA17188264AF1AA006EFDE6 /* ProfileRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouteCoordinator.swift; sourceTree = "<group>"; };
+		1FA1718D264AF5BE006EFDE6 /* ProfileChangePassViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileChangePassViewModel.swift; sourceTree = "<group>"; };
 		1FA207992624C543001D7349 /* HomeRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FA207A12624CA86001D7349 /* StartRouteCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartRouteCoordinator.swift; sourceTree = "<group>"; };
 		1FA207AB2624FBFF001D7349 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -289,12 +303,12 @@
 		1F91F1262619B5F700B063B3 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1FB879592628806800BD1B8D /* RouteCoordinators */,
 				1F98FF1B262B3660007D637C /* Search */,
 				1FB879642628C4D700BD1B8D /* Like */,
 				1FB879632628C4BF00BD1B8D /* Lists */,
 				1FB879612628C46A00BD1B8D /* Profile */,
 				1FB879602628C44D00BD1B8D /* Comments */,
-				1FB879592628806800BD1B8D /* RouteCoordinators */,
 				1F9F36182622537E00A6AB54 /* Detail */,
 				1F91F1342619B70900B063B3 /* Modal */,
 				1F91F12E2619B6B800B063B3 /* GenericViewModels */,
@@ -376,12 +390,12 @@
 			isa = PBXGroup;
 			children = (
 				1F6B44D226188BB3004D1446 /* HomeViewController.swift */,
-				1F13D59526192B3B00A7AD97 /* HomeViewModel.swift */,
-				1F6B44DC2618B468004D1446 /* HomeCell.swift */,
-				1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */,
 				1FB66740262765A90005F4B9 /* HomeViewController.xib */,
-				1FB66745262766A90005F4B9 /* HomeCell.xib */,
+				1F13D59526192B3B00A7AD97 /* HomeViewModel.swift */,
 				1FB667522627A7C90005F4B9 /* HomeCollectionCell.xib */,
+				1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */,
+				1F6B44DC2618B468004D1446 /* HomeCell.swift */,
+				1FB66745262766A90005F4B9 /* HomeCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -457,6 +471,7 @@
 				1FB733A8262E00B100CF70E4 /* ListsRouteCoordinator.swift */,
 				1FC429E726355CE000DD1B07 /* AddToListRouteCoordinator.swift */,
 				1FC42A272635CE3600DD1B07 /* CommentsRouteCoordinator.swift */,
+				1FA17188264AF1AA006EFDE6 /* ProfileRouteCoordinator.swift */,
 			);
 			path = RouteCoordinators;
 			sourceTree = "<group>";
@@ -479,6 +494,12 @@
 		1FB879612628C46A00BD1B8D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				1F189F702649BCEA00EA01F5 /* ProfileViewController.swift */,
+				1F189F712649BCEA00EA01F5 /* ProfileViewController.xib */,
+				1F1D23DB2649CF93000DFCAA /* ProfileViewModel.swift */,
+				1F189F7A2649BF4600EA01F5 /* ProfileChangePassViewController.swift */,
+				1F189F7B2649BF4600EA01F5 /* ProfileChangePassViewController.xib */,
+				1FA1718D264AF5BE006EFDE6 /* ProfileChangePassViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -645,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9C1CA1263D62E000B494F6 /* ListDetailViewController.xib in Resources */,
+				1F189F7D2649BF4600EA01F5 /* ProfileChangePassViewController.xib in Resources */,
 				1FB879702628C8D900BD1B8D /* CommentsViewController.xib in Resources */,
 				1FB66746262766A90005F4B9 /* HomeCell.xib in Resources */,
 				1FB667532627A7C90005F4B9 /* HomeCollectionCell.xib in Resources */,
@@ -662,6 +684,7 @@
 				1F9C1CAE263D654200B494F6 /* ListsMainViewController.xib in Resources */,
 				1FB66732262763B80005F4B9 /* WelcomeViewController.xib in Resources */,
 				1FB66741262765A90005F4B9 /* HomeViewController.xib in Resources */,
+				1F189F732649BCEA00EA01F5 /* ProfileViewController.xib in Resources */,
 				1F98FF1F262B3729007D637C /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,9 +722,11 @@
 				1F97FC1626405DF000A2F176 /* User+CoreDataClass.swift in Sources */,
 				1FB50DAB263F13770017B970 /* List+CoreDataClass.swift in Sources */,
 				1FC540062630AC93003DC820 /* MyLibrary.xcdatamodeld in Sources */,
+				1FA17189264AF1AA006EFDE6 /* ProfileRouteCoordinator.swift in Sources */,
 				1F9C1CB8263DD4C900B494F6 /* ListDetailViewModel.swift in Sources */,
 				1F9F8ADF26080C67007ACEDB /* UserManager.swift in Sources */,
 				1FA207AC2624FBFF001D7349 /* DetailViewModel.swift in Sources */,
+				1F1D23DC2649CF93000DFCAA /* ProfileViewModel.swift in Sources */,
 				1FB879762628CB9900BD1B8D /* AddCommentViewController.swift in Sources */,
 				1F9C1CB3263D655000B494F6 /* ListsMainViewModel.swift in Sources */,
 				1FC42A0F263575DA00DD1B07 /* ListViewModel.swift in Sources */,
@@ -723,6 +748,7 @@
 				1F9C1CC1263E105300B494F6 /* ListMainTableViewCell.swift in Sources */,
 				1FB50DB9263F26050017B970 /* Book+CoreDataClass.swift in Sources */,
 				1FC42A372635D99300DD1B07 /* CreateListViewModel.swift in Sources */,
+				1F189F722649BCEA00EA01F5 /* ProfileViewController.swift in Sources */,
 				1FC42A4726360FA600DD1B07 /* CommentManager.swift in Sources */,
 				1FB50DB2263F13910017B970 /* Like+CoreDataClass.swift in Sources */,
 				1FC42A312635D5EA00DD1B07 /* CreateListViewController.swift in Sources */,
@@ -739,6 +765,7 @@
 				1FC429F82635628A00DD1B07 /* AddToListViewModel.swift in Sources */,
 				1F6B44DD2618B468004D1446 /* HomeCell.swift in Sources */,
 				1FB50DC0263F26280017B970 /* Comment+CoreDataClass.swift in Sources */,
+				1FA1718E264AF5BE006EFDE6 /* ProfileChangePassViewModel.swift in Sources */,
 				1FC429EF2635627800DD1B07 /* AddToListViewController.swift in Sources */,
 				1FB733AE262E012300CF70E4 /* LikeRouteCoordinator.swift in Sources */,
 				1FB50DBA263F26050017B970 /* Book+CoreDataProperties.swift in Sources */,
@@ -747,6 +774,7 @@
 				1FB50DB3263F13910017B970 /* Like+CoreDataProperties.swift in Sources */,
 				1FC42A0726356F9100DD1B07 /* ListManager.swift in Sources */,
 				1F6B44EC2618B6D7004D1446 /* APIManager.swift in Sources */,
+				1F189F7C2649BF4600EA01F5 /* ProfileChangePassViewController.swift in Sources */,
 				1F6B44FC2619257C004D1446 /* BookViewModel.swift in Sources */,
 				1FA62C32263B2C6F00A6BD8F /* LikeViewController.swift in Sources */,
 				1FB091A12610845B002E9221 /* ModalView.swift in Sources */,

@@ -95,6 +95,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         viewModel.logoutUser()
     }
     
+    @IBAction func clickProfileButton(_ sender: Any) {
+        viewModel.showProfileRouting()
+    }
+    
+    
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
         if let vm = homeCell.viewModel {
             viewModel.bookDetailRouting(bookResult: vm.bookResult)

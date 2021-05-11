@@ -8,6 +8,15 @@
 import UIKit
 import CoreData
 
+struct UserResult {
+    var email: String?
+    var username: String?
+    var password: String?
+    var birthdate: Date?
+    var gender: Int16?
+    var country: String?
+}
+
 class UserManager{
     private let context: NSManagedObjectContext
     private let USER_ENTITY = "User"
@@ -16,10 +25,14 @@ class UserManager{
     weak var delegate: UserManagerDelegate?
     weak var initialDelegate: UserManagerStartDelegate?
     weak var homeDelegate: UserHomeManagerDelegate?
+    weak var profileDelegate: UserManagerProfileDelegate?
+    weak var profilePassDelegate: UserManagerProfilePassDelegate?
     private let GENERIC_ERROR = "Error al enviar credenciales, intentalo de nuevo más tarde"
     private let ALREADY_EXISTS_ERROR = "Error el usuario ya existe"
     private let INVALID_CREDENTIALS_ERROR = "Error. El usuario o la contraseña no coinciden"
     
+    
+   
     
     init() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -47,15 +60,6 @@ class UserManager{
         }
    }
     
-    func fetchAllUsers(completionHandler: @escaping ([User]) -> Void) -> Void {
-        let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
-        
-        fetchAsyncUsers(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-            print("count \(datos.count)")
-            completionHandler(datos)
-        })
-    }
-    
     func fetchByUsername(username:String, completionHandler: @escaping ([User]) -> Void) -> Void{
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
         fetchRequest.predicate = NSPredicate(format: "username == %@", username)
@@ -66,9 +70,9 @@ class UserManager{
         })
     }
     
-    func checkLogin(username:String, password: String) -> Void {
+    func checkLogin(userResult: UserResult) -> Void {
         let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
-        fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", username,password)
+        fetchRequest.predicate = NSPredicate(format: "username == %@ AND password == %@", userResult.username!,userResult.password!)
         
         fetchAsyncUsers(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
             print("count \(datos.count)")
@@ -80,7 +84,7 @@ class UserManager{
                 appDelegate.saveContext()
                 self.delegate?.userSession(self, didUserChange: u)
                 do{
-                    try self.storeUserSession(username: username, userToken: token)
+                    try self.storeUserSession(username: userResult.username!, userToken: token)
                 }catch {
                     self.delegate?.userCredentialError(self, error: self.GENERIC_ERROR)
                 }
@@ -103,9 +107,9 @@ class UserManager{
         })
     }
      
-    func saveUser(username:String,password:String,email:String,gender:Int,birthdate:Date,country:String) -> Void {
+    func saveUser(userResult: UserResult) -> Void {
         
-        self.fetchByUsername(username: username, completionHandler: { datos in
+        self.fetchByUsername(username: userResult.username!, completionHandler: { datos in
             if datos.count != 0 {
                 self.delegate?.userCredentialError(self, error: self.ALREADY_EXISTS_ERROR)
                 return
@@ -114,21 +118,21 @@ class UserManager{
             let entity = NSEntityDescription.entity(forEntityName: self.USER_ENTITY, in: self.context)
             let user = User(entity: entity!, insertInto: self.context)
 
-            user.username = username
-            user.password = password
-            user.email = email
-            user.gender = Int16(gender)
-            user.birthdate = birthdate
-            user.country = country
+            user.username = userResult.username!
+            user.password = userResult.password!
+            user.email = userResult.email!
+            user.gender = Int16(userResult.gender!)
+            user.birthdate = userResult.birthdate!
+            user.country = userResult.country!
             user.createDate = Date()
-            let token = self.generateUserToken(username: username)
+            let token = self.generateUserToken(username: userResult.username!)
             user.userToken = token
 
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.saveContext()
             
             do{
-                try self.storeUserSession(username: username, userToken: token)
+                try self.storeUserSession(username: userResult.username!, userToken: token)
             }catch {
                 self.delegate?.userCredentialError(self, error: self.GENERIC_ERROR)
             }
@@ -169,19 +173,65 @@ class UserManager{
     
     func retrieveUserSession(initial: Bool) {
         let defaults = UserDefaults(suiteName: DOMAIN)
-        let username: String = defaults?.string(forKey: "Username") ?? ""
-        let userToken: String = defaults?.string(forKey: "UserToken") ?? ""
-
-        self.checkSession(username: username, userToken: userToken, completionHandler: { user in
-            if let user = user  {
-                self.initialDelegate?.userSession(self, didUserChange: user)
-            }else{
-                self.initialDelegate?.userSessionError(self, message: "Error user not found")
-            }
-        })
+        let username: String? = defaults?.string(forKey: "Username")
+        let userToken: String? = defaults?.string(forKey: "UserToken")
+        if let username = username, let userToken = userToken {
+            self.checkSession(username: username, userToken: userToken, completionHandler: { user in
+                if let user = user  {
+                    self.initialDelegate?.userSession(self, didUserChange: user)
+                }else{
+                    self.initialDelegate?.userSessionError(self, message: "Error user not found")
+                }
+            })
+        }
     }
     
-   
+    func updateUserInfo(userResult: UserResult, user: User) -> Void {
+        
+        self.fetchByUsername(username: userResult.username!, completionHandler: { datos in
+            if datos.count != 0 && user.username != userResult.username {
+                    self.delegate?.userCredentialError(self, error: self.ALREADY_EXISTS_ERROR)
+                    return
+            }
+            
+            
+            user.setValue(userResult.username!, forKey: "username")
+            user.setValue(userResult.email!, forKey: "email")
+            user.setValue(userResult.gender!, forKey: "gender")
+            user.setValue(userResult.birthdate!, forKey: "birthdate")
+            user.setValue(userResult.country!, forKey: "country")
+            user.setValue(Date(), forKey: "updateDate")
+
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.saveContext()
+            
+            do{
+                try self.storeUserSession(username: userResult.username!, userToken: user.userToken!)
+                self.profileDelegate?.updateUserResult(self, message: "Your user data has been updated successfully")
+            }catch {
+                self.profileDelegate?.updateUserError(self, message: "Error updating store username")
+            }
+            
+        })
+        
+    }
+    
+    func updateUserPass(newPass: String, oldPass: String, user: User) -> Void {
+        let fetchRequest = NSFetchRequest<User>(entityName: USER_ENTITY)
+        fetchRequest.predicate = NSPredicate(format: "password == %@", user.password!)
+        
+        self.fetchAsyncUsers(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
+            if datos.count > 0 {
+                user.setValue(newPass, forKey: "password")
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.saveContext()
+                self.profilePassDelegate?.updateUserResult(self, message: "Your password has been updated successfully")
+                return
+            }
+            self.profilePassDelegate?.updateUserError(self, message: "Error old password doesn't match")
+        })
+        
+    }
 }
 
 protocol UserManagerDelegate: class {
@@ -196,6 +246,16 @@ protocol UserHomeManagerDelegate: class {
 protocol UserManagerStartDelegate: class {
     func userSession(_: UserManager, didUserChange user: User)
     func userSessionError(_: UserManager, message: String)
+}
+
+protocol UserManagerProfileDelegate: class {
+    func updateUserResult(_: UserManager, message: String)
+    func updateUserError(_: UserManager, message: String)
+}
+
+protocol UserManagerProfilePassDelegate: class {
+    func updateUserResult(_: UserManager, message: String)
+    func updateUserError(_: UserManager, message: String)
 }
 
 enum MyError: Error {

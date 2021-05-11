@@ -10,25 +10,27 @@ import Foundation
 class RegisterViewModel: UserManagerDelegate {
 
     private let userManager: UserManager
-    let userValidator: UserViewModel
-    weak var delegate: RegisterViewModelDelegate?
+    var userViewModel: UserViewModel?
     weak var routingDelegate: WelcomeViewModelRoutingDelegate?
 
     
     init(userManager: UserManager) {
         self.userManager = userManager
-        self.userValidator = UserViewModel()
         self.userManager.delegate = self
 
     }
     
     func validateAndRegister(username: String, password: String, email: String, gender: Int, birthdate: Date, country: String) -> Void {
         
-        if !userValidator.validateEmail(email: email) || !userValidator.validateUsername(username: username) || !userValidator.validatePassword(password: password)  || !userValidator.validateDate(date: birthdate) || !userValidator.validateGender(gender: gender) || !userValidator.validateCountry(country: country) {
+        userViewModel = UserViewModel(email: email, username: username, birthdate: birthdate, gender: Int16(gender), country: country, password: password)
+        if let userVM = userViewModel {
+            if userVM.validateRegister() {
+                userManager.saveUser(userResult: userVM.user)
             
-            userCredentialError(self.userManager,error: userValidator.getError())
-        }else{
-            userManager.saveUser(username: username, password: password, email: email, gender: gender, birthdate: birthdate, country: country)
+            }else{
+                userCredentialError(self.userManager,error: userVM.getError())
+                
+            }
         }
         
     }
@@ -38,10 +40,7 @@ class RegisterViewModel: UserManagerDelegate {
     }
     
     func userCredentialError(_: UserManager, error: String) {
-        delegate?.userRegisterError(self, error: error)
+        routingDelegate?.showInfoModal(title: "Error", message: error)
     }
     
-}
-protocol RegisterViewModelDelegate: class {
-    func userRegisterError(_: RegisterViewModel, error: String)
 }

@@ -67,6 +67,10 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
         self.routingDelegate?.redirectToWelcome(self)
     }
     
+    func showProfileRouting() {
+        self.routingDelegate?.showProfile(self)
+    }
+    
     
 }
 
@@ -77,4 +81,5 @@ protocol HomeViewModelDelegate: class {
 protocol HomeViewModelRoutingDelegate: class {
     func watchDetail(_: HomeViewModel, book: BookResult, userSession: User)
     func redirectToWelcome(_: HomeViewModel)
+    func showProfile(_: HomeViewModel)
 }

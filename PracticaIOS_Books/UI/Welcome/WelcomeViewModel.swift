@@ -11,7 +11,6 @@ class WelcomeViewModel: UserManagerStartDelegate {
     
     let userManager: UserManager
     
-    weak var delegate: WelcomeViewModelDelegate?
     weak var routingDelegate: WelcomeViewModelRoutingDelegate?
     
     init(userManager: UserManager) {
@@ -30,7 +29,7 @@ class WelcomeViewModel: UserManagerStartDelegate {
     }
     
     func userSessionError(_: UserManager, message: String) {
-        delegate?.userSessionError(self, message: message)
+        self.routingDelegate?.showInfoModal(title: "Error", message: message)
     }
     
     public func handleUserAccess() {
@@ -47,7 +46,5 @@ protocol WelcomeViewModelRoutingDelegate: class {
     func userWantsToAccess(_: WelcomeViewModel)
     func userWantsToRegister(_: WelcomeViewModel)
     func userAccessAllowed(userSession: User)
-}
-protocol WelcomeViewModelDelegate: class {
-    func userSessionError(_:WelcomeViewModel, message: String)
+    func showInfoModal(title: String, message: String)
 }

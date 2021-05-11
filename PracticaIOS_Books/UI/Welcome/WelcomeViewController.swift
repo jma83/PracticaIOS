@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController, UINavigationControllerDelegate,WelcomeViewModelDelegate {
+class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -30,8 +30,6 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate,We
         viewModel.handleUserAccess()
     }
     
-    func userSessionError(_: WelcomeViewModel, message: String) {
-        present(ModalView().showAlert(title: "Error", message: message), animated: true)
-    }
+
 }
 

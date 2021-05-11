@@ -29,74 +29,74 @@
                     <rect key="frame" x="0.0" y="20" width="414" height="856"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="EJD-E7-HBG">
-                            <rect key="frame" x="40" y="174.5" width="334" height="39"/>
+                            <rect key="frame" x="40" y="144.5" width="334" height="39"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombre de usuario" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="TOB-QO-c9z">
-                            <rect key="frame" x="40" y="243.5" width="334" height="39"/>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="TOB-QO-c9z">
+                            <rect key="frame" x="40" y="213.5" width="334" height="39"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7pD-gd-238">
-                            <rect key="frame" x="40" y="313.5" width="334" height="39"/>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="7pD-gd-238">
+                            <rect key="frame" x="40" y="283.5" width="334" height="39"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ay-cs-cFr">
-                            <rect key="frame" x="40" y="602" width="334" height="39"/>
+                            <rect key="frame" x="40" y="571.5" width="334" height="39"/>
                             <color key="backgroundColor" name="AccentColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                            <state key="normal" title="Crear perfil">
+                            <state key="normal" title="Sign up">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
                                 <action selector="clickRegisterButton" destination="-1" eventType="touchUpInside" id="7LK-x1-6GD"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="País de residencia" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="gqp-f4-cxz">
-                            <rect key="frame" x="40" y="518.5" width="334" height="39"/>
+                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="gqp-f4-cxz">
+                            <rect key="frame" x="40" y="488.5" width="334" height="39"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fpw-bd-ZhR">
-                            <rect key="frame" x="40" y="458.5" width="334" height="32"/>
+                            <rect key="frame" x="40" y="428.5" width="334" height="32"/>
                             <segments>
-                                <segment title="Masculino"/>
-                                <segment title="Femenino"/>
-                                <segment title="Otro"/>
+                                <segment title="Male"/>
+                                <segment title="Female"/>
+                                <segment title="No answer"/>
                             </segments>
                         </segmentedControl>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Completa tus datos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1du-T8-9gx">
-                            <rect key="frame" x="40" y="70" width="334" height="44.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Create an account" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1du-T8-9gx">
+                            <rect key="frame" x="40" y="60" width="334" height="44.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="37"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sexo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbM-YN-dGe">
-                            <rect key="frame" x="48" y="438" width="326" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbM-YN-dGe">
+                            <rect key="frame" x="48" y="408" width="326" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="9gK-ng-ykj">
-                            <rect key="frame" x="40" y="389" width="334" height="40"/>
+                            <rect key="frame" x="40" y="359" width="334" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="dNQ-8C-a37"/>
                             </constraints>
                         </datePicker>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha de nacimiento:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQh-Mo-hAD">
-                            <rect key="frame" x="48" y="363" width="326" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birthday" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQh-Mo-hAD">
+                            <rect key="frame" x="48" y="333" width="326" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="EJD-E7-HBG" firstAttribute="top" secondItem="1du-T8-9gx" secondAttribute="bottom" constant="60" id="1E6-L3-ITK"/>
+                        <constraint firstItem="EJD-E7-HBG" firstAttribute="top" secondItem="1du-T8-9gx" secondAttribute="bottom" constant="40" id="1E6-L3-ITK"/>
                         <constraint firstAttribute="trailing" secondItem="1du-T8-9gx" secondAttribute="trailing" constant="40" id="7qH-A3-d8U"/>
-                        <constraint firstItem="8Ay-cs-cFr" firstAttribute="top" secondItem="1du-T8-9gx" secondAttribute="bottom" constant="487.5" id="8mm-30-oGE"/>
+                        <constraint firstItem="8Ay-cs-cFr" firstAttribute="top" secondItem="1du-T8-9gx" secondAttribute="bottom" constant="467" id="8mm-30-oGE"/>
                         <constraint firstItem="IXU-tM-KWN" firstAttribute="trailing" secondItem="8Ay-cs-cFr" secondAttribute="trailing" constant="40" id="CTh-MJ-jfX"/>
                         <constraint firstItem="EJD-E7-HBG" firstAttribute="leading" secondItem="IXU-tM-KWN" secondAttribute="leading" constant="40" id="EuD-uz-jic"/>
                         <constraint firstItem="gbM-YN-dGe" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="FZn-IC-OlG"/>
@@ -125,7 +125,7 @@
                         <constraint firstItem="Fpw-bd-ZhR" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="ohE-AC-7jS"/>
                         <constraint firstItem="EJD-E7-HBG" firstAttribute="leading" secondItem="kpu-RZ-eiG" secondAttribute="leading" constant="40" id="qMt-Us-bim"/>
                         <constraint firstItem="7pD-gd-238" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="tEF-cY-d48"/>
-                        <constraint firstItem="1du-T8-9gx" firstAttribute="top" secondItem="kpu-RZ-eiG" secondAttribute="top" constant="70" id="tSg-Mr-nk8"/>
+                        <constraint firstItem="1du-T8-9gx" firstAttribute="top" secondItem="kpu-RZ-eiG" secondAttribute="top" constant="60" id="tSg-Mr-nk8"/>
                         <constraint firstItem="1du-T8-9gx" firstAttribute="leading" secondItem="IXU-tM-KWN" secondAttribute="leading" constant="40" id="u78-Fj-geW"/>
                         <constraint firstItem="gqp-f4-cxz" firstAttribute="trailing" secondItem="EJD-E7-HBG" secondAttribute="trailing" id="yaN-E1-gTZ"/>
                     </constraints>

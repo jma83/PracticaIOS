@@ -7,23 +7,52 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, ProfileViewModelDelegate {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var emailText: UITextField!
+    @IBOutlet weak var usernameText: UITextField!
+    @IBOutlet weak var birthDatePicker: UIDatePicker!
+    @IBOutlet weak var genderSelector: UISegmentedControl!
+    @IBOutlet weak var countryText: UITextField!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var changePassButton: UIButton!
+    private let viewModel: ProfileViewModel
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewModel.getUserInfo()
+        birthDatePicker.datePickerMode = .date
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    init(viewModel: ProfileViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
+        title = "Profile"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeAddListEvent))
     }
-    */
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @IBAction func onClickConfirm(_ sender: Any) {
+        self.viewModel.updateUser(email: emailText.text!, username: usernameText.text!, birthdate: birthDatePicker.date, gender: genderSelector.selectedSegmentIndex, country: countryText.text!)
+    }
+    @IBAction func onClickChangePass(_ sender: Any) {
+        self.viewModel.changePasswordEvent()
+    }
+    
+    func getUserInfoResult(_: ProfileViewModel, user: User) {
+        emailText.text = user.email
+        usernameText.text = user.username
+        birthDatePicker.date = user.birthdate!
+        genderSelector.selectedSegmentIndex = Int(user.gender)
+        countryText.text = user.country
+    }
+    
+    @objc func closeAddListEvent(){
+        self.viewModel.closeProfileRouting()
+    }
+    
 
 }

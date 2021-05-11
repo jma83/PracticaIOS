@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController, RegisterViewModelDelegate {
+class RegisterViewController: UIViewController {
 
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var usernameText: UITextField!
@@ -21,13 +21,11 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
     init(viewModel: RegisterViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.delegate = self
     }
     
     required init?(coder: NSCoder) {
         self.viewModel = RegisterViewModel(userManager: UserManager())
         super.init(coder: coder)
-        self.viewModel.delegate = self
     }
     
     override func viewDidLoad() {
@@ -55,10 +53,6 @@ class RegisterViewController: UIViewController, RegisterViewModelDelegate {
         dateFormatter.timeStyle = .none
         
         return dateFormatter
-    }
-    
-    func userRegisterError(_: RegisterViewModel, error: String) {
-        present(ModalView().showAlert(title: "Error", message: error), animated: true)
     }
 
 }

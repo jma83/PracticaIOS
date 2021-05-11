@@ -11,24 +11,25 @@ class LoginViewModel: UserManagerDelegate {
     
 
     private let userManager: UserManager
-    let userValidator: UserViewModel
-    weak var delegate: LoginViewModelDelegate?
+    var userViewModel: UserViewModel?
     weak var routingDelegate: WelcomeViewModelRoutingDelegate?
 
     
     init(userManager: UserManager) {
         self.userManager = userManager
-        self.userValidator = UserViewModel()
         self.userManager.delegate = self
     }
     
     func validateAndLogin(username: String, password: String) -> Void{
         
-        if userValidator.validateLogin(username: username,password: password) {
-            userManager.checkLogin(username: username, password: password)
-                //routingDelegate?.userWantsToLogin(self)
-        }else{
-            self.userCredentialError(self.userManager,error: userValidator.getError())
+        self.userViewModel = UserViewModel(username: username, password: password)
+        if let userVM = userViewModel {
+            if !userVM.validateLogin() {
+                self.userCredentialError(self.userManager,error: userVM.getError())
+                
+            }else{
+                userManager.checkLogin(userResult: userVM.user)
+            }
         }
     }
     
@@ -38,13 +39,9 @@ class LoginViewModel: UserManagerDelegate {
     
 
     func userCredentialError(_: UserManager, error: String) {
-        delegate?.userLoginError(self, error: error)
+        routingDelegate?.showInfoModal(title: "Error", message: error)
 
     }
-}
-
-protocol LoginViewModelDelegate: class {
-    func userLoginError(_: LoginViewModel, error: String)
 }
 
 protocol LoginViewModelRoutingDelegate: class {

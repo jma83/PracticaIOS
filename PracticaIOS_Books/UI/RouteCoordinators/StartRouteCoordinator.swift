@@ -7,9 +7,8 @@
 
 import UIKit
 
-class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, MainRouteCoordinatorDelegate {
-    
-    
+class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, MainRouteCoordinatorDelegate, ModalViewDelegate {
+   
     private let navigationController: UINavigationController
     private var mainRouteCoordinator: MainRouteCoordinator?
     
@@ -73,5 +72,13 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, MainRouteCoordinat
             navigationController.popViewController(animated: true)
         }
         
+    }
+    
+    func showInfoModal(title: String, message: String){
+        rootViewController.present(ModalView().showAlert(title: title, message: message), animated: true)
+    }
+    
+    func dismissModal() {
+        rootViewController.dismiss(animated: true, completion: nil)
     }
 }

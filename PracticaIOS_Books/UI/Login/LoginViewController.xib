@@ -23,22 +23,22 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Iniciar sesión" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAk-Bd-gyP">
-                    <rect key="frame" x="40" y="114" width="334" height="51"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Sign in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAk-Bd-gyP">
+                    <rect key="frame" x="40" y="94" width="334" height="51"/>
                     <fontDescription key="fontDescription" type="system" pointSize="42"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="gW2-ww-Lur">
-                    <rect key="frame" x="40" y="225" width="334" height="41"/>
+                    <rect key="frame" x="40" y="185" width="334" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRP-1r-NWr">
-                    <rect key="frame" x="40" y="377" width="334" height="39"/>
+                    <rect key="frame" x="40" y="337" width="334" height="39"/>
                     <color key="backgroundColor" name="AccentColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <state key="normal" title="Acceder">
+                    <state key="normal" title="Access">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
@@ -46,7 +46,7 @@
                     </connections>
                 </button>
                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="hgC-Hb-QnV">
-                    <rect key="frame" x="40" y="296" width="334" height="41"/>
+                    <rect key="frame" x="40" y="256" width="334" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
@@ -57,14 +57,14 @@
                 <constraint firstItem="hgC-Hb-QnV" firstAttribute="trailing" secondItem="gW2-ww-Lur" secondAttribute="trailing" id="2Pu-MC-n3m"/>
                 <constraint firstItem="39q-Cf-Hox" firstAttribute="trailing" secondItem="QRP-1r-NWr" secondAttribute="trailing" constant="40" id="FmT-mg-PFx"/>
                 <constraint firstItem="QRP-1r-NWr" firstAttribute="leading" secondItem="39q-Cf-Hox" secondAttribute="leading" constant="40" id="JP7-pb-Zwv"/>
-                <constraint firstItem="tAk-Bd-gyP" firstAttribute="top" secondItem="39q-Cf-Hox" secondAttribute="top" constant="70" id="OG7-v5-Rvq"/>
+                <constraint firstItem="tAk-Bd-gyP" firstAttribute="top" secondItem="39q-Cf-Hox" secondAttribute="top" constant="50" id="OG7-v5-Rvq"/>
                 <constraint firstItem="tAk-Bd-gyP" firstAttribute="leading" secondItem="39q-Cf-Hox" secondAttribute="leading" constant="40" id="UYf-kS-YCS"/>
                 <constraint firstItem="hgC-Hb-QnV" firstAttribute="leading" secondItem="gW2-ww-Lur" secondAttribute="leading" id="VCJ-bH-USM"/>
                 <constraint firstItem="hgC-Hb-QnV" firstAttribute="top" secondItem="gW2-ww-Lur" secondAttribute="bottom" constant="30" id="ebe-BA-gJ5"/>
                 <constraint firstItem="gW2-ww-Lur" firstAttribute="leading" secondItem="39q-Cf-Hox" secondAttribute="leading" constant="40" id="ey8-VC-sX2"/>
                 <constraint firstItem="39q-Cf-Hox" firstAttribute="trailing" secondItem="tAk-Bd-gyP" secondAttribute="trailing" constant="40" id="lm8-xi-4xn"/>
                 <constraint firstItem="39q-Cf-Hox" firstAttribute="trailing" secondItem="gW2-ww-Lur" secondAttribute="trailing" constant="40" id="uBt-mv-9nx"/>
-                <constraint firstItem="gW2-ww-Lur" firstAttribute="top" secondItem="tAk-Bd-gyP" secondAttribute="bottom" constant="60" id="xHr-S4-mfL"/>
+                <constraint firstItem="gW2-ww-Lur" firstAttribute="top" secondItem="tAk-Bd-gyP" secondAttribute="bottom" constant="40" id="xHr-S4-mfL"/>
                 <constraint firstItem="QRP-1r-NWr" firstAttribute="top" secondItem="hgC-Hb-QnV" secondAttribute="bottom" constant="40" id="zbo-4W-qpo"/>
             </constraints>
             <point key="canvasLocation" x="142" y="99"/>
