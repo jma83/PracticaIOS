@@ -10,6 +10,7 @@ import Foundation
 class LikeViewModel: LikeManagerDelegate {
     
     let likeManager: LikeManager
+    let bookManager: BookManager
     let userSession: User?
     var bookViewModels: [[BookViewModel]] = [[]]
     weak var delegate: LikeViewModelDelegate?
@@ -18,6 +19,7 @@ class LikeViewModel: LikeManagerDelegate {
     init(bookManager: BookManager, likeManager: LikeManager, userSession: User) {
         self.likeManager = likeManager
         self.userSession = userSession
+        self.bookManager = bookManager
         self.likeManager.delegate = self
         
          
@@ -39,35 +41,20 @@ class LikeViewModel: LikeManagerDelegate {
     }
     
     func likeError(_: LikeManager, message: String) {
-        //TODO error retrieving Liked books
+        self.routingDelegate?.showModalInfo(self, title: "Error", message: message)
     }
     
     func likeFetchResult(_: LikeManager, books: [BookResult]) {
-        self.resetResults(size: books.count)
-        var colsCount = 0;
-        var count = 0
-        for item in books {
-            bookViewModels[count].append(BookViewModel(bookResult: item))
-            if colsCount == (self.colsPerRow - 1) {
-                colsCount = 0
-                count+=1
-            }else{
-                colsCount+=1
+        self.bookViewModels = []
+        self.bookManager.formatBookRows(bookResult: books, maxPerRow: self.colsPerRow, completionHandler: { items in
+            for rowItems in items {
+                self.bookViewModels.append(rowItems.map({
+                    BookViewModel(bookResult: $0)
+                }))
             }
-        }
+            
+        })
         self.delegate?.bookChanged(self)
-    }
-    
-    func resetResults(size: Int){
-        bookViewModels = []
-        var cont = 0
-        if colsPerRow > 0 {
-            let sizeForCols = size/colsPerRow
-            while sizeForCols >= cont {
-                bookViewModels.append([])
-                cont+=1
-            }
-        }
     }
 
 }
@@ -78,4 +65,5 @@ protocol LikeViewModelDelegate: class {
 
 protocol LikeViewModelRoutingDelegate: class {
     func watchDetail(_: LikeViewModel, book: BookResult, userSession: User)
+    func showModalInfo(_: LikeViewModel, title: String, message: String)
 }

@@ -350,8 +350,8 @@
 				1FB50DB8263F26050017B970 /* Book+CoreDataProperties.swift */,
 				1F57D3652618752C00FC26D0 /* BookManager.swift */,
 				1F6B44E12618B58B004D1446 /* BookNYT.swift */,
-				1F6B44EB2618B6D7004D1446 /* APIManager.swift */,
 				1F6B44E62618B5A9004D1446 /* BookGoogle.swift */,
+				1F6B44EB2618B6D7004D1446 /* APIManager.swift */,
 			);
 			path = Book;
 			sourceTree = "<group>";
@@ -392,10 +392,10 @@
 				1F6B44D226188BB3004D1446 /* HomeViewController.swift */,
 				1FB66740262765A90005F4B9 /* HomeViewController.xib */,
 				1F13D59526192B3B00A7AD97 /* HomeViewModel.swift */,
+				1FB66745262766A90005F4B9 /* HomeCell.xib */,
+				1F6B44DC2618B468004D1446 /* HomeCell.swift */,
 				1FB667522627A7C90005F4B9 /* HomeCollectionCell.xib */,
 				1F9F36112621A8AA00A6AB54 /* HomeCollectionCell.swift */,
-				1F6B44DC2618B468004D1446 /* HomeCell.swift */,
-				1FB66745262766A90005F4B9 /* HomeCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";

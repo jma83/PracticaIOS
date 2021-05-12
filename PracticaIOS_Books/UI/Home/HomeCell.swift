@@ -24,7 +24,6 @@ class HomeCell: UITableViewCell {
         didSet {
             if viewModel != nil {
                 self.collectionView.reloadData()
-
             }
         }
     }
@@ -37,6 +36,8 @@ class HomeCell: UITableViewCell {
 }
 extension HomeCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    
+    //MARK: UICollectionViewDelegate functions
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let viewModel = viewModel {

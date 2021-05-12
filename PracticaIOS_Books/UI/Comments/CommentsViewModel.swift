@@ -48,10 +48,6 @@ class CommentsViewModel: CommentManagerDelegate {
         
     }
     
-    func commentsResult(_: CommentManager, didCommentChange comment: Comment) {
-        //update viewModel
-    }
-    
     func addCommentRouting(){
         self.routingDelegate?.addComment(self)
     }
@@ -68,8 +64,6 @@ class CommentsViewModel: CommentManagerDelegate {
         self.getBookComments()
     }
     
-    
-    
 }
 
 protocol CommentsViewModelDelegate: class {
@@ -79,5 +73,4 @@ protocol CommentsViewModelDelegate: class {
 protocol CommentsViewModelRoutingDelegate: class {
     func addComment(_: CommentsViewModel)
     func closeComments(_: CommentsViewModel)
-    func showCommentDetail(_: CommentsViewModel)
 }

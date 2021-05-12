@@ -28,43 +28,29 @@ class SearchViewModel: BookManagerSearchDelegate {
     
     func bookDetailRouting(bookResult: BookResult) {
         if let routingDelegate = routingDelegate {
-            print(routingDelegate)
             if let user = userSession {
                 routingDelegate.watchDetail(self, book: bookResult, userSession: user)
             }
         }
     }
     
-    func resetResults(size: Int){
-        bookViewModels = []
-        var cont = 0
-        if colsPerRow >= 0 {
-            let sizeForCols = size/colsPerRow
-            while sizeForCols > cont {
-                bookViewModels.append([])
-                cont+=1
-            }
-        }
-    }
-    
     func resetAndShow() {
-        self.resetResults(size: 0)
+        self.bookViewModels = []
         self.delegate?.searchResult(self)
     }
     
+    // MARK: BookManagerSearchDelegate functions
+    
     func searchBookResult(_: BookManager, bookResult: [BookResult]) {
-        var colsCount = 0;
-        var count = 0
-        self.resetResults(size: bookResult.count)
-        for item in bookResult {
-            bookViewModels[count].append(BookViewModel(bookResult: item))
-            if colsCount == (self.colsPerRow - 1) {
-                colsCount = 0
-                count+=1
-            }else{
-                colsCount+=1
+        self.bookViewModels = []
+        self.bookManager.formatBookRows(bookResult: bookResult, maxPerRow: self.colsPerRow, completionHandler: { items in
+            for rowItems in items {
+                self.bookViewModels.append(rowItems.map({
+                    BookViewModel(bookResult: $0)
+                }))
             }
-        }
+            
+        })
         
         self.delegate?.searchResult(self)
     }

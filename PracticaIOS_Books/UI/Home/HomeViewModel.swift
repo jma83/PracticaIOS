@@ -25,32 +25,11 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
         self.userSession = userSession
         self.bookManager.homeDelegate = self
         self.userManager.homeDelegate = self
-
     }
     
     func getHomeBooks(){
         self.bookViewModels = []
         self.bookManager.getRelevantBooks(rowsSize: rowsSize)
-    }
-    
-    func homeBooksResult(_: BookManager, books: [[BookResult]]?) {
-        if let result = books {
-            var count = 0
-            self.bookViewModels = [[BookViewModel]](repeating: [], count: result.count)
-            for listCat in result {
-                for item in listCat {
-                    self.bookViewModels[count].append(BookViewModel(bookResult: item))
-                }
-                count+=1
-            }
-        }
-        delegate?.bookChanged(self)
-    }
-    
-    func booksSectionResult(_: BookManager, sections: [String]?) {
-        if let sections = sections {
-            self.sections = sections
-        }
     }
     
     func bookDetailRouting(bookResult: BookResult) {
@@ -63,14 +42,33 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
         self.userManager.removeUserSession()
     }
     
-    func userLogoutResult(_: UserManager) {
-        self.routingDelegate?.redirectToWelcome(self)
-    }
-    
     func showProfileRouting() {
         self.routingDelegate?.showProfile(self)
     }
     
+    //MARK: BookManagerHomeDelegate functions
+    
+    func homeBooksResult(_: BookManager, books: [[BookResult]]?) {
+        if let result = books {
+            self.bookViewModels = [[BookViewModel]]()
+            for rowBooks in result {
+                self.bookViewModels.append(rowBooks.map({BookViewModel(bookResult: $0)}))
+            }
+        }
+        delegate?.bookChanged(self)
+    }
+    
+    func booksSectionResult(_: BookManager, sections: [String]?) {
+        if let sections = sections {
+            self.sections = sections
+        }
+    }
+    
+    //MARK: UserHomeManagerDelegate functions
+    
+    func userLogoutResult(_: UserManager) {
+        self.routingDelegate?.redirectToWelcome(self)
+    }
     
 }
 

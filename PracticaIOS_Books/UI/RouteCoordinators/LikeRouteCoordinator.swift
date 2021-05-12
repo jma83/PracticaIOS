@@ -7,7 +7,7 @@
 
 import UIKit
 //LikeViewModelRoutingDelegate
-class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate {
+class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate, ModalViewDelegate {
     
     private var navigationController: UINavigationController
     let bookManager: BookManager
@@ -49,7 +49,6 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
     // MARK: DetailViewModelRoutingDelegate: From Detail to Lists
     //Redirect to New RouteCoordinator! -> AddToExistingList  (Modal)
     func showAddList(book: BookResult) {
-        //TODO
         addToListRouteCoordinator = AddToListRouteCoordinator(bookManager: bookManager, listManager: listManager, userSession: userSession, book: book)
         addToListRouteCoordinator.delegate = self
         rootViewController.present(addToListRouteCoordinator.rootViewController, animated: true, completion: nil)
@@ -69,6 +68,16 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showModalInfo(_: LikeViewModel, title: String, message: String){
+        let modal = ModalView()
+        modal.delegate = self
+        rootViewController.present(modal.showAlert(title: title, message: message), animated: true)
+    }
+    
+    func dismissModal(_: ModalView) {
+        rootViewController.dismiss(animated: true, completion: nil)
     }
     
 }

@@ -15,9 +15,11 @@ class ListDetailViewModel: ListDetailManagerDelegate {
     var listDetail: List
     let colsPerRow: Int = 3
     let listManager: ListManager
-    init(listManager: ListManager,userSession: User, listDetail: ListViewModel) {
+    let bookManager: BookManager
+    init(bookManager: BookManager, listManager: ListManager,userSession: User, listDetail: ListViewModel) {
         self.listManager = listManager
         self.userSession = userSession
+        self.bookManager = bookManager
         self.listDetail = listDetail.list
         self.listManager.listDetailDelegate = self
         self.getBookLists()
@@ -32,30 +34,15 @@ class ListDetailViewModel: ListDetailManagerDelegate {
     }
     
     func booksListResult(_: ListManager, books: [BookResult]) {
-        var colsCount = 0;
-        var count = 0
-        self.resetResults(size: books.count)
-        for book in books {
-            bookViewModels[count].append(BookViewModel(bookResult: book))
-            if colsCount == (self.colsPerRow - 1) {
-                colsCount = 0
-                count+=1
-            }else{
-                colsCount+=1
+        self.bookViewModels = []
+        self.bookManager.formatBookRows(bookResult: books, maxPerRow: self.colsPerRow, completionHandler: { items in
+            for rowItems in items {
+                self.bookViewModels.append(rowItems.map({
+                    BookViewModel(bookResult: $0)
+                }))
             }
-        }
-    }
-    
-    func resetResults(size: Int) {
-        bookViewModels = []
-        var cont = 0
-        if colsPerRow > 0 {
-            let sizeForCols = size/colsPerRow
-            while sizeForCols >= cont {
-                bookViewModels.append([])
-                cont+=1
-            }
-        }
+            
+        })
     }
 
     func bookDetailRouting(bookResult: BookResult) {

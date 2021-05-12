@@ -128,14 +128,14 @@ class UserViewModel {
     
     func validateDate() -> Bool{
         error = DATE_ERROR
-        /*let minimumDate = Calendar.current.date(byAdding: .year, value: 18, to: Date())
-        
-        if minimumDate! <= date {
+        let yearComp = DateComponents(year: -18)
+        let date = Calendar.current.date(byAdding: yearComp, to: Date())
+        let res = Calendar.current.component(.year, from: date!)
+        let res2 = Calendar.current.component(.year, from: self.user.birthdate!)
+        if res >= res2 {
             return true
         }
-            
-        return false*/
-        return true
+        return false
     }
     
     func validatePasswords(newPass: String, oldPass: String) -> Bool {

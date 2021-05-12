@@ -42,8 +42,6 @@ class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListVi
     }
     
     func createListResult(){
-        //TODO
-        //pop and update
         navigationController.popViewController(animated: true)
     }
     

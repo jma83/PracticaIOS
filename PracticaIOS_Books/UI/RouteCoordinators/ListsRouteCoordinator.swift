@@ -46,7 +46,7 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
     }
     
     func showBooksFromList(_: ListsMainViewModel, listViewModel: ListViewModel, userSession: User) {
-        let vm = ListDetailViewModel(listManager: listManager, userSession: userSession, listDetail: listViewModel)
+        let vm = ListDetailViewModel(bookManager: bookManager, listManager: listManager, userSession: userSession, listDetail: listViewModel)
         vm.routingDelegate = self
         let vc = ListDetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)

@@ -18,7 +18,7 @@ class HomeCollectionCell: UICollectionViewCell {
                 return
             }
             let image = bookImage?.image
-            if  image == nil || viewModel.bookResult.title != titleLabel?.text{
+            if  image == nil || viewModel.bookResult.title != titleLabel?.text {
                 titleLabel?.text = viewModel.bookResult.title
                 authorLabel?.text = viewModel.bookResult.author
                 if let imageURL = viewModel.bookResult.book_image{
@@ -34,11 +34,8 @@ class HomeCollectionCell: UICollectionViewCell {
     }
     
     func downloadImage(from url: URL) {
-        print("Download Started")
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() { [weak self] in
                 self?.image = UIImage(data: data)
                 self?.bookImage.image = self?.image

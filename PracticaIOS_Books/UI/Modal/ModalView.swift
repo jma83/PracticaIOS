@@ -15,9 +15,13 @@ class ModalView {
         
         return alert
     }
+    
+    func dismiss(){
+        delegate?.dismissModal(self)
+    }
 
 
 }
 protocol ModalViewDelegate: class {
-    func dismissModal()
+    func dismissModal(_: ModalView)
 }

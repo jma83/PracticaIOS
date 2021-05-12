@@ -51,6 +51,8 @@ class BookManager {
     
     func getBookDetail(isbn: String, id: String){
         let maxSize = 1
+        var id = id
+        
         let url = self.getDetailURL(isbn: isbn, maxResults: maxSize)
         bookGoogle.getResponse(str: url, completition2: { result in
             if let response = result!.response {
@@ -58,16 +60,16 @@ class BookManager {
                     let bookResult = bookResultArr.first
                     self.detailDelegate?.bookResultDetail(self, bookResult: bookResult)
                     
-                    let id = (bookResult?.id ?? bookResult?.primary_isbn10) ?? id
-                    self.fetchById(id: id, completionHandler: { books in
-                        if books.count > 0 {
-                            self.detailDelegate?.bookDetail(self, book: books.first)
-                        }
-                    })
+                    id = (bookResult?.id ?? bookResult?.primary_isbn10) ?? id
                 })
             }else{
                 self.detailDelegate?.bookResultDetail(self, bookResult: nil)
             }
+            self.fetchById(id: id, completionHandler: { books in
+                if books.count > 0 {
+                    self.detailDelegate?.bookDetail(self, book: books.first)
+                }
+            })
         })
     }
     
@@ -83,6 +85,27 @@ class BookManager {
             }
         })
 
+    }
+    
+    func formatBookRows(bookResult: [BookResult], maxPerRow: Int,completionHandler: @escaping ([[BookResult]]) -> Void) -> Void{
+        var countRows = bookResult.count/maxPerRow
+        if bookResult.count % maxPerRow != 0 && bookResult.count > 0 {
+            countRows+=1
+        }
+        var booksArr = [[BookResult]](repeating: [], count: countRows)
+        var colsCount = 0;
+        var count = 0
+        
+        for item in bookResult {
+            booksArr[count].append(item)
+            if colsCount == (maxPerRow - 1) {
+                colsCount = 0
+                count+=1
+            }else{
+                colsCount+=1
+            }
+        }
+        completionHandler(booksArr)
     }
 
     private func encodeURLParam(param: String) -> String {
@@ -130,7 +153,6 @@ extension BookManager {
         fetchRequest.predicate = NSPredicate(format: "id == %@", id)
         
         fetchAsyncBooks(fetchAsyncRequest: fetchRequest, completionHandler: { datos in
-            print("count \(datos.count)")
             completionHandler(datos)
         })
     }

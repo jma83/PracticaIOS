@@ -98,6 +98,5 @@ protocol AddCommentManagerDelegate: class {
 }
 
 protocol CommentManagerDelegate: class {
-    func commentsResult(_: CommentManager, didCommentChange comment: Comment)
     func commentDeleteResult(_: CommentManager, comment: Comment)
 }

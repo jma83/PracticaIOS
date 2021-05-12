@@ -75,10 +75,12 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, MainRouteCoordinat
     }
     
     func showInfoModal(title: String, message: String){
-        rootViewController.present(ModalView().showAlert(title: title, message: message), animated: true)
+        let modal = ModalView()
+        modal.delegate = self
+        rootViewController.present(modal.showAlert(title: title, message: message), animated: true)
     }
     
-    func dismissModal() {
+    func dismissModal(_: ModalView) {
         rootViewController.dismiss(animated: true, completion: nil)
     }
 }

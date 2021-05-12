@@ -75,15 +75,15 @@ class BookGoogle: APIManager {
     
     func convertResponse(response: Response_Google, maxSize: Int, completion: @escaping ([BookResult]) -> ()) {
         var bookResultArr = [BookResult]()
-        var internalCount = 0
+        var count = 0
         for item in response.items {
-            if internalCount == maxSize {
+            if count == maxSize {
                 break
             }
             let book = item.volumeInfo
             let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks?.thumbnail, created_date: book.publishedDate, primary_isbn10: book.industryIdentifiers?[0]?.identifier ?? "")
             bookResultArr.append(bookresult)
-            internalCount+=1
+            count+=1
         }
         completion(bookResultArr)
     }

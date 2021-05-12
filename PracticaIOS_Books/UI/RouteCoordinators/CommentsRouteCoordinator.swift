@@ -45,10 +45,6 @@ class CommentsRouteCoordinator: CommentsViewModelRoutingDelegate, AddCommentView
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showCommentDetail(_: CommentsViewModel) {
-        //TODO
-    }
-    
     func createCommentResult() {
         navigationController.popViewController(animated: true)
     }

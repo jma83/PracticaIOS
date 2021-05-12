@@ -78,18 +78,15 @@ class BookNYT : APIManager {
     
     func convertResponse(result: Result_NYT, maxSize: Int, completion: @escaping ([[BookResult]], [String]) -> ()){
         var count = 0
-        var internalCount = 0
         var sectionArr: [String] = []
-        var bookResultArr = [[BookResult]](repeating: [], count: maxSize)
+        var bookResultArr = [[BookResult]]()
         let arrItems = self.calcRandom(maxSize: maxSize, listSize: result.lists.count)
 
         for itemList in result.lists {
             if arrItems.contains(count){
-                for book in itemList.books {
-                    let bookresult = BookResult(id: book.primary_isbn10 ,title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
-                    bookResultArr[internalCount].append(bookresult)
-                }
-                internalCount+=1
+                bookResultArr.append(itemList.books.map({
+                    BookResult(id: $0.primary_isbn10 ,title: $0.title, author: $0.author, description: $0.description, book_image: $0.book_image, created_date: $0.created_date, primary_isbn10: $0.primary_isbn10)
+                }))
                 sectionArr.append(itemList.list_name)
             }
             count+=1
@@ -98,6 +95,7 @@ class BookNYT : APIManager {
     }
         
     private func calcRandom(maxSize: Int, listSize: Int) -> [Int]{
+        
         var arr:[Int] = []
         while maxSize > arr.count  {
             let result = Int.random(in: 0..<listSize)
