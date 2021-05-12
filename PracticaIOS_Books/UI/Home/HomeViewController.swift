@@ -22,8 +22,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
-        self.viewModel.getHomeBooks()
         title = "Home"
+        self.viewModel.getHomeBooks()
 
     }
     
@@ -38,9 +38,39 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .done, target: self, action: #selector(clickNewBooks))
-        // arrow.triangle.2.circlepath
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(clickNewBooks))
+        
     }
+    
+    @objc func clickMenuButton(_ sender: Any) {
+        if !menuActive {
+            leadingMenu.constant = 150
+            trailingMenu.constant = -150
+        }else{
+            leadingMenu.constant = 0
+            leadingMenu.constant = 0
+        }
+        menuActive = !menuActive
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+    }
+    
+    @objc func clickNewBooks(_ sender: Any) {
+        viewModel.getHomeBooks()
+    }
+    
+    @IBAction func clickLogoutButton(_ sender: Any) {
+        viewModel.logoutUser()
+    }
+    
+    @IBAction func clickProfileButton(_ sender: Any) {
+        viewModel.showProfileRouting()
+    }
+    
+    // MARK: UITableViewDelegate functions
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.viewModel.sections.count
@@ -64,41 +94,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return self.viewModel.sections[section]
     }
     
+    // MARK: HomeViewModelDelegate functions
+    
     func bookChanged(_: HomeViewModel) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
-
-    @objc func clickMenuButton(_ sender: Any) {
-        if !menuActive {
-            leadingMenu.constant = 150
-            trailingMenu.constant = -150
-        }else{
-            leadingMenu.constant = 0
-            leadingMenu.constant = 0
-        }
-        menuActive = !menuActive
-        
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
-    }
-    
-    @objc func clickNewBooks(_ sender: Any) {
-        viewModel.getHomeBooks()
-        
-    }
-    @IBAction func clickLogoutButton(_ sender: Any) {
-        viewModel.logoutUser()
-    }
-    
-    @IBAction func clickProfileButton(_ sender: Any) {
-        viewModel.showProfileRouting()
-    }
-    
+    // MARK: HomeCellDelegate functions
     
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {
         if let vm = homeCell.viewModel {

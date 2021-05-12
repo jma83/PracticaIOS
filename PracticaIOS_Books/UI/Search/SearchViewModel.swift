@@ -23,7 +23,7 @@ class SearchViewModel: BookManagerSearchDelegate {
     }
     
     func searchBook(text: String){
-        bookManager.searchBook(text: text)
+        bookManager.searchBook(text: text, maxResults: 30)
     }
     
     func bookDetailRouting(bookResult: BookResult) {

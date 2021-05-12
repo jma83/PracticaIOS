@@ -75,6 +75,36 @@ class BookNYT : APIManager {
             completition2(FINAL_RESPONSE(status: status!, response: resultados, error: error2))
         })
     }
-        
     
+    func convertResponse(result: Result_NYT, maxSize: Int, completion: @escaping ([[BookResult]], [String]) -> ()){
+        var count = 0
+        var internalCount = 0
+        var sectionArr: [String] = []
+        var bookResultArr = [[BookResult]](repeating: [], count: maxSize)
+        let arrItems = self.calcRandom(maxSize: maxSize, listSize: result.lists.count)
+
+        for itemList in result.lists {
+            if arrItems.contains(count){
+                for book in itemList.books {
+                    let bookresult = BookResult(id: book.primary_isbn10 ,title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
+                    bookResultArr[internalCount].append(bookresult)
+                }
+                internalCount+=1
+                sectionArr.append(itemList.list_name)
+            }
+            count+=1
+        }
+        completion(bookResultArr, sectionArr)
+    }
+        
+    private func calcRandom(maxSize: Int, listSize: Int) -> [Int]{
+        var arr:[Int] = []
+        while maxSize > arr.count  {
+            let result = Int.random(in: 0..<listSize)
+            if !arr.contains(result){
+                arr.append(result)
+            }
+        }
+        return arr
+    }
 }

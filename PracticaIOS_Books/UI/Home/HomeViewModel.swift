@@ -15,6 +15,7 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
     var bookViewModels: [[BookViewModel]] = [[]]
     var sections: [String] = []
     let userSession: User?
+    let rowsSize = 3
     weak var delegate: HomeViewModelDelegate?
     weak var routingDelegate: HomeViewModelRoutingDelegate?
     
@@ -22,14 +23,14 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
         self.userManager = userManager
         self.bookManager = bookManager
         self.userSession = userSession
-        self.bookManager.delegate = self
+        self.bookManager.homeDelegate = self
         self.userManager.homeDelegate = self
 
     }
     
     func getHomeBooks(){
         self.bookViewModels = []
-        self.bookManager.getRelevantBooks()
+        self.bookManager.getRelevantBooks(rowsSize: rowsSize)
     }
     
     func homeBooksResult(_: BookManager, books: [[BookResult]]?) {
@@ -53,9 +54,8 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
     }
     
     func bookDetailRouting(bookResult: BookResult) {
-        if let routingDelegate = routingDelegate, let user = userSession {
-            print(routingDelegate)
-            routingDelegate.watchDetail(self, book: bookResult, userSession: user)
+        if let user = userSession {
+            routingDelegate?.watchDetail(self, book: bookResult, userSession: user)
         }
     }
     

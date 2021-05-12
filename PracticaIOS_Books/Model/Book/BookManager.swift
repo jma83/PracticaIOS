@@ -22,7 +22,7 @@ class BookManager {
     
     let bookNYT: BookNYT
     let bookGoogle: BookGoogle
-    weak var delegate: BookManagerHomeDelegate?
+    weak var homeDelegate: BookManagerHomeDelegate?
     weak var detailDelegate: BookManagerDetailDelegate?
     weak var searchDelegate: BookManagerSearchDelegate?
     weak var likeDelegate: BookManagerLikeDelegate?
@@ -37,87 +37,68 @@ class BookManager {
         context = appDelegate.managedObjectContext
     }
     
-    func getRelevantBooks(){
-        
-        bookNYT.getResponse(str: "https://api.nytimes.com/svc/books/v3/lists/overview.json", completition2: { result in
-            var bookResultArr: [[BookResult]] = []
-            var sectionArr: [String] = []
-            let maxSize = 3
-            if let lists = result?.response?.results.lists {
-                bookResultArr = [[BookResult]](repeating: [], count: maxSize)
-                let arrItems = self.calcRandom(maxSize: maxSize, listSize: lists.count)
-                
-                var count = 0
-                var internalCount = 0
-                for itemList in lists {
-                    if arrItems.contains(count){
-                        for book in itemList.books {
-                            let bookresult = BookResult(id: book.primary_isbn10 ,title: book.title, author: book.author, description: book.description, book_image: book.book_image, created_date: book.created_date, primary_isbn10: book.primary_isbn10)
-                            bookResultArr[internalCount].append(bookresult)
-                        }
-                        internalCount+=1
-                        sectionArr.append(itemList.list_name)
-                    }
-                    count+=1
-                }
-                self.delegate?.homeBooksResult(self, books: bookResultArr)
-                self.delegate?.booksSectionResult(self, sections: sectionArr)
+    func getRelevantBooks(rowsSize: Int){
+        self.bookNYT.getResponse(str: self.getSuggestedURL(), completition2: { result in
+            let maxSize = rowsSize
+            if let result = result?.response?.results {
+                self.bookNYT.convertResponse(result: result, maxSize: maxSize, completion: { (bookResultArr, sectionArr)  in
+                    self.homeDelegate?.homeBooksResult(self, books: bookResultArr)
+                    self.homeDelegate?.booksSectionResult(self, sections: sectionArr)
+                })
             }
         })
-    }
-    
-    func calcRandom(maxSize: Int, listSize: Int) -> [Int]{
-        var arr:[Int] = []
-        while maxSize > arr.count  {
-            let result = Int.random(in: 0..<listSize)
-            if !arr.contains(result){
-                arr.append(result)
-            }
-        }
-        return arr
     }
     
     func getBookDetail(isbn: String, id: String){
-        let url = "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=1"
+        let maxSize = 1
+        let url = self.getDetailURL(isbn: isbn, maxResults: maxSize)
         bookGoogle.getResponse(str: url, completition2: { result in
-            var bookresult: BookResult?
-            if let r = result!.response?.items.first {
-                bookresult = BookResult(id: r.id,title: r.volumeInfo.title, author: r.volumeInfo.authors?[0] ?? "N/A", description: r.volumeInfo.description ?? r.volumeInfo.subtitle, book_image: r.volumeInfo.imageLinks?.thumbnail, created_date: r.volumeInfo.publishedDate, primary_isbn10: isbn)
+            if let response = result!.response {
+                self.bookGoogle.convertResponse(response: response, maxSize: maxSize, completion: { bookResultArr in
+                    let bookResult = bookResultArr.first
+                    self.detailDelegate?.bookResultDetail(self, bookResult: bookResult)
+                    
+                    let id = (bookResult?.id ?? bookResult?.primary_isbn10) ?? id
+                    self.fetchById(id: id, completionHandler: { books in
+                        if books.count > 0 {
+                            self.detailDelegate?.bookDetail(self, book: books.first)
+                        }
+                    })
+                })
+            }else{
+                self.detailDelegate?.bookResultDetail(self, bookResult: nil)
             }
-            
-            self.detailDelegate?.bookResultDetail(self, bookResult: bookresult)
-            
-            let id = (bookresult?.id ?? bookresult?.primary_isbn10) ?? id
-            self.fetchById(id: id, completionHandler: { books in
-                if books.count > 0 {
-                    self.detailDelegate?.bookDetail(self, book: books.first)
-                }
-            })
-            
-            
         })
     }
     
-    func searchBook(text: String){
+    func searchBook(text: String, maxResults: Int){
         let text = encodeURLParam(param: text)
-        let url = "https://www.googleapis.com/books/v1/volumes?q=\(String(describing: text))&orderBy=relevance&maxResults=30"
+        let url = self.getSearchURL(text: text, maxResults: maxResults)
 
-        bookGoogle.getResponse(str: url, completition2: { result in
-            var bookResultArr = [BookResult]()
-            if let lists = result?.response?.items {
-                for item in lists {
-                    let book = item.volumeInfo
-                    let bookresult = BookResult(id: item.id, title: book.title, author: book.authors?[0] ?? "N/A", description: book.description, book_image: book.imageLinks?.thumbnail, created_date: book.publishedDate, primary_isbn10: book.industryIdentifiers?[0]?.identifier ?? "")
-                    bookResultArr.append(bookresult)
-                }
+        self.bookGoogle.getResponse(str: url, completition2: { result in
+            if let response = result?.response {
+                self.bookGoogle.convertResponse(response: response, maxSize: maxResults, completion: { bookResultArr in
+                    self.searchDelegate?.searchBookResult(self, bookResult: bookResultArr)
+                })
             }
-            self.searchDelegate?.searchBookResult(self, bookResult: bookResultArr)
         })
 
     }
 
-    func encodeURLParam(param: String) -> String {
+    private func encodeURLParam(param: String) -> String {
         return param.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    }
+    
+    private func getDetailURL(isbn: String, maxResults: Int) -> String {
+        return "https://www.googleapis.com/books/v1/volumes?q=isbn:\(String(describing: isbn))&orderBy=newest&maxResults=\(String(describing: maxResults))"
+    }
+    
+    private func getSearchURL(text: String, maxResults: Int) -> String{
+        return "https://www.googleapis.com/books/v1/volumes?q=\(String(describing: text))&orderBy=relevance&maxResults=\(String(describing: maxResults))"
+    }
+    
+    private func getSuggestedURL() -> String {
+        return "https://api.nytimes.com/svc/books/v3/lists/overview.json"
     }
     
 }
