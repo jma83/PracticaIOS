@@ -11,13 +11,11 @@ class BookViewModel {
     
     
     let bookResult: BookResult
-    
-    
+    var book: Book?
     
     init(bookResult: BookResult) {
         self.bookResult = bookResult
     }
-
     	
     var title: String {
         return bookResult.title ?? ""
@@ -31,7 +29,6 @@ class BookViewModel {
         return bookResult.author ?? ""
     }
     
-    var book: Book?
 
     
 }

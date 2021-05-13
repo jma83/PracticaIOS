@@ -19,14 +19,17 @@ class CommentsCell: UITableViewCell {
     var viewModel: CommentViewModel? {
         didSet {
             if viewModel != nil {
-                self.summaryText.text = viewModel?.summary
-                self.commentText.text = viewModel?.descrip
-                self.authorText.text = viewModel?.author
+                self.summaryText.text = viewModel?.comment?.summary ?? ""
+                self.commentText.text = viewModel?.comment?.comment ?? ""
+                self.authorText.text = viewModel?.comment?.user?.username ?? ""
                 deleteCommentButton.isEnabled =  viewModel?.ownComment ?? false
                 
                 let formatter1 = DateFormatter()
                 formatter1.dateStyle = .long
-                let dateStr = formatter1.string(from: viewModel!.date)
+                var dateStr = ""
+                if let date = viewModel?.comment?.updateDate {
+                    dateStr = formatter1.string(from: date)
+                }
                 self.dateText.text = dateStr
             }
         }

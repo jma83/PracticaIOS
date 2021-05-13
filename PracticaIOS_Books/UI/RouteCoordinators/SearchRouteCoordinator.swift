@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate,  AddToListRouteCoordinatorDelegate {
+class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate,  AddToListRouteCoordinatorDelegate, ModalViewDelegate {
     
 
     private var navigationController: UINavigationController
@@ -70,6 +70,16 @@ class SearchRouteCoordinator: SearchViewModelRoutingDelegate, DetailViewModelRou
         vm.routingDelegate = self
         let vc: DetailViewController = DetailViewController(viewModel: vm)
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func showInfoModal(title: String, message: String) {
+        let modal = ModalView()
+        modal.delegate = self
+        rootViewController.present(modal.showAlert(title: title, message: message), animated: true)
+    }
+    
+    func dismissModal(_: ModalView) {
+        rootViewController.dismiss(animated: true, completion: nil)
     }
 
 }

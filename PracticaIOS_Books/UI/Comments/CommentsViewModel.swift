@@ -15,6 +15,7 @@ class CommentsViewModel: CommentManagerDelegate {
     let bookManager: BookManager
     let userSession: User
     let bookResult: BookResult
+    var deleteCommentVM: CommentViewModel?
     weak var delegate: CommentsViewModelDelegate?
     weak var routingDelegate: CommentsViewModelRoutingDelegate?
     
@@ -55,13 +56,28 @@ class CommentsViewModel: CommentManagerDelegate {
     func closeListRouting() {
         self.routingDelegate?.closeComments(self)
     }
+
     
-    func commentDelete(commentViewModel: CommentViewModel){
-        self.commentManager.deleteComment(comment: commentViewModel.comment)
-    }
+    //MARK: CommentManagerDelegate functions
     
     func commentDeleteResult(_: CommentManager, comment: Comment) {
         self.getBookComments()
+    }
+    
+    func showConfirmDeleteModal(commentViewModel: CommentViewModel) {
+        deleteCommentVM = commentViewModel
+        self.routingDelegate?.showConfirmDeleteModal(title: "Delete comment", message: "Do you want to delete this comment?" )
+    }
+
+    func confirmDeleteEvent(){
+        if let deleteCommentVM = deleteCommentVM {
+            self.commentManager.deleteComment(comment: deleteCommentVM.comment!)
+
+        }
+    }
+    
+    func cancelDeleteEvent(){
+        self.deleteCommentVM = nil
     }
     
 }
@@ -73,4 +89,5 @@ protocol CommentsViewModelDelegate: class {
 protocol CommentsViewModelRoutingDelegate: class {
     func addComment(_: CommentsViewModel)
     func closeComments(_: CommentsViewModel)
+    func showConfirmDeleteModal(title: String, message: String)
 }

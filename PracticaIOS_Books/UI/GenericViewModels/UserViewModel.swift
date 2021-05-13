@@ -14,14 +14,14 @@ class UserViewModel {
     private let EMAIL_PATTERN = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,30}"
     private let COUNTRY_PATTERN = "^[ñA-Za-z _]{2,50}"
     private let GENDER_PATTERN = "[0-9]{1,1}"
-    private let USERNAME_ERROR = "Error, el formato del username es incorrecto. Debe contener solo caracteres alfanuméricos entre 2 y 20."
-    private let PASSWORD_ERROR = "Error, el formato de la password es incorrecto. Debe contener al menos una mayúscula, una minúscula y un número."
-    private let EMAIL_ERROR = "Error, el formato del email es incorrecto."
-    private let COUNTRY_ERROR = "Error, el formato del pais es incorrecto. Debe contener solo caracteres alfanuméricos entre 2 y 50."
-    private let GENDER_ERROR = "Error, el formato del género es incorrecto. Elige una de las 3 opciones disponibles"
-    private let DATE_ERROR = "Error, fecha de nacimiento no válida. Debe ser igual o superior a 18 años"
-    var error: String?
     
+    private let USERNAME_ERROR = "Error, the username format is incorrect. Must contain between 2 and 20 alphanumeric characters."
+    private let PASSWORD_ERROR = "Error, password format is incorrect. Must contain at least an uppercase, a lowercase and a number."
+    private let EMAIL_ERROR = "Error, email format is incorrect."
+    private let COUNTRY_ERROR = "Error, the country format is incorrect. Must contain between 2 and 50 alphanumeric characters."
+    private let GENDER_ERROR = "Error, the gender format is incorrect. Choose within the available options."
+    private let DATE_ERROR = "Error, birthdte is invalid. Must be greater or equals than 18 years old."
+    var error: String?
     var user: UserResult
     
     init(email: String = "", username: String = "", birthdate: Date = Date(), gender: Int16 = 2, country: String = "", password: String = "") {
@@ -151,6 +151,6 @@ class UserViewModel {
     
     
     func getError() -> String {
-        return error ?? "Error, formato incorrecto"
+        return error ?? "Error, invalid format"
     }
 }

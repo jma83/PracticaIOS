@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateListViewController: UIViewController, CreateListViewModelDelegate {
+class CreateListViewController: UIViewController {
     
 
     @IBOutlet weak var nameTextField: UITextField!
@@ -31,11 +31,6 @@ class CreateListViewController: UIViewController, CreateListViewModelDelegate {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    func listError(_: CreateListViewModel, message: String) {
-        present(ModalView().showAlert(title: "Error", message: message), animated: true)
     }
     
 

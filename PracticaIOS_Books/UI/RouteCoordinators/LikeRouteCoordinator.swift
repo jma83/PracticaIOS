@@ -70,7 +70,7 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func showModalInfo(_: LikeViewModel, title: String, message: String){
+    func showInfoModal(title: String, message: String) {
         let modal = ModalView()
         modal.delegate = self
         rootViewController.present(modal.showAlert(title: title, message: message), animated: true)
@@ -78,6 +78,6 @@ class LikeRouteCoordinator: LikeViewModelRoutingDelegate, DetailViewModelRouting
     
     func dismissModal(_: ModalView) {
         rootViewController.dismiss(animated: true, completion: nil)
-    }
+    } 
     
 }

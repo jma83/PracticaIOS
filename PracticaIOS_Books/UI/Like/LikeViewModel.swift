@@ -41,7 +41,7 @@ class LikeViewModel: LikeManagerDelegate {
     }
     
     func likeError(_: LikeManager, message: String) {
-        self.routingDelegate?.showModalInfo(self, title: "Error", message: message)
+        self.routingDelegate?.showInfoModal(title: "Error", message: message)
     }
     
     func likeFetchResult(_: LikeManager, books: [BookResult]) {
@@ -65,5 +65,5 @@ protocol LikeViewModelDelegate: class {
 
 protocol LikeViewModelRoutingDelegate: class {
     func watchDetail(_: LikeViewModel, book: BookResult, userSession: User)
-    func showModalInfo(_: LikeViewModel, title: String, message: String)
+    func showInfoModal(title: String, message: String)
 }

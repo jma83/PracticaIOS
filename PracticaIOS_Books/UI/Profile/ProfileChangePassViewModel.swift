@@ -9,7 +9,6 @@ import Foundation
 
 class ProfileChangePassViewModel: UserManagerProfilePassDelegate {
        
-    var userViewModel: UserViewModel?
     private let userSession: User
     private let userManager: UserManager
     weak var routingDelegate: ProfileViewModelRoutingDelegate?
@@ -21,15 +20,13 @@ class ProfileChangePassViewModel: UserManagerProfilePassDelegate {
     }
     
     func changePassEvent(newPass: String, oldPass: String) {
-        userViewModel = UserViewModel(password: newPass)
-        if let userVM = self.userViewModel{
-            if  userVM.validatePasswords(newPass: newPass, oldPass: oldPass) {
-                
-                self.userManager.updateUserPass(newPass: newPass, oldPass: oldPass, user: userSession)
-            }else{
-                updateUserError(self.userManager, message: userVM.getError())
-            }
+        let userVM = UserViewModel(password: newPass)
+        if userVM.validatePasswords(newPass: newPass, oldPass: oldPass) {
+            self.userManager.updateUserPass(newPass: newPass, oldPass: oldPass, user: userSession)
+        }else{
+            updateUserError(self.userManager, message: userVM.getError())
         }
+        
     }
     
     func updateUserResult(_: UserManager, message: String) {

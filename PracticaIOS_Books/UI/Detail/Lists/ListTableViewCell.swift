@@ -30,7 +30,6 @@ class ListTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     @IBAction func toggleSwitch(_ sender: Any) {
@@ -38,7 +37,6 @@ class ListTableViewCell: UITableViewCell {
             self.delegate?.toggleListEvent(self, listViewModel: vm, isOn: isOn)
         }
     }
-    
     
 }
 

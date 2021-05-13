@@ -9,7 +9,6 @@ import Foundation
 
 class CreateListViewModel: AddListManagerDelegate {
 
-    weak var delegate: CreateListViewModelDelegate?
     weak var routingDelegate: CreateListViewModelRoutingDelegate?
     let listManager: ListManager
     let userSession: User
@@ -25,20 +24,17 @@ class CreateListViewModel: AddListManagerDelegate {
     }
     
     func listUpdatedResult(_: ListManager, didListChange list: List) {
-        self.routingDelegate?.createListResult()
-
+        self.routingDelegate?.createListResult(self)
     }
     
     func listError(_: ListManager, error: String) {
-        delegate?.listError(self, message: error)
+        self.routingDelegate?.showInfoModal(title: "Error", message: error)
     }
 
 }
 
-protocol CreateListViewModelDelegate: class {
-    func listError(_: CreateListViewModel, message: String)
-}
-
 protocol CreateListViewModelRoutingDelegate: class {
-    func createListResult()
+    func createListResult(_: CreateListViewModel)
+    func showInfoModal(title: String, message: String)
+
 }

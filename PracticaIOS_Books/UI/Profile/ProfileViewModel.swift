@@ -30,9 +30,7 @@ class ProfileViewModel: UserManagerProfileDelegate {
         if (!userVM.validateUpdate()) {
             self.updateUserError(self.userManager,message: userVM.getError())
         }else{
-        
             self.userManager.updateUserInfo(userResult: userVM.user, user: userSession)
-            
         }
     }
     
@@ -40,16 +38,18 @@ class ProfileViewModel: UserManagerProfileDelegate {
         self.routingDelegate?.changePassword(self)
     }
     
+    func closeProfileRouting(){
+        self.routingDelegate?.closeProfile(self)
+    }
+    
+    // MARK: UserManagerProfileDelegate functions
+    
     func updateUserResult(_: UserManager, message: String) {
         self.routingDelegate?.showModalInfo(title: "Success", message: message)
     }
     
     func updateUserError(_: UserManager, message: String) {
         self.routingDelegate?.showModalInfo(title: "Error", message: message)
-    }
-    
-    func closeProfileRouting(){
-        self.routingDelegate?.closeProfile(self)
     }
 }
 

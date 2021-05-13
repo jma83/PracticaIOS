@@ -13,7 +13,6 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     private let CELL_ID = String(describing: ListMainTableViewCell.self)
     let viewModel:ListsMainViewModel
     var checkRouting: Bool = true
-    var deleteListViewModel: ListViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +62,6 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func deleteListResult(_: ListsMainViewModel) {
-        self.viewModel.retrieveLists()
-    }
-    
     func clickListEvent(_: ListMainTableViewCell, listViewModel: ListViewModel) {
         if self.checkRouting == false {
             self.checkRouting = true
@@ -80,29 +75,7 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func clickDeleteEvent(_: ListMainTableViewCell, listViewModel: ListViewModel) {
-        self.deleteListViewModel = listViewModel
-        present(self.showConfirmDeleteAlert(title:  "Delete list", message: "Do you want to delete the list \(listViewModel.name)" ), animated: true)
+        self.viewModel.showConfirmDeleteModal(listViewModel: listViewModel)
     }
     
-    func showConfirmDeleteAlert(title: String, message: String) -> UIViewController{
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(alert: UIAlertAction!) in
-            self.confirmDeleteEvent()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(alert: UIAlertAction!) in
-            self.cancelDeleteEvent()
-        }))
-        
-        return alert
-    }
-    
-    func confirmDeleteEvent(){
-        if let deleteListViewModel = deleteListViewModel {
-            self.viewModel.deleteList(listViewModel: deleteListViewModel)
-        }
-    }
-    
-    func cancelDeleteEvent(){
-        self.deleteListViewModel = nil
-    }
 }

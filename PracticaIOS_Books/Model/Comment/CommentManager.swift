@@ -60,13 +60,13 @@ class CommentManager{
     }
     
     
-    func createComment(name: String, descrip: String, user: User, book: Book) -> Void {
+    func createComment(commentResult: CommentResult, user: User, book: Book) -> Void {
         self.fetchCommentByUserAndBook(user: user, book: book, completionHandler: { comments in
             if comments.count == 0 {
                 let entity = NSEntityDescription.entity(forEntityName: self.COMMENT_ENTITY, in: self.context)
                 let comment = Comment(entity: entity!, insertInto: self.context)
-                comment.summary = name
-                comment.comment = descrip
+                comment.summary = commentResult.summary
+                comment.comment = commentResult.comment
                 comment.createDate = Date()
                 comment.updateDate = Date()
                 comment.user = user

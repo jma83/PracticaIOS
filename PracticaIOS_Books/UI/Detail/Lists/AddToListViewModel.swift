@@ -38,6 +38,22 @@ class AddToListViewModel: AddToListManagerDelegate {
         self.routingDelegate?.closeAddToList()
     }
     
+    func manageBookInList(listViewModel: ListViewModel, isOn: Bool){
+        if isOn == true {
+            self.bookManager.createBook(book: bookResult, completionHandler: { book in
+                self.listManager.addBookToList(name: listViewModel.name, book: book)
+            })
+        }else{
+            self.bookManager.getBook(book: bookResult, completionHandler: { book in
+                if let book = book {
+                    self.listManager.removeBookFromList(name: listViewModel.name, book: book)
+                }
+            })
+        }
+    }
+    
+    // MARK: AddToListManagerDelegate functions
+    
     func listsResult(_: ListManager, didListChange lists: [List]) {
         self.bookManager.getBook(book: bookResult, completionHandler: { book in
             self.listViewModels = []
@@ -54,20 +70,6 @@ class AddToListViewModel: AddToListManagerDelegate {
             
         })
         
-    }
-    
-    func manageBookInList(listViewModel: ListViewModel, isOn: Bool){
-        if isOn == true {
-            self.bookManager.createBook(book: bookResult, completionHandler: { book in
-                self.listManager.addBookToList(name: listViewModel.name, book: book)
-            })
-        }else{
-            self.bookManager.getBook(book: bookResult, completionHandler: { book in
-                if let book = book {
-                    self.listManager.removeBookFromList(name: listViewModel.name, book: book)
-                }
-            })
-        }
     }
 
 }

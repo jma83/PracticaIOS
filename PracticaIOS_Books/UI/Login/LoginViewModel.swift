@@ -33,6 +33,8 @@ class LoginViewModel: UserManagerDelegate {
         }
     }
     
+    // MARK: UserManagerDelegate functions
+    
     func userSession(_: UserManager, didUserChange user: User) {
         routingDelegate?.userAccessAllowed(userSession: user)
     }

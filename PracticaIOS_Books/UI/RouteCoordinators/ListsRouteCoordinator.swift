@@ -6,11 +6,12 @@
 //
 
 import UIKit
-class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewModelRoutingDelegate, ListDetailViewModelRoutingDelegate, DetailViewModelRoutingDelegate, AddToListRouteCoordinatorDelegate, CommentsRouteCoordinatorDelegate {
-        
+class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewModelRoutingDelegate, ListDetailViewModelRoutingDelegate, DetailViewModelRoutingDelegate, AddToListRouteCoordinatorDelegate, CommentsRouteCoordinatorDelegate, ModalViewDelegate, ModalViewConfirmDelegate {
+    
     private var navigationController: UINavigationController
     private var addToListRouteCoordinator: AddToListRouteCoordinator!
     private var commentsRouteCoordinator: CommentsRouteCoordinator!
+    let listsViewModel: ListsMainViewModel
     let bookManager: BookManager
     let userManager: UserManager
     let listManager: ListManager
@@ -28,10 +29,10 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
         self.likeManager = likeManager
         self.commentManager = commentManager
         self.userSession = userSession
-        let vm = ListsMainViewModel(listManager: listManager, userSession: userSession)
-        let vc = ListsMainViewController(viewModel: vm)
+        listsViewModel = ListsMainViewModel(listManager: listManager, userSession: userSession)
+        let vc = ListsMainViewController(viewModel: listsViewModel)
         navigationController = UINavigationController(rootViewController: vc)
-        vm.routingDelegate = self
+        listsViewModel.routingDelegate = self
     }
     
     func createList(_:ListsMainViewModel, userSession: User) {
@@ -41,7 +42,7 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func createListResult() {
+    func createListResult(_: CreateListViewModel) {
         navigationController.popViewController(animated: true)
     }
     
@@ -77,6 +78,32 @@ class ListsRouteCoordinator:  CreateListViewModelRoutingDelegate, ListsMainViewM
     
     func closeComments() {
         rootViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func showInfoModal(title: String, message: String) {
+        let modal = ModalView()
+        modal.delegate = self
+        rootViewController.present(modal.showAlert(title: title, message: message), animated: true)
+    }
+    
+    func dismissModal(_: ModalView) {
+        rootViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func showConfirmDeleteModal( title: String, message: String) {
+        let modal = ModalView()
+        modal.confirmDelegate = self
+        rootViewController.present(modal.showConfirmDeleteAlert(title: title, message: message ), animated: true)
+    }
+    
+    func dismissConfirmModal(_: ModalView) {
+        self.listsViewModel.cancelDeleteEvent()
+        //rootViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func confirmDelete(_: ModalView) {
+        //rootViewController.dismiss(animated: true, completion: nil)
+        self.listsViewModel.confirmDeleteEvent()
     }
     
 }

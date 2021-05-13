@@ -42,7 +42,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     func bookDetailResult(_: DetailViewModel) {
-        //setinfo
+
         let book = self.viewModel.bookViewModel?.bookResult
         DispatchQueue.main.async {
             if let title = book?.title {
@@ -73,11 +73,8 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     func downloadImage(from url: URL) {
-        print("Download Started")
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() { [weak self] in
                 self?.image = UIImage(data: data)
                 self?.bookImage.image = self?.image
@@ -112,10 +109,6 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     
     func likeCheckBook(_: DetailViewModel) {
         likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
-    }
-    
-    func likeError(_: DetailViewModel, message: String) {
-        present(ModalView().showAlert(title: "Error", message: message), animated: true)
     }
     
 }

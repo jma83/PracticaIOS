@@ -24,23 +24,7 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
         self.bookManager.detailDelegate = self
         self.likeManager.detailDelegate = self
     }
-    func bookResultDetail(_: BookManager, bookResult: BookResult?){
-        if let result = bookResult, checkValidResult(property: result.title), self.checkValidResult(property: self.bookViewModel?.bookResult.primary_isbn10) {
-            self.bookViewModel = BookViewModel(bookResult: result)
-            delegate?.bookDetailResult(self)
-            return
-        }
-        self.loadDefaultBook()
-    }
-    func bookDetail(_: BookManager, book: Book?){
-        if let book = book, let user = userSession {
-            bookViewModel?.book = book
-            likeManager.checkLikedByBookAndUser(user: user, book: book)
-        }
-        
-    }
     
-
     func loadBook(){
         if let isbn = self.bookViewModel?.bookResult.primary_isbn10, let id = self.bookViewModel?.bookResult.id {
             self.bookManager.getBookDetail(isbn: isbn, id: id)
@@ -84,12 +68,33 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
         }
     }
     
+    //MARK: BookManagerDetailDelegate functions
+    
+    func bookResultDetail(_: BookManager, bookResult: BookResult?){
+        if let result = bookResult, checkValidResult(property: result.title), self.checkValidResult(property: self.bookViewModel?.bookResult.primary_isbn10) {
+            self.bookViewModel = BookViewModel(bookResult: result)
+            delegate?.bookDetailResult(self)
+            return
+        }
+        self.loadDefaultBook()
+    }
+    
+    func bookDetail(_: BookManager, book: Book?){
+        if let book = book, let user = userSession {
+            bookViewModel?.book = book
+            likeManager.checkLikedByBookAndUser(user: user, book: book)
+        }
+        
+    }
+    
+    //MARK: LikeManagerDetailDelegate functions
+    
     func likeAddResult(_: LikeManager, checkLike: Bool) {
         self.delegate?.likeAddResult(self, checkLike: checkLike)
     }
     
     func likeError(_: LikeManager, message: String) {
-        self.delegate?.likeError(self, message: message)
+        self.routingDelegate?.showInfoModal(title: "Error", message: message)
     }
     
     func likeCheckBook(_: LikeManager, checkLike: Bool) {
@@ -103,11 +108,11 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
 protocol DetailViewModelDelegate: class {
     func bookDetailResult(_: DetailViewModel)
     func likeAddResult(_: DetailViewModel, checkLike: Bool)
-    func likeError(_: DetailViewModel, message: String)
     func likeCheckBook(_: DetailViewModel)
 }
 
 protocol DetailViewModelRoutingDelegate: class {
     func showCommentsView(book: BookResult)
     func showAddList(book: BookResult)
+    func showInfoModal(title: String, message: String)
 }

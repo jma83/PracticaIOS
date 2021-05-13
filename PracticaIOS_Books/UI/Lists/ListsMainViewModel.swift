@@ -10,6 +10,7 @@ import Foundation
 class ListsMainViewModel: ListManagerDelegate {
     var listViewModels: [ListViewModel] = []
     let listManager: ListManager
+    var deleteListViewModel: ListViewModel?
     var userSession: User
     weak var delegate: ListsMainViewModelDelegate?
     weak var routingDelegate: ListsMainViewModelRoutingDelegate?
@@ -33,12 +34,8 @@ class ListsMainViewModel: ListManagerDelegate {
         self.delegate?.updateList(self)
     }
     
-    func deleteList(listViewModel: ListViewModel){
-        self.listManager.deleteList(list: listViewModel.list, user: userSession)
-    }
-    
     func deleteListResult(_: ListManager) {
-        self.delegate?.deleteListResult(self)
+        self.retrieveLists()
     }
     
     func createListRouting(){
@@ -48,16 +45,31 @@ class ListsMainViewModel: ListManagerDelegate {
     func showListRouting(listViewModel: ListViewModel){
         self.routingDelegate?.showBooksFromList(self, listViewModel: listViewModel, userSession: userSession)
     }
+    
+    func showConfirmDeleteModal(listViewModel: ListViewModel) {
+        deleteListViewModel = listViewModel
+        self.routingDelegate?.showConfirmDeleteModal(title: "Delete list", message: "Do you want to delete the list \(listViewModel.name)")
+    }
+
+    func confirmDeleteEvent(){
+        if let deleteListViewModel = deleteListViewModel {
+            self.listManager.deleteList(list: deleteListViewModel.list, user: userSession)
+        }
+    }
+    
+    func cancelDeleteEvent(){
+        self.deleteListViewModel = nil
+    }
 }
 
 
 protocol ListsMainViewModelDelegate: class {
     func updateList(_: ListsMainViewModel)
-    func deleteListResult(_: ListsMainViewModel)
 }
 
 protocol ListsMainViewModelRoutingDelegate: class {
     func createList(_: ListsMainViewModel, userSession: User)
     func showBooksFromList(_: ListsMainViewModel, listViewModel: ListViewModel, userSession: User)
+    func showConfirmDeleteModal(title: String, message: String)
 }
 

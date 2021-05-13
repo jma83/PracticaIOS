@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate, ProfileRouteCoordinatorDelegate {
+class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate, ProfileRouteCoordinatorDelegate, ModalViewDelegate {
     
     private let navigationController: UINavigationController
     private var addToListRouteCoordinator: AddToListRouteCoordinator!
@@ -85,6 +85,16 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         profileRouteCoordinator = ProfileRouteCoordinator(userManager: userManager, userSession: userSession)
         profileRouteCoordinator.delegate = self
         rootViewController.present(profileRouteCoordinator.rootViewController, animated: true, completion: nil)
+    }
+    
+    func showInfoModal(title: String, message: String) {
+        let modal = ModalView()
+        modal.delegate = self
+        rootViewController.present(modal.showAlert(title: title, message: message), animated: true)
+    }
+    
+    func dismissModal(_: ModalView) {
+        rootViewController.dismiss(animated: true, completion: nil)
     }
 }
  

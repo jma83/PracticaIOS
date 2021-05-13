@@ -12,7 +12,6 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: CommentsCell.self)
     private var viewModel: CommentsViewModel
-    var deleteCommentVM: CommentViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,8 +63,7 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     
     func clickDeleteEvent(_: CommentsCell, commentViewModel: CommentViewModel) {
-        deleteCommentVM = commentViewModel
-        present(self.showConfirmDeleteAlert(title:  "Delete comment", message: "Do you want to delete this comment?" ), animated: true)
+        viewModel.showConfirmDeleteModal(commentViewModel: commentViewModel)
     }
     
     func updateList(_: CommentsViewModel) {
@@ -74,26 +72,5 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
     }
     
-    func showConfirmDeleteAlert(title: String, message: String) -> UIViewController{
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(alert: UIAlertAction!) in
-            self.confirmDeleteEvent()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{(alert: UIAlertAction!) in
-            self.cancelDeleteEvent()
-        }))
-        
-        return alert
-    }
-    
-    func confirmDeleteEvent(){
-        if let deleteCommentVM = deleteCommentVM {
-            self.viewModel.commentDelete(commentViewModel: deleteCommentVM)
-        }
-    }
-    
-    func cancelDeleteEvent(){
-        self.deleteCommentVM = nil
-    }
     
 }

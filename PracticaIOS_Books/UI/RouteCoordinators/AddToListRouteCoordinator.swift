@@ -7,7 +7,8 @@
 
 import UIKit
 
-class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListViewModelRoutingDelegate {
+class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListViewModelRoutingDelegate, ModalViewDelegate {
+    
     private var navigationController: UINavigationController
     let bookManager: BookManager
     let userSession: User
@@ -41,8 +42,18 @@ class AddToListRouteCoordinator: AddToListViewModelRoutingDelegate, CreateListVi
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func createListResult(){
+    func createListResult(_: CreateListViewModel) {
         navigationController.popViewController(animated: true)
+    }
+    
+    func showInfoModal(title: String, message: String) {
+        let modal = ModalView()
+        modal.delegate = self
+        rootViewController.present(modal.showAlert(title: title, message: message), animated: true)
+    }
+    
+    func dismissModal(_: ModalView) {
+        rootViewController.dismiss(animated: true, completion: nil)
     }
     
 }

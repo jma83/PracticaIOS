@@ -7,7 +7,6 @@
 
 
 class AddCommentViewModel: AddCommentManagerDelegate {
-    weak var delegate: AddCommentViewModelDelegate?
     weak var routingDelegate: AddCommentViewModelRoutingDelegate?
     let commentManager: CommentManager
     let bookManager: BookManager
@@ -24,10 +23,14 @@ class AddCommentViewModel: AddCommentManagerDelegate {
     }
     
     func createComment(summary: String, descrip: String){
+        let commentVM = CommentViewModel(summary: summary, descrip: descrip)
+        if !commentVM.validate() {
+            self.commentError(self.commentManager, error: commentVM.getError())
+            return
+        }
         self.bookManager.createBook(book: bookDetail, completionHandler: { book in
-            self.commentManager.createComment(name: summary, descrip: descrip, user: self.userSession, book: book)
+            self.commentManager.createComment(commentResult: commentVM.commentResult!, user: self.userSession, book: book)
         })
-        
     }
     
     func commentUpdatedResult(_: CommentManager, didListChange comment: Comment) {
@@ -35,15 +38,12 @@ class AddCommentViewModel: AddCommentManagerDelegate {
     }
     
     func commentError(_: CommentManager, error: String) {
-        delegate?.commentError(self, message: error)
+        self.routingDelegate?.showInfoModal(title: "Error", message: error)
     }
 
 }
 
-protocol AddCommentViewModelDelegate: class {
-    func commentError(_: AddCommentViewModel, message: String)
-}
-
 protocol AddCommentViewModelRoutingDelegate: class {
     func createCommentResult()
+    func showInfoModal(title: String, message: String)
 }
