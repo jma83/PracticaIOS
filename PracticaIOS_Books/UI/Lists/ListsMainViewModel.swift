@@ -48,12 +48,12 @@ class ListsMainViewModel: ListManagerDelegate {
     
     func showConfirmDeleteModal(listViewModel: ListViewModel) {
         deleteListViewModel = listViewModel
-        self.routingDelegate?.showConfirmDeleteModal(title: "Delete list", message: "Do you want to delete the list \(listViewModel.name)")
+        self.routingDelegate?.showConfirmDeleteModal(title: "Delete list", message: "Do you want to delete the list \(listViewModel.list!.name!) ?")
     }
 
     func confirmDeleteEvent(){
         if let deleteListViewModel = deleteListViewModel {
-            self.listManager.deleteList(list: deleteListViewModel.list, user: userSession)
+            self.listManager.deleteList(list: deleteListViewModel.list!, user: userSession)
         }
     }
     

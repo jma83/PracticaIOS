@@ -20,7 +20,13 @@ class CreateListViewModel: AddListManagerDelegate {
     }
     
     func createList(listName: String){
-        listManager.createList(name: listName, user: userSession)
+        let listVM = ListViewModel(name: listName, date: Date())
+        if !listVM.validate() {
+            self.listError(self.listManager, error: listVM.getError())
+        }else{
+            listManager.createList(listResult: listVM.listResult!, user: userSession)
+        }
+        
     }
     
     func listUpdatedResult(_: ListManager, didListChange list: List) {

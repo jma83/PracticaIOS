@@ -71,8 +71,10 @@ class ListManager{
         })
     }
      
-    func createList(name: String, user: User) -> Void {
-        
+    func createList(listResult: ListResult, user: User) -> Void {
+        guard let name = listResult.name else {
+            return
+        }
         self.fetchByName(nameList: name, completionHandler: { datos in
             if datos.count != 0 {
                 self.delegateAdd?.listError(self, error: self.ALREADY_EXISTS_ERROR)

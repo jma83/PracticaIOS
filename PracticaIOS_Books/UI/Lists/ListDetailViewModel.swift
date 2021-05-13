@@ -20,7 +20,7 @@ class ListDetailViewModel: ListDetailManagerDelegate {
         self.listManager = listManager
         self.userSession = userSession
         self.bookManager = bookManager
-        self.listDetail = listDetail.list
+        self.listDetail = listDetail.list!
         self.listManager.listDetailDelegate = self
         self.getBookLists()
     }

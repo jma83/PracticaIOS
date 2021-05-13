@@ -17,10 +17,13 @@ class ListMainTableViewCell: UITableViewCell {
     var viewModel: ListViewModel? {
         didSet {
             if viewModel != nil {
-                self.nameListText.text = viewModel?.name
+                self.nameListText.text = viewModel?.list?.name ?? ""
                 let formatter1 = DateFormatter()
                 formatter1.dateStyle = .long
-                let dateStr = formatter1.string(from: viewModel!.date)
+                var dateStr = ""
+                if let date = viewModel?.list?.updateDate {
+                    dateStr = formatter1.string(from: date)
+                }
                 self.dateListText.text = dateStr
             }
         }

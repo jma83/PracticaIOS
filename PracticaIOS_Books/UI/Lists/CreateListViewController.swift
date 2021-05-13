@@ -19,7 +19,7 @@ class CreateListViewController: UIViewController {
     }
 
     @IBAction func clickCreateButton(_ sender: Any) {
-        if let name = nameTextField.text, name.count > 2 {
+        if let name = nameTextField.text {
             self.viewModel.createList(listName: name)
         }
     }

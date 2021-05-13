@@ -10,23 +10,35 @@ import Foundation
 class ListViewModel {
     
     
-    let list: List
-    var active: Bool
-
+    var list: List?
+    var listResult: ListResult?
+    var active: Bool?
+    var error: String?
+    
     init(list: List, active: Bool = false) {
         self.list = list
         self.active = active
     }
-
-    var name: String {
-        return list.name ?? ""
+    
+    init(name: String = "", date: Date = Date()) {
+        listResult = ListResult(name: name, date: date)
     }
     
-    var date: Date {
-        return list.updateDate ?? Date()
+    func validate() -> Bool {
+        error = "Error, list name must have at least 3 characters."
+        guard let name = self.listResult?.name else {
+            return false
+        }
+        
+        if name.count <= 2 {
+            return false
+        }
+        
+        return true
     }
     
-    
-
+    func getError() -> String {
+        return error ?? ""
+    }
     
 }
