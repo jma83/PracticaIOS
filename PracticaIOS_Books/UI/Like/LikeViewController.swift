@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import EmptyDataSet_Swift
 
-class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HomeCellDelegate, LikeViewModelDelegate {
+
+class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, EmptyDataSetSource, EmptyDataSetDelegate, HomeCellDelegate, LikeViewModelDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: HomeCell.self)
@@ -18,7 +20,19 @@ class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Your like list is empty...")
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Add some books you like. They will appear here.")
     }
     
     override func viewDidAppear(_ animated: Bool) {

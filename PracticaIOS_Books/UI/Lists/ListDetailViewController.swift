@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import EmptyDataSet_Swift
+
 
 class ListDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeCellDelegate, ListDetailViewModelDelegate {
 
@@ -21,6 +23,8 @@ class ListDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         self.tableView.register(UINib(nibName: CELL_ID , bundle: nil), forCellReuseIdentifier: CELL_ID)
         // Do any additional setup after loading the view.
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         self.viewModel.getBookLists()
@@ -52,6 +56,14 @@ class ListDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "This list is empty...")
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Add books to it and they will apear here.")
     }
     
     func clickBookEvent(_: HomeCell, homeCell: HomeCollectionCell) {

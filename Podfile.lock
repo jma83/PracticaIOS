@@ -1,20 +1,24 @@
 PODS:
+  - EmptyDataSet-Swift (5.0.0)
   - SideMenu (6.5.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
-  - SideMenu (= 6.5.0)
+  - EmptyDataSet-Swift
+  - SideMenu
   - SVProgressHUD
 
 SPEC REPOS:
   trunk:
+    - EmptyDataSet-Swift
     - SideMenu
     - SVProgressHUD
 
 SPEC CHECKSUMS:
+  EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: f126746909871eea3a609234699809d05bebd057
+PODFILE CHECKSUM: 41b85c86898c0b3b23f831c5828e36029da7afcd
 
 COCOAPODS: 1.10.1

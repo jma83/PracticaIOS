@@ -7,7 +7,8 @@ target 'PracticaIOS_Books' do
 
   # Pods for PracticaIOS_Books
   pod 'SVProgressHUD'
-  pod 'SideMenu', '6.5.0'
+  pod 'SideMenu'
+  pod 'EmptyDataSet-Swift'
   
   target 'PracticaIOS_BooksTests' do
     inherit! :search_paths

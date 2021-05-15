@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import EmptyDataSet_Swift
 
-class ListsMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ListMainTableViewCellDelegate, ListsMainViewModelDelegate {
+class ListsMainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ListMainTableViewCellDelegate, ListsMainViewModelDelegate, EmptyDataSetSource, EmptyDataSetDelegate {
  
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: ListMainTableViewCell.self)
@@ -19,7 +20,10 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createListEvent))
+        tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool){
@@ -54,6 +58,14 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "You don't have any list yet...")
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Create one now and start adding books to it.")
     }
     
     func updateList(_: ListsMainViewModel) {

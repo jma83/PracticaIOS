@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class DetailViewController:  UIViewController, DetailViewModelDelegate {
 
@@ -30,6 +31,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
         title = "Book Detail"
+        SVProgressHUD.show()
     }
     
     required init?(coder: NSCoder) {
@@ -41,7 +43,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     func bookDetailResult(_: DetailViewModel) {
-
+        SVProgressHUD.dismiss()
         let book = self.viewModel.bookViewModel?.bookResult
         DispatchQueue.main.async {
             if let title = book?.title {
