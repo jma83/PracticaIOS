@@ -29,16 +29,15 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
-        self.viewModel.loadBook()
+        title = "Book Detail"
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        self.viewModel.loadBook()
     }
     
     func bookDetailResult(_: DetailViewModel) {

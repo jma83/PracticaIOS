@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController" customModule="PracticaIOS_Books" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autor: Javier Martínez Arias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRs-vs-cHl">
+                    <rect key="frame" x="40" y="94" width="334" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Universidad Pontificia de Salamanca" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cq4-fn-u6l">
+                    <rect key="frame" x="40" y="143" width="334" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Curso: 2020/21" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WFe-8b-Dfm">
+                    <rect key="frame" x="40" y="194" width="334" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxb-t5-m3X">
+                    <rect key="frame" x="40" y="243" width="334" height="142.5"/>
+                    <string key="text">Proyecto realizado para la asignatura de Desarrollo de aplicaciones iOS, que pertenece al Máster en Informática Móvil de la UPSA. Está app se ha realizado únicamente con propósitos edudcativos, para poner en práctica los conocimientos adquiridos durante la asignatura. </string>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="cq4-fn-u6l" firstAttribute="trailing" secondItem="fRs-vs-cHl" secondAttribute="trailing" id="5e5-O5-zvs"/>
+                <constraint firstItem="Xxb-t5-m3X" firstAttribute="top" secondItem="fRs-vs-cHl" secondAttribute="bottom" constant="128" id="6gC-nj-sEY"/>
+                <constraint firstItem="Xxb-t5-m3X" firstAttribute="trailing" secondItem="fRs-vs-cHl" secondAttribute="trailing" id="EQi-kh-ecC"/>
+                <constraint firstItem="WFe-8b-Dfm" firstAttribute="top" secondItem="fRs-vs-cHl" secondAttribute="bottom" constant="79" id="FPi-BR-ztq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fRs-vs-cHl" secondAttribute="trailing" constant="40" id="LhV-kP-8uK"/>
+                <constraint firstItem="cq4-fn-u6l" firstAttribute="leading" secondItem="fRs-vs-cHl" secondAttribute="leading" id="PJj-Ny-8Cq"/>
+                <constraint firstItem="WFe-8b-Dfm" firstAttribute="trailing" secondItem="fRs-vs-cHl" secondAttribute="trailing" id="Pkc-2g-7DA"/>
+                <constraint firstItem="fRs-vs-cHl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="Xg5-dB-J43"/>
+                <constraint firstItem="WFe-8b-Dfm" firstAttribute="leading" secondItem="fRs-vs-cHl" secondAttribute="leading" id="m8L-6s-aAt"/>
+                <constraint firstItem="fRs-vs-cHl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="40" id="rvG-eh-VK2"/>
+                <constraint firstItem="cq4-fn-u6l" firstAttribute="top" secondItem="fRs-vs-cHl" secondAttribute="bottom" constant="28" id="xes-O1-Njt"/>
+                <constraint firstItem="Xxb-t5-m3X" firstAttribute="leading" secondItem="fRs-vs-cHl" secondAttribute="leading" id="zUi-Ty-vD4"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="78.348214285714278"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

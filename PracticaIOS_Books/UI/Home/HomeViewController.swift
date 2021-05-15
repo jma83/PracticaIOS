@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeViewModelDelegate, HomeCellDelegate {
     
@@ -33,7 +34,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        SVProgressHUD.show()
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
@@ -43,37 +45,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @objc func clickMenuButton(_ sender: Any) {
-        if !menuActive {
-            leadingMenu.constant = 150
-            trailingMenu.constant = -150
-        }else{
-            leadingMenu.constant = 0
-            leadingMenu.constant = 0
-        }
-        menuActive = !menuActive
-        
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
-        
+        viewModel.showSideMenu()
     }
     
     @objc func clickNewBooks(_ sender: Any) {
         viewModel.getHomeBooks()
     }
     
-    @IBAction func clickLogoutButton(_ sender: Any) {
-        viewModel.logoutUser()
-    }
-    
-    @IBAction func clickProfileButton(_ sender: Any) {
-        viewModel.showProfileRouting()
-    }
-    
     // MARK: UITableViewDelegate functions
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if self.viewModel.sections.count > 0 {
+            SVProgressHUD.dismiss()
+        }
         return self.viewModel.sections.count
+
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -28,7 +28,7 @@ class ProfileViewController: UIViewController, ProfileViewModelDelegate {
         super.init(nibName: nil, bundle: nil)
         self.viewModel.delegate = self
         title = "Profile"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeAddListEvent))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeProfileEvent))
     }
     
     required init?(coder: NSCoder) {
@@ -50,7 +50,7 @@ class ProfileViewController: UIViewController, ProfileViewModelDelegate {
         countryText.text = user.country
     }
     
-    @objc func closeAddListEvent(){
+    @objc func closeProfileEvent(){
         self.viewModel.closeProfileRouting()
     }
     

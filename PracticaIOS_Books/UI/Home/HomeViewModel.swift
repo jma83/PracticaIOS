@@ -7,10 +7,8 @@
 
 import Foundation
 
-class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
-
+class HomeViewModel: BookManagerHomeDelegate {
     
-    let userManager: UserManager
     let bookManager: BookManager
     var bookViewModels: [[BookViewModel]] = [[]]
     var sections: [String] = []
@@ -19,12 +17,10 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
     weak var delegate: HomeViewModelDelegate?
     weak var routingDelegate: HomeViewModelRoutingDelegate?
     
-    init(userManager: UserManager, bookManager: BookManager, userSession: User) {
-        self.userManager = userManager
+    init(bookManager: BookManager, userSession: User) {
         self.bookManager = bookManager
         self.userSession = userSession
         self.bookManager.homeDelegate = self
-        self.userManager.homeDelegate = self
     }
     
     func getHomeBooks(){
@@ -38,12 +34,8 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
         }
     }
     
-    func logoutUser(){
-        self.userManager.removeUserSession()
-    }
-    
-    func showProfileRouting() {
-        self.routingDelegate?.showProfile(self)
+    func showSideMenu(){
+        self.routingDelegate?.showSideMenu(self)
     }
     
     //MARK: BookManagerHomeDelegate functions
@@ -64,12 +56,6 @@ class HomeViewModel: BookManagerHomeDelegate, UserHomeManagerDelegate {
         }
     }
     
-    //MARK: UserHomeManagerDelegate functions
-    
-    func userLogoutResult(_: UserManager) {
-        self.routingDelegate?.redirectToWelcome(self)
-    }
-    
 }
 
 protocol HomeViewModelDelegate: class {
@@ -78,6 +64,5 @@ protocol HomeViewModelDelegate: class {
 
 protocol HomeViewModelRoutingDelegate: class {
     func watchDetail(_: HomeViewModel, book: BookResult, userSession: User)
-    func redirectToWelcome(_: HomeViewModel)
-    func showProfile(_: HomeViewModel)
+    func showSideMenu(_: HomeViewModel)
 }
