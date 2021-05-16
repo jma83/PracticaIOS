@@ -62,6 +62,7 @@ class StartRouteCoordinator: WelcomeViewModelRoutingDelegate, MainRouteCoordinat
         
         if let mainRouteCoordinator = mainRouteCoordinator {
             mainRouteCoordinator.delegate = self
+            mainRouteCoordinator.rootViewController.modalPresentationStyle = .fullScreen
             rootViewController.present(mainRouteCoordinator.rootViewController, animated: true, completion: nil)
         }
     }

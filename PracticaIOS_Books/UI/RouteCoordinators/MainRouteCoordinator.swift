@@ -38,7 +38,6 @@ class MainRouteCoordinator: HomeRouteCoordinatorDelegate{
         listsRouteCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Lists", image: UIImage(systemName: "books.vertical.fill"), selectedImage: UIImage(systemName: "books.vertical"))
         tabBarController.setViewControllers([homeRouteCoordinator.rootViewController, searchRouteCoordinator.rootViewController,likeRouteCoordinator.rootViewController,listsRouteCoordinator.rootViewController], animated: true)
         
-        tabBarController.modalPresentationStyle = .fullScreen
         homeRouteCoordinator.delegate = self
 
         

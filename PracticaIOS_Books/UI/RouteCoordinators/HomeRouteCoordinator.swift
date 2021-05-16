@@ -8,13 +8,15 @@
 import UIKit
 import SideMenu
 
-class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate, ProfileRouteCoordinatorDelegate, ModalViewDelegate, HomeSideViewModelRouting, AboutRouteCoordinatorDelegate {
+class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate, ProfileRouteCoordinatorDelegate, ModalViewDelegate, HomeSideRouteCoordinatorDelegate, AboutRouteCoordinatorDelegate {
+    
     
     private let navigationController: UINavigationController
     private var addToListRouteCoordinator: AddToListRouteCoordinator!
     private var commentsRouteCoordinator: CommentsRouteCoordinator!
     private var profileRouteCoordinator: ProfileRouteCoordinator!
     private var aboutRouteCoordinator: AboutRouteCoordinator!
+    private var homeSideRouteCoordinator: HomeSideRouteCoordinator!
     weak var delegate: HomeRouteCoordinatorDelegate?
     
     let bookManager: BookManager
@@ -26,7 +28,6 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
     var rootViewController: UIViewController {
         return navigationController
     }
-    let leftMenuNavigationController: SideMenuNavigationController
     
     init(bookManager: BookManager, userManager: UserManager, listManager: ListManager, likeManager: LikeManager, commentManager: CommentManager, userSession: User) {
         self.userSession = userSession
@@ -40,22 +41,10 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         
         navigationController = UINavigationController(rootViewController: homeViewController)
-
-        // Define the menus
-        let homeSideViewModel = HomeSideViewModel(userManager: userManager)
-        let homeSideViewController = HomeSideViewController(viewModel: homeSideViewModel)
-        self.leftMenuNavigationController = SideMenuNavigationController(rootViewController: homeSideViewController)
-        self.initSideMenuConfig()
+        homeSideRouteCoordinator = HomeSideRouteCoordinator(userManager: userManager, navController: navigationController)
+        homeSideRouteCoordinator.delegate = self
         
-        homeSideViewModel.routingDelegate = self
         homeViewModel.routingDelegate = self
-    }
-    
-    func initSideMenuConfig() {
-        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController.view)
-        leftMenuNavigationController.statusBarEndAlpha = 0
     }
     
     // MARK: DetailViewModelRoutingDelegate: From Detail to Comments
@@ -89,25 +78,14 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         navigationController.pushViewController(vc, animated: true)
     }
     
-    func redirectToWelcome(_: HomeSideViewModel) {
-        delegate?.redirectToWelcome(self)
-    }
-    
     func closeProfile() {
         rootViewController.dismiss(animated: true, completion: nil)
     }
     
-    func showProfile(_: HomeSideViewModel) {
-        rootViewController.dismiss(animated: true, completion: {
-            self.profileRouteCoordinator = ProfileRouteCoordinator(userManager: self.userManager, userSession: self.userSession)
-            self.profileRouteCoordinator.delegate = self
-            self.rootViewController.present(self.profileRouteCoordinator.rootViewController, animated: true, completion: nil)
-        })
-        
-    }
-    
     func showSideMenu(_: HomeViewModel) {
-        rootViewController.present(leftMenuNavigationController, animated: true, completion: nil)
+        
+        rootViewController.present(homeSideRouteCoordinator.rootViewController, animated: true, completion: nil)
+        //rootViewController.present(leftMenuNavigationController, animated: true, completion: nil)
     }
     
     func showInfoModal(title: String, message: String) {
@@ -120,13 +98,24 @@ class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRouting
         rootViewController.dismiss(animated: true, completion: nil)
     }
     
-    func showAbout(_: HomeSideViewModel) {
+    func showProfile() {
+        rootViewController.dismiss(animated: true, completion: {
+            self.profileRouteCoordinator = ProfileRouteCoordinator(userManager: self.userManager, userSession: self.userSession)
+            self.profileRouteCoordinator.delegate = self
+            self.rootViewController.present(self.profileRouteCoordinator.rootViewController, animated: true, completion: nil)
+        })
+    }
+    
+    func showAbout() {
         rootViewController.dismiss(animated: true, completion: {
             self.aboutRouteCoordinator = AboutRouteCoordinator()
             self.aboutRouteCoordinator?.delegate = self
             self.rootViewController.present(self.aboutRouteCoordinator.rootViewController, animated: true, completion: nil)
         })
-        
+    }
+    
+    func redirectToWelcome() {
+        delegate?.redirectToWelcome(self)
     }
     
     func closeAbout() {
