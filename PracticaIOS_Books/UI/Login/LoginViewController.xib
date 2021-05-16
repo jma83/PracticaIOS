@@ -33,6 +33,9 @@
                     <rect key="frame" x="40" y="185" width="334" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="UUY-RI-ScH"/>
+                    </connections>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRP-1r-NWr">
                     <rect key="frame" x="40" y="337" width="334" height="39"/>
@@ -49,6 +52,9 @@
                     <rect key="frame" x="40" y="256" width="334" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="26"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="fDF-wM-0U4"/>
+                    </connections>
                 </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="39q-Cf-Hox"/>

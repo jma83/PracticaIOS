@@ -60,6 +60,13 @@ class ListsMainViewController: UIViewController, UITableViewDelegate, UITableVie
         return 1
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let vm = viewModel.listViewModels[indexPath.item]
+            self.viewModel.showConfirmDeleteModal(listViewModel: vm)
+        }
+    }
+    
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         return NSAttributedString(string: "You don't have any list yet...")
     }

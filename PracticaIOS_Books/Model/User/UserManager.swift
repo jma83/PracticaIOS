@@ -139,9 +139,6 @@ class UserManager{
             self.delegate?.userSession(self, didUserChange: user)
             
         })
-        
-
-        
     }
     
     private func generateUserToken(username: String) -> String{

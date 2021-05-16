@@ -8,7 +8,7 @@
 import Foundation
 
 class ListDetailViewModel: ListDetailManagerDelegate {
-    var bookViewModels: [[BookViewModel]] = [[]]
+    var bookViewModels: [[BookViewModel]] = []
     weak var delegate: ListDetailViewModelDelegate?
     weak var routingDelegate: ListDetailViewModelRoutingDelegate?
     var userSession: User?

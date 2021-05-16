@@ -7,6 +7,8 @@
 
 import UIKit
 import SVProgressHUD
+import SDWebImage
+
 
 class DetailViewController:  UIViewController, DetailViewModelDelegate {
 
@@ -23,13 +25,11 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     var image: UIImage?
     var isnb: String?
     var viewModel: DetailViewModel
-    var checkLikeBook: Bool = false
     
     
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.viewModel.delegate = self
         title = "Book Detail"
         SVProgressHUD.show()
     }
@@ -39,6 +39,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        self.viewModel.delegate = self
         self.viewModel.loadBook()
     }
     
@@ -62,25 +63,14 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
                 self.descriptionText.text = descrip
             }
             
-            if let imageURL = book?.book_image {
-                let url = URL(string: imageURL)
-                self.downloadImage(from: url!)
-            }
+            let url = URL(string: book?.book_image ?? "")
+            self.bookImage.sd_setImage(with: url, placeholderImage: UIImage(named: "placeholder.jpeg"))
+            
         }
     }
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
-    func downloadImage(from url: URL) {
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = UIImage(data: data)
-                self?.bookImage.image = self?.image
-            }
-        }
     }
 
     @IBAction func clickCommentsButton(_ sender: Any) {
@@ -88,10 +78,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     @IBAction func clickLikeButton(_ sender: Any) {
-        if checkLikeBook == false {
-            checkLikeBook = true
-            self.viewModel.likeBook()
-        }
+        self.viewModel.likeBook()
     }
     
     @IBAction func clickAddListButton(_ sender: Any) {
@@ -104,12 +91,15 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
         }else{
             likeButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
         }
-        checkLikeBook = false
 
     }
     
-    func likeCheckBook(_: DetailViewModel) {
-        likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+    func likeCheckBook(_: DetailViewModel, checkLike: Bool) {
+        if checkLike == true {
+            likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+        }else{
+            likeButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        }
     }
     
 }

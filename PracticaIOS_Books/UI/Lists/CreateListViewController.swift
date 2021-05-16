@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreateListViewController: UIViewController {
+class CreateListViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBOutlet weak var nameTextField: UITextField!
@@ -16,6 +16,8 @@ class CreateListViewController: UIViewController {
     let viewModel: CreateListViewModel
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardEvent()
+        nameTextField.delegate = self
     }
 
     @IBAction func clickCreateButton(_ sender: Any) {

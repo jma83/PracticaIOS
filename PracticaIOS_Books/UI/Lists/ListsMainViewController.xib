@@ -19,18 +19,30 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="86" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hkl-h1-Yrx">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pt-yh-1O8">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="86" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hkl-h1-Yrx">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                    <constraints>
+                        <constraint firstItem="Hkl-h1-Yrx" firstAttribute="top" secondItem="6pt-yh-1O8" secondAttribute="top" id="6tC-ml-ee1"/>
+                        <constraint firstAttribute="bottom" secondItem="Hkl-h1-Yrx" secondAttribute="bottom" id="7ee-Os-hnj"/>
+                        <constraint firstAttribute="trailing" secondItem="Hkl-h1-Yrx" secondAttribute="trailing" id="8tE-bs-xa2"/>
+                        <constraint firstItem="Hkl-h1-Yrx" firstAttribute="leading" secondItem="6pt-yh-1O8" secondAttribute="leading" id="USX-FH-Hh6"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Hkl-h1-Yrx" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="A6X-TC-TAq"/>
-                <constraint firstItem="Hkl-h1-Yrx" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="GvT-Jt-x0V"/>
-                <constraint firstItem="Hkl-h1-Yrx" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gA2-ei-WLy"/>
-                <constraint firstItem="Hkl-h1-Yrx" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="tEX-yq-37c"/>
+                <constraint firstItem="6pt-yh-1O8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2mg-F2-U7j"/>
+                <constraint firstItem="6pt-yh-1O8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JeB-Nk-2Rx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6pt-yh-1O8" secondAttribute="bottom" id="Vbg-Gy-BbI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6pt-yh-1O8" secondAttribute="trailing" id="xaV-IM-7d8"/>
             </constraints>
             <point key="canvasLocation" x="141" y="104"/>
         </view>

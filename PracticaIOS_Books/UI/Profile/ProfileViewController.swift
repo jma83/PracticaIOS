@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, ProfileViewModelDelegate {
+class ProfileViewController: UIViewController, ProfileViewModelDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var usernameText: UITextField!
@@ -17,6 +17,14 @@ class ProfileViewController: UIViewController, ProfileViewModelDelegate {
     @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var changePassButton: UIButton!
     private let viewModel: ProfileViewModel
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardEvent()
+        emailText.delegate = self
+        usernameText.delegate = self
+        countryText.delegate = self
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         self.viewModel.getUserInfo()

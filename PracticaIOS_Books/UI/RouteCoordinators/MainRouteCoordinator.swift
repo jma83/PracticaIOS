@@ -31,14 +31,12 @@ class MainRouteCoordinator: HomeRouteCoordinatorDelegate{
     
         
         tabBarController = UITabBarController()
+        
+        homeRouteCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), selectedImage: UIImage(systemName: "house"))
+        searchRouteCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), selectedImage: UIImage(systemName: "plus.magnifyingglass"))
+        likeRouteCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Like", image: UIImage(systemName: "hand.thumbsup.fill"), selectedImage: UIImage(systemName: "hand.thumbsup"))
+        listsRouteCoordinator.rootViewController.tabBarItem = UITabBarItem(title: "Lists", image: UIImage(systemName: "books.vertical.fill"), selectedImage: UIImage(systemName: "books.vertical"))
         tabBarController.setViewControllers([homeRouteCoordinator.rootViewController, searchRouteCoordinator.rootViewController,likeRouteCoordinator.rootViewController,listsRouteCoordinator.rootViewController], animated: true)
-        
-        tabBarController.tabBar.items?[0].image = UIImage(systemName: "house.fill")
-        tabBarController.tabBar.items?[1].image = UIImage(systemName: "magnifyingglass")
-        tabBarController.tabBar.items?[2].image = UIImage(systemName: "hand.thumbsup.fill")
-        tabBarController.tabBar.items?[3].image = UIImage(systemName: "books.vertical.fill")
-        
-        
         
         tabBarController.modalPresentationStyle = .fullScreen
         homeRouteCoordinator.delegate = self

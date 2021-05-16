@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddCommentViewController: UIViewController {
+class AddCommentViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     
 
@@ -18,7 +18,10 @@ class AddCommentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.hideKeyboardEvent()
+        titleText.delegate = self
+        descriptionText.delegate = self
+
     }
     @IBAction func postComment(_ sender: Any) {
         let name = titleText.text ?? ""
@@ -36,4 +39,14 @@ class AddCommentViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
+}
+
+extension UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
 }

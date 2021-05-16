@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var usernameText: UITextField!
@@ -30,6 +30,12 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardEvent()
+        
+        usernameText.delegate = self
+        passwordText.delegate = self
+        emailText.delegate = self
+        countryText.delegate = self
         passwordText.isSecureTextEntry = true
         birthdatePicker.datePickerMode = .date
     }

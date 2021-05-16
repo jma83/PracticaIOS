@@ -9,6 +9,8 @@ target 'PracticaIOS_Books' do
   pod 'SVProgressHUD'
   pod 'SideMenu'
   pod 'EmptyDataSet-Swift'
+  pod 'SDWebImage'
+  pod 'pop'
   
   target 'PracticaIOS_BooksTests' do
     inherit! :search_paths

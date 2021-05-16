@@ -26,8 +26,12 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
     }
     
     func loadBook(){
+        if let book = bookViewModel?.book {
+            self.checkLiked(book: book)
+            return
+        }
         if let isbn = self.bookViewModel?.bookResult.primary_isbn10, let id = self.bookViewModel?.bookResult.id {
-            self.bookManager.getBookDetail(isbn: isbn, id: id)
+                self.bookManager.getBookDetail(isbn: isbn, id: id)
         }
     }
     
@@ -80,11 +84,17 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
     }
     
     func bookDetail(_: BookManager, book: Book?){
-        if let book = book, let user = userSession {
-            bookViewModel?.book = book
-            likeManager.checkLikedByBookAndUser(user: user, book: book)
+        if let book = book {
+            self.bookViewModel?.book = book
+            self.checkLiked(book: book)
         }
         
+    }
+    
+    func checkLiked(book: Book){
+        if let user = userSession {
+            likeManager.checkLikedByBookAndUser(user: user, book: book)
+        }
     }
     
     //MARK: LikeManagerDetailDelegate functions
@@ -98,9 +108,8 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
     }
     
     func likeCheckBook(_: LikeManager, checkLike: Bool) {
-        if checkLike == true {
-            self.delegate?.likeCheckBook(self)
-        }
+        self.delegate?.likeCheckBook(self, checkLike: checkLike)
+
     }
     
 }
@@ -108,7 +117,7 @@ class DetailViewModel: BookManagerDetailDelegate, LikeManagerDetailDelegate {
 protocol DetailViewModelDelegate: class {
     func bookDetailResult(_: DetailViewModel)
     func likeAddResult(_: DetailViewModel, checkLike: Bool)
-    func likeCheckBook(_: DetailViewModel)
+    func likeCheckBook(_: DetailViewModel, checkLike: Bool)
 }
 
 protocol DetailViewModelRoutingDelegate: class {

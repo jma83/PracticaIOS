@@ -67,7 +67,9 @@ extension HomeCell: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
         delegate?.clickBookEvent(self, homeCell: cell)
     }
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+    }
 }
 
 protocol HomeCellDelegate: class {

@@ -24,7 +24,6 @@ class HomeSideViewController: UIViewController {
 
     @IBAction func clickLogoutButton(_ sender: Any) {
         self.viewModel.userLogout()
-        
     }
     
     @IBAction func clickProfileButton(_ sender: Any) {

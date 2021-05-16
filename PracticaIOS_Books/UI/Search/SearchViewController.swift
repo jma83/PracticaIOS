@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import EmptyDataSet_Swift
 
-class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDelegate, SearchViewModelDelegate  {
+class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDelegate, SearchViewModelDelegate, EmptyDataSetSource, EmptyDataSetDelegate  {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -17,13 +18,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardEvent()
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.searchBar.delegate = self
         self.viewModel.delegate = self
 
         self.tableView.register(UINib(nibName: CELL_ID , bundle: nil), forCellReuseIdentifier: CELL_ID)
-        // Do any additional setup after loading the view.
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
     }
     
     init(viewModel: SearchViewModel) {
@@ -45,6 +50,8 @@ class SearchViewController: UIViewController, UISearchBarDelegate, HomeCellDeleg
                 viewModel.searchBook(text: text)
             }
         }
+        self.searchBar.endEditing(true)
+
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -99,6 +106,14 @@ extension SearchViewController:  UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Search is empty")
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Try with any book title, author...")
     }
     
     

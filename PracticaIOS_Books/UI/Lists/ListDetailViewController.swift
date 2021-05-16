@@ -9,7 +9,7 @@ import UIKit
 import EmptyDataSet_Swift
 
 
-class ListDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeCellDelegate, ListDetailViewModelDelegate {
+class ListDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeCellDelegate, ListDetailViewModelDelegate, EmptyDataSetSource, EmptyDataSetDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     let viewModel: ListDetailViewModel
@@ -22,6 +22,9 @@ class ListDetailViewController: UIViewController, UITableViewDelegate, UITableVi
 
         self.tableView.register(UINib(nibName: CELL_ID , bundle: nil), forCellReuseIdentifier: CELL_ID)
         // Do any additional setup after loading the view.
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+        tableView.tableFooterView = UIView()
     }
     
     

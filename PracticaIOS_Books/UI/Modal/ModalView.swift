@@ -18,7 +18,7 @@ class ModalView {
     }
     
     func showConfirmDeleteAlert(title: String, message: String) -> UIViewController{
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: {(alert: UIAlertAction!) in
             self.confirmDeleteModal()
         }))

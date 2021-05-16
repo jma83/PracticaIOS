@@ -531,8 +531,8 @@
 				1FB879652628C71F00BD1B8D /* CommentsViewController.swift */,
 				1FB8796A2628C81B00BD1B8D /* CommentsViewModel.swift */,
 				1FB8796F2628C8D900BD1B8D /* CommentsViewController.xib */,
-				1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */,
 				1FB879742628CB9900BD1B8D /* AddCommentViewController.swift */,
+				1FB50D62263EA0CC0017B970 /* AddCommentViewModel.swift */,
 				1FB879752628CB9900BD1B8D /* AddCommentViewController.xib */,
 				1FB879832628F48900BD1B8D /* CommentsCell.swift */,
 				1FB879842628F48900BD1B8D /* CommentsCell.xib */,
@@ -1127,6 +1127,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AUGC7T295P;
 				INFOPLIST_FILE = PracticaIOS_Books/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

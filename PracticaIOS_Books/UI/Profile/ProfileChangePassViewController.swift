@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileChangePassViewController: UIViewController {
+class ProfileChangePassViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var currentPassField: UITextField!
     @IBOutlet weak var newPassField: UITextField!
@@ -16,6 +16,13 @@ class ProfileChangePassViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         currentPassField.isSecureTextEntry = true
         newPassField.isSecureTextEntry = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hideKeyboardEvent()
+        newPassField.delegate = self
+        currentPassField.delegate = self
     }
     
     init(viewModel: ProfileChangePassViewModel) {

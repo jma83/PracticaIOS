@@ -1,24 +1,34 @@
 PODS:
   - EmptyDataSet-Swift (5.0.0)
+  - pop (1.0.12)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
   - SideMenu (6.5.0)
   - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - EmptyDataSet-Swift
+  - pop
+  - SDWebImage
   - SideMenu
   - SVProgressHUD
 
 SPEC REPOS:
   trunk:
     - EmptyDataSet-Swift
+    - pop
+    - SDWebImage
     - SideMenu
     - SVProgressHUD
 
 SPEC CHECKSUMS:
   EmptyDataSet-Swift: eb382c0c87a2d9c678077385a595cec52da38171
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: 41b85c86898c0b3b23f831c5828e36029da7afcd
+PODFILE CHECKSUM: 026baa2bc5807bb725c2da31db81f834d72f55ea
 
 COCOAPODS: 1.10.1

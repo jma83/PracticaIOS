@@ -19,22 +19,34 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ON-rU-cAz">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CpN-tb-j7t">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ON-rU-cAz">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="yM5-Dd-MFq"/>
+                                <outlet property="delegate" destination="-1" id="h15-jS-xgX"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="yM5-Dd-MFq"/>
-                        <outlet property="delegate" destination="-1" id="h15-jS-xgX"/>
-                    </connections>
-                </tableView>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="5ON-rU-cAz" secondAttribute="trailing" id="21Z-mD-BZK"/>
+                        <constraint firstAttribute="bottom" secondItem="5ON-rU-cAz" secondAttribute="bottom" id="JtV-dW-wl8"/>
+                        <constraint firstItem="5ON-rU-cAz" firstAttribute="top" secondItem="CpN-tb-j7t" secondAttribute="top" id="aGW-wc-6Yi"/>
+                        <constraint firstItem="5ON-rU-cAz" firstAttribute="leading" secondItem="CpN-tb-j7t" secondAttribute="leading" id="u67-hR-g41"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="5ON-rU-cAz" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="20D-hd-kJv"/>
-                <constraint firstItem="5ON-rU-cAz" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gx4-2J-j8L"/>
-                <constraint firstAttribute="bottom" secondItem="5ON-rU-cAz" secondAttribute="bottom" id="r8s-Z6-44l"/>
-                <constraint firstItem="5ON-rU-cAz" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="vA6-6l-1Eo"/>
+                <constraint firstItem="CpN-tb-j7t" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="6uA-QS-hQE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="CpN-tb-j7t" secondAttribute="trailing" id="Gfd-nx-5s2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="CpN-tb-j7t" secondAttribute="bottom" id="PLJ-v0-SGg"/>
+                <constraint firstItem="CpN-tb-j7t" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="fxq-3y-xEr"/>
             </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="96.428571428571431"/>
         </view>

@@ -7,8 +7,9 @@
 
 import UIKit
 import SVProgressHUD
+import EmptyDataSet_Swift
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeViewModelDelegate, HomeCellDelegate {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, HomeViewModelDelegate, HomeCellDelegate, EmptyDataSetSource, EmptyDataSetDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: HomeCell.self)
@@ -41,7 +42,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.register(UINib(nibName: CELL_ID, bundle: nil), forCellReuseIdentifier: CELL_ID)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Menu", style: .done, target: self, action: #selector(clickMenuButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(clickNewBooks))
-        
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
     }
     
     @objc func clickMenuButton(_ sender: Any) {
@@ -80,6 +83,18 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return self.viewModel.sections[section]
     }
     
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Loading results...")
+    }
+    
+    func spaceHeight(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
+        return 2
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Please, try refreshing if nothing happens")
+    }
+        
     // MARK: HomeViewModelDelegate functions
     
     func bookChanged(_: HomeViewModel) {
