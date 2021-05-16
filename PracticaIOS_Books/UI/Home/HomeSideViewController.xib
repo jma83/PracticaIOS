@@ -69,7 +69,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemGray3Color"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="4Zh-9C-ijy" firstAttribute="top" secondItem="aOU-pY-C2q" secondAttribute="bottom" constant="41" id="Ga1-DQ-hdP"/>
                 <constraint firstItem="aOU-pY-C2q" firstAttribute="top" secondItem="WQT-Ag-RAJ" secondAttribute="bottom" constant="-2" id="NfV-v4-7un"/>
@@ -86,9 +86,6 @@
         <image name="circle.fill" catalog="system" width="128" height="121"/>
         <image name="info.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

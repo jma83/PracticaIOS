@@ -15,6 +15,14 @@ class HomeSideViewController: UIViewController {
     init(viewModel: HomeSideViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        UIGraphicsBeginImageContext(self.view.frame.size)
+            UIImage(named: "sideMenuPic")?.draw(in: self.view.bounds)
+            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+
+        self.view.backgroundColor = UIColor(patternImage: image)
+
     }
     
     required init?(coder: NSCoder) {

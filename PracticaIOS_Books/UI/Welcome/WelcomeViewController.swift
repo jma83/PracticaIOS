@@ -29,7 +29,16 @@ class WelcomeViewController: UIViewController, UINavigationControllerDelegate {
             anim.toValue = 1.0
             loginButton.pop_add(anim, forKey: "fade1")
             registerButton.pop_add(anim, forKey: "fade2")
+            title = "📚My Library📚"
         }
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+            UIImage(named: "welcome")?.draw(in: self.view.bounds)
+            let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            self.view.backgroundColor = UIColor(patternImage: image)
+
+        self.view.backgroundColor = UIColor(patternImage: image)
         
     }
     

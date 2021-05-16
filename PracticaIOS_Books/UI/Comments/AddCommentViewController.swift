@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddCommentViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class AddCommentViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     
 
@@ -38,11 +38,8 @@ class AddCommentViewController: UIViewController, UITextFieldDelegate, UITextVie
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-}
-
-extension UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    
+    @objc public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
             return false

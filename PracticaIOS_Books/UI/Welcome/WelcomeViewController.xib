@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hW4-Rl-uJH">
-                    <rect key="frame" x="30" y="358.5" width="354" height="39"/>
+                    <rect key="frame" x="30" y="307.5" width="354" height="39"/>
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <state key="normal" title="Sign in">
@@ -31,20 +31,24 @@
                         <action selector="clickLoginButton" destination="-1" eventType="touchUpInside" id="LBc-f7-T4R"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="📚My Library📚" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-b1-vxd">
-                    <rect key="frame" x="40" y="114" width="334" height="51"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9pW-Fl-Y21">
+                    <rect key="frame" x="50" y="167.5" width="314" height="120"/>
+                    <color key="backgroundColor" red="1" green="0.99578061139999996" blue="0.97255397229999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-b1-vxd">
+                    <rect key="frame" x="40" y="114" width="334" height="0.0"/>
                     <fontDescription key="fontDescription" type="system" pointSize="42"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" text="Welcome!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ulb-su-Zjn">
-                    <rect key="frame" x="30" y="225" width="354" height="30"/>
+                    <rect key="frame" x="30" y="174" width="354" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="1" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duP-vi-qkS">
-                    <rect key="frame" x="30" y="427.5" width="354" height="39"/>
+                    <rect key="frame" x="30" y="376.5" width="354" height="39"/>
                     <color key="backgroundColor" systemColor="systemOrangeColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <state key="normal" title="Register">
@@ -55,7 +59,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1" verticalHuggingPriority="1" horizontalCompressionResistancePriority="1" verticalCompressionResistancePriority="1" text="Access your account to start exploring books!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="V17-83-Rw6">
-                    <rect key="frame" x="50" y="263" width="314" height="45.5"/>
+                    <rect key="frame" x="50" y="212" width="314" height="45.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -65,22 +69,26 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="eMb-b1-vxd" firstAttribute="top" secondItem="ylr-La-tlx" secondAttribute="top" constant="70" id="Bnx-fa-T9w"/>
+                <constraint firstItem="9pW-Fl-Y21" firstAttribute="leading" secondItem="V17-83-Rw6" secondAttribute="leading" id="GS8-XN-qcq"/>
                 <constraint firstItem="hW4-Rl-uJH" firstAttribute="leading" secondItem="ylr-La-tlx" secondAttribute="leading" constant="30" id="N74-aq-nOt"/>
                 <constraint firstItem="ylr-La-tlx" firstAttribute="trailing" secondItem="ulb-su-Zjn" secondAttribute="trailing" constant="30" id="Ntu-os-lcp"/>
                 <constraint firstItem="duP-vi-qkS" firstAttribute="trailing" secondItem="hW4-Rl-uJH" secondAttribute="trailing" id="Ulm-PD-yrm"/>
                 <constraint firstItem="ulb-su-Zjn" firstAttribute="top" secondItem="eMb-b1-vxd" secondAttribute="bottom" constant="60" id="Vcr-O7-mwi"/>
                 <constraint firstItem="ulb-su-Zjn" firstAttribute="leading" secondItem="ylr-La-tlx" secondAttribute="leading" constant="30" id="Wuo-a8-kXl"/>
                 <constraint firstItem="duP-vi-qkS" firstAttribute="top" secondItem="hW4-Rl-uJH" secondAttribute="bottom" constant="30" id="cUs-Hy-Sy7"/>
+                <constraint firstItem="9pW-Fl-Y21" firstAttribute="trailing" secondItem="V17-83-Rw6" secondAttribute="trailing" id="dLQ-zU-GKJ"/>
                 <constraint firstItem="V17-83-Rw6" firstAttribute="top" secondItem="ulb-su-Zjn" secondAttribute="bottom" constant="8" id="gQw-g5-Er0"/>
                 <constraint firstItem="eMb-b1-vxd" firstAttribute="leading" secondItem="ylr-La-tlx" secondAttribute="leading" constant="40" id="kHp-YQ-2Rc"/>
                 <constraint firstItem="V17-83-Rw6" firstAttribute="leading" secondItem="ulb-su-Zjn" secondAttribute="leading" constant="20" id="l9K-Ix-yIV"/>
+                <constraint firstItem="hW4-Rl-uJH" firstAttribute="top" secondItem="9pW-Fl-Y21" secondAttribute="bottom" constant="20" id="mhK-lf-QYU"/>
                 <constraint firstItem="ylr-La-tlx" firstAttribute="trailing" secondItem="eMb-b1-vxd" secondAttribute="trailing" constant="40" id="oqr-WL-vUL"/>
                 <constraint firstItem="ylr-La-tlx" firstAttribute="trailing" secondItem="hW4-Rl-uJH" secondAttribute="trailing" constant="30" id="p44-bQ-b6j"/>
                 <constraint firstItem="hW4-Rl-uJH" firstAttribute="top" secondItem="V17-83-Rw6" secondAttribute="bottom" constant="50" id="pT0-nt-tfX"/>
+                <constraint firstItem="9pW-Fl-Y21" firstAttribute="centerY" secondItem="ulb-su-Zjn" secondAttribute="centerY" constant="38.5" id="pW7-uw-dsf"/>
                 <constraint firstItem="V17-83-Rw6" firstAttribute="trailing" secondItem="ulb-su-Zjn" secondAttribute="trailing" constant="-20" id="tGU-Vl-Yas"/>
                 <constraint firstItem="duP-vi-qkS" firstAttribute="leading" secondItem="hW4-Rl-uJH" secondAttribute="leading" id="y7H-A3-dUe"/>
             </constraints>
-            <point key="canvasLocation" x="-155" y="66"/>
+            <point key="canvasLocation" x="-155.07246376811597" y="65.625"/>
         </view>
         <navigationItem title="My Library" id="aM5-Rk-lYV"/>
     </objects>
