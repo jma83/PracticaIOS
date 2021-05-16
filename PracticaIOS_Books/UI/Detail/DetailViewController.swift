@@ -30,6 +30,7 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     init(viewModel: DetailViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        self.viewModel.delegate = self
         title = "Book Detail"
         SVProgressHUD.show()
     }
@@ -39,7 +40,6 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.viewModel.delegate = self
         self.viewModel.loadBook()
     }
     
@@ -86,15 +86,14 @@ class DetailViewController:  UIViewController, DetailViewModelDelegate {
     }
 
     func likeAddResult(_: DetailViewModel, checkLike: Bool) {
-        if checkLike == true {
-            likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
-        }else{
-            likeButton.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
-        }
-
+        checkLikedBook(checkLike: checkLike)
     }
     
     func likeCheckBook(_: DetailViewModel, checkLike: Bool) {
+        checkLikedBook(checkLike: checkLike)
+    }
+    
+    func checkLikedBook(checkLike: Bool) {
         if checkLike == true {
             likeButton.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
         }else{

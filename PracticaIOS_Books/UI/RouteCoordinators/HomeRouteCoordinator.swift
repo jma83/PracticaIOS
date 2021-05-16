@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SideMenu
 
 class HomeRouteCoordinator: HomeViewModelRoutingDelegate, DetailViewModelRoutingDelegate, CommentsRouteCoordinatorDelegate, AddToListRouteCoordinatorDelegate, ProfileRouteCoordinatorDelegate, ModalViewDelegate, HomeSideRouteCoordinatorDelegate, AboutRouteCoordinatorDelegate {
     

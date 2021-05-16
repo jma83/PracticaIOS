@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import EmptyDataSet_Swift
 
-class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CommentsCellDelegate, CommentsViewModelDelegate {
+class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource, CommentsCellDelegate, CommentsViewModelDelegate, EmptyDataSetSource, EmptyDataSetDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: CommentsCell.self)
@@ -21,6 +22,9 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
         title = "Comments"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Close", style: .done, target: self, action: #selector(closeCommentsEvent))
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCommentEvent))
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,6 +64,14 @@ class CommentsViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "No comments yet...")
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
+        return NSAttributedString(string: "Add a comment and share your opinion of this book")
     }
     
     func clickDeleteEvent(_: CommentsCell, commentViewModel: CommentViewModel) {

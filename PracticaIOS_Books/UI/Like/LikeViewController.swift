@@ -58,14 +58,6 @@ class LikeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.delegate = self
         let cellViewModel = viewModel.bookViewModels[indexPath.item]
         cell.viewModel = cellViewModel
-        let vm = viewModel.bookViewModels[0]
-        if vm.count == 0 {
-            cell.textLabel?.text = "No books yet..."
-            cell.detailTextLabel?.text = "Find some books you like. They will apear here"
-        }else{
-            cell.textLabel?.text = ""
-            cell.detailTextLabel?.text = ""
-        }
         
         return cell
     }

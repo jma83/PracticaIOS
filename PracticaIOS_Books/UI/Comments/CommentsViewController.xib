@@ -19,18 +19,35 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="275" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mII-EV-Mzg">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yav-0v-ajf">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="275" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mII-EV-Mzg">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="acZ-gq-m0a"/>
+                                <outlet property="delegate" destination="-1" id="4Vd-lm-OUs"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="acZ-gq-m0a"/>
-                        <outlet property="delegate" destination="-1" id="4Vd-lm-OUs"/>
-                    </connections>
-                </tableView>
+                    <constraints>
+                        <constraint firstItem="mII-EV-Mzg" firstAttribute="top" secondItem="yav-0v-ajf" secondAttribute="top" id="AmW-xA-x9e"/>
+                        <constraint firstAttribute="bottom" secondItem="mII-EV-Mzg" secondAttribute="bottom" id="Fx6-B7-Bx5"/>
+                        <constraint firstAttribute="trailing" secondItem="mII-EV-Mzg" secondAttribute="trailing" id="XhM-Ow-q5t"/>
+                        <constraint firstItem="mII-EV-Mzg" firstAttribute="leading" secondItem="yav-0v-ajf" secondAttribute="leading" id="dZY-vu-BjR"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="yav-0v-ajf" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="0Xf-zY-ywB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yav-0v-ajf" secondAttribute="trailing" id="2b2-UD-aUj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="yav-0v-ajf" secondAttribute="bottom" id="OPc-tH-BIr"/>
+                <constraint firstItem="yav-0v-ajf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="W5B-g8-z49"/>
+            </constraints>
             <point key="canvasLocation" x="140.57971014492756" y="113.83928571428571"/>
         </view>
     </objects>

@@ -10,9 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="PracticaIOS_Books" customModuleProvider="target">
             <connections>
-                <outlet property="leadingMenu" destination="6sf-W4-UOw" id="2AL-fS-g2i"/>
                 <outlet property="tableView" destination="2Pt-Ae-0Tk" id="F5G-Kj-LX6"/>
-                <outlet property="trailingMenu" destination="x5M-Lm-QVR" id="Lqd-Vb-SDu"/>
                 <outlet property="view" destination="aqG-Wg-t69" id="hQf-VB-HDh"/>
             </connections>
         </placeholder>

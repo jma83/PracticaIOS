@@ -14,10 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     private let CELL_ID = String(describing: HomeCell.self)
     let viewModel: HomeViewModel
-    @IBOutlet weak var trailingMenu: NSLayoutConstraint!
-    @IBOutlet weak var leadingMenu: NSLayoutConstraint!
     
-    private var menuActive = false
     
     
     init(viewModel: HomeViewModel) {
@@ -85,10 +82,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func title(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
         return NSAttributedString(string: "Loading results...")
-    }
-    
-    func spaceHeight(forEmptyDataSet scrollView: UIScrollView) -> CGFloat {
-        return 2
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView) -> NSAttributedString? {
