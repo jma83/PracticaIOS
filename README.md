@@ -1,6 +1,6 @@
 # PracticaIOS
 
-Manage books IOS APP.
+Book Manager IOS APP.
 
 Made during 2020-2021 course at UPSA - MIMO.
 
